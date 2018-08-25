@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="wallet"
+            type="com.banano.kaliumwallet.model.KaliumWallet" />
+
+        <!-- Click Listeners -->
+        <variable
+            name="handlers"
+            type="com.banano.kaliumwallet.ui.settings.ChangeRepDialogFragment.ClickHandlers" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/change_rep_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/bg_modal">
+
+        <FrameLayout
+            android:id="@+id/progress_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/bg_rounded_black_transparent"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="5dp"
+            android:visibility="gone">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"/>
+
+        </FrameLayout>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/change_rep_info"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="5dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginTop="19dp"
+            android:onClick="@{handlers::onClickInfo}"
+            android:background="@drawable/bg_image_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_info" />
+
+        <TextView
+            android:id="@+id/change_rep_header"
+            style="@style/TextStyleHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/change_representative_header"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/rep_field_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/change_rep_header">
+
+            <TextView
+                android:id="@+id/old_representative"
+                style="@style/TextStyleParagraph"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/change_representative_current_header"/>
+
+            <TextView
+                android:id="@+id/current_representative"
+                style="@style/TextStyleAddressAlt"
+                android:background="@drawable/bg_edittext"
+                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:paddingLeft="40dp"
+                android:paddingRight="40dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textAlignment="center"
+                tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
+
+            <RelativeLayout
+                android:id="@+id/new_rep_container"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                app:layout_constraintTop_toBottomOf="@+id/new_rep_header"
+                app:layout_constraintEnd_toStartOf="@+id/send_guideling_vert"
+                app:layout_constraintStart_toStartOf="@+id/send_guideling_vert">
+
+                <EditText
+                    android:id="@+id/new_rep"
+                    android:fontFamily="@font/nunitosans_extralight"
+                    android:background="@drawable/bg_edittext"
+                    android:textSize="16sp"
+                    android:textColor="@color/white_60"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:lineSpacingMultiplier="1.2"
+                    android:lineSpacingExtra="3dp"
+                    android:paddingLeft="20dp"
+                    android:paddingStart="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="20dp"
+                    android:paddingEnd="20dp"
+                    android:inputType="textMultiLine"
+                    android:gravity="center_horizontal"
+                    android:hint="@string/change_representative_hint"
+                    android:textColorHint="@color/white_60"
+                    tools:fontFamily="@font/overpass_mono_light"
+                    tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg"/>
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/new_rep_paste"
+                    android:fontFamily="@font/nunitosans_extralight"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="@{handlers::onClickPaste}"
+                    app:srcCompat="@drawable/ic_paste"
+                    android:background="@android:color/transparent"
+                    />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/rep_address_validation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/yellow"
+            android:fontFamily="@font/nunitosans_regular"
+            android:textAlignment="center"
+            android:visibility="invisible"
+            android:text="@string/change_representative_invalid"
+            app:layout_constraintTop_toBottomOf="@+id/rep_field_container"
+            app:layout_constraintEnd_toStartOf="@+id/change_rep_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/change_rep_guideline_vert"
+            tools:text="Invalid Representative Address" />
+
+        <Button
+            android:id="@+id/change_rep"
+            style="@style/PrimaryButton"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:textAllCaps="true"
+            android:onClick="@{handlers::onClickChange}"
+            android:text="@string/change_representative_change"
+            app:layout_constraintBottom_toTopOf="@+id/cancel_button"
+            app:layout_constraintEnd_toStartOf="@+id/change_rep_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/change_rep_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            style="@style/OutlineButton"
+            android:textAllCaps="true"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:onClick="@{handlers::onClickClose}"
+            android:text="@string/send_close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/change_rep_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/change_rep_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/change_rep_guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

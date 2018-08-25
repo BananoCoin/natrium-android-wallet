@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Üdvözöllek a Kaliumban! Hozz létre egy új tárcát, vagy importálj egy létezőt.</string>
+    <string name="intro_welcome_new_wallet">Új Tárca</string>
+    <string name="intro_welcome_have_wallet">Tárca Importálása</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Ez itt a tárcád seedje. Nagyon fontos, hogy megőrizd, és soha ne készíts róla screenshotot, vagy őrizd egyszerű szöveg formátumban.</string>
+    <string name="intro_new_wallet_seed_copied">Seed másolva a clipboardra.\n 2 percig beilleszthető.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Seed másolása</string>
+    <string name="intro_new_wallet_backup">Biztos vagy benne, hogy elmentetted a seeded?</string>
+    <string name="intro_new_wallet_backup_yes">Igen</string>
+    <string name="intro_new_wallet_backup_no">Nem</string>
+    <string name="intro_new_wallet_warning_header">Kérlek, ne hazudj.</string>
+    <string name="intro_new_wallet_warning">Azt hiszed nem fogod, de ha elveszíted a seeded, elveszíted a hozzáférésed a tárcádhoz.</string>
+    <string name="intro_new_wallet_not_lying">Komolyan!</string>
+    <string name="intro_new_wallet_okay">Rendben :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Seed importálása</string>
+    <string name="intro_seed_info">Írd be a seeded.</string>
+    <string name="intro_seed_invalid">Helytelen Seed</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Hozz létre egy 4 számjegyű PIN-kódot</string>
+    <string name="pin_confirm_title">Erősítsd meg a PIN-kódod</string>
+    <string name="pin_enter_title">Írd be a PIN-kódod</string>
+    <string name="pin_confirm_error">PIN-kódok nem egyeznek</string>
+    <string name="pin_error">Helytelen PIN-kód</string>
+    <string name="fingerprint_text">Érintsd meg az ujjlenyomat olvasót</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Küldés</string>
+    <string name="home_receive_cta">Fogadás</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Probléma a kapcsolattal. Próbálkozz újra.</string>
+    <string name="transaction_header">Tranzakciók</string>
+    <string name="history_sent">Küldött</string>
+    <string name="history_received">Fogadott</string>
+    <string name="transaction_details">Részletek Mutatása</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Beállítások</string>
+    <string name="settings_local_currency">Valuta Megváltoztatása</string>
+    <string name="settings_backup_seed">Seed Másolása</string>
+    <string name="settings_change_rep">Képviselő Megváltoztatása</string>
+    <string name="settings_share">Oszd meg a Kaliumot</string>
+    <string name="settings_logout">Kijelentkezés</string>
+    <string name="settings_logout_alert_title">FIGYELEM</string>
+    <string name="settings_logout_alert_message">Ha kijelentkezel, elvész a beírt seeded, és minden Kaliumhoz kapcsolódó adatod az eszközről. Ha nem őrizted meg a seeded, nem fogsz tudni hozzáférni a tőkédhez.</string>
+    <string name="settings_logout_alert_confirm_cta">Seed törlése és kijelentkezés</string>
+    <string name="settings_logout_alert_cancel_cta">Mégse</string>
+    <string name="settings_logout_warning_title">Biztos, hogy kijelentkezel?</string>
+    <string name="settings_logout_warning_message">Ha elmentetted a seeded, akkor nem lehet baj.</string>
+    <string name="settings_logout_warning_confirm">Igen</string>
+    <string name="settings_logout_warning_cancel">Mégse</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">\nKépviselő Megváltoztatása</string>
+    <string name="change_representative_header_short">Megváltoztat</string>
+    <string name="change_representative_info_header">Mi az a Képviselő?</string>
+    <string name="change_representative_info">A Képviselő egy olyan felhasználó, aki szavaz a hálózati konszenzusról, így fenntartja annak működését. A szavazati ereje a rendelkezésre álló tőkéje alapján súlyozott. A saját tőkédet delegálhatod egy Képviselőre, akiben bízol. A Képviselő nem tudja elkölteni a tőkéd. Egy olyan Képviselőt válassz, aki megbízható, és keveset szünetelteti a szolgáltatását.</string>
+    <string name="change_representative_dialog_close">Bezárás</string>
+    <string name="change_representative_change">Megváltoztat</string>
+    <string name="change_representative_cancel">Mégse</string>
+    <string name="change_representative_invalid">Helytelen Képviselői Cím</string>
+    <string name="change_representative_current_header">Jelenlegi Képviselő</string>
+    <string name="change_representative_hint">Új Képviselő</string>
+    <string name="change_representative_success">Képviselő Sikeresen Kiválasztva</string>
+    <string name="change_representative_error">Nem sikerült megváltoztatni a Képviselőd. Kérlek próbálkozz később.</string>
+    <string name="change_representative_fingerprint">Erősítsd meg az ujjlenyomatoddal, hogy szeretnéd megváltoztatni a Képviselőd.</string>
+    <string name="change_representative_pin">Írd be a PIN-kódod, hogy megváltoztasd a Képviselőd</string>
+    <!-- Share -->
+    <string name="share_title">Megosztás ezzel...</string>
+    <string name="share_extra">Próbáld ki a Kaliumot, a Banano hivatalos Androidos tárcáját!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Seed Mentése</string>
+    <string name="settings_fingerprint_title">Erősítsd meg az ujjlenyomatoddal, hogy szeretnéd elmenteni a seeded.</string>
+    <string name="settings_pin_title">Írd be a PIN-kódod, hogy megjelenjen a seeded.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Megosztás</string>
+    <string name="receive_copy_cta">Cím Másolása</string>
+    <string name="receive_copied">Cím Másolva</string>
+    <string name="receive_share_title">Megosztás ezzel…</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR Kód</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Küldés Innen:</string>
+    <string name="send_address_hint">Küldés Erre A Címre</string>
+    <string name="send_amount_hint">Küldött Mennyiség</string>
+    <string name="send_max">Max</string>
+    <string name="send_send_cta">Küldés</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Elküldve</string>
+    <string name="send_scan_qr">Olvasd be a QR Kódot</string>
+    <string name="send_sending">Küldés folyamatban</string>
+    <string name="send_to">Küldés ide:</string>
+    <string name="sent_to">Elküldve ide:</string>
+    <string name="send_confirm">Megerősít</string>
+    <string name="send_cancel">Mégse</string>
+    <string name="send_close">Bezárás</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Helytelen Adat</string>
+    <string name="send_invalid_address">Helytelen Cím</string>
+    <string name="send_insufficient_balance">Elégtelen Számlaegyenleg</string>
+    <string name="send_amount_error">Helytelen beírt mennyiség</string>
+    <string name="send_generic_error">Hiba történt. Próbálkozz később.</string>
+    <string name="send_no_frontier">Felhasználó nem található. (Felhasználó lehet nincs bejelentkezve.)</string>
+    <string name="send_fingerprint_description">Erősítsd meg az ujjlenyomatoddal, hogy szeretnél %s Bananot küldeni.</string>
+    <string name="send_pin_description">%s Banano küldése?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Olvass be QR kóddal egy Banano \ncímet</string>
+</resources>

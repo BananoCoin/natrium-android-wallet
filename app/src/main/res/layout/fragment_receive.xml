@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Click Listeners -->
+        <variable
+            name="handlers"
+            type="com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment.ClickHandlers" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_modal">
+
+        <include
+            android:id="@+id/receive_card"
+            layout="@layout/view_receive_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/receive_close"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="5dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="19dp"
+            android:onClick="@{handlers::onClickClose}"
+            android:background="@drawable/bg_image_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <TextView
+            android:id="@+id/receive_address"
+            style="@style/TextStyleAddress"
+            android:textSize="16sp"
+            android:lineSpacingMultiplier="1.2"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/white_60"
+            android:layout_height="wrap_content"
+            android:layout_width="220dp"
+            android:layout_marginTop="28dp"
+            android:textAlignment="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
+            tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
+
+        <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/qr_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/receive_address"
+            app:layout_constraintBottom_toTopOf="@+id/receive_button_share"
+            app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/receive_outer"
+                    android:layout_width="330dp"
+                    android:layout_height="331dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:padding="5dp">
+
+                    <ImageView
+                        android:id="@+id/receive_barcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="42dp"
+                        android:contentDescription="@string/receive_qrcode_description" />
+                </FrameLayout>
+            </RelativeLayout>
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/receive_button_share"
+            style="@style/OutlineButton"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:onClick="@{handlers::onClickShare}"
+            android:text="@string/receive_share_cta"
+            app:layout_constraintBottom_toTopOf="@+id/receive_button_copy"
+            app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <Button
+            android:id="@+id/receive_button_copy"
+            style="@style/PrimaryButton"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:onClick="@{handlers::onClickCopy}"
+            android:text="@string/receive_copy_cta"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/receive_guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

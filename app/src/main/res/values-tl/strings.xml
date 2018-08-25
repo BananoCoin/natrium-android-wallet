@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->a
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Maligayang pagdating sa Kalium. Para magpatuloy, gumawa ng bagong wallet o gamitin ang dating wallet.</string>
+    <string name="intro_welcome_new_wallet">Bagong Wallet</string>
+    <string name="intro_welcome_have_wallet">Dating Wallet</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Ang nasa ibaba ay ang seed ng iyong wallet. Importante na i-back up ang iyong seed at huwag i-save bilang plaintext o screenshot.</string>
+    <string name="intro_new_wallet_seed_copied">Ang seed ay nakopya sa clipboard.\n Pwedeng i-paste ito sa loob ng dalawang minuto.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">I-back up ang iyong seed</string>
+    <string name="intro_new_wallet_backup">Sigurado ka ba na na-back up mo na ang iyong wallet seed?</string>
+    <string name="intro_new_wallet_backup_yes">Oo</string>
+    <string name="intro_new_wallet_backup_no">Hindi</string>
+    <string name="intro_new_wallet_warning_header">Pakiusap huwag magsinungaling.</string>
+    <string name="intro_new_wallet_warning">Ang akala mo lang hindi pero mawawala mo ito pag hindi mo niback-up.</string>
+    <string name="intro_new_wallet_not_lying">Walang biro!</string>
+    <string name="intro_new_wallet_okay">Okay :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">I-import ang iyong seed</string>
+    <string name="intro_seed_info">Ilagay ang iyong seed sa ibaba.</string>
+    <string name="intro_seed_invalid">Ang seed ay hindi wasto</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Gumawa ng 4-digit pin</string>
+    <string name="pin_confirm_title">Kumpirmahin ang iyong pin</string>
+    <string name="pin_enter_title">Ilagay ang pin</string>
+    <string name="pin_confirm_error">Hindi magkatugma ang pins</string>
+    <string name="pin_error">Hindi tama ang pin na nilagay</string>
+    <string name="fingerprint_text">Ilagay ang daliri</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Magpadala</string>
+    <string name="home_receive_cta">Tumanggap</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Nagkaproblema sa pagkonekta. Subukan ulit.</string>
+    <string name="transaction_header">Mga transaksyon</string>
+    <string name="history_sent">Naipadala</string>
+    <string name="history_received">Natanggap</string>
+    <string name="transaction_details">Tingnan ang detalye</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Mga setting</string>
+    <string name="settings_local_currency">Palitan ang Currency</string>
+    <string name="settings_backup_seed">I-back up ang Seed</string>
+    <string name="settings_change_rep">Palitan ang Representative</string>
+    <string name="settings_share">I-share ang Kalium</string>
+    <string name="settings_logout">Logout</string>
+    <string name="settings_logout_alert_title">BABALA</string>
+    <string name="settings_logout_alert_message">Mabubura ang iyong seed at lahat ng Kalium-related na data sa aparato na ito kapag ikaw ay nag-logout. Kapag wala kang back up ng iyong seed, hindi mo na ulit ma-aaccess ang iyong pondo.</string>
+    <string name="settings_logout_alert_confirm_cta">Burahin ang seed at mag-logout</string>
+    <string name="settings_logout_alert_cancel_cta">Kanselahin</string>
+    <string name="settings_logout_warning_title">Sigurado ka ba?</string>
+    <string name="settings_logout_warning_message">Wala kang dapat ikabahala basta may back up ka ng iyong seed.</string>
+    <string name="settings_logout_warning_confirm">Oo</string>
+    <string name="settings_logout_warning_cancel">Kanselahin</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Palitan ang\nRepresentative</string>
+    <string name="change_representative_header_short">Palitan</string>
+    <string name="change_representative_info_header">Ano ang representative?</string>
+    <string name="change_representative_info">Ang representative ay isang account na nagboboto para sa kasunduan ng network. Ang kapangyarihan ng pagboto ay tinitimbang sa pamamagitan ng balanse, pwede mong i-delegate ang iyong balanse para dagdagan ang timbang ng boto ng representative na pinagkakatiwalaan mo. Ang iyong representative ay walang kapangyarihan para gastusin ang iyong pondo. Dapat piliin mo ang representative na walang masyadong downtime at mapagkakatiwalaan.</string>
+    <string name="change_representative_dialog_close">Isara</string>
+    <string name="change_representative_change">Palitan</string>
+    <string name="change_representative_cancel">Kanselahin</string>
+    <string name="change_representative_invalid">Hindi wasto ang Representative Address</string>
+    <string name="change_representative_current_header">Kasalukuyang nirerepresenta ng</string>
+    <string name="change_representative_hint">Ilagay ang bagong Representative</string>
+    <string name="change_representative_success">Ang Representative ay napalitan</string>
+    <string name="change_representative_error">Nabigo sa pagpalit ng representative. Subukan ulit mamaya.</string>
+    <string name="change_representative_fingerprint">Kumpirmahin ang fingerprint para palitan ang representative</string>
+    <string name="change_representative_pin">Ilagay ang pin para palitan ang representative</string>
+    <!-- Share -->
+    <string name="share_title">I-share sa pamamagitan ng...</string>
+    <string name="share_extra">Tingnan ang Kalium! Ang opisyal na Android Wallet ng Banano!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">I-back up ang Wallet Seed</string>
+    <string name="settings_fingerprint_title">Kumpirmahin ang fingerprint para i-back up ang wallet seed.</string>
+    <string name="settings_pin_title">Ilagay ang pin para tingnan ang wallet seed.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">I-share</string>
+    <string name="receive_copy_cta">Kopyahin ang Address</string>
+    <string name="receive_copied">Ang Address ay nakopya</string>
+    <string name="receive_share_title">I-share sa pamamagitan ng...</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR Code</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Magpadala galing sa:</string>
+    <string name="send_address_hint">Ilagay ang Address</string>
+    <string name="send_amount_hint">Ilagay ang Amount</string>
+    <string name="send_max">Lahat</string>
+    <string name="send_send_cta">Ipadala</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Naipadala</string>
+    <string name="send_scan_qr">I-scan ang QR Code</string>
+    <string name="send_sending">Pinapadala</string>
+    <string name="send_to">Sa:</string>
+    <string name="sent_to">Pinadala sa:</string>
+    <string name="send_confirm">Kumpirmahin</string>
+    <string name="send_cancel">Kanselahin</string>
+    <string name="send_close">Isara</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Hindi wasto ang Input</string>
+    <string name="send_invalid_address">Hindi wasto ang Destination Address</string>
+    <string name="send_insufficient_balance">Hindi sapat ang balanse</string>
+    <string name="send_amount_error">Hindi wasto ang nilagay na halaga</string>
+    <string name="send_generic_error">Nagkaroon ng error. Subukan ulit mamaya.</string>
+    <string name="send_no_frontier">Hindi mahanap ang hangganan ng account (maaaring hindi pa nabuksan ang account)</string>
+    <string name="send_fingerprint_description">Kumpirmahin ang fingerprint para magpadala ng %s Banano</string>
+    <string name="send_pin_description">Magpadala ng %s Banano?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">I-scan ang Banano \naddress QR code</string>
+</resources>

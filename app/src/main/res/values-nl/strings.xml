@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Welkom bij Kalium. Creëer een nieuwe wallet of importeer een bestaande wallet om verder te gaan.</string>
+    <string name="intro_welcome_new_wallet">Nieuwe wallet</string>
+    <string name="intro_welcome_have_wallet">Importeer wallet</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Hieronder staat de seed van je wallet. Maak hier altijd een back-up van en sla deze versleuteld op.</string>
+    <string name="intro_new_wallet_seed_copied">Seed is gekopieerd naar klembord en blijft 2 minuten beschikbaar.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Maak een back-up van je seed.</string>
+    <string name="intro_new_wallet_backup">Weet je zeker dat je wallet seed is opgeslagen?</string>
+    <string name="intro_new_wallet_backup_yes">Ja</string>
+    <string name="intro_new_wallet_backup_no">Nee</string>
+    <string name="intro_new_wallet_warning_header">Niet jokken alsjeblieft.</string>
+    <string name="intro_new_wallet_warning">Misschien denk je er te makkelijk over, maar je raakt 'm echt kwijt als je geen back-up maakt!</string>
+    <string name="intro_new_wallet_not_lying">Ik jok niet!</string>
+    <string name="intro_new_wallet_okay">Oké. :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Importeer seed</string>
+    <string name="intro_seed_info">Vul je seed in.</string>
+    <string name="intro_seed_invalid">Seed is ongeldig.</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Maak een 4-cijferige pincode.</string>
+    <string name="pin_confirm_title">Bevestig je pincode.</string>
+    <string name="pin_enter_title">Vul je pincode in.</string>
+    <string name="pin_confirm_error">Pincodes komen niet overeen.</string>
+    <string name="pin_error">Ongeldigde pincode ingevuld.</string>
+    <string name="fingerprint_text">Raak de sensor aan.</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Verstuur</string>
+    <string name="home_receive_cta">Ontvang</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Verbinding mislukt. Probeer het alsjeblieft nog eens.</string>
+    <string name="transaction_header">Transacties</string>
+    <string name="history_sent">Verstuurd</string>
+    <string name="history_received">Ontvangen</string>
+    <string name="transaction_details">Bekijk details</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Instellingen</string>
+    <string name="settings_local_currency">Verander valuta</string>
+    <string name="settings_backup_seed">Maak seed back-up</string>
+    <string name="settings_change_rep">Verander representative</string>
+    <string name="settings_share">Deel Kalium</string>
+    <string name="settings_logout">Uitloggen</string>
+    <string name="settings_logout_alert_title">WAARSCHUWING</string>
+    <string name="settings_logout_alert_message">Uitloggen zorgt ervoor dat je seed en alle Kalium-gerelateerde informatie van dit toestel worden verwijderd. Als je geen back-up hebt gemaakt, kun je niet meer bij de inhoud van je wallet.</string>
+    <string name="settings_logout_alert_confirm_cta">Seed verwijderen en uitloggen</string>
+    <string name="settings_logout_alert_cancel_cta">Annuleer</string>
+    <string name="settings_logout_warning_title">Weet je het zeker?</string>
+    <string name="settings_logout_warning_message">Als je een back-up hebt gemaakt van je seed, is er niks aan de hand.</string>
+    <string name="settings_logout_warning_confirm">Ja</string>
+    <string name="settings_logout_warning_cancel">Annuleer</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Verander\nRepresentative</string>
+    <string name="change_representative_header_short">Verander</string>
+    <string name="change_representative_info_header">Wat is een representative?</string>
+    <string name="change_representative_info">Een representative stemt mee om consensus te bereiken in het netwerk. De waarde van de stem van een representative wordt bepaald door de balans van dat account. Je kunt ervoor kiezen jouw balans toe te wijzen aan een representative, zodat deze meer stemrecht krijgt. Geen zorgen, je balans blijft altijd volledig in eigen beheer. Kies een betrouwbare representative die altijd online is.</string>
+    <string name="change_representative_dialog_close">Afsluiten</string>
+    <string name="change_representative_change">Verander</string>
+    <string name="change_representative_cancel">Annuleer</string>
+    <string name="change_representative_invalid">Ongeldig representative adres</string>
+    <string name="change_representative_current_header">Je huidige representative is:</string>
+    <string name="change_representative_hint">Vul nieuwe representative in:</string>
+    <string name="change_representative_success">Nieuwe representative opgeslagen</string>
+    <string name="change_representative_error">Representative wijziging mislukt. Probeer het alsjeblieft nog eens.</string>
+    <!-- Share -->
+    <string name="share_title">Deel via...</string>
+    <string name="share_extra">Check Kalium! Banano\'s officiële Android Wallet!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Back-up Wallet Seed</string>
+    <string name="settings_fingerprint_title">Bevestig je vingerafdruk om een back-up te maken.</string>
+    <string name="settings_pin_title">Vul je pincode in om je wallet seed te zien.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Deel</string>
+    <string name="receive_copy_cta">Kopieer adres</string>
+    <string name="receive_copied">Adres gekopieerd</string>
+    <string name="receive_share_title">Deel via...</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR Code</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Verstuur via:</string>
+    <string name="send_address_hint">Vul adres in</string>
+    <string name="send_amount_hint">Vul bedrag in</string>
+    <string name="send_max">Max</string>
+    <string name="send_send_cta">Verstuur</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Verstuurd</string>
+    <string name="send_scan_qr">Scan QR Code</string>
+    <string name="send_sending">Versturen</string>
+    <string name="send_to">Naar:</string>
+    <string name="sent_to">Verstuur naar:</string>
+    <string name="send_confirm">Bevestig</string>
+    <string name="send_cancel">Annuleer</string>
+    <string name="send_close">Sluit</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Ongeldige invoer</string>
+    <string name="send_invalid_address">Ongeldige ontvanger</string>
+    <string name="send_insufficient_balance">Onvoldoende saldo</string>
+    <string name="send_amount_error">Ongeldig bedrag ingevuld</string>
+    <string name="send_generic_error">Er ging iets fout, probeer het alsjeblieft nog een keer.</string>
+    <string name="send_no_frontier">Account niet gevonden (dit kan betekenen dat je account niet geopend is)</string>
+    <string name="send_fingerprint_description">Bevestig vingerafdruk om Banano te versturen.</string>
+    <string name="send_pin_description">Verstuur %s Banano?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Scan een Banano \nadres QR code</string>
+</resources>

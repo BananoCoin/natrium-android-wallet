@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Välkommen till Kalium. För att fortsätta, behöver du skapa en ny plånbok eller importera en existerande..</string>
+    <string name="intro_welcome_new_wallet">Ny plånbok</string>
+    <string name="intro_welcome_have_wallet">Importera plånbok</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Detta är din plånboks seed. Det är av extrem vikt att du sparar denna seed på ett säkert sätt. Spara aldrig din seed i text- eller bildformat.</string>
+    <string name="intro_new_wallet_seed_copied">Din seed är kopierad till urklipp.\n Den går att klistra in under 2 minuter.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Säkerhetskopiera din seed</string>
+    <string name="intro_new_wallet_backup">Är du säker på att du har säkerhetskopierat din plånboks seed?</string>
+    <string name="intro_new_wallet_backup_yes">Ja</string>
+    <string name="intro_new_wallet_backup_no">Nej</string>
+    <string name="intro_new_wallet_warning_header">Tag denna varning på allvar.</string>
+    <string name="intro_new_wallet_warning">Du tror inte att du kommer tappa bort den, men det är precis vad du kommer att göra om du inte säkerhetskopierar den.</string>
+    <string name="intro_new_wallet_not_lying">Jag ljuger inte!</string>
+    <string name="intro_new_wallet_okay">Okej :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Importera seed</string>
+    <string name="intro_seed_info">Ange din seed nedanför.</string>
+    <string name="intro_seed_invalid">Angiven seed är ogiltig</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Skapa en 4-siffrig PIN</string>
+    <string name="pin_confirm_title">Bekräfta din PIN-kod</string>
+    <string name="pin_enter_title">Ange PIN-kod</string>
+    <string name="pin_confirm_error">PIN-kod matchar ej</string>
+    <string name="pin_error">Felaktig PIN-kod angiven</string>
+    <string name="fingerprint_text">Touchsensor</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Skicka</string>
+    <string name="home_receive_cta">Ta emot</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Det uppstod ett problem vid anslutningen. Var vänlig försök igen.</string>
+    <string name="transaction_header">Transaktioner</string>
+    <string name="history_sent">Skickat</string>
+    <string name="history_received">Mottagit</string>
+    <string name="transaction_details">Visa detaljer</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Inställningar</string>
+    <string name="settings_local_currency">Ändra valuta</string>
+    <string name="settings_backup_seed">Säkerhetskopiera seed</string>
+    <string name="settings_change_rep">Byt representant</string>
+    <string name="settings_share">Dela Kalium</string>
+    <string name="settings_logout">Logga ut</string>
+    <string name="settings_logout_alert_title">Varning</string>
+    <string name="settings_logout_alert_message">Vid utloggning raderas din seed och all kaliumrelaterad data från denna enhet. Om du inte har säkerhetskopierat din seed, kommer du aldrig att kunna komma åt dina resurser igen.</string>
+    <string name="settings_logout_alert_confirm_cta">Ta bort seed och logga ut</string>
+    <string name="settings_logout_alert_cancel_cta">Avbryt</string>
+    <string name="settings_logout_warning_title">Är du säker?</string>
+    <string name="settings_logout_warning_message">Så länge du har säkerhetskopierat din seed har du inget att oroa dig över.</string>
+    <string name="settings_logout_warning_confirm">Ja</string>
+    <string name="settings_logout_warning_cancel">Avbryt</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Ändra\nRepresentant</string>
+    <string name="change_representative_header_short">Ändra</string>
+    <string name="change_representative_info_header">Vad är en representant?</string>
+    <string name="change_representative_info">En representant är ett konto som röstar för samsyn i nätverket. Rösträtten påverkas av saldot, och du kan delegera ditt saldo för att öka din rösträtt. Din representant har ingen befogenhet över dina resurser. Du bör välja en representant som har hög drifttid och är trovärdig.</string>
+    <string name="change_representative_dialog_close">Stäng</string>
+    <string name="change_representative_change">Ändra</string>
+    <string name="change_representative_cancel">Avbryt</string>
+    <string name="change_representative_invalid">Ogiltig representantsadress</string>
+    <string name="change_representative_current_header">Aktiv representant</string>
+    <string name="change_representative_hint">Ange ny representant</string>
+    <string name="change_representative_success">Representanten är nu ändrad</string>
+    <string name="change_representative_error">Det gick ej att ändra representant. Försök igen senare.</string>
+    <!-- Share -->
+    <string name="share_title">Dela via...</string>
+    <string name="share_extra">Kolla in Kalium! Bananos officiella Androidplånbok!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Säkerhetskopiera plånboks-seed</string>
+    <string name="settings_fingerprint_title">Bekräfta fingeravtryck för att säkerhetskopiera plånboks-seed.</string>
+    <string name="settings_pin_title">Ange din PIN-kod för att se din seed.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Dela</string>
+    <string name="receive_copy_cta">Kopiera adress</string>
+    <string name="receive_copied">Adress kopierad</string>
+    <string name="receive_share_title">Dela via…</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR-kod</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Skicka från:</string>
+    <string name="send_address_hint">Ange adress</string>
+    <string name="send_amount_hint">Ange belopp</string>
+    <string name="send_max">Max</string>
+    <string name="send_send_cta">Skicka</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Skickat</string>
+    <string name="send_scan_qr">Skanna QR-kod</string>
+    <string name="send_sending">Skickar</string>
+    <string name="send_to">Till:</string>
+    <string name="sent_to">Skickat till:</string>
+    <string name="send_confirm">Bekräfta</string>
+    <string name="send_cancel">Avbryt</string>
+    <string name="send_close">Stäng</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Ogiltigt inmatning</string>
+    <string name="send_invalid_address">Ogiltig mottagaradress</string>
+    <string name="send_insufficient_balance">Saknas täckning</string>
+    <string name="send_amount_error">Det angivna beloppet var ogiltigt</string>
+    <string name="send_generic_error">Ett fel har uppstått. Försök igen senare.</string>
+    <string name="send_no_frontier">Gick inte att hitta frontier (kontot kanske inte är öppnat än)</string>
+    <string name="send_fingerprint_description">Bekräfta fingeravtryck för att skicka %s Banano</string>
+    <string name="send_pin_description">Skicka %s Banano?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Skanna en Banano\nadress QR-kod</string>
+</resources>

@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Chào mừng đến với Kalium. Để tiếp tục, bạn có thể tạo một ví mới hoặc nhập một ví hiện có.</string>
+    <string name="intro_welcome_new_wallet">Tạo ví mới</string>
+    <string name="intro_welcome_have_wallet">Nhập ví hiện có</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">
+Dưới đây là ví của bạn. Điều quan trọng là bạn sao lưu hạt giống này và không bao giờ lưu trữ nó dưới dạng văn bản thông thường hoặc dưới dạng ảnh chụp màn hình.</string>
+    <string name="intro_new_wallet_seed_copied">Đã sao chép hạt giống .\n Có thể dán trong 2 phút.</string>
+    <string name="intro_new_wallet_seed_header">Hạt giống</string>
+    <string name="intro_new_wallet_seed_backup_header">Sao lưu hạt giống của bạn</string>
+    <string name="intro_new_wallet_backup">Bạn có chắc chắn rằng bạn đã sao lưu hạt giống của mình?</string>
+    <string name="intro_new_wallet_backup_yes">Có</string>
+    <string name="intro_new_wallet_backup_no">Không</string>
+    <string name="intro_new_wallet_warning_header">Làm ơn đừng nói dối.</string>
+    <string name="intro_new_wallet_warning">Bạn nghĩ rằng sẽ không mất nó nhưng bạn sẽ mất nếu bạn không sao lưu .</string>
+    <string name="intro_new_wallet_not_lying">Đừng nói dối!</string>
+    <string name="intro_new_wallet_okay">Đồng ý :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Nhập hạt giống</string>
+    <string name="intro_seed_info">Vui lòng nhập hạt giống của bạn bên dưới.</string>
+    <string name="intro_seed_invalid">Hạt giống (Seed) không hợp lệ</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Tạo mã gồm 4 chữ số</string>
+    <string name="pin_confirm_title">Xác nhận mã pin của bạn</string>
+    <string name="pin_enter_title">Nhập PIN</string>
+    <string name="pin_confirm_error">Mã PIN không khớp</string>
+    <string name="pin_error">Mã PIN đã nhập không hợp lệ</string>
+    <string name="fingerprint_text">Cảm biến chạm</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Gửi</string>
+    <string name="home_receive_cta">Nhận được</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Đã xảy ra sự cố khi kết nối. Vui lòng thử lại.</string>
+    <string name="transaction_header">Giao dịch</string>
+    <string name="history_sent">Đã gửi</string>
+    <string name="history_received">Đã nhận</string>
+    <string name="transaction_details">Xem chi tiết</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Cài đặt</string>
+    <string name="settings_local_currency">Đổi loại tiền</string>
+    <string name="settings_backup_seed">Sao lưu hạt giống(SEED)</string>
+    <string name="settings_change_rep">Thay đổi đại diện</string>
+    <string name="settings_share">Chia sẻ Kalium</string>
+    <string name="settings_logout">Đăng xuất</string>
+    <string name="settings_logout_alert_title">CẢNH BÁO!</string>
+    <string name="settings_logout_alert_message">Đăng xuất sẽ xóa hạt giống(seed) của bạn và tất cả dữ liệu liên quan đến Kalium khỏi thiết bị này. Nếu hạt giống của bạn không được sao lưu, bạn sẽ không bao giờ có thể truy cập lại vào tiền của mình.</string>
+    <string name="settings_logout_alert_confirm_cta">Xóa hạt giống và đăng xuất</string>
+    <string name="settings_logout_alert_cancel_cta">Hủy</string>
+    <string name="settings_logout_warning_title">Bạn có chắc không?</string>
+    <string name="settings_logout_warning_message">Miễn là bạn đã sao lưu hạt giống, bạn không có gì phải lo lắng.</string>
+    <string name="settings_logout_warning_confirm">Đồng ý</string>
+    <string name="settings_logout_warning_cancel">Hủy bỏ</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Thay đổi\n Đại diện</string>
+    <string name="change_representative_header_short">Thay đổi</string>
+    <string name="change_representative_info_header">Đại diện là gì?</string>
+    <string name="change_representative_info">Đại diện là một tài khoản bỏ phiếu cho sự đồng thuận trên nền tảng Internet . Quyền biểu quyết được cân bằng theo số dư, bạn có thể ủy quyền số dư của mình để tăng số biểu quyết của đại diện mà bạn tin cậy. Người đại diện của bạn không có quyền sử dụng số tiền của bạn. Bạn nên chọn một đại diện có nhiều thời gian cho bạn và đáng tin cậy. Bạn nên chọn một đại diện có ít thời gian chết và đáng tin cậy.</string>
+    <string name="change_representative_dialog_close">Đóng</string>
+    <string name="change_representative_change">Thay đổi</string>
+    <string name="change_representative_cancel">Hủy</string>
+    <string name="change_representative_invalid">Địa chỉ đại diện không hợp lệ</string>
+    <string name="change_representative_current_header">Hiện đang được đại diện bởi</string>
+    <string name="change_representative_hint">Nhập đại diện mới</string>
+    <string name="change_representative_success">Đại diện đã thay đổi thành công</string>
+    <string name="change_representative_error">Không thể thay đổi đại diện. Thử lại sau.</string>
+    <string name="change_representative_fingerprint">Xác nhận vân tay để thay đổi người đại diện</string>
+    <string name="change_representative_pin">Nhập mã PIN để thay đổi đại diện</string>
+    <!-- Share -->
+    <string name="share_title">Chia sẻ qua...</string>
+    <string name="share_extra">Hãy xem Kalium! Ví Android chính thức của Banano.</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Sao lưu hạt giống ví</string>
+    <string name="settings_fingerprint_title">Xác nhận vân tay để sao lưu ví.</string>
+    <string name="settings_pin_title">Nhập mã pin để xem hạt giống ví.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Chia sẻ</string>
+    <string name="receive_copy_cta">Sao chép địa chỉ</string>
+    <string name="receive_copied">Đã sao chép địa chỉ</string>
+    <string name="receive_share_title">Chia sẻ qua…</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">Mã QR</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Gửi từ:</string>
+    <string name="send_address_hint">Nhập địa chỉ</string>
+    <string name="send_amount_hint">Nhập số tiền</string>
+    <string name="send_max">Tối đa</string>
+    <string name="send_send_cta">GỬI</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Đã gửi</string>
+    <string name="send_scan_qr">Quét mã QR</string>
+    <string name="send_sending">Đang gửi</string>
+    <string name="send_to">tới:</string>
+    <string name="sent_to">Gửi tới:</string>
+    <string name="send_confirm">Xác nhận</string>
+    <string name="send_cancel">Hủy</string>
+    <string name="send_close">Đóng</string>
+    <string name="send_alert_dialog_ok">Đồng ý</string>
+    <string name="send_alert_dialog_title">Đầu vào không hợp lệ</string>
+    <string name="send_invalid_address">Địa chỉ không hợp lệ</string>
+    <string name="send_insufficient_balance">Không đủ số dư</string>
+    <string name="send_amount_error">Số tiền đã nhập không hợp lệ</string>
+    <string name="send_generic_error">Đã xảy ra lỗi. Thử lại sau.</string>
+    <string name="send_no_frontier">Không thể tìm thấy  tài khoản (tài khoản có thể không được mở)</string>
+    <string name="send_fingerprint_description">Xác nhận vân tay để gửi %s Banano</string>
+    <string name="send_pin_description">Gửi %s Banano?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Quét 1 Banano \nđịa chỉ mã QR</string>
+</resources>

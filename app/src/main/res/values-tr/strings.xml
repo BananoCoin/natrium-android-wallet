@@ -1,0 +1,122 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Kalium\'a hoşgeldiniz. Devam etmek için yeni bir cüzdan oluşturabilir veya var olanı içe aktarabilirsiniz.</string>
+    <string name="intro_welcome_new_wallet">Yeni Cüzdan</string>
+    <string name="intro_welcome_have_wallet">İçe Aktar</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Cüzdanınızın seed\'i aşağıdadır. Seed\'inizi yedeklemeniz çok önemlidir. Kesinlikle ekran görüntüsü olarak saklamamalısınız.</string>
+    <string name="intro_new_wallet_seed_copied">Seed\'iniz panoya kopyalandı.\n 2 dakika panoda kalacak. </string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Seed\'inizi yedekleyin</string>
+    <string name="intro_new_wallet_backup">Cüzdanınızın seed\'ini yedeklediğinizden emin misiniz?</string>
+    <string name="intro_new_wallet_backup_yes">Evet</string>
+    <string name="intro_new_wallet_backup_no">Hayır</string>
+    <string name="intro_new_wallet_warning_header">Lütfen doğruyu söyleyin.</string>
+    <string name="intro_new_wallet_warning">Olmaz demeyin, yedeklemezseniz seed\'inizi kaybetmeniz muhtemel.</string>
+    <string name="intro_new_wallet_not_lying">Doğruyu söylüyorum!</string>
+    <string name="intro_new_wallet_okay">Tamam :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Seed\'i içe aktar</string>
+    <string name="intro_seed_info">Lütfen seed\'inizi girin.</string>
+    <string name="intro_seed_invalid">Geçersiz seed</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">4 haneli şifre oluşturun</string>
+    <string name="pin_confirm_title">Şifreyi onaylayın</string>
+    <string name="pin_enter_title">Şifre girin</string>
+    <string name="pin_confirm_error">Şifreler uyuşmuyor</string>
+    <string name="pin_error">Geçersiz şifre girdiniz</string>
+    <string name="fingerprint_text">Dokunmatik sensör</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Gönder</string>
+    <string name="home_receive_cta">İste</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Bağlantı hatası oluştu. Lütfen tekrar deneyin.</string>
+    <string name="transaction_header">Transferler</string>
+    <string name="history_sent">Gönderildi</string>
+    <string name="history_received">Alındı</string>
+    <string name="transaction_details">Ayrıntılar</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_local_currency">Para Birimi</string>
+    <string name="settings_backup_seed">Seed\'i Yedekle</string>
+    <string name="settings_change_rep">Temsilci Değiştir</string>
+    <string name="settings_share">Kalium\'u Paylaş</string>
+    <string name="settings_logout">Çıkış</string>
+    <string name="settings_logout_alert_title">UYARI</string>
+    <string name="settings_logout_alert_message">Çıkış yaptığınızda seed\'iniz ve Kalium\'la ilgili bütün verileriniz bu cihazdan silinecektir. Seed\'inizi yedeklemediyseniz paranıza bir daha asla ulaşamazsınız.</string>
+    <string name="settings_logout_alert_confirm_cta">Seed\'i sil ve çıkış yap</string>
+    <string name="settings_logout_alert_cancel_cta">İptal</string>
+    <string name="settings_logout_warning_title">Emin misiniz?</string>
+    <string name="settings_logout_warning_message">Seed\'inizi yedeklediyseniz endişe etmenize gerek yok.</string>
+    <string name="settings_logout_warning_confirm">Evet</string>
+    <string name="settings_logout_warning_cancel">İptal</string>>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Temsilciyi\nDeğiştir</string>
+    <string name="change_representative_header_short">Değiştir</string>
+    <string name="change_representative_info_header">Temsilci nedir?</string>
+    <string name="change_representative_info">Temsilci, ağda oybirliğini sağlamak için oylamaya katılan bir hesaptır. Oylama gücü, hesap bakiyesine göre ağırlıklandırılır. Güvendiğiniz bir temsilcinin oy ağırlığını artırmak için bakiyenizi delege edebilirsiniz. Temsilcinizin, paranızı harcama yetkisi yoktur. Güvenilir ve olabildiğince uzun süreli aktif olan bir temsilci seçmelisiniz.</string>
+    <string name="change_representative_dialog_close">Kapat</string>
+    <string name="change_representative_change">Değiştir</string>
+    <string name="change_representative_cancel">İptal</string>
+    <string name="change_representative_invalid">Geçersiz Temsilci Adresi</string>
+    <string name="change_representative_current_header">Mevcut Temsilci:</string>
+    <string name="change_representative_hint">Yeni Temsilci Gir</string>
+    <string name="change_representative_success">Temsilciniz Başarıyla Değiştirildi</string>
+    <string name="change_representative_error">Temsilci değiştirme başarısız. Daha sonra tekrar deneyin.</string>
+    <string name="change_representative_fingerprint">Temsilcinizi değiştirmek için parmak izinizi onaylayın</string>
+    <string name="change_representative_pin">Temsilcinizi değiştirmek için pin kodunuzu girin</string>
+
+    <!-- Share -->
+    <string name="share_title">Şununla paylaş...</string>
+    <string name="share_extra">Banano\'nun resmi Android Cüzdanı Kalium\'u denesene!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Cüzdan Seed\'ini Yedekle</string>
+    <string name="settings_fingerprint_title">Seed\'i yedeklemek için parmak izini onaylayın.</string>
+    <string name="settings_pin_title">Seed\'i görüntülemek için şifreyi girin.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Paylaş</string>
+    <string name="receive_copy_cta">Adresi Kopyala</string>
+    <string name="receive_copied">Kopyalandı</string>
+    <string name="receive_share_title">Şununla paylaş…</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR Kodu</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Gönderici:</string>
+    <string name="send_address_hint">Adres Gir</string>
+    <string name="send_amount_hint">Miktar Gir</string>
+    <string name="send_max">Tümü</string>
+    <string name="send_send_cta">Gönder</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Gönderildi</string>
+    <string name="send_scan_qr">QR Kodu Tara</string>
+    <string name="send_sending">Miktar:</string>
+    <string name="send_to">Adres:</string>
+    <string name="sent_to">Alıcı:</string>
+    <string name="send_confirm">Onayla</string>
+    <string name="send_cancel">İptal</string>
+    <string name="send_close">Kapat</string>
+    <string name="send_alert_dialog_ok">Tamam</string>
+    <string name="send_alert_dialog_title">Geçersiz Girdi</string>
+    <string name="send_invalid_address">Geçersiz Varış Adresi</string>
+    <string name="send_insufficient_balance">Yetersiz Bakiye</string>
+    <string name="send_amount_error">Geçersiz bir miktar girdiniz</string>
+    <string name="send_generic_error">Bir hata oluştu. Daha sonra tekrar deneyin.</string>
+    <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>
+    <string name="send_fingerprint_description">%s Banano göndermek için parmak izi onayla</string>
+    <string name="send_pin_description">%s Banano gönder?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Banano Adresi\'nin \n QR Kodu\'nu tarayın</string>
+</resources>

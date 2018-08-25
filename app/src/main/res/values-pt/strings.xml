@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Bem-vindo ao Kalium. Para continuar, você pode criar uma nova carteira ou importar uma existente.</string>
+    <string name="intro_welcome_new_wallet">Nova Carteira</string>
+    <string name="intro_welcome_have_wallet">Importar Carteira</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Abaixo está a seed da sua carteira. É crucial que você faça o backup de sua seed e nunca a armazene simplesmente como texto ou como captura de tela.</string>
+    <string name="intro_new_wallet_seed_copied">Seed copiada para a área de transferência.\n É possível colar por 2 minutos.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Faça backup de sua seed</string>
+    <string name="intro_new_wallet_backup">Você tem certeza de que fez o backup da seed de sua carteira?</string>
+    <string name="intro_new_wallet_backup_yes">Sim</string>
+    <string name="intro_new_wallet_backup_no">Não</string>
+    <string name="intro_new_wallet_warning_header">Por favor não minta.</string>
+    <string name="intro_new_wallet_warning">Você acha que você não vai, mas você vai perdê-lo não fizer o backup.</string>
+    <string name="intro_new_wallet_not_lying">Não estou mentindo!</string>
+    <string name="intro_new_wallet_okay">Está bem :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Importar seed</string>
+    <string name="intro_seed_info">Por favor digite sua seed abaixo.</string>
+    <string name="intro_seed_invalid">A seed é inválida</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Crie um pin de 4 dígitos</string>
+    <string name="pin_confirm_title">Confirme seu pin</string>
+    <string name="pin_enter_title">Entrar com  pin</string>
+    <string name="pin_confirm_error">Pins não coincidem</string>
+    <string name="pin_error">Pin inválido inserido</string>
+    <string name="fingerprint_text">Sensor de toque</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Enviar</string>
+    <string name="home_receive_cta">Receber</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Houve um problema na conexão. Por favor, tente novamente.</string>
+    <string name="transaction_header">Transações</string>
+    <string name="history_sent">Enviado</string>
+    <string name="history_received">Recebido</string>
+    <string name="transaction_details">Ver detalhes</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Configurações</string>
+    <string name="settings_local_currency">Alterar moeda</string>
+    <string name="settings_backup_seed">Backup da Seed</string>
+    <string name="settings_change_rep">Mudar Representante</string>
+    <string name="settings_share">Compartilhar Kalium</string>
+    <string name="settings_logout">Sair</string>
+    <string name="settings_logout_alert_title">ATENÇÃO</string>
+    <string name="settings_logout_alert_message">Ao sair, sua seed e todos os dados relacionados ao Kalium serão removidos deste dispositivo. Se a sua seed não tiver backup, você nunca poderá acessar seus fundos novamente.</string>
+    <string name="settings_logout_alert_confirm_cta">Excluir a seed e sair</string>
+    <string name="settings_logout_alert_cancel_cta">Cancelar</string>
+    <string name="settings_logout_warning_title">Você tem certeza?</string>
+    <string name="settings_logout_warning_message">Contanto que você tenha copiado a sua seed, você não tem com o que se preocupar.</string>
+    <string name="settings_logout_warning_confirm">Sim</string>
+    <string name="settings_logout_warning_cancel">Cancelar</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Mudar\nRepresentante</string>
+    <string name="change_representative_header_short">Mudar</string>
+    <string name="change_representative_info_header">O que é um representante?</string>
+    <string name="change_representative_info">Um representante é uma conta que vota em consenso na rede. O poder de voto é considerado pelo saldo, você pode delegar seu saldo para aumentar o peso de voto de um representante de sua confiança. Seu representante não tem poder de gasto sobre seus fundos. Você deve escolher um representante que tenha pouco tempo de inatividade e seja confiável.</string>
+    <string name="change_representative_dialog_close">Fechar</string>
+    <string name="change_representative_change">Mudar</string>
+    <string name="change_representative_cancel">Cancelar</string>
+    <string name="change_representative_invalid">Endereço de Representante Inválido</string>
+    <string name="change_representative_current_header">Atualmente representado por</string>
+    <string name="change_representative_hint">Digite o novo representante</string>
+    <string name="change_representative_success">Representante alterado com sucesso</string>
+    <string name="change_representative_error">Não foi possível alterar o representante. Tente mais tarde.</string>
+    <string name="change_representative_fingerprint">Confirme a impressão digital para alterar o representante</string>
+    <string name="change_representative_pin">Insira o pin para alterar o representante</string>
+    <!-- Share -->
+    <string name="share_title">Compartilhar via...</string>
+    <string name="share_extra">Confira Kalium! Carteira Banano oficial para Android!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Backup da seed da carteira</string>
+    <string name="settings_fingerprint_title">Confirme a impressão digital para fazer o backup da seed da carteira.</string>
+    <string name="settings_pin_title">Digite o pin para visualizar a seed da carteira.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Compartilhar</string>
+    <string name="receive_copy_cta">Copiar Endereço</string>
+    <string name="receive_copied">Endereço Copiado</string>
+    <string name="receive_share_title">Compartilhar via…</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR Code</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Enviar de:</string>
+    <string name="send_address_hint">Insira o endereço</string>
+    <string name="send_amount_hint">Digite o valor</string>
+    <string name="send_max">Max</string>
+    <string name="send_send_cta">Enviar</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Enviado</string>
+    <string name="send_scan_qr">Escanear QR Code</string>
+    <string name="send_sending">Enviando</string>
+    <string name="send_to">Para:</string>
+    <string name="sent_to">Enviado para:</string>
+    <string name="send_confirm">Confirmar</string>
+    <string name="send_cancel">Cancelar</string>
+    <string name="send_close">Fechar</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Entrada Inválida</string>
+    <string name="send_invalid_address">Endereço de Destino Inválido</string>
+    <string name="send_insufficient_balance">Saldo Insuficiente</string>
+    <string name="send_amount_error">O valor inserido era inválido</string>
+    <string name="send_generic_error">Um erro ocorreu. Tente mais tarde.</string>
+    <string name="send_no_frontier">Não foi possível encontrar a conta (a conta pode não estar aberta)</string>
+    <string name="send_fingerprint_description">Confirme a impressão digital para enviar %s Banano</string>
+    <string name="send_pin_description">Enviar %s Banano?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Escaneie o código QR \nde um endereço Banano</string>
+</resources>

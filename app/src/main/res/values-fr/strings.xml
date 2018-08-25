@@ -1,0 +1,112 @@
+
+
+<resources>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Bienvenue dans Kalium. Avant de continuer, veuillez créer un nouveau portefeuille ou en importer un déjà établi.</string>
+    <string name="intro_welcome_new_wallet">Nouveau</string>
+    <string name="intro_welcome_have_wallet">Importer</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Ci-dessous se trouve le graine de votre portefeuille. Il est essentiel que vous le sauvegardiez, et que jamais vous ne le conserviez sous forme de capture d’écran ou de texte en clair.</string>
+    <string name="intro_new_wallet_seed_copied">La graine est copié dans le presse-papiers. Vous pouvez le copier-coller pendant les 2 prochaines minutes.</string>
+    <string name="intro_new_wallet_seed_header">Graine</string>
+    <string name="intro_new_wallet_seed_backup_header">Sauvegarder votre graine</string>
+    <string name="intro_new_wallet_backup">Êtes vous sûr d’avoir sauvegardé votre graine?</string>
+    <string name="intro_new_wallet_backup_yes">Oui</string>
+    <string name="intro_new_wallet_backup_no">Non</string>
+    <string name="intro_new_wallet_warning_header">Ne mentez pas s.v.p.</string>
+    <string name="intro_new_wallet_warning">Vous pensez peut-être que non, mais vous perdrez l’accès à vos fonds si vous ne le sauvegardez pas.</string>
+    <string name="intro_new_wallet_not_lying">Je ne mens pas!</string>
+    <string name="intro_new_wallet_okay">Ok :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Importer le graine</string>
+    <string name="intro_seed_info">Veuillez entrer votre graine ci-dessous.</string>
+    <string name="intro_seed_invalid">Le graine est invalide</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Créer un code pin à 4 chiffres</string>
+    <string name="pin_confirm_title">Confirmer votre pin</string>
+    <string name="pin_enter_title">Saisir le pin</string>
+    <string name="pin_confirm_error">Les pins ne correspondent pas</string>
+    <string name="pin_error">Code pin saisi invalide</string>
+    <string name="fingerprint_text">Capteur tactile</string>
+    <!-- Home Screen -->
+    <string name="home_send_cta">Envoyer</string>
+    <string name="home_receive_cta">Recevoir</string>
+    <string name="error_message">Problème de connexion, veuillez réessayer.</string>
+    <string name="transaction_header">Transactions</string>
+    <string name="history_sent">Envoyé</string>
+    <string name="history_received">Reçu</string>
+    <string name="transaction_details">Détails</string>
+    <!-- Settings Screen -->
+    <string name="settings_title">Réglages</string>
+    <string name="settings_local_currency">Changer de devise</string>
+    <string name="settings_backup_seed">Sauvegarder le graine</string>
+    <string name="settings_change_rep">Changer le représentant</string>
+    <string name="settings_share">Partager Kalium</string>
+    <string name="settings_logout">Déconnexion</string>
+    <string name="settings_logout_alert_title">AVERTISSEMENT</string>
+    <string name="settings_logout_alert_message">Le processus de déconnexion effacera votre graine ainsi que toutes autres données liées à Kalium de votre appareil. Si vous n’avez pas sauvegardé votre graine, vous perdrez l’accès à vos fonds de façon permanente.</string>
+    <string name="settings_logout_alert_confirm_cta">Effacer le graine et se déconnecter</string>
+    <string name="settings_logout_alert_cancel_cta">Annuler</string>
+    <string name="settings_logout_warning_title">Êtes vous sûr?</string>
+    <string name="settings_logout_warning_message">Tant que vous avez sauvegardé votre graine, il n’y a pas de soucis à se faire.</string>
+    <string name="settings_logout_warning_confirm">Oui</string>
+    <string name="settings_logout_warning_cancel">Annuler</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Changer le représentant</string>
+    <string name="change_representative_header_short">Changer</string>
+    <string name="change_representative_info_header">Qu’est-ce qu’un représentant?</string>
+    <string name="change_representative_info">Un représentant est un compte votant en faveur du consensus de réseau. Le pouvoir de vote est dépendant du solde, vous avez la possibilité de déléguer votre solde afin d’augmenter le pouvoir de vote d’un représentant digne de confiance. Votre représentant n’a pas la possibilité de dépenser vos fonds. Vous devriez choisir un représentant avec fiable et ayant peu d’indisponibilité.</string>
+    <string name="change_representative_dialog_close">Fermer</string>
+    <string name="change_representative_change">Changer</string>
+    <string name="change_representative_cancel">Annuler</string>
+    <string name="change_representative_invalid">Adresse du représentant invalide</string>
+    <string name="change_representative_current_header">Représenté par</string>
+    <string name="change_representative_hint">Saisir le nouveau représentant</string>
+    <string name="change_representative_success">Représentant changé avec succès</string>
+    <string name="change_representative_error">Echec du changement de représentant. Veuillez réessayer plus tard.</string>
+    <string name="change_representative_fingerprint">Confirmer l’empreinte digitale afin de changer le représentant</string>
+    <string name="change_representative_pin">Saisir le pin afin de changer le représentant</string>
+
+    <!-- Share -->
+    <string name="share_title">Partager via...</string>
+    <string name="share_extra">Essayez Kalium! Le portefeuille officiel de Banano sur Android!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Sauvegarder le graine de votre portefeuille</string>
+    <string name="settings_fingerprint_title">Confirmer l’empreinte digitale pour sauvegarder le graine.</string>
+    <string name="settings_pin_title">Saisir le pin afin de voir votre graine.</string>
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Partager</string>
+    <string name="receive_copy_cta">Copier l’adresse</string>
+    <string name="receive_copied">Adresse copiée</string>
+    <string name="receive_share_title">Partager via…</string>
+    <string name="receive_card_label_one">$BAN</string>
+    <string name="receive_card_label_two">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">Code QR</string>
+    <!-- Send Screens -->
+    <string name="send_title">Envoyer depuis:</string>
+    <string name="send_address_hint">Saisir l’adresse</string>
+    <string name="send_amount_hint">Saisir le montant</string>
+    <string name="send_max">Max</string>
+    <string name="send_send_cta">Envoyer</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Envoyé</string>
+    <string name="send_scan_qr">Scanner le Code QR</string>
+    <string name="send_sending">Envoi en cours</string>
+    <string name="send_to">À:</string>
+    <string name="sent_to">Envoyé À:</string>
+    <string name="send_confirm">Confirmer</string>
+    <string name="send_cancel">Annuler</string>
+    <string name="send_close">Fermer</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Saisie invalide</string>
+    <string name="send_invalid_address">Adresse du destinataire invalide</string>
+    <string name="send_insufficient_balance">Solde insuffisant</string>
+    <string name="send_amount_error">Le montant saisi n’est pas valide</string>
+    <string name="send_generic_error">Une erreur est survenue. Veuillez réessayer plus tard.</string>
+    <string name="send_no_frontier">Compte frontière introuvable (Le compte n’est peut-être pas établi)</string>
+    <string name="send_fingerprint_description">Confirmer l’empreinte digitale afin d’envoyer des Bananos</string>
+    <string name="send_pin_description">Envoyer les Bananos?</string>
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Scanner le code QR d’une adresse Banano</string>
+</resources>

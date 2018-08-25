@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Willkommen bei Kalium. Um fortzufahren, benötigst du ein Wallet. Erstelle bitte ein neues Wallet oder importiere ein bereits existierendes Wallet.</string>
+    <string name="intro_welcome_new_wallet">Neues Wallet</string>
+    <string name="intro_welcome_have_wallet">Wallet importieren</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Unten siehst du deinen Seed.\nEs ist extrem wichtig, dass du ein Backup deines Seeds erstellst.\nSichere deinen Seed niemals als Klartext oder mit einem Screenshot.</string>
+    <string name="intro_new_wallet_seed_copied">Seed in Zwischenablage kopiert.\n Du kannst ihn jetzt 2 Minuten lang einfügen.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Sichere deinen Seed</string>
+    <string name="intro_new_wallet_backup">Bist du sicher, dass du deinen Seed gesichert hast?</string>
+    <string name="intro_new_wallet_backup_yes">Ja</string>
+    <string name="intro_new_wallet_backup_no">Nein</string>
+    <string name="intro_new_wallet_warning_header">Bitte sei ehrlich.</string>
+    <string name="intro_new_wallet_warning">Du denkst zwar, dir passiert das nicht, aber wenn du deinen Seed nicht sicherst, wirst du ihn früher oder später verlieren. Und du willst nicht derjenige sein, der seinen Seed verloren hat.</string>
+    <string name="intro_new_wallet_not_lying">Ganz ehrlich!</string>
+    <string name="intro_new_wallet_okay">Okay :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Seed importieren</string>
+    <string name="intro_seed_info">Bitte gib unten deinen Seed ein.</string>
+    <string name="intro_seed_invalid">Seed ist ungültig.</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Erstelle eine 4-stellige PIN</string>
+    <string name="pin_confirm_title">Bestätige deine PIN</string>
+    <string name="pin_enter_title">PIN eingeben</string>
+    <string name="pin_confirm_error">PINs stimmen nicht überein</string>
+    <string name="pin_error">Falsche PIN eingegeben</string>
+    <string name="fingerprint_text">Fingerabdruck scannen</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Senden</string>
+    <string name="home_receive_cta">Empfangen</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Verbindungsproblem aufgetreten. Bitte versuche es erneut.</string>
+    <string name="transaction_header">Transaktionen</string>
+    <string name="history_sent">Gesendet</string>
+    <string name="history_received">Empfangen</string>
+    <string name="transaction_details">Details ansehen</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="settings_local_currency">Währung ändern</string>
+    <string name="settings_backup_seed">Seed sichern</string>
+    <string name="settings_change_rep">Representative ändern</string>
+    <string name="settings_share">Kalium teilen</string>
+    <string name="settings_logout">Ausloggen</string>
+    <string name="settings_logout_alert_title">WARNUNG</string>
+    <string name="settings_logout_alert_message">Beim Ausloggen werden dein Seed und alle mit Kalium verbundenen Daten von diesem Gerät gelöscht. Falls du deinen Seed nicht gesichert hast, verlierst du den Zugriff auf dein Guthaben.</string>
+    <string name="settings_logout_alert_confirm_cta">Seed löschen und ausloggen</string>
+    <string name="settings_logout_alert_cancel_cta">Abbrechen</string>
+    <string name="settings_logout_warning_title">Bist du dir sicher?</string>
+    <string name="settings_logout_warning_message">Solange du deinen Seed gesichert hast, musst du dir keine Gedanken machen.</string>
+    <string name="settings_logout_warning_confirm">Ja</string>
+    <string name="settings_logout_warning_cancel">Abbrechen</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Representative\nändern</string>
+    <string name="change_representative_header_short">Ändern</string>
+    <string name="change_representative_info_header">Was ist ein Representative?</string>
+    <string name="change_representative_info">Kommt es zu zwei widersprüchlichen Transaktionen, so stimmen Representative-Accounts darüber ab, welche der Transaktionen akzeptiert wird. Dabei entspricht ein Banano einem Stimmrecht. Du kannst einem Representative Stimmrechte in Höhe deines Guthabens übertragen. Deine Bananos gehören dabei natürlich weiterhin dir und der Representative kann diese nicht ausgeben. Wähle einen vertrauenswürdigen Representative mit einer hohen Erreichbarkeit.</string>
+    <string name="change_representative_dialog_close">Schließen</string>
+    <string name="change_representative_change">Ändern</string>
+    <string name="change_representative_cancel">Abbrechen</string>
+    <string name="change_representative_invalid">Ungültige Representative-Adresse</string>
+    <string name="change_representative_current_header">Aktueller Representative</string>
+    <string name="change_representative_hint">Neuer Representative</string>
+    <string name="change_representative_success">Representative erfolgreich geändert</string>
+    <string name="change_representative_error">Änderung des Representatives fehlgeschlagen. Bitte versuche es später erneut.</string>
+    <!-- Share -->
+    <string name="share_title">Teilen über...</string>
+    <string name="share_extra">Probier mal Kalium, Bananos offizielles Android-Wallet!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Seed sichern</string>
+    <string name="settings_fingerprint_title">Fingerabdruck scannen, um Seed zu sichern.</string>
+    <string name="settings_pin_title">PIN eingeben, um Seed zu sehen.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Teilen</string>
+    <string name="receive_copy_cta">Adresse kopieren</string>
+    <string name="receive_copied">Adresse kopiert</string>
+    <string name="receive_share_title">Teilen über…</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR-Code</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Senden von:</string>
+    <string name="send_address_hint">Adresse eingeben</string>
+    <string name="send_amount_hint">Betrag eingeben</string>
+    <string name="send_max">Max</string>
+    <string name="send_send_cta">Senden</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Gesendet</string>
+    <string name="send_scan_qr">QR-Code scannen</string>
+    <string name="send_sending">Sende</string>
+    <string name="send_to">An:</string>
+    <string name="sent_to">Gesendet an:</string>
+    <string name="send_confirm">Bestätigen</string>
+    <string name="send_cancel">Abbrechen</string>
+    <string name="send_close">Schließen</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Ungültige Eingabe</string>
+    <string name="send_invalid_address">Ungültige Empfänger-Adresse</string>
+    <string name="send_insufficient_balance">Nicht genügend Guthaben</string>
+    <string name="send_amount_error">Ungültigen Betrag eingegeben</string>
+    <string name="send_generic_error">Ein Fehler ist aufgetreten. Bitte versuche es später erneut.</string>
+    <string name="send_no_frontier">Kein Frontier gefunden (Empfänger-Account eventuell noch nicht erstellt)</string>
+    <string name="send_fingerprint_description">Scanne Fingerabdruck, um %s Bananos zu senden</string>
+    <string name="send_pin_description">%s Bananos senden?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Scanne einen\nBanano-Address-QR-Code</string>
+</resources>

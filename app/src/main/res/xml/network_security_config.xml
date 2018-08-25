@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="true">kaba.banano.cc</domain>
+    </domain-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">cloudfront.net</domain>
+        <domain includeSubdomains="true">bananomonkeys.herokuapp.com</domain>
+    </domain-config>
+</network-security-config>

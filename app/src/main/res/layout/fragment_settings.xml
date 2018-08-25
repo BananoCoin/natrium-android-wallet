@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="version"
+            type="String" />
+
+        <variable
+            name="handlers"
+            type="com.banano.kaliumwallet.ui.settings.SettingsDialogFragment.ClickHandlers" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/gray_dark"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/settings_header"
+            style="@style/TextStyleHeader"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:gravity="start"
+            android:textAlignment="gravity"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+            android:id="@+id/top_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"
+            android:background="@color/white_10"
+            app:layout_constraintTop_toBottomOf="@+id/settings_header"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_currency"
+            android:paddingLeft="30dp"
+            android:elevation="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/settings_currency_container"
+            app:layout_constraintBottom_toBottomOf="@+id/settings_currency_container"/>
+
+        <LinearLayout
+            android:id="@+id/settings_currency_container"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/bg_settings_item"
+            android:paddingTop="9dp"
+            android:paddingLeft="70dp"
+            android:orientation="vertical"
+            android:onClick="@{handlers::onClickCurrency}"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toEndOf="@+id/ic_currency"
+            app:layout_constraintTop_toBottomOf="@+id/top_line" >
+            <TextView
+                android:id="@+id/settings_local_currency"
+                style="@style/TextStyleNormalPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/white_90"
+                android:text="@string/settings_local_currency" />
+
+            <android.support.v7.widget.AppCompatSpinner
+                android:id="@+id/settings_currency_spinner"
+                android:background="@null"
+                android:theme="@style/SpinnerTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toTopOf="@+id/settings_currency_bottom"
+                />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/settings_currency_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_10"
+            app:layout_constraintTop_toBottomOf="@+id/settings_currency_container"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_backup_seed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            app:srcCompat="@drawable/ic_backup_seed"
+            android:elevation="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/settings_seed_container"
+            app:layout_constraintBottom_toBottomOf="@+id/settings_seed_container"/>
+
+        <LinearLayout
+            android:id="@+id/settings_seed_container"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:paddingLeft="70dp"
+            android:background="@drawable/bg_settings_item"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{handlers::onClickBackupSeed}"
+            app:layout_constraintStart_toEndOf="@+id/ic_backup_seed"
+            app:layout_constraintTop_toBottomOf="@+id/settings_currency_bottom" >
+            <TextView
+                android:id="@+id/settings_backup_seed"
+                style="@style/TextStyleNormalPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white_90"
+                android:text="@string/settings_backup_seed" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/settings_seed_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_10"
+            app:layout_constraintTop_toBottomOf="@+id/settings_seed_container"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_change_representative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            app:srcCompat="@drawable/ic_change_rep"
+            android:elevation="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/settings_rep_container"
+            app:layout_constraintBottom_toBottomOf="@+id/settings_rep_container"/>
+
+        <LinearLayout
+            android:id="@+id/settings_rep_container"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:paddingLeft="70dp"
+            android:background="@drawable/bg_settings_item"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{handlers::onClickChange}"
+            app:layout_constraintStart_toEndOf="@+id/ic_change_representative"
+            app:layout_constraintTop_toBottomOf="@+id/settings_seed_bottom" >
+            <TextView
+                android:id="@+id/settings_change_rep"
+                style="@style/TextStyleNormalPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white_90"
+                android:text="@string/settings_change_rep" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/settings_rep_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_10"
+            app:layout_constraintTop_toBottomOf="@+id/settings_rep_container"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            app:srcCompat="@drawable/ic_share"
+            android:elevation="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/settings_share_container"
+            app:layout_constraintBottom_toBottomOf="@+id/settings_share_container"/>
+
+        <LinearLayout
+            android:id="@+id/settings_share_container"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/bg_settings_item"
+            android:paddingLeft="70dp"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{handlers::onClickShare}"
+            app:layout_constraintStart_toEndOf="@+id/ic_share"
+            app:layout_constraintTop_toBottomOf="@+id/settings_rep_bottom" >
+            <TextView
+                android:id="@+id/settings_share"
+                style="@style/TextStyleNormalPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white_90"
+                android:text="@string/settings_share" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/settings_share_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_10"
+            app:layout_constraintTop_toBottomOf="@+id/settings_share_container"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            app:srcCompat="@drawable/ic_lock"
+            android:elevation="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/settings_lock_container"
+            app:layout_constraintBottom_toBottomOf="@+id/settings_lock_container"/>
+
+        <LinearLayout
+            android:id="@+id/settings_lock_container"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@drawable/bg_settings_item"
+            android:paddingLeft="70dp"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{handlers::onClickLogOut}"
+            app:layout_constraintStart_toEndOf="@+id/ic_lock"
+            app:layout_constraintTop_toBottomOf="@+id/settings_share_bottom" >
+            <TextView
+                android:id="@+id/settings_lock"
+                style="@style/TextStyleNormalPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white_90"
+                android:text="@string/settings_logout" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/settings_lock_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_10"
+            app:layout_constraintTop_toBottomOf="@+id/settings_lock_container"/>
+
+        <TextView
+            android:id="@+id/settings_app_name"
+            style="@style/TextStyleLightPrimary"
+            android:textColor="@color/white_20"
+            android:text="@{version}"
+            tools:text="Kalium v0.0.1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            app:layout_constraintTop_toBottomOf="@+id/settings_lock_bottom"/>
+
+
+        <android.support.constraint.Guideline
+            android:id="@+id/settings_guideline_horiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/home_transaction_guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

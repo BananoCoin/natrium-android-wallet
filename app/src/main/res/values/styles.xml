@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppThemeYellow" parent="AppTheme">
+        <item name="colorPrimary">@color/yellow</item>
+    </style>
+
+    <style name="AppOverlayTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!-- darker variant for the status bar and contextual app bars -->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--   theme UI controls like checkboxes and text fields e.g. FloatActionButton -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- Title Text Color -->
+        <item name="android:textColorPrimary">@color/white_90</item>
+        <!-- color of the menu overflow icon (three vertical dots) -->
+        <item name="android:textColorSecondary">@color/white_60</item>
+    </style>
+
+    <style name="AppTheme.Modal" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Modal.Window" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/AppTheme.Modal.Window.Animation</item>
+    </style>
+
+    <style name="AppTheme.Modal.Window.Animation">
+        <item name="android:windowEnterAnimation">@anim/enter_slide_up</item>
+        <item name="android:windowExitAnimation">@anim/exit_slide_down</item>
+    </style>
+
+    <style name="AppTheme.Modal.WindowLeft" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@style/AppTheme.Modal.Window.AnimationLeft</item>
+    </style>
+
+    <style name="AppTheme.Modal.Window.AnimationLeft">
+        <item name="android:windowEnterAnimation">@anim/enter_slide_right</item>
+        <item name="android:windowExitAnimation">@anim/exit_slide_left</item>
+    </style>
+
+    <style name="AppTheme.ProgressBar.Horizontal" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="AppTheme.ProgressBar.Dialog.Horizontal" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="@android:style/Theme.Material.Dialog.Alert">
+        <item name="android:background">@color/gray_dark</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="SpinnerStyle" parent="android:style/Widget.ListView.DropDown">
+        <item name="android:background">@color/gray_dark</item>
+        <item name="android:divider">@color/white_10</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+
+    <style name="SpinnerTheme" parent="AppThemeYellow">
+        <item name="android:dropDownListViewStyle">@style/SpinnerStyle</item>
+    </style>
+
+    <style name="SeedInput">
+        <item name="android:background">@drawable/bg_seed_input</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColorHint">@color/white_90</item>
+        <item name="android:textColor">@color/white_60</item>
+        <item name="android:fontFamily">@font/overpass_mono_light</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLength">64</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:inputType">textMultiLine|textNoSuggestions</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">50dp</item>
+        <item name="android:paddingRight">50dp</item>
+    </style>
+
+    <style name="OutlineButton">
+        <item name="android:background">@drawable/bg_outline_button</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="PrimaryButton">
+        <item name="android:background">@drawable/bg_solid_button</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="OutlineButtonGreen">
+        <item name="android:background">@drawable/bg_green_button_outline</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/green_light</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="PrimaryButtonGreen">
+        <item name="android:background">@drawable/bg_green_button</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/green_dark</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingLeft">14dp</item>
+        <item name="android:paddingRight">14dp</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
+
+    <style name="TextStyleSubcurrency">
+        <item name="android:textColor">@color/white_60</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="TextStyleHeader">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+    </style>
+
+    <style name="TextStyleHeaderYellow">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+    </style>
+
+    <style name="TextStyle4">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_60</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white_90</item>
+    </style>
+
+    <style name="TextStyle3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyleParagraph">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/nunitosans_light</item>
+    </style>
+
+    <style name="TextStyleModalTitle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyle7">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyle8">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_60</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyle9">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyle10">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyle11">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="TextStyleBananoBalance">
+        <item name="android:textSize">38sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:gravity">end</item>
+        <item name="android:fontFamily">@font/nunitosans_extrabold</item>
+    </style>
+
+    <style name="TextStyleAddress">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_60</item>
+        <item name="android:fontFamily">@font/overpass_mono_light</item>
+    </style>
+
+    <style name="TextStyleAddressAlt">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:fontFamily">@font/overpass_mono_light</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+        <item name="android:lineSpacingExtra">3dp</item>
+    </style>
+
+    <style name="TextStyleNormalPrimary">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/yellow_dark_transparent</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyleBoldWhite">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+    </style>
+
+    <style name="TextStyleSemiboldWhite">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyleLightPrimary">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/yellow_dark_transparent</item>
+        <item name="android:fontFamily">@font/nunitosans_light</item>
+    </style>
+
+    <style name="TextStyleScanHeader">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/nunitosans_light</item>
+    </style>
+
+    <style name="TextStyle18">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyle19">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyle20">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyle21">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyle22">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+    <style name="TextStyle23">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/yellow</item>
+        <item name="android:fontFamily">@font/nunitosans_semibold</item>
+    </style>
+
+</resources>

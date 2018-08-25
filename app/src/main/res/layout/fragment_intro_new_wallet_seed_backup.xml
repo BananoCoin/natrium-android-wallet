@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Click Listeners -->
+        <variable
+            name="handlers"
+            type="com.banano.kaliumwallet.ui.intro.IntroNewWalletBackupFragment.ClickHandlers" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_dark"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/intro_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:padding="5dp"
+            android:layout_marginTop="30dp"
+            android:onClick="@{handlers::onClickBack}"
+            app:srcCompat="@drawable/ic_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/intro_new_wallet_header"
+            style="@style/TextStyleHeaderYellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="80dp"
+            android:gravity="left"
+            android:text="@string/intro_new_wallet_seed_backup_header"
+            app:layout_constraintBottom_toTopOf="@+id/intro_new_wallet_info"
+            app:layout_constraintStart_toEndOf="@+id/intro_back"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UnusedAttribute" />
+
+
+        <TextView
+            android:id="@+id/intro_new_wallet_info"
+            style="@style/TextStyleParagraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:gravity="left"
+            android:text="@string/intro_new_wallet_backup"
+            app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/intro_new_wallet_header"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <Button
+            android:id="@+id/intro_backup_yes"
+            style="@style/PrimaryButton"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textAllCaps="true"
+            android:text="@string/intro_new_wallet_backup_yes"
+            android:onClick="@{handlers::onClickYes}"
+            app:layout_constraintBottom_toTopOf="@+id/intro_backup_no"
+            app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"/>
+
+        <Button
+            android:id="@+id/intro_backup_no"
+            style="@style/OutlineButton"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/intro_new_wallet_backup_no"
+            android:onClick="@{handlers::onClickNo}"
+            android:textAllCaps="true"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"/>
+
+        <android.support.constraint.Guideline
+            android:id="@+id/intro_new_wallet_backup_guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

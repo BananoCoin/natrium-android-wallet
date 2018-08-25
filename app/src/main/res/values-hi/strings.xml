@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">केलियम में आपका स्वागत है। आगे बढ़ने के लिए, आप एक नया वॉलेट बना सकते हैं या एक मौजूदा वॉलेट खोल सकते हैं। </string>
+    <string name="intro_welcome_new_wallet">नया वॉलेट</string>
+    <string name="intro_welcome_have_wallet">मौजूदा वॉलेट</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">नीचे आपके वॉलेट का बीज (सीड) है। इसका बैकअप करना आवश्यक है। कृपया इसे हमेशा सुरक्षित रखें और टेक्स्ट या स्क्रीनशॉट के रूप में हरगिज़ न रखें।</string>
+    <string name="intro_new_wallet_seed_copied">आपका बीज (सीड) क्लिपबोर्ड में कॉपी हो गया है।  इसे अगले २ (2) मिनट तक पेस्ट किया जा सकता है। </string>
+    <string name="intro_new_wallet_seed_header">बीज (सीड)</string>
+    <string name="intro_new_wallet_seed_backup_header">बीज (सीड) बैकअप करें </string>
+    <string name="intro_new_wallet_backup">क्या आपने वाकई अपने वॉलेट का बीज (सीड) बैकअप कर लिया है?</string>
+    <string name="intro_new_wallet_backup_yes">हाँ </string>
+    <string name="intro_new_wallet_backup_no">नहीं </string>
+    <string name="intro_new_wallet_warning_header">कृपया झूठ न बोलें।</string>
+    <string name="intro_new_wallet_warning">ध्यान रहे कि बीज बैकअप न करने पर आप इस खाते (अकाउंट) को हमेशा के लिए खो देंगे।</string>
+    <string name="intro_new_wallet_not_lying">मैं झूठ नहीं बोल रहा!</string>
+    <string name="intro_new_wallet_okay">एक और मौका दें :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">बीज (सीड) इम्पोर्ट करें </string>
+    <string name="intro_seed_info">कृपया नीचे अपना बीज (सीड) दर्ज करें।</string>
+    <string name="intro_seed_invalid">बीज (सीड) गलत है</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">एक ४ (4) अंकों का पिन बनाएँ</string>
+    <string name="pin_confirm_title">अपने पिन को दोबारा लिखें </string>
+    <string name="pin_enter_title">पिन दर्ज करें</string>
+    <string name="pin_confirm_error">पिन एक दूसरे से नहीं मिल रहे</string>
+    <string name="pin_error">गलत पिन दर्ज किया गया</string>
+    <string name="fingerprint_text">सेंसर को छुएं </string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">भेजें </string>
+    <string name="home_receive_cta">प्राप्त करें</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">कनेक्ट करने में एक समस्या थी। फिर से कोशिश करें ।</string>
+    <string name="transaction_header">लेनदेन</string>
+    <string name="history_sent">भेजे -  </string>
+    <string name="history_received">मिले -</string>
+    <string name="transaction_details">अधिक जानकारी देखें </string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">सेटिंग्स </string>
+    <string name="settings_local_currency">मुद्रा (करेंसी) बदलें</string>
+    <string name="settings_backup_seed">बीज (सीड) बैकअप करें</string>
+    <string name="settings_change_rep">प्रतिनिधि (रिप्रेजेन्टेटिव) बदलें</string>
+    <string name="settings_share">केलियम साझा (शेयर) करें</string>
+    <string name="settings_logout">लॉगआउट करें</string>
+    <string name="settings_logout_alert_title">चेतावनी !</string>
+    <string name="settings_logout_alert_message">लॉगआउट करने पर आपके  बीज (सीड) और केलियम से संबंधित सभी डेटा हट जाएंगे। यदि आपने अपने बीज को बैकअप नहीं किया, तो आप कभी भी अपने धन का उपयोग नहीं कर पाएंगे।</string>
+    <string name="settings_logout_alert_confirm_cta">बीज मिटा कर लॉगआउट करें </string>
+    <string name="settings_logout_alert_cancel_cta">रद्द (कैंसल) करें</string>
+    <string name="settings_logout_warning_title">क्या आप निश्चित हैं?</string>
+    <string name="settings_logout_warning_message">अगर आपने अपने बीज को बैकअप कर लिया है, तो आपको चिंता करने की कोई आवश्यकता नहीं है।</string>
+    <string name="settings_logout_warning_confirm">हाँ </string>
+    <string name="settings_logout_warning_cancel">रद्द (कैंसल) करें</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">प्रतिनिधि (रिप्रेजेन्टेटिव) \nबदलें</string>
+    <string name="change_representative_header_short">बदलें</string>
+    <string name="change_representative_info_header">प्रतिनिधि (रिप्रेजेन्टेटिव) क्या है?</string>
+    <string name="change_representative_info">प्रतिनिधि (रिप्रेजेन्टेटिव) एक खाता है जो नेटवर्क सर्वसम्मति (कंसेंसस) के लिए वोट देता है। हर प्रतिनिधि (रिप्रेजेन्टेटिव) की मतदान शक्ति (वोटिंग पावर) उसे चुनने वालों की कुल धनराशि पर निर्भर है। आप किसी भी समय एक भरोसेमंद प्रतिनिधि (रिप्रेजेन्टेटिव) को चुन कर, अपनी धनराशि से उस प्रतिनिधि (रिप्रेजेन्टेटिव) की मतदान शक्ति (वोटिंग पावर) बढ़ा सकते हैं। आपके प्रतिनिधि (रिप्रेजेन्टेटिव) को आपका धन खर्च करने का अधिकार नहीं है। आपको ऐसा प्रतिनिधि चुनना चाहिए जो भरोसेमंद हो और अधिकतर उपस्थित रहे।</string>
+    <string name="change_representative_dialog_close">बंद करें</string>
+    <string name="change_representative_change">बदलें</string>
+    <string name="change_representative_cancel">रद्द (कैंसल) करें</string>
+    <string name="change_representative_invalid">प्रतिनिधि (रिप्रेजेन्टेटिव) का पता गलत है </string>
+    <string name="change_representative_current_header">वर्तमान प्रतिनिधि (रिप्रेजेन्टेटिव)</string>
+    <string name="change_representative_hint">नए प्रतिनिधि (रिप्रेजेन्टेटिव) का पता दर्ज करें</string>
+    <string name="change_representative_success">प्रतिनिधि (रिप्रेजेन्टेटिव) सफलतापूर्वक बदल गया</string>
+    <string name="change_representative_error">प्रतिनिधि (रिप्रेजेन्टेटिव) बदलने में असफल। बाद में फिर से प्रयास करें।</string>
+    <!-- Share -->
+    <string name="share_title">इस माध्यम से साझा (शेयर) करें - </string>
+    <string name="share_extra">केलियम - बनानो का एंड्रॉइड वॉलेट देखें!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">बीज (सीड) बैकअप करें </string>
+    <string name="settings_fingerprint_title">उंगली के निशान की सहायता से बीज (सीड) बैकअप करें।</string>
+    <string name="settings_pin_title">वॉलेट के बीज को देखने के लिए पिन दर्ज करें।</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">साझा (शेयर) करें</string>
+    <string name="receive_copy_cta">पता कॉपी करें </string>
+    <string name="receive_copied">पता कॉपी हो गया </string>
+    <string name="receive_share_title">इस माध्यम से साझा (शेयर) करें - </string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">बनानो</string>
+    <string name="receive_qrcode_description">क्यू आर कोड </string>
+
+    <!-- Send Screens -->
+    <string name="send_title">भेजने का पता -</string>
+    <string name="send_address_hint">पता दर्ज करें </string>
+    <string name="send_amount_hint">राशि दर्ज करें</string>
+    <string name="send_max">सम्पूर्ण </string>
+    <string name="send_send_cta">भेजें </string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">भेजा गया </string>
+    <string name="send_scan_qr">क्यू आर कोड स्कैन करें </string>
+    <string name="send_sending">भेजा जा रहा है - </string>
+    <string name="send_to">इसको - </string>
+    <string name="sent_to">इसको भेजा गया -</string>
+    <string name="send_confirm">पुष्टि (कन्फर्म) करें </string>
+    <string name="send_cancel">रद्द (कैंसल) करें</string>
+    <string name="send_close">बंद करें </string>
+    <string name="send_alert_dialog_ok">ठीक है </string>
+    <string name="send_alert_dialog_title">गलत इनपुट </string>
+    <string name="send_invalid_address">गलत (डेस्टिनेशन) गंतव्य पता</string>
+    <string name="send_insufficient_balance">अपर्याप्त शेष राशि (बैलेंस)</string>
+    <string name="send_amount_error">डाली गयी धन राशि गलत है </string>
+    <string name="send_generic_error">एक समस्या हुई। बाद में फिर से कोशिश करें।</string>
+    <string name="send_no_frontier">खाता नहीं मिल सका (हो सकता है खता नहीं खुला हो)</string>
+    <string name="send_fingerprint_description">उंगली के निशान की सहायता से %s बनानो भेजें </string>
+    <string name="send_pin_description">%s बनानो भेजें ? </string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">बनानो के पते का \nक्यू आर कोड स्कैन करें </string>
+</resources>
