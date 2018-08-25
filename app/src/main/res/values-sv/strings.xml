@@ -6,7 +6,7 @@
     <!-- API -->
     <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Välkommen till Kalium. För att fortsätta, behöver du skapa en ny plånbok eller importera en existerande..</string>
+    <string name="intro_welcome_title">Välkommen till Kalium. För att fortsätta, behöver du skapa en ny plånbok eller importera en befintlig.</string>
     <string name="intro_welcome_new_wallet">Ny plånbok</string>
     <string name="intro_welcome_have_wallet">Importera plånbok</string>
     <!-- Intro New Wallet Screens -->
@@ -26,7 +26,7 @@
     <string name="intro_seed_info">Ange din seed nedanför.</string>
     <string name="intro_seed_invalid">Angiven seed är ogiltig</string>
     <!-- Pin Screen -->
-    <string name="pin_create_title">Skapa en 4-siffrig PIN</string>
+    <string name="pin_create_title">Skapa en 4-siffrig PIN-kod</string>
     <string name="pin_confirm_title">Bekräfta din PIN-kod</string>
     <string name="pin_enter_title">Ange PIN-kod</string>
     <string name="pin_confirm_error">PIN-kod matchar ej</string>
