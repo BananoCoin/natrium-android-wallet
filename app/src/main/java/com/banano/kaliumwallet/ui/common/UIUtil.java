@@ -15,6 +15,10 @@ import com.banano.kaliumwallet.R;
  */
 
 public class UIUtil {
+    public static final double SMALL_DEVICE_DIALOG_HEIGHT = 0.95;
+    public static final double LARGE_DEVICE_DIALOG_HEIGHT = 0.93;
+    public static final double LARGE_DEVICE_DIALOG_HEIGHT_SMALLER = 0.88;
+
     /**
      * Colorize a string in the following manner:
      * First 11 characters are yellow transparent

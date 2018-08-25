@@ -24,6 +24,7 @@ import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
+import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.util.ExceptionHandler;
 
 import javax.inject.Inject;
@@ -79,9 +80,9 @@ public class BackupSeedDialogFragment extends BaseDialogFragment {
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int height = metrics.heightPixels;
-        double heightPercent = 0.95;
+        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
         if (metrics.heightPixels > 1500) {
-            heightPercent = 0.9;
+            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
         }
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
         window.setGravity(Gravity.BOTTOM);

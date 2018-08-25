@@ -170,6 +170,7 @@
                 android:layout_width="match_parent"
                 android:lineSpacingMultiplier="1.2"
                 android:lineSpacingExtra="3dp"
+                android:maxLines="3"
                 android:paddingLeft="20dp"
                 android:paddingStart="20dp"
                 android:paddingTop="10dp"

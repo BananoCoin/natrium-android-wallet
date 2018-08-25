@@ -112,9 +112,9 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int height = metrics.heightPixels;
-        double heightPercent = 0.95;
+        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
         if (metrics.heightPixels > 1500) {
-            heightPercent = 0.88;
+            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT_SMALLER;
         } else {
             ViewGroup.MarginLayoutParams qrMargin = (ViewGroup.MarginLayoutParams)binding.qrContainer.getLayoutParams();
             qrMargin.bottomMargin = (int)UIUtil.convertDpToPixel(5, getContext());

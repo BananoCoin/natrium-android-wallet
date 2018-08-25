@@ -122,9 +122,9 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int height = metrics.heightPixels;
-        double heightPercent = 0.95;
+        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
         if (metrics.heightPixels > 1500) {
-            heightPercent = 0.9;
+            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
         } else {
             ViewGroup.MarginLayoutParams headerMargin = (ViewGroup.MarginLayoutParams)binding.sendFromHeader.getLayoutParams();
             headerMargin.topMargin = (int)UIUtil.convertDpToPixel(15, getContext());
