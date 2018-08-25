@@ -48,7 +48,7 @@
     <string name="settings_local_currency">Сменить Валюту</string>
     <string name="settings_backup_seed">Резервное копирование семя</string>
     <string name="settings_change_rep">Сменить представителя</string>
-    <string name="settings_share">Поделиться Kalium></string>
+    <string name="settings_share">Поделиться Kalium</string>
     <string name="settings_logout">Выход</string>
     <string name="settings_logout_alert_title">ПРЕДУПРЕЖДЕНИЕ</string>
     <string name="settings_logout_alert_message">Выход из системы приведёт к удалению семя и всех связанных с Kalium данных с этого устройства. Если ваше семя не будет скопировано, вы больше никогда не сможете получить доступ к своим средствам.</string>
@@ -100,9 +100,9 @@
     <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Отправлено</string>
     <string name="send_scan_qr">Сканировать QR-код</string>
-    <string name="send_sending">Отправка</string>
-    <string name="send_to">В:</string>
-    <string name="sent_to">Отправить в:</string>
+    <string name="send_sending">Отправить</string>
+    <string name="send_to">на:</string>
+    <string name="sent_to">Отправлено на:</string>
     <string name="send_confirm">Подтвердить</string>
     <string name="send_cancel">Отмена</string>
     <string name="send_close">Закрыть</string>
