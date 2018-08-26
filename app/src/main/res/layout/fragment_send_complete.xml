@@ -79,22 +79,6 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/sent_btn"
-            style="@style/PrimaryButtonGreen"
-            android:gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginStart="45dp"
-            android:textAllCaps="true"
-            android:text="@string/send_sent"
-            app:layout_constraintBottom_toTopOf="@+id/sent_close"
-            app:layout_constraintEnd_toStartOf="@+id/send_guideling_vert"
-            app:layout_constraintStart_toStartOf="@+id/send_guideling_vert"
-            tools:ignore="UnusedAttribute" />
-
-        <Button
             android:id="@+id/sent_close"
             style="@style/OutlineButtonGreen"
             android:gravity="center_horizontal"

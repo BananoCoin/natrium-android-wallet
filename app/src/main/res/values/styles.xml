@@ -102,7 +102,7 @@
 
     <style name="OutlineButton">
         <item name="android:background">@drawable/bg_outline_button</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/yellow</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -116,7 +116,7 @@
 
     <style name="PrimaryButton">
         <item name="android:background">@drawable/bg_solid_button</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -130,7 +130,7 @@
 
     <style name="OutlineButtonGreen">
         <item name="android:background">@drawable/bg_green_button_outline</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/green_light</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -144,7 +144,7 @@
 
     <style name="PrimaryButtonGreen">
         <item name="android:background">@drawable/bg_green_button</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/green_dark</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
