@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">Ayarlar</string>
     <string name="settings_local_currency">Para Birimi</string>
+    <string name="settings_change_language">Dil</string>
+    <string name="settings_default_language_string">Sistem Dili</string>
     <string name="settings_backup_seed">Seed\'i Yedekle</string>
     <string name="settings_change_rep">Temsilci Değiştir</string>
     <string name="settings_share">Kalium\'u Paylaş</string>

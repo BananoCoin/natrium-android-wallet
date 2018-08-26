@@ -6,7 +6,7 @@
     <!-- API -->
     <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Bem-vindo ao Kalium. Para continuar, você pode criar uma nova carteira ou importar uma existente.</string>
+    <string name="intro_welcome_title">Bem-vindo a Kalium. Para continuar, você pode criar uma nova carteira ou importar uma existente.</string>
     <string name="intro_welcome_new_wallet">Nova Carteira</string>
     <string name="intro_welcome_have_wallet">Importar Carteira</string>
     <!-- Intro New Wallet Screens -->
@@ -18,7 +18,7 @@
     <string name="intro_new_wallet_backup_yes">Sim</string>
     <string name="intro_new_wallet_backup_no">Não</string>
     <string name="intro_new_wallet_warning_header">Por favor não minta.</string>
-    <string name="intro_new_wallet_warning">Você acha que você não vai, mas você vai perdê-lo não fizer o backup.</string>
+    <string name="intro_new_wallet_warning">Você acha que você não vai, mas você vai perdê-lo se não fizer o backup.</string>
     <string name="intro_new_wallet_not_lying">Não estou mentindo!</string>
     <string name="intro_new_wallet_okay">Está bem :(</string>
     <!-- Intro Import Wallet Screen -->
@@ -51,7 +51,7 @@
     <string name="settings_share">Compartilhar Kalium</string>
     <string name="settings_logout">Sair</string>
     <string name="settings_logout_alert_title">ATENÇÃO</string>
-    <string name="settings_logout_alert_message">Ao sair, sua seed e todos os dados relacionados ao Kalium serão removidos deste dispositivo. Se a sua seed não tiver backup, você nunca poderá acessar seus fundos novamente.</string>
+    <string name="settings_logout_alert_message">Ao sair, sua seed e todos os dados relacionados a Kalium serão removidos deste dispositivo. Se a sua seed não tiver backup, você nunca poderá acessar seus fundos novamente.</string>
     <string name="settings_logout_alert_confirm_cta">Excluir a seed e sair</string>
     <string name="settings_logout_alert_cancel_cta">Cancelar</string>
     <string name="settings_logout_warning_title">Você tem certeza?</string>
@@ -112,7 +112,7 @@
     <string name="send_insufficient_balance">Saldo Insuficiente</string>
     <string name="send_amount_error">O valor inserido era inválido</string>
     <string name="send_generic_error">Um erro ocorreu. Tente mais tarde.</string>
-    <string name="send_no_frontier">Não foi possível encontrar a conta (a conta pode não estar aberta)</string>
+    <string name="send_no_frontier">Não foi possível encontrar a conta (a conta pode não ter sido aberta)</string>
     <string name="send_fingerprint_description">Confirme a impressão digital para enviar %s Banano</string>
     <string name="send_pin_description">Enviar %s Banano?</string>
 
