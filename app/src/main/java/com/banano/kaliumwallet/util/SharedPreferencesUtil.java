@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import java.util.UUID;
 
 import com.banano.kaliumwallet.model.AvailableCurrency;
+import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.model.PreconfiguredRepresentatives;
 
 /**
@@ -14,6 +15,7 @@ import com.banano.kaliumwallet.model.PreconfiguredRepresentatives;
  */
 public class SharedPreferencesUtil {
     private static final String LOCAL_CURRENCY = "local_currency";
+    private static final String LANGUAGE = "app_language";
     private static final String APP_INSTALL_UUID = "app_install_uuid";
     private static final String CONFIRMED_SEED_BACKEDUP = "confirmed_seed_backedup";
     private static final String FROM_NEW_WALLET = "from_new_wallet";
@@ -73,6 +75,22 @@ public class SharedPreferencesUtil {
         set(LOCAL_CURRENCY, null);
     }
 
+    public boolean hasLanguage() {
+        return has(LANGUAGE);
+    }
+
+    public AvailableLanguage getLanguage() {
+        return AvailableLanguage.valueOf(get(LANGUAGE, AvailableLanguage.DEFAULT.toString()));
+    }
+
+    public void setLanguage(AvailableLanguage language) {
+        set(LANGUAGE, language.toString());
+    }
+
+    public void clearLanguage() {
+        set(LANGUAGE, null);
+    }
+
     public boolean hasAppInstallUuid() {
         return has(APP_INSTALL_UUID);
     }
@@ -123,6 +141,7 @@ public class SharedPreferencesUtil {
 
     public void clearAll() {
         clearLocalCurrency();
+        clearLanguage();
         clearConfirmedSeedBackedUp();
     }
 

@@ -1,5 +1,6 @@
 package com.banano.kaliumwallet;
 
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -12,9 +13,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
+import java.util.Locale;
 import java.util.UUID;
 
 import javax.inject.Inject;
@@ -80,6 +83,17 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
         // set unique uuid (per app install)
         if (!sharedPreferencesUtil.hasAppInstallUuid()) {
             sharedPreferencesUtil.setAppInstallUuid(UUID.randomUUID().toString());
+        }
+
+
+        // Set default language
+        if (sharedPreferencesUtil.getLanguage() != AvailableLanguage.DEFAULT) {
+            Locale locale = new Locale(sharedPreferencesUtil.getLanguage().getLocaleString());
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config,
+                    getBaseContext().getResources().getDisplayMetrics());
         }
 
         initUi();

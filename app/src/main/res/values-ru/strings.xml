@@ -10,11 +10,11 @@
     <string name="intro_welcome_new_wallet">Новый кошелёк</string>
     <string name="intro_welcome_have_wallet">Импортировать существующий кошелёк</string>
     <!-- Intro New Wallet Screens -->
-    <string name="intro_new_wallet_seed"> Ниже Ваше семя кошелька. Крайне важно, чтобы Вы сохранили  свое семя и никогда не хранили его как обычный текст или как скриншот.</string>
-    <string name="intro_new_wallet_seed_copied">Семя скопировано в буфер обмена.\в нём сохраниться в течение 2 минут.</string>
-    <string name="intro_new_wallet_seed_header">Семя</string>
-    <string name="intro_new_wallet_seed_backup_header">Резервное копирование вашего семя</string>
-    <string name="intro_new_wallet_backup">Вы уверены, что сохранили свое семя кошелька?</string>
+    <string name="intro_new_wallet_seed">Ниже Seed вашего кошелька.Крайне важно,чтобы Вы сохранили Seed и никогда не хранили его как обычный текст или как скриншот.</string>
+    <string name="intro_new_wallet_seed_copied">Seed скопирован в буфер обмена.\в нём сохраниться в течение 2 минут.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Резервное копирование Seed</string>
+    <string name="intro_new_wallet_backup">Вы уверены,что сохранили Seed?</string>
     <string name="intro_new_wallet_backup_yes">Да</string>
     <string name="intro_new_wallet_backup_no">Нет</string>
     <string name="intro_new_wallet_warning_header">Пожалуйста не лгите</string>
@@ -23,8 +23,8 @@
     <string name="intro_new_wallet_okay">Хорошо</string>
     <!-- Intro Import Wallet Screen -->
     <string name="intro_seed_header">Импорт семя.</string>
-    <string name="intro_seed_info">Пожалуйста, введите ваше семя ниже.</string>
-    <string name="intro_seed_invalid">Семя Недействительно.</string>
+    <string name="intro_seed_info">Пожалуйста, введите ваш Seed ниже.</string>
+    <string name="intro_seed_invalid">Seed Недействительный.</string>
     <!-- Pin Screen -->
     <string name="pin_create_title">Создать 4-значный PIN-код.</string>
     <string name="pin_confirm_title">Подтвердите PIN-код</string>
@@ -38,24 +38,24 @@
     <string name="home_receive_cta">Получить</string>
     <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Возникла проблема при подключении. Пожалуйста, попробуйте снова.</string>
-    <string name="transaction_header">Транзакция</string>
-    <string name="history_sent">Отправил</string>
-    <string name="history_received">Получил</string>
+    <string name="transaction_header">Транзакции</string>
+    <string name="history_sent">Отправлено</string>
+    <string name="history_received">Получено</string>
     <string name="transaction_details">Посмотреть Детали</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Настройки</string>
     <string name="settings_local_currency">Сменить Валюту</string>
-    <string name="settings_backup_seed">Резервное копирование семя</string>
+    <string name="settings_backup_seed">Резервное копирование Seed</string>
     <string name="settings_change_rep">Сменить представителя</string>
     <string name="settings_share">Поделиться Kalium</string>
     <string name="settings_logout">Выход</string>
     <string name="settings_logout_alert_title">ПРЕДУПРЕЖДЕНИЕ</string>
-    <string name="settings_logout_alert_message">Выход из системы приведёт к удалению семя и всех связанных с Kalium данных с этого устройства. Если ваше семя не будет скопировано, вы больше никогда не сможете получить доступ к своим средствам.</string>
-    <string name="settings_logout_alert_confirm_cta">Удаление семя и выход из системы.</string>
+    <string name="settings_logout_alert_message">Выход из системы приведёт к удалению Seed и всех связанных с Kalium данных с этого устройства.Если ваш Seed не будет скопирован,вы больше никогда не сможете получить доступ к своим средствам.</string>
+    <string name="settings_logout_alert_confirm_cta">Удаление Seed и выход из системы.</string>
     <string name="settings_logout_alert_cancel_cta">Отмена</string>
     <string name="settings_logout_warning_title">Ты уверен?</string>
-    <string name="settings_logout_warning_message">Если вы создали резервную копию своего семя, вам не о чем беспокоиться</string>
+    <string name="settings_logout_warning_message">Если вы создали резервную копию своего Seed,вам не о чем беспокоиться</string>
     <string name="settings_logout_warning_confirm">Да</string>
     <string name="settings_logout_warning_cancel">Отмена</string>
     <!-- Change Rep -->
@@ -77,9 +77,9 @@
     <string name="share_title">Поделиться через..</string>
     <string name="share_extra">Оцените Kalium! Официальный Android кошелёк Banano!</string>
     <!-- Backup Seed -->
-    <string name="settings_show_seed">Резервное копирование семя кошелька.</string>
-    <string name="settings_fingerprint_title">Подтвердите отпечаток пальца для резервного копирования семя</string>
-    <string name="settings_pin_title">Введите PIN-код для просмотра семя кошелька.</string>
+    <string name="settings_show_seed">Резервное копирование Seed кошелька.</string>
+    <string name="settings_fingerprint_title">Подтвердите отпечаток пальца для резервного копирования Seed</string>
+    <string name="settings_pin_title">Введите PIN для просмотра Seed кошелька.</string>
 
     <!-- Receive Screen -->
     <string name="receive_share_cta">Отправить</string>
@@ -95,7 +95,7 @@
     <string name="send_title">Отправить из:</string>
     <string name="send_address_hint">Введите Адрес</string>
     <string name="send_amount_hint">Введите Сумму</string>
-    <string name="send_max">Максимум</string>
+    <string name="send_max">Max</string>
     <string name="send_send_cta">Отправить</string>
     <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Отправлено</string>
@@ -114,7 +114,7 @@
     <string name="send_generic_error">Произошла ошибка. Повторите попытку позже</string>
     <string name="send_no_frontier">Не удалось найти границу аккаунта (учётная запись  не может быть открыта)</string>
     <string name="send_fingerprint_description">Подтвердите отпечаток пальца, чтобы послать %s Banano</string>
-    <string name="send_pin_description">Отправить %c Banano</string>
+    <string name="send_pin_description">Отправить %s Banano</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Сканировать  QR-код Banano/адрес.</string>

@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
     <string name="settings_local_currency">Change Currency</string>
+    <string name="settings_change_language">Language</string>
+    <string name="settings_default_language_string">System Default</string>
     <string name="settings_backup_seed">Backup Seed</string>
     <string name="settings_change_rep">Change Representative</string>
     <string name="settings_share">Share Kalium</string>

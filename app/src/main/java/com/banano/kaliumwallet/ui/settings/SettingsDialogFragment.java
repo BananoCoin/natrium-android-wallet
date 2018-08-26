@@ -3,6 +3,7 @@ package com.banano.kaliumwallet.ui.settings;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -25,6 +26,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.banano.kaliumwallet.MainActivity;
+import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.Reprint;
@@ -33,6 +36,7 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -61,6 +65,7 @@ public class SettingsDialogFragment extends BaseDialogFragment {
     public static String TAG = SettingsDialogFragment.class.getSimpleName();
     private AlertDialog fingerprintDialog;
     private boolean backupSeedPinEntered = false;
+    private boolean languageInitialized = false;
 
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
@@ -181,14 +186,59 @@ public class SettingsDialogFragment extends BaseDialogFragment {
             }
         });
         // set selected item with value saved in shared preferences
-        binding.settingsCurrencySpinner.setSelection(getIndexOf(sharedPreferencesUtil.getLocalCurrency(), availableCurrencies));
+        binding.settingsCurrencySpinner.setSelection(getIndexOfCurrency(sharedPreferencesUtil.getLocalCurrency(), availableCurrencies));
 
-/*
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            binding.settingsShowNewSeed.setVisibility(credentials.getNewlyGeneratedSeed() != null ? View.VISIBLE : View.GONE);
+        // Setup language spinner
+        languageInitialized = false;
+        List<StringWithTag> availableLanguages = getAllLanguages();
+        ArrayAdapter<StringWithTag> languageAdapter = new ArrayAdapter<>(getContext(),
+                R.layout.view_spinner_item,
+                availableLanguages
+        );
+        languageAdapter.setDropDownViewResource(R.layout.view_spinner_dropdown_item);
+        binding.settingsLanguageSpinner.setVisibility(View.VISIBLE);
+        binding.settingsLanguageSpinner.setAdapter(languageAdapter);
+        binding.settingsLanguageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (!languageInitialized) {
+                    languageInitialized = true;
+                    return;
+                }
+                StringWithTag swt = (StringWithTag) adapterView.getItemAtPosition(i);
+                AvailableLanguage key = (AvailableLanguage) swt.tag;
+                if (key != null) {
+                    sharedPreferencesUtil.setLanguage(key);
+                    Locale locale;
+                    if (key == AvailableLanguage.DEFAULT) {
+                        locale = Locale.getDefault();
+                    } else {
+                        locale = new Locale(key.getLocaleString());
+                    }
+                    Locale.setDefault(locale);
+                    Configuration config = new Configuration();
+                    config.locale = locale;
+                    getContext().getResources().updateConfiguration(config,
+                            getContext().getResources().getDisplayMetrics());
+                    if (getActivity() != null) {
+                        Intent refresh = new Intent(getContext(), MainActivity.class);
+                        startActivity(refresh);
+                        getActivity().finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        if (sharedPreferencesUtil.getLanguage() == AvailableLanguage.DEFAULT) {
+            binding.settingsLanguageSpinner.setSelection(0);
+        } else {
+            binding.settingsLanguageSpinner.setSelection(getIndexOfLanguage(sharedPreferencesUtil.getLanguage(), availableLanguages));
         }
-*/
+
         return view;
     }
 
@@ -244,10 +294,43 @@ public class SettingsDialogFragment extends BaseDialogFragment {
      *
      * @return Index of a particular currency in the spinner
      */
-    private int getIndexOf(AvailableCurrency currency, List<StringWithTag> availableCurrencies) {
+    private int getIndexOfCurrency(AvailableCurrency currency, List<StringWithTag> availableCurrencies) {
         int i = 0;
         for (StringWithTag availableCurrency : availableCurrencies) {
             if (availableCurrency.tag.equals(currency)) {
+                return i;
+            }
+            i++;
+        }
+        return 0;
+    }
+
+    /**
+     * Get list of all of the available languages
+     *
+     * @return List of all locales app has translations for
+     */
+    private List<StringWithTag> getAllLanguages() {
+        List<StringWithTag> itemList = new ArrayList<>();
+        // Add current system language
+        itemList.add(new StringWithTag(getString(R.string.settings_default_language_string), AvailableLanguage.DEFAULT));
+        for (AvailableLanguage language : AvailableLanguage.values()) {
+            if (language != AvailableLanguage.DEFAULT) {
+                itemList.add(new StringWithTag(language.getDisplayName(), language));
+            }
+        }
+        return itemList;
+    }
+
+    /**
+     * Get Index of a particular language
+     *
+     * @return Index of a particular language in the spinner
+     */
+    private int getIndexOfLanguage(AvailableLanguage language, List<StringWithTag> availableLanguages) {
+        int i = 0;
+        for (StringWithTag availableLanguage : availableLanguages) {
+            if (availableLanguage.tag.equals(language)) {
                 return i;
             }
             i++;
@@ -292,6 +375,10 @@ public class SettingsDialogFragment extends BaseDialogFragment {
     public class ClickHandlers {
         public void onClickCurrency(View view) {
             binding.settingsCurrencySpinner.performClick();
+        }
+
+        public void onClickLanguage(View view) {
+            binding.settingsLanguageSpinner.performClick();
         }
 
         public void onClickChange(View view) {
