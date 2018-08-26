@@ -216,9 +216,64 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Set QR bg for compat
+        if (getResources() != null && getContext() != null && binding != null && binding.receiveOuter != null) {
+            Drawable qrBackground = VectorDrawableCompat.create(getResources(), R.drawable.qr_border, getContext().getTheme());
+            binding.receiveOuter.setBackground(qrBackground);
+        }
+    }
+
+    private Bitmap trimBitmap(Bitmap source) {
+        int firstX = 0, firstY = 0;
+        int lastX = source.getWidth();
+        int lastY = source.getHeight();
+        int[] pixels = new int[source.getWidth() * source.getHeight()];
+        source.getPixels(pixels, 0, source.getWidth(), 0, 0, source.getWidth(), source.getHeight());
+        loop:
+        for (int x = 0; x < source.getWidth(); x++) {
+            for (int y = 0; y < source.getHeight(); y++) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    firstX = x;
+                    break loop;
+                }
+            }
+        }
+        loop:
+        for (int y = 0; y < source.getHeight(); y++) {
+            for (int x = firstX; x < source.getWidth(); x++) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    firstY = y;
+                    break loop;
+                }
+            }
+        }
+        loop:
+        for (int x = source.getWidth() - 1; x >= firstX; x--) {
+            for (int y = source.getHeight() - 1; y >= firstY; y--) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    lastX = x;
+                    break loop;
+                }
+            }
+        }
+        loop:
+        for (int y = source.getHeight() - 1; y >= firstY; y--) {
+            for (int x = source.getWidth() - 1; x >= firstX; x--) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    lastY = y;
+                    break loop;
+                }
+            }
+        }
+        return Bitmap.createBitmap(source, firstX, firstY, lastX - firstX, lastY - firstY);
+    }
+
     public Bitmap setViewToBitmapImage(View view) {
         //Define a bitmap with the same size as the view
-        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap returnedBitmap = Bitmap.createBitmap(1230, 609, Bitmap.Config.ARGB_8888);
         //Bind a canvas to it
         Canvas canvas = new Canvas(returnedBitmap);
         //Get the view's background
@@ -233,7 +288,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         // draw the view on the canvas
         view.draw(canvas);
         //return the bitmap
-        return returnedBitmap;
+        return trimBitmap(returnedBitmap);
     }
 
     public void saveImage(Bitmap finalBitmap) {

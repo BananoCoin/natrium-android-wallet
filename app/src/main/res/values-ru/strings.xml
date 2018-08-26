@@ -22,7 +22,7 @@
     <string name="intro_new_wallet_not_lying">Не лгать!</string>
     <string name="intro_new_wallet_okay">Хорошо</string>
     <!-- Intro Import Wallet Screen -->
-    <string name="intro_seed_header">Импорт семя.</string>
+    <string name="intro_seed_header">Импортировать  Seed</string>
     <string name="intro_seed_info">Пожалуйста, введите ваш Seed ниже.</string>
     <string name="intro_seed_invalid">Seed Недействительный.</string>
     <!-- Pin Screen -->
