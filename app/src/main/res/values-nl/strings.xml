@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">Instellingen</string>
     <string name="settings_local_currency">Verander valuta</string>
+    <string name="settings_change_language">Taal</string>
+    <string name="settings_default_language_string">Systeemfout</string>
     <string name="settings_backup_seed">Maak seed back-up</string>
     <string name="settings_change_rep">Verander representative</string>
     <string name="settings_share">Deel Kalium</string>

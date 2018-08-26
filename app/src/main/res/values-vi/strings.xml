@@ -47,6 +47,8 @@ Dưới đây là ví của bạn. Điều quan trọng là bạn sao lưu hạt
     <!-- Settings Screen -->
     <string name="settings_title">Cài đặt</string>
     <string name="settings_local_currency">Đổi loại tiền</string>
+    <string name="settings_change_language">Ngôn ngữ</string>
+    <string name="settings_default_language_string">Mặc định hệ thống</string>
     <string name="settings_backup_seed">Sao lưu hạt giống(SEED)</string>
     <string name="settings_change_rep">Thay đổi đại diện</string>
     <string name="settings_share">Chia sẻ Kalium</string>

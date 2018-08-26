@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">सेटिंग्स </string>
     <string name="settings_local_currency">मुद्रा (करेंसी) बदलें</string>
+    <string name="settings_change_language">भाषा</string>
+    <string name="settings_default_language_string">प्रणालीगत चूक</string>
     <string name="settings_backup_seed">बीज (सीड) बैकअप करें</string>
     <string name="settings_change_rep">प्रतिनिधि (रिप्रेजेन्टेटिव) बदलें</string>
     <string name="settings_share">केलियम साझा (शेयर) करें</string>

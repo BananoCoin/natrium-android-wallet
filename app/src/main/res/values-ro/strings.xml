@@ -36,6 +36,8 @@
     <string name="transaction_details">Detalii</string>
     <string name="settings_title">Setări</string>
     <string name="settings_local_currency">Schimbă moneda</string>
+    <string name="settings_change_language">Limba</string>
+    <string name="settings_default_language_string">Defectiune de sistem</string>
     <string name="settings_backup_seed">Copie de rezervă pentru seed</string>
     <string name="settings_change_rep">Schimbă reprezentantul</string>
     <string name="settings_share">Share Kalium</string>

@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">Mga setting</string>
     <string name="settings_local_currency">Palitan ang Currency</string>
+    <string name="settings_change_language">Wika</string>
+    <string name="settings_default_language_string">Default na System</string>
     <string name="settings_backup_seed">I-back up ang Seed</string>
     <string name="settings_change_rep">Palitan ang Representative</string>
     <string name="settings_share">I-share ang Kalium</string>

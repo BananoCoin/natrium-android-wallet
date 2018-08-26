@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">הגדרות</string>
     <string name="settings_local_currency">שנה מטבע חליפין</string>
+    <string name="settings_change_language">שפה</string>
+    <string name="settings_default_language_string">בְּרִירַת מֶחדָל</string>
     <string name="settings_backup_seed">גבה סיד</string>
     <string name="settings_change_rep">שנה נציג</string>
     <string name="settings_share">שתף את קאליום</string>

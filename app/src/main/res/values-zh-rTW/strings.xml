@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">設置</string>
     <string name="settings_local_currency">改變貨幣</string>
+    <string name="settings_change_language">語言</string>
+    <string name="settings_default_language_string">系統默認</string>
     <string name="settings_backup_seed">備份種子</string>
     <string name="settings_change_rep">變更代理人</string>
     <string name="settings_share">分享Kalium</string>

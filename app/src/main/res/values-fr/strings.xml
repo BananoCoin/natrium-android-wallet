@@ -39,6 +39,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">Réglages</string>
     <string name="settings_local_currency">Changer de devise</string>
+    <string name="settings_change_language">La langue</string>
+    <string name="settings_default_language_string">Défaillance du système</string>
     <string name="settings_backup_seed">Sauvegarder la clé privée</string>
     <string name="settings_change_rep">Changer le représentant</string>
     <string name="settings_share">Partager Kalium</string>

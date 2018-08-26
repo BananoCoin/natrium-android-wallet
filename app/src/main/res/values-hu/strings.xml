@@ -46,6 +46,8 @@
     <!-- Settings Screen -->
     <string name="settings_title">Beállítások</string>
     <string name="settings_local_currency">Valuta Megváltoztatása</string>
+    <string name="settings_change_language">Nyelv</string>
+    <string name="settings_default_language_string">Rendszer alapértelmezett</string>
     <string name="settings_backup_seed">Seed Másolása</string>
     <string name="settings_change_rep">Képviselő Megváltoztatása</string>
     <string name="settings_share">Oszd meg a Kaliumot</string>
