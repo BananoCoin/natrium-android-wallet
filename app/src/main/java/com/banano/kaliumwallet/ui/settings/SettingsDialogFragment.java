@@ -211,7 +211,7 @@ public class SettingsDialogFragment extends BaseDialogFragment {
                     sharedPreferencesUtil.setLanguage(key);
                     Locale locale;
                     if (key == AvailableLanguage.DEFAULT) {
-                        locale = Locale.getDefault();
+                        locale = sharedPreferencesUtil.getDefaultLocale();
                     } else {
                         locale = new Locale(key.getLocaleString());
                     }

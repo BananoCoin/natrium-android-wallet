@@ -56,7 +56,7 @@
     <string name="settings_logout_alert_message">Выход из системы приведёт к удалению Seed и всех связанных с Kalium данных с этого устройства.Если ваш Seed не будет скопирован,вы больше никогда не сможете получить доступ к своим средствам.</string>
     <string name="settings_logout_alert_confirm_cta">Удаление Seed и выход из системы.</string>
     <string name="settings_logout_alert_cancel_cta">Отмена</string>
-    <string name="settings_logout_warning_title">Ты уверен?</string>
+    <string name="settings_logout_warning_title">Вы уверены?</string>
     <string name="settings_logout_warning_message">Если вы создали резервную копию своего Seed,вам не о чем беспокоиться</string>
     <string name="settings_logout_warning_confirm">Да</string>
     <string name="settings_logout_warning_cancel">Отмена</string>

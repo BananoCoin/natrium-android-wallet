@@ -85,6 +85,8 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             sharedPreferencesUtil.setAppInstallUuid(UUID.randomUUID().toString());
         }
 
+        // Set default system locale to shared prefs
+        sharedPreferencesUtil.setDefaultLocale(Locale.getDefault());
 
         // Set default language
         if (sharedPreferencesUtil.getLanguage() != AvailableLanguage.DEFAULT) {

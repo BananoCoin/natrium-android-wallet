@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import java.util.Locale;
 import java.util.UUID;
 
 import com.banano.kaliumwallet.model.AvailableCurrency;
@@ -15,6 +16,7 @@ import com.banano.kaliumwallet.model.PreconfiguredRepresentatives;
  */
 public class SharedPreferencesUtil {
     private static final String LOCAL_CURRENCY = "local_currency";
+    private static final String DEFAULT_LOCALE = "app_locale_default";
     private static final String LANGUAGE = "app_language";
     private static final String APP_INSTALL_UUID = "app_install_uuid";
     private static final String CONFIRMED_SEED_BACKEDUP = "confirmed_seed_backedup";
@@ -73,6 +75,23 @@ public class SharedPreferencesUtil {
 
     public void clearLocalCurrency() {
         set(LOCAL_CURRENCY, null);
+    }
+
+    public void setDefaultLocale(Locale locale) {
+        set(DEFAULT_LOCALE, locale.toString());
+    }
+
+    public Locale getDefaultLocale() {
+        String localeStr = get(DEFAULT_LOCALE, Locale.getDefault().toString()).replace("-", "_");
+        String[] args = localeStr.split("_");
+        if (args.length > 2) {
+            return new Locale(args[0], args[1], args[2]);
+        } else if (args.length > 1) {
+            return new Locale(args[0], args[1]);
+        } else if (args.length == 1) {
+            return new Locale(args[0]);
+        }
+        return Locale.getDefault();
     }
 
     public boolean hasLanguage() {
