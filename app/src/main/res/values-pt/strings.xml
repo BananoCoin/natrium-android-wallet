@@ -18,7 +18,7 @@
     <string name="intro_new_wallet_backup_yes">Sim</string>
     <string name="intro_new_wallet_backup_no">Não</string>
     <string name="intro_new_wallet_warning_header">Por favor não minta.</string>
-    <string name="intro_new_wallet_warning">Você acha que você não vai, mas você vai perdê-lo se não fizer o backup.</string>
+    <string name="intro_new_wallet_warning">Você acha que você não vai, mas você vai perdê-la se não fizer o backup.</string>
     <string name="intro_new_wallet_not_lying">Não estou mentindo!</string>
     <string name="intro_new_wallet_okay">Está bem :(</string>
     <!-- Intro Import Wallet Screen -->
@@ -27,8 +27,8 @@
     <string name="intro_seed_invalid">A seed é inválida</string>
     <!-- Pin Screen -->
     <string name="pin_create_title">Crie um pin de 4 dígitos</string>
-    <string name="pin_confirm_title">Confirme seu pin</string>
-    <string name="pin_enter_title">Entrar com  pin</string>
+    <string name="pin_confirm_title">Confirme o seu pin</string>
+    <string name="pin_enter_title">Entre com o pin</string>
     <string name="pin_confirm_error">Pins não coincidem</string>
     <string name="pin_error">Pin inválido inserido</string>
     <string name="fingerprint_text">Sensor de toque</string>

@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +14,6 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +29,7 @@ import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.bus.SendInvalidAmount;
 import com.banano.kaliumwallet.databinding.FragmentSendConfirmBinding;
 import com.banano.kaliumwallet.model.Address;
+import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -284,7 +283,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         public void onClickConfirm(View view) {
             Credentials credentials = realm.where(Credentials.class).findFirst();
 
-            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered() && sharedPreferencesUtil.getAuthMethod() == AuthMethod.FINGERPRINT) {
                 // show fingerprint dialog
                 LayoutInflater factory = LayoutInflater.from(getContext());
                 @SuppressLint("InflateParams") final View viewFingerprint = factory.inflate(R.layout.view_fingerprint, null);

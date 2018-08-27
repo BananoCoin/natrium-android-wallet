@@ -60,6 +60,11 @@
     <string name="settings_logout_warning_message">Solange du deinen Seed gesichert hast, musst du dir keine Gedanken machen.</string>
     <string name="settings_logout_warning_confirm">Ja</string>
     <string name="settings_logout_warning_cancel">Abbrechen</string>
+    <string name="settings_manage_header">Verwaltung</string>
+    <string name="settings_preferences_header">Darstellung</string>
+    <string name="settings_disable_fingerprint">Authentifikation</string>
+    <string name="settings_fingerprint_method">Fingerabdruck</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Representative\nändern</string>
     <string name="change_representative_header_short">Ändern</string>

@@ -24,7 +24,7 @@
         <RelativeLayout
             android:id="@+id/home_top_card"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="160dp"
             android:background="@drawable/bg_home_top_card"
             android:layout_margin="10dp"
             app:layout_constraintTop_toTopOf="parent">
@@ -45,13 +45,13 @@
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/home_monkey"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_marginTop="8dp"
-                android:layout_alignParentTop="true"
-                android:onClickListener="@{handlers::onClickMonkey}"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:visibility="gone"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:background="@drawable/bg_image_button"
-                android:layout_alignParentRight="true"/>
+                android:onClickListener="@{handlers::onClickMonkey}" />
 
             <TextView
                 android:id="@+id/amount_local_currency_title"
@@ -63,33 +63,38 @@
                 android:text="@{wallet.accountBalanceLocalCurrency}"
                 tools:text="18.000001" />
 
-            <TextView
-                android:id="@+id/amount_nano_title"
-                style="@style/TextStyleSubcurrency"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_below="@id/amount_banano_title"
-                android:text="@{wallet.accountBalanceNano}"
-                tools:text="18.000001" />
+                android:orientation="horizontal">
 
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/amount_nano_symbol"
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_marginTop="2dp"
-                android:layout_marginLeft="2dp"
-                android:layout_below="@+id/amount_banano_title"
-                android:layout_toRightOf="@+id/amount_nano_title"
-                app:srcCompat="@drawable/ic_currency_nano" />
+                <TextView
+                    android:id="@+id/amount_btc_symbol"
+                    style="@style/TextStyleSubcurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/btc"
+                    android:layout_marginRight="2dp"
+                    android:text="BTC"/>
+
+                <TextView
+                    android:id="@+id/amount_btc_title"
+                    style="@style/TextStyleSubcurrency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{wallet.accountBalanceBtc}"
+                    tools:text="18.000001" />
+            </LinearLayout>
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/amount_banano_symbol"
                 android:layout_width="23dp"
                 android:layout_height="23dp"
                 android:paddingBottom="13dp"
-                android:layout_marginLeft="2dp"
-                android:layout_toRightOf="@id/amount_banano_title"
+                android:layout_marginStart="2dp"
+                android:layout_toStartOf="@id/amount_banano_title"
                 android:layout_centerInParent="true"
                 app:srcCompat="@drawable/ic_currency_banano_yellow" />
 
@@ -123,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="80dp"
-            android:layout_marginTop="240dp"
+            android:layout_marginTop="220dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp">
 

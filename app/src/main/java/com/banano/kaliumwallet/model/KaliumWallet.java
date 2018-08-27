@@ -41,6 +41,7 @@ public class KaliumWallet {
     private BigDecimal accountBalance;
     private BigDecimal localCurrencyPrice;
     private BigDecimal nanoPrice;
+    private BigDecimal btcPrice;
 
     private String representativeAccount;
     private String representativeAddress;
@@ -147,6 +148,10 @@ public class KaliumWallet {
         return nanoPrice != null && accountBalance != null ? formatNano(NumberUtil.getRawAsUsableAmount(accountBalance.toString()).multiply(nanoPrice, MathContext.DECIMAL64)) : "0.0";
     }
 
+    public String getAccountBalanceBtc() {
+        return btcPrice != null && accountBalance != null ? formatBtc(NumberUtil.getRawAsUsableAmount(accountBalance.toString()).multiply(btcPrice, MathContext.DECIMAL64)) : "0.0";
+    }
+
     private String formatLocalCurrency(BigDecimal amount) {
         return currencyFormat(amount);
     }
@@ -154,6 +159,12 @@ public class KaliumWallet {
     private String formatNano(BigDecimal amount) {
         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
         numberFormat.setMaximumFractionDigits(amount.intValue() >= 1 ? 2 : 4);
+        return numberFormat.format(Double.valueOf(amount.toString())) + " NANO";
+    }
+
+    private String formatBtc(BigDecimal amount) {
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+        numberFormat.setMaximumFractionDigits(amount.floatValue() >= 0.0001 ? 4 : 7);
         return numberFormat.format(Double.valueOf(amount.toString()));
     }
 
@@ -373,6 +384,7 @@ public class KaliumWallet {
         accountBalance = new BigDecimal("0.0");
         localCurrencyPrice = null;
         nanoPrice = null;
+        btcPrice = null;
 
         representativeAccount = null;
         representativeAddress = null;
@@ -437,6 +449,7 @@ public class KaliumWallet {
         accountBalance = new BigDecimal(subscribeResponse.getBalance() != null ? subscribeResponse.getBalance() : "0.0");
         localCurrencyPrice = new BigDecimal(subscribeResponse.getPrice());
         nanoPrice = new BigDecimal(subscribeResponse.getNano());
+        btcPrice = new BigDecimal(subscribeResponse.getBtc());
         RxBus.get().post(new WalletSubscribeUpdate());
     }
 
@@ -461,12 +474,16 @@ public class KaliumWallet {
         if (currentPriceResponse.getCurrency().equals("nano")) {
             // we made a nano price request
             nanoPrice = new BigDecimal(currentPriceResponse.getPrice());
+        } else if (currentPriceResponse.getCurrency().equals("btc")) {
+            btcPrice = new BigDecimal(currentPriceResponse.getPrice());
         } else {
             // local currency price
             localCurrencyPrice = new BigDecimal(currentPriceResponse.getPrice());
         }
         if (currentPriceResponse.getNano() != null) {
             nanoPrice = new BigDecimal(currentPriceResponse.getNano());
+        } else if (currentPriceResponse.getBtc() != null) {
+            btcPrice = new BigDecimal(currentPriceResponse.getBtc());
         }
         RxBus.get().post(new WalletPriceUpdate());
     }

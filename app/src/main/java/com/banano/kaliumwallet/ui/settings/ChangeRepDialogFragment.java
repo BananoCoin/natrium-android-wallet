@@ -36,6 +36,7 @@ import com.banano.kaliumwallet.bus.PinComplete;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentChangeRepBinding;
 import com.banano.kaliumwallet.model.Address;
+import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -399,7 +400,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             }
             Credentials credentials = realm.where(Credentials.class).findFirst();
 
-            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered() && sharedPreferencesUtil.getAuthMethod() == AuthMethod.FINGERPRINT) {
                 // show fingerprint dialog
                 LayoutInflater factory = LayoutInflater.from(getContext());
                 @SuppressLint("InflateParams") final View viewFingerprint = factory.inflate(R.layout.view_fingerprint, null);

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
+import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
 import com.banano.kaliumwallet.util.svg.SvgDecoder;
 import com.banano.kaliumwallet.util.svg.SvgDrawableTranscoder;
@@ -175,6 +177,7 @@ public class HomeFragment extends BaseFragment {
                         return;
                     }
                     try {
+                        binding.homeMonkey.setVisibility(View.VISIBLE);
                         Uri svgUri = Uri.fromFile(monkey);
                         GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(getContext())
                                 .using(Glide.buildStreamModelLoader(Uri.class, getContext()), InputStream.class)
@@ -253,6 +256,16 @@ public class HomeFragment extends BaseFragment {
                     wallet.getAccountBalanceBananoRaw().compareTo(new BigDecimal(0)) == 1) {
                 // if balance > 0, enable send button
                 binding.homeSendButton.setEnabled(true);
+                // Tweak sizing based on how big amount is
+                String balBanano = wallet.getAccountBalanceBanano();
+                binding.amountBananoTitle.setText(balBanano);
+                if (balBanano.length() == 12) {
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+                } else if (balBanano.length() > 12) {
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+                } else {
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 38);
+                }
             } else {
                 binding.homeSendButton.setEnabled(false);
             }

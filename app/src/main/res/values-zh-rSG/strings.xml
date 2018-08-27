@@ -60,6 +60,11 @@
     <string name="settings_logout_warning_message">只要你有备份你的种子，就没有什么可担心的</string>
     <string name="settings_logout_warning_confirm"> 是</string>
     <string name="settings_logout_warning_cancel">取消</string>
+    <string name="settings_manage_header">管理</string>
+    <string name="settings_preferences_header">偏好</string>
+    <string name="settings_disable_fingerprint">验证方法</string>
+    <string name="settings_fingerprint_method">指纹</string>
+    <string name="settings_pin_method">识别码</string>
     <!-- Change Rep -->
     <string name="change_representative_header">变更代理人</string>
     <string name="change_representative_header_short">更改</string>
@@ -105,7 +110,7 @@
     <string name="sent_to">发给：</string>
     <string name="send_confirm">确认</string>
     <string name="send_cancel">取消</string>
-    <string name="send_close">关</string>
+    <string name="send_close">关闭</string>
     <string name="send_alert_dialog_ok">好</string>
     <string name="send_alert_dialog_title">输入无效</string>
     <string name="send_invalid_address">无效的目标地址</string>

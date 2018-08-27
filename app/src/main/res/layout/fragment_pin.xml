@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/nunitosans_semibold"
-            app:keypadButtonBackgroundDrawable="@drawable/pin_button_background"
+            app:keypadButtonBackgroundDrawable="@drawable/pin_button_background_normal"
             app:keypadButtonSize="62dp"
             app:keypadDeleteButtonPressedColor="@color/yellow"
             app:keypadDeleteButtonSize="24dp"

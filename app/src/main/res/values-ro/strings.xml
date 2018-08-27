@@ -50,6 +50,11 @@
     <string name="settings_logout_warning_message">Dacă aveți seed-ul salvat nu există motive de îngrijorare.</string>
     <string name="settings_logout_warning_confirm">Da</string>
     <string name="settings_logout_warning_cancel">Renunţare</string>
+    <string name="settings_manage_header">Administra</string>
+    <string name="settings_preferences_header">Preferințe</string>
+    <string name="settings_disable_fingerprint">Metoda de Autentificare</string>
+    <string name="settings_fingerprint_method">Amprentă Digitală</string>
+    <string name="settings_pin_method">PIN</string>
     <string name="change_representative_header">Schimbă\n reprezentantul</string>
     <string name="change_representative_header_short">Schimbă</string>
     <string name="change_representative_info_header">Ce este un reprezentant?</string>

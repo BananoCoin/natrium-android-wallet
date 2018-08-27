@@ -60,6 +60,11 @@
     <string name="settings_logout_warning_message">Ha elmentetted a seeded, akkor nem lehet baj.</string>
     <string name="settings_logout_warning_confirm">Igen</string>
     <string name="settings_logout_warning_cancel">Mégse</string>
+    <string name="settings_manage_header">Kezelés</string>
+    <string name="settings_preferences_header">Preferenciák</string>
+    <string name="settings_disable_fingerprint">Hitelesítési Módszer</string>
+    <string name="settings_fingerprint_method">Ujjlenyomat</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">\nKépviselő Megváltoztatása</string>
     <string name="change_representative_header_short">Megváltoztat</string>

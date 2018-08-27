@@ -60,6 +60,11 @@
     <string name="settings_logout_warning_message">Wala kang dapat ikabahala basta may back up ka ng iyong seed.</string>
     <string name="settings_logout_warning_confirm">Oo</string>
     <string name="settings_logout_warning_cancel">Kanselahin</string>
+    <string name="settings_manage_header">Pamamahala</string>
+    <string name="settings_preferences_header">Kagustuhan</string>
+    <string name="settings_disable_fingerprint">Pamamaraan Authentication</string>
+    <string name="settings_fingerprint_method">Fingerprint</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Palitan ang\nRepresentative</string>
     <string name="change_representative_header_short">Palitan</string>

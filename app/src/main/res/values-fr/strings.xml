@@ -53,6 +53,11 @@
     <string name="settings_logout_warning_message">Tant que vous avez sauvegardé votre clé privée, il n’y a pas de soucis à se faire.</string>
     <string name="settings_logout_warning_confirm">Oui</string>
     <string name="settings_logout_warning_cancel">Annuler</string>
+    <string name="settings_manage_header">Gérer</string>
+    <string name="settings_preferences_header">Préférences</string>
+    <string name="settings_disable_fingerprint">Méthode d’authentification</string>
+    <string name="settings_fingerprint_method">Empreinte digitale</string>
+    <string name="settings_pin_method">Code PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Changer le représentant</string>
     <string name="change_representative_header_short">Changer</string>

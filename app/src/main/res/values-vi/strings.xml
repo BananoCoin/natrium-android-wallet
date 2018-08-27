@@ -10,8 +10,7 @@
     <string name="intro_welcome_new_wallet">Tạo ví mới</string>
     <string name="intro_welcome_have_wallet">Nhập ví hiện có</string>
     <!-- Intro New Wallet Screens -->
-    <string name="intro_new_wallet_seed">
-Dưới đây là ví của bạn. Điều quan trọng là bạn sao lưu hạt giống này và không bao giờ lưu trữ nó dưới dạng văn bản thông thường hoặc dưới dạng ảnh chụp màn hình.</string>
+    <string name="intro_new_wallet_seed">Dưới đây là ví của bạn. Điều quan trọng là bạn sao lưu hạt giống này và không bao giờ lưu trữ nó dưới dạng văn bản thông thường hoặc dưới dạng ảnh chụp màn hình.</string>
     <string name="intro_new_wallet_seed_copied">Đã sao chép hạt giống .\n Có thể dán trong 2 phút.</string>
     <string name="intro_new_wallet_seed_header">Hạt giống</string>
     <string name="intro_new_wallet_seed_backup_header">Sao lưu hạt giống của bạn</string>
@@ -61,11 +60,16 @@ Dưới đây là ví của bạn. Điều quan trọng là bạn sao lưu hạt
     <string name="settings_logout_warning_message">Miễn là bạn đã sao lưu hạt giống, bạn không có gì phải lo lắng.</string>
     <string name="settings_logout_warning_confirm">Đồng ý</string>
     <string name="settings_logout_warning_cancel">Hủy bỏ</string>
+    <string name="settings_manage_header">Quản lí</string>
+    <string name="settings_preferences_header">Tùy Chọn</string>
+    <string name="settings_disable_fingerprint">Phương thức đặt xác thực</string>
+    <string name="settings_fingerprint_method">Dấu vân tay</string>
+    <string name="settings_pin_method">Mã PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Thay đổi\n Đại diện</string>
     <string name="change_representative_header_short">Thay đổi</string>
     <string name="change_representative_info_header">Đại diện là gì?</string>
-    <string name="change_representative_info">Đại diện là một tài khoản bỏ phiếu cho sự đồng thuận trên nền tảng Internet . Quyền biểu quyết được cân bằng theo số dư, bạn có thể ủy quyền số dư của mình để tăng số biểu quyết của đại diện mà bạn tin cậy. Người đại diện của bạn không có quyền sử dụng số tiền của bạn. Bạn nên chọn một đại diện có nhiều thời gian cho bạn và đáng tin cậy. Bạn nên chọn một đại diện có ít thời gian chết và đáng tin cậy.</string>
+    <string name="change_representative_info">Đại diện là một tài khoản bỏ phiếu cho sự đồng thuận trên nền tảng Internet . Quyền biểu quyết được cân bằng theo số dư, bạn có thể ủy quyền số dư của mình để tăng số biểu quyết của đại diện mà bạn tin cậy. Người đại diện của bạn không có quyền sử dụng số tiền của bạn. Bạn nên chọn một đại diện có nhiều thời gian cho bạn và đáng tin cậy.</string>
     <string name="change_representative_dialog_close">Đóng</string>
     <string name="change_representative_change">Thay đổi</string>
     <string name="change_representative_cancel">Hủy</string>

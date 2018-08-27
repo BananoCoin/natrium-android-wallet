@@ -60,6 +60,11 @@
     <string name="settings_logout_warning_message">As long as you\'ve backed up your seed you have nothing to worry about.</string>
     <string name="settings_logout_warning_confirm">Yes</string>
     <string name="settings_logout_warning_cancel">Cancel</string>
+    <string name="settings_manage_header">Manage</string>
+    <string name="settings_preferences_header">Preferences</string>
+    <string name="settings_disable_fingerprint">Authentication Method</string>
+    <string name="settings_fingerprint_method">Fingerprint</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Change\nRepresentative</string>
     <string name="change_representative_header_short">Change</string>

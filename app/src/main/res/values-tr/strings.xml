@@ -59,7 +59,12 @@
     <string name="settings_logout_warning_title">Emin misiniz?</string>
     <string name="settings_logout_warning_message">Seed\'inizi yedeklediyseniz endişe etmenize gerek yok.</string>
     <string name="settings_logout_warning_confirm">Evet</string>
-    <string name="settings_logout_warning_cancel">İptal</string>>
+    <string name="settings_logout_warning_cancel">İptal</string>
+    <string name="settings_manage_header">Yönet</string>
+    <string name="settings_preferences_header">Tercihler</string>
+    <string name="settings_disable_fingerprint">Doğrulama Metodu</string>
+    <string name="settings_fingerprint_method">Parmak İzi</string>
+    <string name="settings_pin_method">Pin Kodu</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Temsilciyi\nDeğiştir</string>
     <string name="change_representative_header_short">Değiştir</string>

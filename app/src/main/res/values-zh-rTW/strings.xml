@@ -60,6 +60,11 @@
     <string name="settings_logout_warning_message">只要你有備份你的種子，就沒有什麼可擔心的了。</string>
     <string name="settings_logout_warning_confirm">是</string>
     <string name="settings_logout_warning_cancel">取消</string>
+    <string name="settings_manage_header">管理</string>
+    <string name="settings_preferences_header">偏好</string>
+    <string name="settings_disable_fingerprint">驗證方法</string>
+    <string name="settings_fingerprint_method">指紋</string>
+    <string name="settings_pin_method">識別碼</string>
     <!-- Change Rep -->
     <string name="change_representative_header">變更代理人</string>
     <string name="change_representative_header_short">更改</string>
@@ -105,7 +110,7 @@
     <string name="sent_to">發給：</string>
     <string name="send_confirm">確認</string>
     <string name="send_cancel">取消</string>
-    <string name="send_close">關</string>
+    <string name="send_close">關閉</string>
     <string name="send_alert_dialog_ok">好</string>
     <string name="send_alert_dialog_title">輸入無效</string>
     <string name="send_invalid_address">無效的目標地址</string>

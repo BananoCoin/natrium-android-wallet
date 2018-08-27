@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.banano.kaliumwallet.MainActivity;
+import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
@@ -239,6 +240,51 @@ public class SettingsDialogFragment extends BaseDialogFragment {
             binding.settingsLanguageSpinner.setSelection(getIndexOfLanguage(sharedPreferencesUtil.getLanguage(), availableLanguages));
         }
 
+        // Setup fingerprint/pin option. Only display if actually has sensor and a fingerprint registered
+        if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            binding.settingsAuthBottom.setVisibility(View.VISIBLE);
+            binding.settingsAuthContainer.setVisibility(View.VISIBLE);
+            binding.icFingerprint.setVisibility(View.VISIBLE);
+            // Setup spinner
+            List<StringWithTag> authMethods = new ArrayList<>();
+            authMethods.add(new StringWithTag(getString(R.string.settings_fingerprint_method), AuthMethod.FINGERPRINT));
+            authMethods.add(new StringWithTag(getString(R.string.settings_pin_method), AuthMethod.PIN));
+            ArrayAdapter<StringWithTag> authAdapter = new ArrayAdapter<>(getContext(),
+                    R.layout.view_spinner_item,
+                    authMethods
+            );
+            authAdapter.setDropDownViewResource(R.layout.view_spinner_dropdown_item);
+            binding.settingsAuthSpinner.setVisibility(View.VISIBLE);
+            binding.settingsAuthSpinner.setAdapter(authAdapter);
+            binding.settingsAuthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    StringWithTag swt = (StringWithTag) adapterView.getItemAtPosition(i);
+                    AuthMethod key = (AuthMethod) swt.tag;
+                    if (key != null) {
+                        sharedPreferencesUtil.setAuthMethod(key);
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+            int i = 0;
+            for (StringWithTag authMethod : authMethods) {
+                if (authMethod.tag.equals(sharedPreferencesUtil.getAuthMethod())) {
+                    binding.settingsAuthSpinner.setSelection(i);
+                    break;
+                }
+                i++;
+            }
+        } else {
+            binding.settingsAuthBottom.setVisibility(View.GONE);
+            binding.settingsAuthContainer.setVisibility(View.GONE);
+            binding.icFingerprint.setVisibility(View.GONE);
+        }
+
         return view;
     }
 
@@ -373,6 +419,10 @@ public class SettingsDialogFragment extends BaseDialogFragment {
     }
 
     public class ClickHandlers {
+        public void onClickAuthMethod(View view) {
+            binding.settingsAuthSpinner.performClick();
+        }
+
         public void onClickCurrency(View view) {
             binding.settingsCurrencySpinner.performClick();
         }
@@ -390,7 +440,7 @@ public class SettingsDialogFragment extends BaseDialogFragment {
         public void onClickBackupSeed(View view) {
             Credentials credentials = realm.where(Credentials.class).findFirst();
 
-            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered() && sharedPreferencesUtil.getAuthMethod() == AuthMethod.FINGERPRINT) {
                 // show fingerprint dialog
                 LayoutInflater factory = LayoutInflater.from(getContext());
                 @SuppressLint("InflateParams") final View viewFingerprint = factory.inflate(R.layout.view_fingerprint, null);
