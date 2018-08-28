@@ -409,7 +409,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
                         .subscribe(result -> {
                             switch (result.status) {
                                 case SUCCESS:
-                                    fingerprintDialog.hide();
+                                    fingerprintDialog.dismiss();
                                     executeChange(binding.newRep.getText().toString());
                                     break;
                                 case NONFATAL_FAILURE:

@@ -395,7 +395,7 @@ public class SettingsFragment extends BaseFragment {
                         .subscribe(result -> {
                             switch (result.status) {
                                 case SUCCESS:
-                                    fingerprintDialog.hide();
+                                    fingerprintDialog.dismiss();
                                     showBackupSeedDialog();
                                     break;
                                 case NONFATAL_FAILURE:

@@ -292,7 +292,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
                         .subscribe(result -> {
                             switch (result.status) {
                                 case SUCCESS:
-                                    fingerprintDialog.hide();
+                                    fingerprintDialog.dismiss();
                                     executeSend();
                                     break;
                                 case NONFATAL_FAILURE:

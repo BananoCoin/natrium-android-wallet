@@ -6,6 +6,7 @@ package com.banano.kaliumwallet.model;
 public enum AvailableLanguage {
     DEFAULT("DEFAULT"),
     ENGLISH("ENGLISH"),
+    FRENCH("FRENCH"),
     GERMAN("GERMAN"),
     SPANISH("SPANISH"),
     HINDI("HINDI"),
@@ -37,6 +38,8 @@ public enum AvailableLanguage {
         switch (name) {
             case "ENGLISH":
                 return "en";
+            case "FRENCH":
+                return "fr";
             case "GERMAN":
                 return "de";
             case "SPANISH":
@@ -74,6 +77,8 @@ public enum AvailableLanguage {
         switch (name) {
             case "ENGLISH":
                 return "English (EN)";
+            case "FRENCH":
+                return "Français (FR)";
             case "GERMAN":
                 return "Deutsch (DE)";
             case "SPANISH":
