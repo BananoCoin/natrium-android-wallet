@@ -259,9 +259,9 @@ public class HomeFragment extends BaseFragment {
                 // Tweak sizing based on how big amount is
                 String balBanano = wallet.getAccountBalanceBanano();
                 binding.amountBananoTitle.setText(balBanano);
-                if (balBanano.length() == 12) {
+                if (balBanano.length() >= 10 && balBanano.length() < 12) {
                     binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-                } else if (balBanano.length() > 12) {
+                } else if (balBanano.length() >= 12) {
                     binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
                 } else {
                     binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 38);
