@@ -5,13 +5,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.model.KaliumWallet;
@@ -45,8 +43,6 @@ import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity implements WindowControl, ActivityWithComponent {
     private FragmentUtility mFragmentUtility;
-    private Toolbar mToolbar;
-    private TextView mToolbarTitle;
     protected ActivityComponent mActivityComponent;
 
     @Inject
@@ -156,14 +152,6 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
         mFragmentUtility = new FragmentUtility(getSupportFragmentManager());
         mFragmentUtility.setContainerViewId(R.id.container);
 
-        // set up toolbar
-        mToolbar = findViewById(R.id.toolbar);
-        mToolbarTitle = findViewById(R.id.toolbar_title);
-        setSupportActionBar(mToolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-        }
-
         // get wallet seed if it exists
         Credentials credentials = realm.where(Credentials.class).findFirst();
 
@@ -251,57 +239,6 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             int flags = view.getSystemUiVisibility();
             flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             view.setSystemUiVisibility(flags);
-        }
-    }
-
-    /**
-     * Set visibility of app toolbar
-     *
-     * @param visible true if toolbar should be visible
-     */
-    @Override
-    public void setToolbarVisible(boolean visible) {
-        if (mToolbar != null) {
-            mToolbar.setVisibility(visible ? View.VISIBLE : View.GONE);
-        }
-    }
-
-    /**
-     * Set title of the app toolbar
-     *
-     * @param title Title of the toolbar
-     */
-    @Override
-    public void setTitle(String title) {
-        if (mToolbarTitle != null) {
-            mToolbarTitle.setText(title);
-        }
-        setToolbarVisible(true);
-    }
-
-    /**
-     * Set title drawable of app toolbar
-     *
-     * @param drawable Drawable to show next to title on the toolbar
-     */
-    @Override
-    public void setTitleDrawable(int drawable) {
-        if (mToolbarTitle != null) {
-            mToolbarTitle.setCompoundDrawablesWithIntrinsicBounds(drawable, 0, 0, 0);
-        }
-        setToolbarVisible(true);
-    }
-
-    @Override
-    public void setBackEnabled(boolean enabled) {
-        if (mToolbar != null) {
-            if (enabled) {
-                mToolbar.setNavigationIcon(R.drawable.ic_back);
-                mToolbar.setNavigationOnClickListener(view -> mFragmentUtility.pop());
-            } else {
-                mToolbar.setNavigationIcon(null);
-                mToolbar.setNavigationOnClickListener(null);
-            }
         }
     }
 

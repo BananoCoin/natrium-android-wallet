@@ -5,22 +5,15 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
@@ -29,7 +22,7 @@ import android.widget.Toast;
 import com.banano.kaliumwallet.MainActivity;
 import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.AvailableLanguage;
-import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
+import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.Reprint;
 import com.hwangjr.rxbus.annotation.Subscribe;
@@ -53,7 +46,6 @@ import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.StringWithTag;
 import com.banano.kaliumwallet.network.AccountService;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
-import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import io.realm.Realm;
@@ -61,9 +53,9 @@ import io.realm.Realm;
 /**
  * Settings main screen
  */
-public class SettingsDialogFragment extends BaseDialogFragment {
+public class SettingsFragment extends BaseFragment {
     private FragmentSettingsBinding binding;
-    public static String TAG = SettingsDialogFragment.class.getSimpleName();
+    public static String TAG = SettingsFragment.class.getSimpleName();
     private AlertDialog fingerprintDialog;
     private boolean backupSeedPinEntered = false;
     private boolean languageInitialized = false;
@@ -80,11 +72,11 @@ public class SettingsDialogFragment extends BaseDialogFragment {
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
      *
-     * @return New instance of SettingsDialogFragment
+     * @return New instance of SettingsFragment
      */
-    public static SettingsDialogFragment newInstance() {
+    public static SettingsFragment newInstance() {
         Bundle args = new Bundle();
-        SettingsDialogFragment fragment = new SettingsDialogFragment();
+        SettingsFragment fragment = new SettingsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -92,7 +84,6 @@ public class SettingsDialogFragment extends BaseDialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_FRAME, R.style.AppTheme_Modal_WindowLeft);
     }
 
     @Nullable
@@ -104,55 +95,12 @@ public class SettingsDialogFragment extends BaseDialogFragment {
         }
         backupSeedPinEntered = false;
 
-        // TODO fix this, this doesn't work well after onResume
-        /*
-        if (getDialog() != null) {
-            getDialog().setCanceledOnTouchOutside(true);
-        }*/
-
         // inflate the view
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_settings, container, false);
         view = binding.getRoot();
         binding.setHandlers(new ClickHandlers());
         binding.setVersion(getString(R.string.version_display, BuildConfig.VERSION_NAME));
-
-        // Restrict width
-        Window window = getDialog().getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Point size = new Point();
-
-        Display display = window.getWindowManager().getDefaultDisplay();
-        display.getSize(size);
-
-        int width = size.x;
-
-        window.setLayout((int) (width * 0.9), WindowManager.LayoutParams.MATCH_PARENT);
-        window.setGravity(Gravity.LEFT);
-
-        // Shadow
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        WindowManager.LayoutParams windowParams = window.getAttributes();
-        windowParams.dimAmount = 0.60f;
-        windowParams.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        window.setAttributes(windowParams);
-
-        // Swipe left to dismiss
-        getDialog().getWindow().getDecorView().setOnTouchListener(new SwipeDismissTouchListener(getDialog().getWindow().getDecorView(),
-                null, new SwipeDismissTouchListener.DismissCallbacks() {
-            @Override
-            public boolean canDismiss(Object token) {
-                return true;
-            }
-
-            @Override
-            public void onDismiss(View view, Object token) {
-                dismiss();
-            }
-
-            @Override
-            public void onTap(View view) { }
-        }, SwipeDismissTouchListener.LEFT_TO_RIGHT));
 
         // subscribe to bus
         RxBus.get().register(this);
@@ -405,17 +353,15 @@ public class SettingsDialogFragment extends BaseDialogFragment {
         // show change rep dialog
         ChangeRepDialogFragment dialog = ChangeRepDialogFragment.newInstance();
         dialog.setTargetFragment(this, CHANGE_RESULT);
-        dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                ChangeRepDialogFragment.TAG);
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+        dialog.show(getFragmentManager(), ChangeRepDialogFragment.TAG);
+        getFragmentManager().executePendingTransactions();
     }
 
     private void showBackupSeedDialog() {
         // show backup seed dialog
         BackupSeedDialogFragment dialog = BackupSeedDialogFragment.newInstance();
-        dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                BackupSeedDialogFragment.TAG);
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+        dialog.show(getFragmentManager(), BackupSeedDialogFragment.TAG);
+        getFragmentManager().executePendingTransactions();
     }
 
     public class ClickHandlers {
@@ -508,7 +454,7 @@ public class SettingsDialogFragment extends BaseDialogFragment {
                                     .setMessage(R.string.settings_logout_warning_message)
                                     .setPositiveButton(yes, (dialogWarn, whichWarn) -> {
                                         RxBus.get().post(new Logout());
-                                        dismiss();
+                                        //dismiss();
                                     })
                                     .setNegativeButton(negative, (dialogWarn, whichWarn) -> {
                                         // do nothing which dismisses the dialog

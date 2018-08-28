@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -19,7 +20,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
-import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
 import com.banano.kaliumwallet.util.svg.SvgDecoder;
 import com.banano.kaliumwallet.util.svg.SvgDrawableTranscoder;
@@ -55,7 +55,6 @@ import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.KeyboardUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment;
-import com.banano.kaliumwallet.ui.settings.SettingsDialogFragment;
 
 import io.realm.Realm;
 import timber.log.Timber;
@@ -205,6 +204,7 @@ public class HomeFragment extends BaseFragment {
         view.setOnKeyListener((View v, int keyCode, KeyEvent event) -> {
             if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
                 if (binding.monkeyOverlay.getVisibility() == View.VISIBLE) {
+                    // Close monKey if open
                     hideMonkeyOverlay();
                     return true;
                 }
@@ -319,17 +319,7 @@ public class HomeFragment extends BaseFragment {
         }
 
         public void onClickSettings(View view) {
-            SettingsDialogFragment dialog = SettingsDialogFragment.newInstance();
-            dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                    SettingsDialogFragment.TAG);
-
-            executePendingTransactions();
-
-            dialog.getDialog().setOnDismissListener(dialogInterface -> {
-                if (binding != null) {
-                    updateAmounts();
-                }
-            });
+            binding.drawerLayout.openDrawer(Gravity.START);
         }
 
         public void onClickMonkey(View view) {

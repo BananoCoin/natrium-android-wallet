@@ -65,8 +65,6 @@ public class IntroNewWalletWarningFragment extends BaseFragment {
                 inflater, R.layout.fragment_intro_new_wallet_warning, container, false);
         view = binding.getRoot();
 
-        hideToolbar();
-
         // subscribe to bus
         RxBus.get().register(this);
 
