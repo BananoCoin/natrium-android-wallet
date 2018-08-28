@@ -11,6 +11,7 @@
         android:gravity="center_vertical"
         android:drawableStart="@drawable/ic_fingerprint_circle"
         android:drawablePadding="10dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginStart="25dp"
         android:layout_marginRight="25dp"

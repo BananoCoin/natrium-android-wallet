@@ -9,5 +9,4 @@ import android.view.View;
 public interface WindowControl {
     FragmentUtility getFragmentUtility();
     void setStatusBarColor(int color);
-    void setDarkIcons(View view);
 }

@@ -38,17 +38,19 @@ public class BaseFragment extends Fragment {
         setStatusBarColor(R.color.gray);
     }
 
+    /**
+     * Set status bar color to dark gray
+     */
+    protected void setStatusBarDarkGray() {
+        setStatusBarColor(R.color.gray_dark);
+    }
+
     private void setStatusBarColor(int color) {
         if (getActivity() instanceof WindowControl) {
             ((WindowControl) getActivity()).setStatusBarColor(color);
         }
     }
 
-    private void setIconsDark(View view) {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setDarkIcons(view);
-        }
-    }
     /**
      * Go back action
      */

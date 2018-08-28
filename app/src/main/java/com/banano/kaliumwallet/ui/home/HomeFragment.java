@@ -7,6 +7,7 @@ import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.ViewDragHelper;
@@ -142,7 +143,7 @@ public class HomeFragment extends BaseFragment {
         // subscribe to bus
         RxBus.get().register(this);
 
-        // set status bar to blue
+        // set status bar color
         setStatusBarGray();
 
         // inflate the view
@@ -275,6 +276,33 @@ public class HomeFragment extends BaseFragment {
                 binding.amountLocalCurrencyTitle.setVisibility(View.GONE);
                 break;
         }
+
+        // Change status bar color when drawer open
+        binding.drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
+            @Override
+            public void onDrawerSlide(@NonNull View view, float v) {
+                if (v > 0.5) {
+                    setStatusBarDarkGray();
+                } else {
+                    setStatusBarGray();
+                }
+            }
+
+            @Override
+            public void onDrawerOpened(@NonNull View view) {
+                setStatusBarDarkGray();
+            }
+
+            @Override
+            public void onDrawerClosed(@NonNull View view) {
+                setStatusBarGray();
+            }
+
+            @Override
+            public void onDrawerStateChanged(int i) {
+
+            }
+        });
 
         return view;
     }

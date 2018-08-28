@@ -265,7 +265,8 @@
                     android:onClickListener="@{handlers::onClickMonkeyFrame}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:visibility="gone">
+                    android:visibility="gone"
+                    android:elevation="5dp">
 
 
                     <android.support.v7.widget.AppCompatImageView
