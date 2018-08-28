@@ -159,7 +159,7 @@
     <style name="TextStyleSubcurrency">
         <item name="android:textColor">@color/white_60</item>
         <item name="android:fontFamily">@font/nunitosans_semibold</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <style name="TextStyleHeader">
@@ -239,7 +239,7 @@
     </style>
 
     <style name="TextStyleBananoBalance">
-        <item name="android:textSize">38sp</item>
+        <item name="android:textSize">34sp</item>
         <item name="android:textColor">@color/yellow</item>
         <item name="android:gravity">end</item>
         <item name="android:fontFamily">@font/nunitosans_extrabold</item>

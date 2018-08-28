@@ -51,7 +51,6 @@
             app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert">
 
-
             <Button
                 android:id="@+id/intro_welcome_button_new_wallet"
                 style="@style/PrimaryButton"
@@ -61,18 +60,17 @@
                 android:text="@string/intro_welcome_new_wallet"
                 android:onClick="@{handlers::onClickNewWallet}" />
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/new_wallet_icon"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 app:srcCompat="@drawable/ic_plus_icon"
                 android:elevation="5dp"
                 />
+
 
         </RelativeLayout>
 
@@ -98,9 +96,7 @@
                 android:id="@+id/import_wallet_icon"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
-                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 app:srcCompat="@drawable/ic_import"

@@ -90,7 +90,7 @@
         <TextView
             android:id="@+id/transaction_address"
             style="@style/TextStyleAddress"
-            android:textSize="13sp"
+            android:textSize="12sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{accountHistoryItem.addressShort}"

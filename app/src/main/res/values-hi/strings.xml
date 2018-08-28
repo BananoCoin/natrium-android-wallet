@@ -60,8 +60,8 @@
     <string name="settings_logout_warning_message">अगर आपने अपने बीज को बैकअप कर लिया है, तो आपको चिंता करने की कोई आवश्यकता नहीं है।</string>
     <string name="settings_logout_warning_confirm">हाँ </string>
     <string name="settings_logout_warning_cancel">रद्द (कैंसल) करें</string>
-    <string name="settings_manage_header">प्रभंध  (मैनेज) करें</string>
-    <string name="settings_preferences_header">पसंद (प्रेफरेन्सेस)</string>
+    <string name="settings_manage_header">प्रबंधन | मैनेज</string>
+    <string name="settings_preferences_header">पसंद | प्रेफरेन्सेस</string>
     <string name="settings_disable_fingerprint">प्रमाणीकरण (ऑथेंटिकेशन) का तरीका</string>
     <string name="settings_fingerprint_method">उंगली का निशान</string>
     <string name="settings_pin_method">पिन</string>

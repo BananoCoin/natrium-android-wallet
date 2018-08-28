@@ -159,7 +159,7 @@ public class KaliumWallet {
     private String formatNano(BigDecimal amount) {
         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
         numberFormat.setMaximumFractionDigits(amount.intValue() >= 1 ? 2 : 4);
-        return numberFormat.format(Double.valueOf(amount.toString())) + " NANO";
+        return numberFormat.format(Double.valueOf(amount.toString()));
     }
 
     private String formatBtc(BigDecimal amount) {

@@ -11,6 +11,7 @@ import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.AvailableCurrency;
 import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.model.PreconfiguredRepresentatives;
+import com.banano.kaliumwallet.model.PriceConversion;
 import com.github.ajalt.reprint.core.Reprint;
 
 /**
@@ -25,6 +26,7 @@ public class SharedPreferencesUtil {
     private static final String FROM_NEW_WALLET = "from_new_wallet";
     private static final String CHANGED_REPRESENTATIVE = "user_set_representative";
     private static final String AUTH_METHOD = "auth_method";
+    private static final String PRICE_CONVERSION = "price_conversion";
 
     private final SharedPreferences mPrefs;
 
@@ -139,5 +141,13 @@ public class SharedPreferencesUtil {
 
     public void setAuthMethod(AuthMethod method) {
         set(AUTH_METHOD, method.toString());
+    }
+
+    public PriceConversion getPriceConversion() {
+        return PriceConversion.valueOf(get(PRICE_CONVERSION, PriceConversion.BTC.toString()));
+    }
+
+    public void setPriceConversion(PriceConversion conversion) {
+        set(PRICE_CONVERSION, conversion.toString());
     }
 }

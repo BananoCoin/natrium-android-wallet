@@ -1,0 +1,128 @@
+<resources>
+    <string name="app_name" translatable="false">Kalium</string>
+
+    <string name="version_display" translatable="false">Kalium v%1$s</string>
+
+    <!-- API -->
+    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Selamat datang ke Kalium. Untuk bersambung, anda boleh membuat dompet yang baru atau import dompet yang sedia ada.</string>
+    <string name="intro_welcome_new_wallet">Dompet Baru</string>
+    <string name="intro_welcome_have_wallet">Import Dompet</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Di bawah adalah benih dompet anda. Amat peting agar anda menyandarkan benih anda dan jangan menyimpan sebagai teks atau tangakapan skrin.</string>
+    <string name="intro_new_wallet_seed_copied">Benih disalin ke papan kilp.\n Ia dapat ditampal selama 2 minit.</string>
+    <string name="intro_new_wallet_seed_header">Benih</string>
+    <string name="intro_new_wallet_seed_backup_header">Sandarkan Benih Anda</string>
+    <string name="intro_new_wallet_backup">Adakan anda pasti anda telah menyandarkan benih dompet anda?</string>
+    <string name="intro_new_wallet_backup_yes">Ya</string>
+    <string name="intro_new_wallet_backup_no">Tidak</string>
+    <string name="intro_new_wallet_warning_header">Sila jangan bohong.</string>
+    <string name="intro_new_wallet_warning">Anda berasa anda tidak akan menghilangkannya tetapi jika tidak disandarkan ia akan hilang.</string>
+    <string name="intro_new_wallet_not_lying">Jangan bohong!</string>
+    <string name="intro_new_wallet_okay">Okey :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Import benih</string>
+    <string name="intro_seed_info">Sila masukkan benih anda di bawah.</string>
+    <string name="intro_seed_invalid">Benih tidak sah</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Mencipta pin 4 digit anda</string>
+    <string name="pin_confirm_title">Mengesahkan pin anda</string>
+    <string name="pin_enter_title">Masukkan pin</string>
+    <string name="pin_confirm_error">Pin tidak sempadan</string>
+    <string name="pin_error">Pin yang tak sah dimasukkan</string>
+    <string name="fingerprint_text">Sensor sentuh</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Hantar</string>
+    <string name="home_receive_cta">Terima</string>
+    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="error_message">Terdapat masalah semasa menyambung.Sila cuba lagi.</string>
+    <string name="transaction_header">Transaksi</string>
+    <string name="history_sent">Dihantar</string>
+    <string name="history_received">Diterima</string>
+    <string name="transaction_details">Lihat Butiran</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Tetapan</string>
+    <string name="settings_local_currency">Tukar Mata Wang</string>
+    <string name="settings_change_language">Bahasa</string>
+    <string name="settings_default_language_string">Default Sistem</string>
+    <string name="settings_backup_seed">Sandarkan Benih</string>
+    <string name="settings_change_rep">Tukar Wakil</string>
+    <string name="settings_share">Kongsi Kalium</string>
+    <string name="settings_logout">Log Keluar</string>
+    <string name="settings_logout_alert_title">AMARAN</string>
+    <string name="settings_logout_alert_message">Log Keluar akan memadamkan benih anda dan semua data berkaitan Kalium daripada peranti ini. Jikalau benih anda tidak disandarkan, anda tidak akan mendapatkan akses kepada baki anda lagi.</string>
+    <string name="settings_logout_alert_confirm_cta">Memadam benih dan log keluar.</string>
+    <string name="settings_logout_alert_cancel_cta">Tabal</string>
+    <string name="settings_logout_warning_title">Adakah anda pasti?</string>
+    <string name="settings_logout_warning_message">Selagi anda telah menyandarkan benih anda, tiada yang perlu dirisau.</string>
+    <string name="settings_logout_warning_confirm">Ya</string>
+    <string name="settings_logout_warning_cancel">Tabal</string>
+    <string name="settings_manage_header">Mengurus</string>
+    <string name="settings_preferences_header">Keutamaan</string>
+    <string name="settings_disable_fingerprint">Kaedah Pengesahan</string>
+    <string name="settings_fingerprint_method">Cap jari</string>
+    <string name="settings_pin_method">PIN</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Mengubah\nKewakilan</string>
+    <string name="change_representative_header_short">Ubah</string>
+    <string name="change_representative_info_header">Apakah kewakilan?</string>
+    <string name="change_representative_info">Wakil adalah sesuatu akaun yang mengundi untuk konsensus rangkaian. Kuasa undi adalah ditentukan oleh baki, oleh itu anda boleh mendelegasikan baki anda untuk meningkatkan kuasa undi wakil yang dipercayai oleh anda. Wakil anda tidak mempunyai kuasa perbelanjaan atas baki anda. Anda haruslah memilih wakil yang mempunyai downtime yang minimum dan dipercayai.</string>
+    <string name="change_representative_dialog_close">Tutup</string>
+    <string name="change_representative_change">Ubah</string>
+    <string name="change_representative_cancel">Batal</string>
+    <string name="change_representative_invalid">Alamat wakil tidak sah</string>
+    <string name="change_representative_current_header">Sekarang diwakili oleh</string>
+    <string name="change_representative_hint">Masukkan kewakilan baru</string>
+    <string name="change_representative_success">Wakil berjaya ditukar</string>
+    <string name="change_representative_error">Gagal menukar wakil. Sila cuba sementara lagi.</string>
+    <string name="change_representative_fingerprint">Mengesahkan cap jari anda untuk mengubah kewakilan</string>
+    <string name="change_representative_pin">Masukkan pin untuk mengubah wakil</string>
+    <!-- Share -->
+    <string name="share_title">Kongsi melalui...</string>
+    <string name="share_extra">Semakkan Kalium! Dompet Android Banano yang rasmi</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Sandarkan Benih Dompet</string>
+    <string name="settings_fingerprint_title">Konfirm cap jari untuk menyandarkan benih dompet.</string>
+    <string name="settings_pin_title">Masukkan pin to melihat benih dompet.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Kongsi</string>
+    <string name="receive_copy_cta">Salinkan alamat</string>
+    <string name="receive_copied">Alamat disalinkan</string>
+    <string name="receive_share_title">Kongsi melalui…</string>
+    <string name="receive_card_label_one" translatable="false">$BAN</string>
+    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">Kod QR</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Dihantar dari:</string>
+    <string name="send_address_hint">Masukan Alamat</string>
+    <string name="send_amount_hint">Masukan Amaun</string>
+    <string name="send_max">Maksimum</string>
+    <string name="send_send_cta">Hantar</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Berjaya dihantarkan</string>
+    <string name="send_scan_qr">Imbaskan Kod QR</string>
+    <string name="send_sending">Sedang dihantarkan</string>
+    <string name="send_to">Ke:</string>
+    <string name="sent_to">Dihantar ke:</string>
+    <string name="send_confirm">Konfirm</string>
+    <string name="send_cancel">Batal</string>
+    <string name="send_close">Tutup</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Input tidak sah</string>
+    <string name="send_invalid_address">Alamat destinasi tidak sah</string>
+    <string name="send_insufficient_balance">Baki tak mencukupi</string>
+    <string name="send_amount_error">Jumlah yang dimasuki tidak sah</string>
+    <string name="send_generic_error">Sesuatu kesilapan telah berlaku. Sila cuba lagi.</string>
+    <string name="send_no_frontier">Akaun frontier tidak sepadan dengan mana-mana akaun (Akaun mungkin tidak dedaftar)</string>
+    <string name="send_fingerprint_description">Mengesahkan cap jari anda untuk menghantar %s Banano</string>
+    <string name="send_pin_description">Hantar %s Banano?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Imbaskan Kod QR\n Alamat Banano anda</string>
+</resources>

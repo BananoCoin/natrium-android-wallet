@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -19,8 +21,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.banano.kaliumwallet.model.PriceConversion;
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
+import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import com.banano.kaliumwallet.util.svg.SvgDecoder;
 import com.banano.kaliumwallet.util.svg.SvgDrawableTranscoder;
 import com.banano.kaliumwallet.util.svg.SvgSoftwareLayerSetter;
@@ -34,6 +38,7 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.io.File;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
 import javax.inject.Inject;
@@ -74,6 +79,9 @@ public class HomeFragment extends BaseFragment {
     public static String TAG = HomeFragment.class.getSimpleName();
     private boolean logoutClicked = false;
     private DownloadOrRetreiveFileTask downloadMonkeyTask;
+    public boolean retrying = false;
+    private Handler mHandler;
+    private Runnable mRunnable;
 
     @Inject
     AccountService accountService;
@@ -83,6 +91,9 @@ public class HomeFragment extends BaseFragment {
 
     @Inject
     Realm realm;
+
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
 
     /**
      * Create new instance of the fragment (handy pattern if any data needs to be passed to it)
@@ -126,6 +137,7 @@ public class HomeFragment extends BaseFragment {
         if (getActivity() instanceof ActivityWithComponent) {
             ((ActivityWithComponent) getActivity()).getActivityComponent().inject(this);
         }
+        retrying = false;
 
         // subscribe to bus
         RxBus.get().register(this);
@@ -150,9 +162,19 @@ public class HomeFragment extends BaseFragment {
         controller = new WalletController();
         binding.homeRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.homeRecyclerview.setAdapter(controller.getAdapter());
+        mRunnable = () -> {
+            retrying = false;
+            binding.homeSwiperefresh.setRefreshing(false);
+        };
+        mHandler = new Handler();
         binding.homeSwiperefresh.setOnRefreshListener(() -> {
-            accountService.requestUpdate();
-            new Handler().postDelayed(() -> binding.homeSwiperefresh.setRefreshing(false), 5000);
+            if (!retrying) {
+                accountService.requestUpdate();
+                if (mHandler != null && mRunnable != null) {
+                    mHandler.removeCallbacks(mRunnable);
+                    mHandler.postDelayed(mRunnable, 5000);
+                }
+            }
         });
 
         // Initialize transaction history
@@ -212,6 +234,48 @@ public class HomeFragment extends BaseFragment {
             return false;
         });
 
+        // Hack for easier settings access https://stackoverflow.com/questions/17942223/drawerlayout-modify-sensitivity
+        // assuming mDrawerLayout is an instance of android.support.v4.widget.DrawerLayout
+        try {
+
+            // get dragger responsible for the dragging of the left drawer
+            Field draggerField = DrawerLayout.class.getDeclaredField("mLeftDragger");
+            draggerField.setAccessible(true);
+            ViewDragHelper vdh = (ViewDragHelper)draggerField.get(binding.drawerLayout);
+
+            // get access to the private field which defines
+            // how far from the edge dragging can start
+            Field edgeSizeField = ViewDragHelper.class.getDeclaredField("mEdgeSize");
+            edgeSizeField.setAccessible(true);
+
+            // increase the edge size - while x2 should be good enough,
+            // try bigger values to easily see the difference
+            int origEdgeSize = (int)edgeSizeField.get(vdh);
+            int newEdgeSize = origEdgeSize * 5;
+            edgeSizeField.setInt(vdh, newEdgeSize);
+
+        } catch (Exception e) {
+            // we unexpectedly failed - e.g. if internal implementation of
+            // either ViewDragHelper or DrawerLayout changed
+        }
+
+        // Set default price
+        switch (sharedPreferencesUtil.getPriceConversion()) {
+            case BTC:
+                binding.btcPrice.setVisibility(View.VISIBLE);
+                binding.nanoPrice.setVisibility(View.GONE);
+                break;
+            case NANO:
+                binding.nanoPrice.setVisibility(View.VISIBLE);
+                binding.btcPrice.setVisibility(View.GONE);
+                break;
+            default:
+                binding.nanoPrice.setVisibility(View.GONE);
+                binding.btcPrice.setVisibility(View.GONE);
+                binding.amountLocalCurrencyTitle.setVisibility(View.GONE);
+                break;
+        }
+
         return view;
     }
 
@@ -243,10 +307,17 @@ public class HomeFragment extends BaseFragment {
     @Subscribe
     public void receiveError(SocketError error) {
         binding.homeSwiperefresh.setRefreshing(false);
-        Toast.makeText(getContext(),
-                getString(R.string.error_message),
-                Toast.LENGTH_SHORT)
-                .show();
+        // Retry refresh
+        if (!retrying) {
+            retrying = true;
+            accountService.requestUpdate();
+            if (mHandler != null && mRunnable != null) {
+                mHandler.removeCallbacks(mRunnable);
+                mHandler.postDelayed(mRunnable, 5000);
+            }
+        } else {
+            retrying = false;
+        }
     }
 
     private void updateAmounts() {
@@ -259,12 +330,12 @@ public class HomeFragment extends BaseFragment {
                 // Tweak sizing based on how big amount is
                 String balBanano = wallet.getAccountBalanceBanano();
                 binding.amountBananoTitle.setText(balBanano);
-                if (balBanano.length() >= 10 && balBanano.length() < 12) {
+                if (balBanano.length() >= 9 && balBanano.length() < 12) {
                     binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
                 } else if (balBanano.length() >= 12) {
-                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 28);
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
                 } else {
-                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 38);
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 34);
                 }
             } else {
                 binding.homeSendButton.setEnabled(false);
@@ -328,6 +399,28 @@ public class HomeFragment extends BaseFragment {
 
         public void onClickMonkeyFrame(View view) {
             hideMonkeyOverlay();
+        }
+
+        public void onClickPrice(View view) {
+            if (sharedPreferencesUtil.getPriceConversion() == PriceConversion.BTC) {
+                // Switch to NANO
+                binding.nanoPrice.setVisibility(View.VISIBLE);
+                binding.btcPrice.setVisibility(View.GONE);
+                binding.amountLocalCurrencyTitle.setVisibility(View.VISIBLE);
+                sharedPreferencesUtil.setPriceConversion(PriceConversion.NANO);
+            } else if (sharedPreferencesUtil.getPriceConversion() == PriceConversion.NANO) {
+                // Switch to NONE
+                binding.nanoPrice.setVisibility(View.GONE);
+                binding.btcPrice.setVisibility(View.GONE);
+                binding.amountLocalCurrencyTitle.setVisibility(View.GONE);
+                sharedPreferencesUtil.setPriceConversion(PriceConversion.NONE);
+            } else {
+                // Switch to BTC
+                binding.nanoPrice.setVisibility(View.GONE);
+                binding.btcPrice.setVisibility(View.VISIBLE);
+                binding.amountLocalCurrencyTitle.setVisibility(View.VISIBLE);
+                sharedPreferencesUtil.setPriceConversion(PriceConversion.BTC);
+            }
         }
 
         /**
