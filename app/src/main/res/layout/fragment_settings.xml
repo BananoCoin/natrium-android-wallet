@@ -63,9 +63,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/settings_manage_header"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/top_line"/>
 
@@ -82,7 +82,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     app:srcCompat="@drawable/ic_backup_seed"
                     android:elevation="5dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +93,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:paddingStart="70dp"
-                    android:paddingEnd="70dp"
                     android:background="@drawable/bg_settings_item"
                     android:orientation="vertical"
                     android:clickable="true"
@@ -124,7 +122,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     app:srcCompat="@drawable/ic_change_rep"
                     android:elevation="5dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +133,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:paddingStart="70dp"
-                    android:paddingEnd="70dp"
                     android:background="@drawable/bg_settings_item"
                     android:orientation="vertical"
                     android:clickable="true"
@@ -166,7 +162,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     app:srcCompat="@drawable/ic_share"
                     android:elevation="5dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -179,7 +174,6 @@
                     android:layout_height="65dp"
                     android:background="@drawable/bg_settings_item"
                     android:paddingStart="70dp"
-                    android:paddingEnd="70dp"
                     android:orientation="vertical"
                     android:clickable="true"
                     android:focusable="true"
@@ -208,7 +202,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     app:srcCompat="@drawable/ic_lock"
                     android:elevation="5dp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -221,7 +214,6 @@
                     android:layout_height="65dp"
                     android:background="@drawable/bg_settings_item"
                     android:paddingStart="70dp"
-                    android:paddingEnd="70dp"
                     android:orientation="vertical"
                     android:clickable="true"
                     android:focusable="true"
@@ -254,9 +246,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     android:layout_marginTop="30dp"
                     android:text="@string/settings_preferences_header"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/settings_lock_bottom"/>
 
 
@@ -275,7 +267,6 @@
                     app:srcCompat="@drawable/ic_fingerprint_yellow"
                     android:paddingStart="30dp"
                     android:visibility="gone"
-                    android:paddingEnd="30dp"
                     android:elevation="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_auth_container"
@@ -289,7 +280,6 @@
                     android:paddingTop="9dp"
                     android:visibility="gone"
                     android:paddingStart="70dp"
-                    android:paddingEnd="70dp"
                     android:orientation="vertical"
                     android:onClick="@{handlers::onClickAuthMethod}"
                     android:clickable="true"
@@ -311,9 +301,7 @@
                         android:theme="@style/SpinnerTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        app:layout_constraintBottom_toTopOf="@+id/settings_currency_bottom"
-                        />
+                        android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <View
@@ -330,7 +318,6 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_currency"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     android:elevation="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_currency_container"
@@ -343,7 +330,6 @@
                     android:background="@drawable/bg_settings_item"
                     android:paddingTop="9dp"
                     android:paddingStart="70dp"
-                    android:paddingEnd="70dp"
                     android:orientation="vertical"
                     android:onClick="@{handlers::onClickCurrency}"
                     android:clickable="true"
@@ -366,7 +352,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        app:layout_constraintBottom_toTopOf="@+id/settings_currency_bottom"
                         />
                 </LinearLayout>
 
@@ -383,7 +368,6 @@
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/ic_language_icon"
                     android:paddingStart="30dp"
-                    android:paddingEnd="30dp"
                     android:elevation="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_language_container"
@@ -396,7 +380,6 @@
                     android:background="@drawable/bg_settings_item"
                     android:paddingTop="9dp"
                     android:paddingStart="70dp"
-                    android:paddingEnd="70dp"
                     android:orientation="vertical"
                     android:onClick="@{handlers::onClickLanguage}"
                     android:clickable="true"
@@ -418,9 +401,7 @@
                         android:theme="@style/SpinnerTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        app:layout_constraintBottom_toTopOf="@+id/settings_language_bottom"
-                        />
+                        android:gravity="center_vertical" />
                 </LinearLayout>
 
                 <View

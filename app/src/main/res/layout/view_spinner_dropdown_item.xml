@@ -3,7 +3,7 @@
 <TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/bg_spinner_item"
-    android:gravity="left"
+    android:gravity="start"
     style="@style/TextStyleNormalPrimary"
     android:textSize="16sp"
     android:layout_width="match_parent"
@@ -11,6 +11,6 @@
     android:textColor="@color/white_90"
     android:paddingTop="20dp"
     android:paddingBottom="20dp"
-    android:paddingLeft="30dp"
-    android:paddingRight="60dp"
+    android:paddingStart="30dp"
+    android:paddingEnd="60dp"
     />
