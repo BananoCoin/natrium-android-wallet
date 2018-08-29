@@ -153,5 +153,9 @@ public class TranDetailsFragment extends BaseDialogFragment {
                 ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
             }
         }
+
+        public void onClickClose(View view) {
+            dismiss();
+        }
     }
 }
