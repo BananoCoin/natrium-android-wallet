@@ -4,30 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.FileProvider;
-import android.text.Html;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.github.sumimakito.awesomeqr.AwesomeQRCode;
@@ -56,7 +49,6 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
     public static String TAG = ReceiveDialogFragment.class.getSimpleName();
     private static final int QRCODE_SIZE = 240;
     private static final String TEMP_FILE_NAME = "bananoreceive.png";
-    private static final String ADDRESS_KEY = "com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment.Address";
     private Address address;
     private String fileName;
     private Runnable mRunnable;
@@ -108,19 +100,8 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
 
         // Restrict height
         Window window = getDialog().getWindow();
-        Point size = new Point();
 
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT_SMALLER;
-        } else {
-            ViewGroup.MarginLayoutParams qrMargin = (ViewGroup.MarginLayoutParams)binding.qrContainer.getLayoutParams();
-            qrMargin.bottomMargin = (int)UIUtil.convertDpToPixel(5, getContext());
-            binding.qrContainer.setLayoutParams(qrMargin);
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(true, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow
@@ -159,6 +140,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         }
 
         // Tweak layout for shorter devices
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
         float ratio = ((float)metrics.heightPixels / (float)metrics.widthPixels);
         if (ratio < 1.8) {
             binding.receiveOuter.getLayoutParams().height = (int)UIUtil.convertDpToPixel(260, getContext());

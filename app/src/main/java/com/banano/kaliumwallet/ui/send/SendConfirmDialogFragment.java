@@ -13,7 +13,6 @@ import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -126,14 +125,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         // Restrict height
         Window window = getDialog().getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // colorize address text

@@ -1,5 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_visible">20dp</dimen>
-    <dimen name="margin_gone">0dp</dimen>
+    <!-- General -->
+    <dimen name="text_size_normal">13sp</dimen>
+    <dimen name="text_size_header">25sp</dimen>
+    <dimen name="text_size_paragraph">16sp</dimen>
+    <dimen name="address_text_size">14sp</dimen>
+    <dimen name="address_width_three_row">195dp</dimen>
+    <dimen name="input_width">255dp</dimen>
+
+    <!-- TX history -->
+    <dimen name="tx_address_text_size">10sp</dimen>
+    <dimen name="tx_card_padding">10dp</dimen>
+    <dimen name="tx_image_size">20dp</dimen>
+
+    <!-- Buttons -->
+    <dimen name="button_text_size">20sp</dimen>
+    <dimen name="button_padding_bottom">15dp</dimen>
+    <dimen name="button_padding_top">13dp</dimen>
+
+    <!-- Main Card -->
+    <dimen name="top_card_height">110dp</dimen>
+    <dimen name="tx_history_top_margin">170dp</dimen>
+    <dimen name="main_balance_lg_text">30sp</dimen>
+    <dimen name="main_balance_md_text">28sp</dimen>
+    <dimen name="main_balance_sm_text">24sp</dimen>
+    <dimen name="subcurrency_text">11sp</dimen>
+    <dimen name="monkey_width">90dp</dimen>
+    <dimen name="monkey_height">90dp</dimen>
+
+    <!-- Settings -->
+    <dimen name="settings_category_text_size">16sp</dimen>
+    <dimen name="settings_item_height">55dp</dimen>
+
+    <!-- Receive -->
+    <dimen name="receive_card_margin_top">20dp</dimen>
+
+    <!-- Send -->
+    <dimen name="text_size_max_button">12sp</dimen>
+    <dimen name="send_header_margin">25dp</dimen>
+    <dimen name="send_header_margin_two">30dp</dimen>
+    <dimen name="send_paste_button">35dp</dimen>
 </resources>

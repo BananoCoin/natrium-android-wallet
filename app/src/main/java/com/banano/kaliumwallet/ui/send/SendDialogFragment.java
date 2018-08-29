@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,8 +14,6 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +39,6 @@ import com.banano.kaliumwallet.ui.scan.ScanActivity;
 import com.banano.kaliumwallet.util.NumberUtil;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Locale;
 
@@ -118,22 +114,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         // Restrict height
         Window window = getDialog().getWindow();
-        Point size = new Point();
-
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
-        } else {
-            ViewGroup.MarginLayoutParams headerMargin = (ViewGroup.MarginLayoutParams)binding.sendFromHeader.getLayoutParams();
-            headerMargin.topMargin = (int)UIUtil.convertDpToPixel(15, getContext());
-            binding.sendFromHeader.setLayoutParams(headerMargin);
-            ViewGroup.MarginLayoutParams sendAmountMargin = (ViewGroup.MarginLayoutParams)binding.sendAmountContainer.getLayoutParams();
-            sendAmountMargin.topMargin = (int)UIUtil.convertDpToPixel(15, getContext());
-            binding.sendAmountContainer.setLayoutParams(sendAmountMargin);
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow

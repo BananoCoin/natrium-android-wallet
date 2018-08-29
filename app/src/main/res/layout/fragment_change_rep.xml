@@ -81,7 +81,7 @@
             <TextView
                 android:id="@+id/old_representative"
                 style="@style/TextStyleParagraph"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_normal"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,19 +92,20 @@
                 style="@style/TextStyleAddressAlt"
                 android:background="@drawable/bg_edittext"
                 android:layout_height="wrap_content"
-                android:layout_width="300dp"
+                android:layout_width="@dimen/input_width"
+                android:textSize="@dimen/text_size_normal"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
+                android:paddingLeft="35dp"
+                android:paddingRight="35dp"
                 android:textAlignment="center"
                 tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
 
             <RelativeLayout
                 android:id="@+id/new_rep_container"
-                android:layout_width="300dp"
+                android:layout_width="@dimen/input_width"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
@@ -116,7 +117,7 @@
                     android:id="@+id/new_rep"
                     android:fontFamily="@font/nunitosans_extralight"
                     android:background="@drawable/bg_edittext"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_size_normal"
                     android:textColor="@color/white_60"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
@@ -134,12 +135,13 @@
                     android:hint="@string/change_representative_hint"
                     android:textColorHint="@color/white_60"
                     tools:fontFamily="@font/overpass_mono_light"
-                    tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg"/>
+                    tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg"
+                    />
 
                 <android.support.v7.widget.AppCompatImageButton
                     android:id="@+id/new_rep_paste"
                     android:fontFamily="@font/nunitosans_extralight"
-                    android:layout_width="45dp"
+                    android:layout_width="@dimen/send_paste_button"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:layout_marginEnd="10dp"

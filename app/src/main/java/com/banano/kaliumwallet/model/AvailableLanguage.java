@@ -6,21 +6,22 @@ package com.banano.kaliumwallet.model;
 public enum AvailableLanguage {
     DEFAULT("DEFAULT"),
     ENGLISH("ENGLISH"),
+    CHINESE_SIMPLIFIED("CHINESE_SIMPLIFIED"),
+    CHINESE_TRADITIONAL("CHINESE_TRADITIONAL"),
+    DUTCH("DUTCH"),
     FRENCH("FRENCH"),
     GERMAN("GERMAN"),
-    SPANISH("SPANISH"),
+    HEBREW("HEBREW"),
     HINDI("HINDI"),
     HUNGARIAN("HUNGARIAN"),
-    HEBREW("HEBREW"),
-    DUTCH("DUTCH"),
+    MALAY("MALAY"),
     PORTUGUESE("PORTUGUESE"),
     RUSSIAN("RUSSIAN"),
+    SPANISH("SPANISH"),
     SWEDISH("SWEDISH"),
     TAGALOG("TAGALOG"),
     TURKISH("TURKISH"),
-    VIETNAMESE("VIETNAMESE"),
-    CHINESE_SIMPLIFIED("CHINESE_SIMPLIFIED"),
-    CHINESE_TRADITIONAL("CHINESE_TRADITIONAL");
+    VIETNAMESE("VIETNAMESE");
 
 
     private String name;
@@ -68,6 +69,8 @@ public enum AvailableLanguage {
                 return "zh";
             case "CHINESE_TRADITIONAL":
                 return "zh-rHK";
+            case "MALAY":
+                return "ms";
             default:
                 return "DEFAULT";
         }
@@ -107,6 +110,8 @@ public enum AvailableLanguage {
                 return "简化字 (ZH)";
             case "CHINESE_TRADITIONAL":
                 return "正體字 (ZH-RHK)";
+            case "MALAY":
+                return "Bahasa Melayu (MS)";
             default:
                 return "DEFAULT";
         }

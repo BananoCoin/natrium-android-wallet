@@ -359,11 +359,11 @@ public class HomeFragment extends BaseFragment {
                 String balBanano = wallet.getAccountBalanceBanano();
                 binding.amountBananoTitle.setText(balBanano);
                 if (balBanano.length() >= 9 && balBanano.length() < 12) {
-                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.main_balance_md_text));
                 } else if (balBanano.length() >= 12) {
-                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.main_balance_sm_text));
                 } else {
-                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, 34);
+                    binding.amountBananoTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.main_balance_lg_text));
                 }
             } else {
                 binding.homeSendButton.setEnabled(false);

@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,8 +18,6 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -122,19 +119,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
         // Restrict height
         Window window = getDialog().getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
-        } else {
-            ViewGroup.MarginLayoutParams topMargin = (ViewGroup.MarginLayoutParams)binding.repFieldContainer.getLayoutParams();
-            topMargin.topMargin = (int)UIUtil.convertDpToPixel(25, getContext());
-            binding.repFieldContainer.setLayoutParams(topMargin);
-            binding.changeRepHeader.setText(getString(R.string.change_representative_header_short));
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow

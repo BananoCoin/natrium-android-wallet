@@ -3,13 +3,10 @@ package com.banano.kaliumwallet.ui.settings;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,13 +75,7 @@ public class BackupSeedDialogFragment extends BaseDialogFragment {
         Window window = getDialog().getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow

@@ -16,8 +16,6 @@
             type="com.banano.kaliumwallet.ui.settings.SettingsFragment.ClickHandlers" />
     </data>
 
-    <!-- TODO This whole thing can probably be re-written and use a recyclerview in a single constraintlayout -->
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -57,7 +55,7 @@
                 <TextView
                     android:id="@+id/manage_category_text"
                     style="@style/TextStyleLightPrimary"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/settings_category_text_size"
                     android:textStyle=""
                     android:textColor="@color/white_60"
                     android:layout_width="wrap_content"
@@ -91,7 +89,7 @@
                 <LinearLayout
                     android:id="@+id/settings_seed_container"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="@dimen/settings_item_height"
                     android:paddingStart="70dp"
                     android:background="@drawable/bg_settings_item"
                     android:orientation="vertical"
@@ -131,7 +129,7 @@
                 <LinearLayout
                     android:id="@+id/settings_rep_container"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="@dimen/settings_item_height"
                     android:paddingStart="70dp"
                     android:background="@drawable/bg_settings_item"
                     android:orientation="vertical"
@@ -171,7 +169,7 @@
                 <LinearLayout
                     android:id="@+id/settings_share_container"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
                     android:paddingStart="70dp"
                     android:orientation="vertical"
@@ -211,7 +209,7 @@
                 <LinearLayout
                     android:id="@+id/settings_lock_container"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
                     android:paddingStart="70dp"
                     android:orientation="vertical"
@@ -240,7 +238,7 @@
                 <TextView
                     android:id="@+id/prefs_category_text"
                     style="@style/TextStyleLightPrimary"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/settings_category_text_size"
                     android:textStyle=""
                     android:textColor="@color/white_60"
                     android:layout_width="wrap_content"
@@ -275,7 +273,7 @@
                 <LinearLayout
                     android:id="@+id/settings_auth_container"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
                     android:paddingTop="9dp"
                     android:visibility="gone"
@@ -326,7 +324,7 @@
                 <LinearLayout
                     android:id="@+id/settings_currency_container"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
                     android:paddingTop="9dp"
                     android:paddingStart="70dp"
@@ -376,7 +374,7 @@
                 <LinearLayout
                     android:id="@+id/settings_language_container"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
                     android:paddingTop="9dp"
                     android:paddingStart="70dp"
