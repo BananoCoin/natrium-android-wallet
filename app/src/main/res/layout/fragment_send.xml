@@ -130,7 +130,7 @@
                 android:text="@string/send_max"
                 android:onClick="@{handlers::onClickMax}"
                 android:textAllCaps="true"
-                android:textColor="@color/yellow_dark_transparent" />
+                android:textColor="@color/yellow" />
 
         </RelativeLayout>
 

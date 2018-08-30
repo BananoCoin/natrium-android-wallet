@@ -53,7 +53,7 @@ dependencies {
     final DAGGER_VERSION = '2.14.1'
     final ESPRESSO_VERSION = '3.0.1'
     final FINGERPRINT_VERSION = '3.2.1'
-    final GLIDE_VERSION = '3.6.0'
+    final GLIDE_VERSION = '4.8.0'
     final GSON_FIRE_VERSION = '1.8.2'
     final GSON_VERSION = '2.8.2'
     final J_UNIT_VERSION = '4.12'
@@ -101,6 +101,7 @@ dependencies {
 
     // GLIDE
     implementation "com.github.bumptech.glide:glide:$GLIDE_VERSION"
+    annotationProcessor "com.github.bumptech.glide:compiler:$GLIDE_VERSION"
 
     // JSON Serialization
     implementation "com.google.code.gson:gson:$GSON_VERSION"

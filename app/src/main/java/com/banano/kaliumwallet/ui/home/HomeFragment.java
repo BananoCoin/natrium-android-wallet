@@ -20,25 +20,17 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.banano.kaliumwallet.model.PriceConversion;
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
-import com.banano.kaliumwallet.util.svg.SvgDecoder;
-import com.banano.kaliumwallet.util.svg.SvgDrawableTranscoder;
 import com.banano.kaliumwallet.util.svg.SvgSoftwareLayerSetter;
-import com.bumptech.glide.GenericRequestBuilder;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.model.StreamEncoder;
-import com.bumptech.glide.load.resource.file.FileToStreamDecoder;
-import com.caverock.androidsvg.SVG;
+import com.bumptech.glide.RequestBuilder;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.io.File;
-import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 
@@ -64,6 +56,8 @@ import com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment;
 
 import io.realm.Realm;
 import timber.log.Timber;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 /**
  * Home Wallet Screen
@@ -201,17 +195,13 @@ public class HomeFragment extends BaseFragment {
                     try {
                         binding.homeMonkey.setVisibility(View.VISIBLE);
                         Uri svgUri = Uri.fromFile(monkey);
-                        GenericRequestBuilder<Uri, InputStream, SVG, PictureDrawable> requestBuilder = Glide.with(getContext())
-                                .using(Glide.buildStreamModelLoader(Uri.class, getContext()), InputStream.class)
-                                .from(Uri.class)
-                                .as(SVG.class)
-                                .transcode(new SvgDrawableTranscoder(), PictureDrawable.class)
-                                .sourceEncoder(new StreamEncoder())
-                                .cacheDecoder(new FileToStreamDecoder<>(new SvgDecoder()))
-                                .decoder(new SvgDecoder())
-                                .listener(new SvgSoftwareLayerSetter<>());
-                        requestBuilder.diskCacheStrategy(DiskCacheStrategy.NONE).load(svgUri).into(binding.homeMonkey);
-                        requestBuilder.diskCacheStrategy(DiskCacheStrategy.NONE).load(svgUri).into(binding.monkeyOverlayImg);
+                        RequestBuilder<PictureDrawable> requestBuilder;
+                        requestBuilder = Glide.with(getContext())
+                                .as(PictureDrawable.class)
+                                .transition(withCrossFade())
+                                .listener(new SvgSoftwareLayerSetter());
+                        requestBuilder.load(svgUri).into(binding.homeMonkey);
+                        requestBuilder.load(svgUri).into(binding.monkeyOverlayImg);
                     } catch (Exception e) {
                         Timber.e("Failed to load monKey file");
                         e.printStackTrace();
