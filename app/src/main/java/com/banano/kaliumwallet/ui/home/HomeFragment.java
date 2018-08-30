@@ -355,6 +355,7 @@ public class HomeFragment extends BaseFragment {
                     wallet.getAccountBalanceBananoRaw().compareTo(new BigDecimal(0)) == 1) {
                 // if balance > 0, enable send button
                 binding.homeSendButton.setEnabled(true);
+                binding.homeSendButton.setBackground(getResources().getDrawable(R.drawable.bg_solid_button));
                 // Tweak sizing based on how big amount is
                 String balBanano = wallet.getAccountBalanceBanano();
                 binding.amountBananoTitle.setText(balBanano);
@@ -367,6 +368,7 @@ public class HomeFragment extends BaseFragment {
                 }
             } else {
                 binding.homeSendButton.setEnabled(false);
+                binding.homeSendButton.setBackground(getResources().getDrawable(R.drawable.bg_solid_button_disabled));
             }
         }
     }

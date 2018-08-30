@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- General -->
+    <dimen name="btn_radius">30dp</dimen>
     <dimen name="text_size_normal">13sp</dimen>
     <dimen name="text_size_header">25sp</dimen>
     <dimen name="text_size_paragraph">16sp</dimen>

@@ -1,7 +1,9 @@
 package com.banano.kaliumwallet.ui.intro;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.FragmentUtility;
+import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import io.realm.Realm;
@@ -49,6 +52,14 @@ public class IntroWelcomeFragment extends BaseFragment {
 
         // bind data to view
         binding.setHandlers(new ClickHandlers());
+
+        // Set drawable left (programatically for compat)
+        Drawable startPlusDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.ic_plus_icon);
+        binding.introWelcomeButtonNewWallet.setCompoundDrawablesRelativeWithIntrinsicBounds(startPlusDrawable, null, null, null);
+        binding.introWelcomeButtonNewWallet.setCompoundDrawablePadding((int)(UIUtil.convertDpToPixel(34, getContext()) * -1));
+        Drawable startImportDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.ic_import);
+        binding.introWelcomeButtonHaveWallet.setCompoundDrawablesRelativeWithIntrinsicBounds(startImportDrawable, null, null, null);
+        binding.introWelcomeButtonHaveWallet.setCompoundDrawablePadding((int)(UIUtil.convertDpToPixel(34, getContext()) * -1));
 
         return view;
     }

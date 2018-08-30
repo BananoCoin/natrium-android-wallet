@@ -102,6 +102,7 @@
         <Button
             android:id="@+id/receive_button_copy"
             style="@style/PrimaryButton"
+            android:background="@drawable/bg_solid_button_normal"
             android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

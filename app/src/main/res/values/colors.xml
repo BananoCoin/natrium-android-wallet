@@ -2,6 +2,7 @@
 <resources>
     <color name="white_90">#E6FFFFFF</color>
     <color name="white_60">#99FFFFFF</color>
+    <color name="white_40">#64FFFFFF</color>
     <color name="white_20">#33FFFFFF</color>
     <color name="white_10">#1AFFFFFF</color>
     <color name="black_25">#40000000</color>
@@ -19,6 +20,7 @@
     <color name="yellow_dark_transparent">#93FBDD11</color>
     <color name="burnt_yellow">#FBDD11</color>
     <color name="green_light">#4CBF4B</color>
+    <color name="green_light_transparent">#934CBF4B</color>
     <color name="green_dark">#276126</color>
     <color name="error">#E6ff0000</color>
 

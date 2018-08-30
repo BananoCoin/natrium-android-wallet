@@ -53,6 +53,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
     private String fileName;
     private Runnable mRunnable;
     private Handler mHandler;
+    private boolean copyRunning = false;
 
     @Inject
     Realm realm;
@@ -85,6 +86,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         if (getDialog() != null) {
             getDialog().setCanceledOnTouchOutside(true);
         }
+        copyRunning = false;
 
         // get data
         Credentials credentials = realm.where(Credentials.class).findFirst();
@@ -182,7 +184,8 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         // Set runnable to reset address copied text
         mHandler = new Handler();
         mRunnable = () -> {
-            binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_solid_button));
+            copyRunning = false;
+            binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_solid_button_normal));
             binding.receiveButtonCopy.setTextColor(getResources().getColor(R.color.gray));
             binding.receiveButtonCopy.setText(getString(R.string.receive_copy_cta));
         };
@@ -313,18 +316,22 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
 
         public void onClickCopy(View view) {
             // copy address to clipboard
-            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            android.content.ClipData clip = android.content.ClipData.newPlainText(ClipboardAlarmReceiver.CLIPBOARD_NAME, address.getAddress());
-            if (clipboard != null) {
-                clipboard.setPrimaryClip(clip);
-            }
+            if (!copyRunning) {
+                copyRunning = true;
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText(ClipboardAlarmReceiver.CLIPBOARD_NAME, address.getAddress());
+                if (clipboard != null) {
+                    clipboard.setPrimaryClip(clip);
+                }
 
-            binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button));
-            binding.receiveButtonCopy.setTextColor(getResources().getColor(R.color.green_dark));
-            binding.receiveButtonCopy.setText(getString(R.string.receive_copied));
+                binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button));
+                binding.receiveButtonCopy.setTextColor(getResources().getColor(R.color.green_dark));
+                binding.receiveButtonCopy.setText(getString(R.string.receive_copied));
 
-            if (mHandler != null) {
-                mHandler.postDelayed(mRunnable, 700);
+                if (mHandler != null) {
+                    mHandler.removeCallbacks(mRunnable);
+                    mHandler.postDelayed(mRunnable, 900);
+                }
             }
         }
     }
