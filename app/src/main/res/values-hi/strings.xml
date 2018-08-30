@@ -75,7 +75,7 @@
     <string name="change_representative_cancel">रद्द (कैंसल) करें</string>
     <string name="change_representative_invalid">प्रतिनिधि (रिप्रेजेन्टेटिव) का पता गलत है </string>
     <string name="change_representative_current_header">वर्तमान प्रतिनिधि (रिप्रेजेन्टेटिव)</string>
-    <string name="change_representative_hint">नए प्रतिनिधि (रिप्रेजेन्टेटिव) का पता दर्ज करें</string>
+    <string name="change_representative_hint">नए प्रतिनिधि का पता दर्ज करें</string>
     <string name="change_representative_success">प्रतिनिधि (रिप्रेजेन्टेटिव) सफलतापूर्वक बदल गया</string>
     <string name="change_representative_error">प्रतिनिधि (रिप्रेजेन्टेटिव) बदलने में असफल। बाद में फिर से प्रयास करें।</string>
     <!-- Share -->
