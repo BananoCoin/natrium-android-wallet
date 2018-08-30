@@ -157,6 +157,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         binding.sendAddress.addTextChangedListener(new TextWatcher() {
             String lastText = "";
             boolean isColorized = false;
+            boolean fromColorization = false;
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -167,8 +168,19 @@ public class SendDialogFragment extends BaseDialogFragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = binding.sendAddress.getText().toString().trim();
-                // TODO colorize address on double paste
                 if (curText.equals(lastText)) {
+                    if (fromColorization) {
+                        fromColorization = false;
+                    } else {
+                        Address address = new Address(curText);
+                        if (address.isValidAddress()) {
+                            hideAddressError();
+                            isColorized = true;
+                            fromColorization = true;
+                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.sendAddress.setSelection(address.getAddress().length());
+                        }
+                    }
                     return;
                 } else if (curText.length() > 0 && lastText.length() == 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
@@ -185,10 +197,12 @@ public class SendDialogFragment extends BaseDialogFragment {
                     if (address.isValidAddress()) {
                         hideAddressError();
                         isColorized = true;
+                        fromColorization = true;
                         binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
                         binding.sendAddress.setSelection(address.getAddress().length());
                     } else {
                         if (isColorized) {
+                            fromColorization = false;
                             binding.sendAddress.setText(new SpannableString(curText));
                             binding.sendAddress.setSelection(curText.length());
                             isColorized = false;

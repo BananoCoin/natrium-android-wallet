@@ -165,6 +165,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
         binding.newRep.addTextChangedListener(new TextWatcher() {
             String lastText = "";
             boolean isColorized = false;
+            boolean fromColorization = false;
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -175,8 +176,19 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = binding.newRep.getText().toString().trim();
-                // TODO colorize address on double paste
                 if (curText.equals(lastText)) {
+                    if (fromColorization) {
+                        fromColorization = false;
+                    } else {
+                        Address address = new Address(curText);
+                        if (address.isValidAddress()) {
+                            hideAddressError();
+                            isColorized = true;
+                            fromColorization = true;
+                            binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.newRep.setSelection(address.getAddress().length());
+                        }
+                    }
                     return;
                 } else if (curText.length() > 0 && lastText.length() == 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
@@ -193,10 +205,12 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
                     if (address.isValidAddress()) {
                         hideAddressError();
                         isColorized = true;
+                        fromColorization = true;
                         binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
                         binding.newRep.setSelection(address.getAddress().length());
                     } else {
                         if (isColorized) {
+                            fromColorization = false;
                             binding.newRep.setText(new SpannableString(curText));
                             binding.newRep.setSelection(curText.length());
                             isColorized = false;

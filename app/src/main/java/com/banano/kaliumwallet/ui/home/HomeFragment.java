@@ -72,7 +72,6 @@ public class HomeFragment extends BaseFragment {
     private FragmentHomeBinding binding;
     private WalletController controller;
     public static String TAG = HomeFragment.class.getSimpleName();
-    private boolean logoutClicked = false;
     private DownloadOrRetreiveFileTask downloadMonkeyTask;
     public boolean retrying = false;
     private Handler mHandler;
