@@ -11,7 +11,7 @@ android {
         applicationId "com.banano.kaliumwallet"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 17
+        versionCode 18
         versionName "0.9.8"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
