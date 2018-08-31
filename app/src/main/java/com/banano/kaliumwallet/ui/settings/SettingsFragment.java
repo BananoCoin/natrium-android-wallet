@@ -161,6 +161,8 @@ public class SettingsFragment extends BaseFragment {
                     Locale locale;
                     if (key == AvailableLanguage.DEFAULT) {
                         locale = sharedPreferencesUtil.getDefaultLocale();
+                    } else if (key == AvailableLanguage.CHINESE_TRADITIONAL) {
+                        locale = Locale.TRADITIONAL_CHINESE;
                     } else {
                         locale = new Locale(key.getLocaleString());
                     }

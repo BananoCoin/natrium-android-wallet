@@ -13,4 +13,5 @@
     android:paddingBottom="20dp"
     android:paddingStart="30dp"
     android:paddingEnd="60dp"
+    android:layoutDirection="ltr"
     />

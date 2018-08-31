@@ -68,7 +68,7 @@ public enum AvailableLanguage {
             case "CHINESE_SIMPLIFIED":
                 return "zh";
             case "CHINESE_TRADITIONAL":
-                return "zh-rHK";
+                return "zh-tw";
             case "MALAY":
                 return "ms";
             default:
@@ -91,7 +91,7 @@ public enum AvailableLanguage {
             case "HUNGARIAN":
                 return "Magyar (HU)";
             case "HEBREW":
-                return "עִבְרִית (IW)";
+                return "Hebrew (HE)";
             case "DUTCH":
                 return "Nederlands (NL)";
             case "PORTUGUESE":
@@ -109,7 +109,7 @@ public enum AvailableLanguage {
             case "CHINESE_SIMPLIFIED":
                 return "简化字 (ZH)";
             case "CHINESE_TRADITIONAL":
-                return "正體字 (ZH-RHK)";
+                return "正體字 (ZH-TW)";
             case "MALAY":
                 return "Bahasa Melayu (MS)";
             default:
