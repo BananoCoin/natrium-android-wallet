@@ -116,7 +116,7 @@
     <string name="send_close">Kapat</string>
     <string name="send_alert_dialog_ok">Tamam</string>
     <string name="send_alert_dialog_title">Geçersiz Girdi</string>
-    <string name="send_invalid_address">Geçersiz Varış Adresi</string>
+    <string name="send_invalid_address">Geçersiz bir adres girdiniz</string>
     <string name="send_insufficient_balance">Yetersiz Bakiye</string>
     <string name="send_enter_address">Lütfen bir adres girin</string>
     <string name="send_enter_amount">Lütfen bir miktar girin</string>
