@@ -115,7 +115,7 @@
     <string name="send_close">Close</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Invalid Input</string>
-    <string name="send_invalid_address">Invalid Destination Address</string>
+    <string name="send_invalid_address">Address entered was invalid</string>
     <string name="send_insufficient_balance">Insufficient Balance</string>
     <string name="send_enter_address">Please enter an address</string>
     <string name="send_enter_amount">Please enter an amount</string>
