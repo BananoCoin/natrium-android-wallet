@@ -38,7 +38,7 @@
     <string name="home_receive_cta">İste</string>
     <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Bağlantı hatası oluştu. Lütfen tekrar deneyin.</string>
-    <string name="transaction_header">Transferler</string>
+    <string name="transaction_header">İşlemler</string>
     <string name="history_sent">Gönderildi</string>
     <string name="history_received">Alındı</string>
     <string name="transaction_details">Ayrıntılar</string>
