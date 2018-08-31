@@ -139,7 +139,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
                     clipboard.setPrimaryClip(clip);
                 }
 
-                binding.tranDetailsCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button));
+                binding.tranDetailsCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button_normal));
                 binding.tranDetailsCopy.setTextColor(getResources().getColor(R.color.green_dark));
                 binding.tranDetailsCopy.setText(getString(R.string.receive_copied));
 

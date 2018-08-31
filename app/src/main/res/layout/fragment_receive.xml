@@ -94,27 +94,46 @@
             android:layout_marginStart="45dp"
             android:onClick="@{handlers::onClickShare}"
             android:text="@string/receive_share_cta"
-            app:layout_constraintBottom_toTopOf="@+id/receive_button_copy"
+            app:layout_constraintBottom_toTopOf="@+id/copy_btn_container"
             app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
             tools:ignore="UnusedAttribute" />
 
-        <Button
-            android:id="@+id/receive_button_copy"
-            style="@style/PrimaryButton"
-            android:background="@drawable/bg_solid_button_normal"
-            android:gravity="center_horizontal"
+        <RelativeLayout
+            android:id="@+id/copy_btn_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
-            android:onClick="@{handlers::onClickCopy}"
-            android:text="@string/receive_copy_cta"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
-            tools:ignore="UnusedAttribute" />
+            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert">
+
+            <Button
+                android:id="@+id/receive_button_copy"
+                style="@style/PrimaryButton"
+                android:background="@drawable/bg_solid_button_normal"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/receive_copy_cta"
+                tools:ignore="UnusedAttribute" />
+
+
+            <Button
+                android:id="@+id/receive_button_copy_overlay"
+                style="@style/PrimaryButton"
+                android:background="@drawable/bg_transparent_button"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{handlers::onClickCopy}"
+                android:text="N/A"
+                tools:ignore="UnusedAttribute" />
+
+        </RelativeLayout>
 
         <android.support.constraint.Guideline
             android:id="@+id/receive_guideline_vert"

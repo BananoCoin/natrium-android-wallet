@@ -57,6 +57,7 @@ dependencies {
     final GSON_FIRE_VERSION = '1.8.2'
     final GSON_VERSION = '2.8.2'
     final J_UNIT_VERSION = '4.12'
+    final LOTTIE_VERSION = '2.6.0-beta19'
     final PINLOCKVIEW_VERSION = '2.1.0'
     final RX_ANDROID = '2.0.2'
     final RXBUS_VERSION = '2.0.0'
@@ -130,6 +131,9 @@ dependencies {
 
     // Logging
     implementation "com.jakewharton.timber:timber:$TIMBER_VERSION"
+
+    // Lottie Android
+    implementation "com.airbnb.android:lottie:$LOTTIE_VERSION"
 
     // Testing
     testAnnotationProcessor("com.google.dagger:dagger-compiler:$DAGGER_VERSION")

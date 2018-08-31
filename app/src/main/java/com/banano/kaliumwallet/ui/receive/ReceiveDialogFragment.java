@@ -324,7 +324,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
                     clipboard.setPrimaryClip(clip);
                 }
 
-                binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button));
+                binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button_normal));
                 binding.receiveButtonCopy.setTextColor(getResources().getColor(R.color.green_dark));
                 binding.receiveButtonCopy.setText(getString(R.string.receive_copied));
 
