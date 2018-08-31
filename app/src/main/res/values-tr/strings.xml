@@ -118,6 +118,8 @@
     <string name="send_alert_dialog_title">Geçersiz Girdi</string>
     <string name="send_invalid_address">Geçersiz Varış Adresi</string>
     <string name="send_insufficient_balance">Yetersiz Bakiye</string>
+    <string name="send_enter_address">Lütfen bir adres girin</string>
+    <string name="send_enter_amount">Lütfen bir miktar girin</string>
     <string name="send_amount_error">Geçersiz bir miktar girdiniz</string>
     <string name="send_generic_error">Bir hata oluştu. Daha sonra tekrar deneyin.</string>
     <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>

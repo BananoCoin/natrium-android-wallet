@@ -115,6 +115,8 @@
     <string name="send_alert_dialog_title">输入无效</string>
     <string name="send_invalid_address">无效的目标地址</string>
     <string name="send_insufficient_balance">平衡不足</string>
+    <string name="send_enter_address">请输入目的地</string>
+    <string name="send_enter_amount">请输入金额</string>
     <string name="send_amount_error">输入的金额无效</string>
     <string name="send_generic_error">发生错误。稍后再试。</string>
     <string name="send_no_frontier">找不到帐号边框（帐号可能无法打开）</string>

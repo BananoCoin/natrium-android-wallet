@@ -117,6 +117,8 @@
     <string name="send_alert_dialog_title">Contenido inválido</string>
     <string name="send_invalid_address">Dirección inválida de destino</string>
     <string name="send_insufficient_balance">Saldo insuficiente</string>
+    <string name="send_enter_address">Por favor ingrese un destino</string>
+    <string name="send_enter_amount">Por favor ingrese un monto</string>
     <string name="send_amount_error">La cantidad introducida es inválida</string>
     <string name="send_generic_error">Ha ocurrido un error, intenta de nuevo más tarde.</string>
     <string name="send_no_frontier"> No se pudo encontrar la cuenta (esta puede no estar abierta)</string>

@@ -115,6 +115,8 @@
     <string name="send_alert_dialog_title">輸入無效</string>
     <string name="send_invalid_address">無效的目標地址</string>
     <string name="send_insufficient_balance">平衡不足</string>
+    <string name="send_enter_address">請輸入目的地</string>
+    <string name="send_enter_amount">請輸入金額</string>
     <string name="send_amount_error">輸入的金額無效</string>
     <string name="send_generic_error">發生錯誤。稍後再試。</string>
     <string name="send_no_frontier">找不到帳號邊框（帳號可能無法打開）</string>

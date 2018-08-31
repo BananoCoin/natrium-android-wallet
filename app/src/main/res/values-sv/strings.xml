@@ -115,6 +115,8 @@
     <string name="send_alert_dialog_title">Ogiltigt inmatning</string>
     <string name="send_invalid_address">Ogiltig mottagaradress</string>
     <string name="send_insufficient_balance">Saknas täckning</string>
+    <string name="send_enter_address">Ange en destination</string>
+    <string name="send_enter_amount">Ange ett belopp</string>
     <string name="send_amount_error">Det angivna beloppet var ogiltigt</string>
     <string name="send_generic_error">Ett fel har uppstått. Försök igen senare.</string>
     <string name="send_no_frontier">Gick inte att hitta frontier (kontot kanske inte är öppnat än)</string>

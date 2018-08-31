@@ -109,6 +109,8 @@
     <string name="send_alert_dialog_title">Saisie invalide</string>
     <string name="send_invalid_address">Adresse du destinataire invalide</string>
     <string name="send_insufficient_balance">Solde insuffisant</string>
+    <string name="send_enter_address">Veuillez entrer une destination</string>
+    <string name="send_enter_amount">Veuillez entrer un montant</string>
     <string name="send_amount_error">Le montant saisi n’est pas valide</string>
     <string name="send_generic_error">Une erreur est survenue. Veuillez réessayer plus tard.</string>
     <string name="send_no_frontier">Compte frontière introuvable (Le compte n’est peut-être pas établi)</string>

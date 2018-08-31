@@ -117,6 +117,8 @@
     <string name="send_alert_dialog_title">Hindi wasto ang Input</string>
     <string name="send_invalid_address">Hindi wasto ang Destination Address</string>
     <string name="send_insufficient_balance">Hindi sapat ang balanse</string>
+    <string name="send_enter_address">Mangyaring magpasok ng patutunguhan</string>
+    <string name="send_enter_amount">Mangyaring magpasok ng isang halaga</string>
     <string name="send_amount_error">Hindi wasto ang nilagay na halaga</string>
     <string name="send_generic_error">Nagkaroon ng error. Subukan ulit mamaya.</string>
     <string name="send_no_frontier">Hindi mahanap ang hangganan ng account (maaaring hindi pa nabuksan ang account)</string>

@@ -115,6 +115,8 @@
     <string name="send_alert_dialog_title">गलत इनपुट </string>
     <string name="send_invalid_address">गलत (डेस्टिनेशन) गंतव्य पता</string>
     <string name="send_insufficient_balance">अपर्याप्त शेष राशि (बैलेंस)</string>
+    <string name="send_enter_address">कृपया एक गंतव्य दर्ज करें</string>
+    <string name="send_enter_amount">कृपया एक राशि दर्ज करें</string>
     <string name="send_amount_error">डाली गयी धन राशि गलत है </string>
     <string name="send_generic_error">एक समस्या हुई। बाद में फिर से कोशिश करें।</string>
     <string name="send_no_frontier">खाता नहीं मिल सका (हो सकता है खता नहीं खुला हो)</string>

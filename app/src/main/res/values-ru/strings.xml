@@ -117,6 +117,8 @@
     <string name="send_alert_dialog_title">Неверный ввод</string>
     <string name="send_invalid_address">Неверный адрес назначения</string>
     <string name="send_insufficient_balance">Недостаточный баланс</string>
+    <string name="send_enter_address">Пожалуйста введите адрес</string>
+    <string name="send_enter_amount">Пожалуйста введите сумму</string>
     <string name="send_amount_error">Введённая сумма неверна</string>
     <string name="send_generic_error">Произошла ошибка. Повторите попытку позже</string>
     <string name="send_no_frontier">Не удалось найти границу аккаунта (учётная запись  не может быть открыта)</string>

@@ -274,6 +274,10 @@ public class SendDialogFragment extends BaseDialogFragment {
 
     private boolean validateAddress() {
         // check for valid address
+        if (binding.sendAddress.getText().toString().trim().isEmpty()) {
+            showAddressError(R.string.send_enter_address);
+            return false;
+        }
         Address destination = new Address(binding.sendAddress.getText().toString());
         if (!destination.isValidAddress()) {
             showAddressError(R.string.send_invalid_address);
@@ -296,6 +300,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         BigInteger sendAmount = NumberUtil.getAmountAsRawBigInteger(wallet.getSendBananoAmount());
         // check that amount being sent is less than or equal to account balance
         if (wallet.getSendBananoAmount().isEmpty()) {
+            showAmountError(R.string.send_enter_amount);
             return false;
         } else if (sendAmount.compareTo(new BigInteger("0")) <= -1 || sendAmount.compareTo(new BigInteger("0")) == 0) {
             showAmountError(R.string.send_amount_error);

@@ -128,7 +128,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-        <FrameLayout
+        <RelativeLayout
             android:id="@+id/progress_overlay"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -145,13 +145,13 @@
                 android:id="@+id/animation_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="-40dp"
+                android:layout_alignParentBottom="true"
+                android:paddingTop="100dp"
                 app:lottie_rawRes="@raw/send_anim"
                 app:lottie_loop="true"
                 app:lottie_autoPlay="true" />
 
-        </FrameLayout>
+        </RelativeLayout>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

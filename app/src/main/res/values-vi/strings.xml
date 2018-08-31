@@ -117,6 +117,8 @@
     <string name="send_alert_dialog_title">Đầu vào không hợp lệ</string>
     <string name="send_invalid_address">Địa chỉ không hợp lệ</string>
     <string name="send_insufficient_balance">Không đủ số dư</string>
+    <string name="send_enter_address">Hãy nhập một địa chỉ</string>
+    <string name="send_enter_amount">Hãy nhập một số lượng</string>
     <string name="send_amount_error">Số tiền đã nhập không hợp lệ</string>
     <string name="send_generic_error">Đã xảy ra lỗi. Thử lại sau.</string>
     <string name="send_no_frontier">Không thể tìm thấy  tài khoản (tài khoản có thể không được mở)</string>

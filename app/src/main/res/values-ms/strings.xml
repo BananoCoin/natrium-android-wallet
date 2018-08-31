@@ -117,6 +117,8 @@
     <string name="send_alert_dialog_title">Input tidak sah</string>
     <string name="send_invalid_address">Alamat destinasi tidak sah</string>
     <string name="send_insufficient_balance">Baki tak mencukupi</string>
+    <string name="send_enter_address">Sila masukkan destinasi</string>
+    <string name="send_enter_amount">Sila masukkan jumlah</string>
     <string name="send_amount_error">Jumlah yang dimasuki tidak sah</string>
     <string name="send_generic_error">Sesuatu kesilapan telah berlaku. Sila cuba lagi.</string>
     <string name="send_no_frontier">Akaun frontier tidak sepadan dengan mana-mana akaun (Akaun mungkin tidak dedaftar)</string>

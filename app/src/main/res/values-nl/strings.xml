@@ -115,6 +115,8 @@
     <string name="send_alert_dialog_title">Ongeldige invoer</string>
     <string name="send_invalid_address">Ongeldige ontvanger</string>
     <string name="send_insufficient_balance">Onvoldoende saldo</string>
+    <string name="send_enter_address">Voer alstublieft een bestemming in</string>
+    <string name="send_enter_amount">Vul alstublieft een bedrag in</string>
     <string name="send_amount_error">Ongeldig bedrag ingevuld</string>
     <string name="send_generic_error">Er ging iets fout, probeer het alsjeblieft nog een keer.</string>
     <string name="send_no_frontier">Account niet gevonden (dit kan betekenen dat je account niet geopend is)</string>

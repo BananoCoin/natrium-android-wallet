@@ -117,6 +117,8 @@
     <string name="send_alert_dialog_title">Helytelen Adat</string>
     <string name="send_invalid_address">Helytelen Cím</string>
     <string name="send_insufficient_balance">Elégtelen Számlaegyenleg</string>
+    <string name="send_enter_address">Adjon meg egy célt</string>
+    <string name="send_enter_amount">Adjon meg egy összeget</string>
     <string name="send_amount_error">Helytelen beírt mennyiség</string>
     <string name="send_generic_error">Hiba történt. Próbálkozz később.</string>
     <string name="send_no_frontier">Felhasználó nem található. (Felhasználó lehet nincs bejelentkezve.)</string>

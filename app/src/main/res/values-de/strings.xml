@@ -115,6 +115,8 @@
     <string name="send_alert_dialog_title">Ungültige Eingabe</string>
     <string name="send_invalid_address">Ungültige Empfänger-Adresse</string>
     <string name="send_insufficient_balance">Nicht genügend Guthaben</string>
+    <string name="send_enter_address">Bitte Adresse eingeben</string>
+    <string name="send_enter_amount">Bitte Betrag eingeben</string>
     <string name="send_amount_error">Ungültigen Betrag eingegeben</string>
     <string name="send_generic_error">Ein Fehler ist aufgetreten. Bitte versuche es später erneut.</string>
     <string name="send_no_frontier">Kein Frontier gefunden (Empfänger-Account eventuell noch nicht erstellt)</string>

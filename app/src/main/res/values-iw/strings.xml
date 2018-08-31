@@ -118,6 +118,8 @@
     <string name="send_alert_dialog_title">קלט לא תקין</string>
     <string name="send_invalid_address">כתובת יעד אינה תקינה</string>
     <string name="send_insufficient_balance">אין מספיק מטבעות בחשבון</string>
+    <string name="send_enter_address">הזן יעד</string>
+    <string name="send_enter_amount">הזן סכום</string>
     <string name="send_amount_error">הכמות שהוכנסה אינה תקינה</string>
     <string name="send_generic_error">קרתה תקלה. נסה שוב מאוחר יותר</string>
     <string name="send_no_frontier">חשבון לא נמצא (סביר שהוא לא נפתח)</string>

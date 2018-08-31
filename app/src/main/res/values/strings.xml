@@ -117,6 +117,8 @@
     <string name="send_alert_dialog_title">Invalid Input</string>
     <string name="send_invalid_address">Invalid Destination Address</string>
     <string name="send_insufficient_balance">Insufficient Balance</string>
+    <string name="send_enter_address">Please enter an address</string>
+    <string name="send_enter_amount">Please enter an amount</string>
     <string name="send_amount_error">Amount entered was invalid</string>
     <string name="send_generic_error">An error occurred. Try again later.</string>
     <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>

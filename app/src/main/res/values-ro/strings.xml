@@ -100,6 +100,8 @@
     <string name="send_alert_dialog_title">Input invalid</string>
     <string name="send_invalid_address">Adresa de destinație este invalidă</string>
     <string name="send_insufficient_balance">Fonduri insuficiente</string>
+    <string name="send_enter_address">Introduceți o destinație</string>
+    <string name="send_enter_amount">Introduceți o sumă</string>
     <string name="send_amount_error">Suma introdusă a fost invalidă</string>
     <string name="send_generic_error">A apărut o eroare. Încercați din nou mai târziu.</string>
     <string name="send_no_frontier">Nu am găsit contul ( poate nu este încă deschis)</string>
