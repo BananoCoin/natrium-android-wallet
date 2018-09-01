@@ -16,21 +16,21 @@
                 android:translateY="4.166667">
                 <path
                     android:fillAlpha="0.6"
-                    android:strokeColor="#FBDD11"
+                    android:strokeColor="@color/yellow"
                     android:strokeAlpha="0.6"
                     android:strokeWidth="1"
                     android:strokeLineCap="square"
                     android:pathData="M5.83333333,0 L5.83333333,11.6666667" />
                 <path
                     android:fillAlpha="0.6"
-                    android:strokeColor="#FBDD11"
+                    android:strokeColor="@color/yellow"
                     android:strokeAlpha="0.6"
                     android:strokeWidth="1"
                     android:strokeLineCap="square"
                     android:pathData="M11.6666667,5.83333333 L0,5.83333333" />
             </group>
             <path
-                android:strokeColor="#FBDD11"
+                android:strokeColor="@color/yellow"
                 android:strokeAlpha="0.6"
                 android:strokeWidth="1"
                 android:pathData="M 10 0.5 C 15.2467051234 0.5 19.5 4.75329487661 19.5 10 C 19.5 15.2467051234 15.2467051234 19.5 10 19.5 C 4.75329487661 19.5 0.5 15.2467051234 0.5 10 C 0.5 4.75329487661 4.75329487661 0.5 10 0.5 Z" />
