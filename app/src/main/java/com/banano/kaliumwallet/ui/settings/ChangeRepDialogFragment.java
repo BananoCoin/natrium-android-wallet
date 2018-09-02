@@ -430,7 +430,8 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             // paste to rep field
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             if (clipboard != null && clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(MIMETYPE_TEXT_PLAIN)) {
-                binding.newRep.setText(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                binding.newRep.setText(address.getAddress());
             }
         }
     }

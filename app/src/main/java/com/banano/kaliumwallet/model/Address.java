@@ -26,8 +26,7 @@ public class Address implements Serializable {
     }
 
     public Address(String value) {
-        this.value = value;
-        parseAddress();
+        this.value = parseAddress(value);
     }
 
     public String getShortString() {
@@ -87,14 +86,15 @@ public class Address implements Serializable {
         return true;
     }
 
-    private void parseAddress() {
-        if (this.value != null) {
-            String[] _split = value.split(":");
+    private String parseAddress(String address) {
+        if (address != null) {
+            address = address.toLowerCase();
+            String[] _split = address.split(":");
             if (_split.length > 1) {
                 String _addressString = _split[1];
                 Uri uri = Uri.parse(_addressString);
                 if (uri.getPath() != null) {
-                    this.value = uri.getPath();
+                    address = uri.getPath();
                 }
                 if (uri.getQueryParameter("amount") != null && !uri.getQueryParameter("amount").equals("")) {
                     try {
@@ -103,9 +103,24 @@ public class Address implements Serializable {
                     }
                 }
             }
-
+            return cleanAddress(address);
         }
-
+        return null;
     }
 
+    /**
+     * cleanAddress - Extracts a ban_ address from a string
+     *
+     * @param address
+     * @return
+     */
+    private String cleanAddress(String address) {
+        if (address.contains("ban_")) {
+            address = address.substring(address.lastIndexOf("ban_"));
+            if (address.length() >= 64) {
+                address = address.substring(0, 64);
+            }
+        }
+        return address;
+    }
 }
