@@ -413,7 +413,8 @@ public class SendDialogFragment extends BaseDialogFragment {
             // copy address to clipboard
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             if (clipboard != null && clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(MIMETYPE_TEXT_PLAIN)) {
-                binding.sendAddress.setText(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                binding.sendAddress.setText(address.getAddress());
             }
         }
     }
