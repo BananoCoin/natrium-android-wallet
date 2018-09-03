@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_transaction_item_normal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="@dimen/tx_card_padding"
+        android:paddingBottom="@dimen/tx_card_padding">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/transaction_type"
+            android:layout_width="@dimen/tx_image_size"
+            android:layout_height="@dimen/tx_image_size"
+            app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz"
+            app:srcCompat="@drawable/ic_receive"
+            tools:ignore="UnusedAttribute"
+            tools:srcCompat="@drawable/ic_receive" />
+
+        <TextView
+            android:id="@+id/transaction_symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:layout_marginStart="22dp"
+            android:drawablePadding="3dp"
+            app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
+            app:layout_constraintStart_toEndOf="@+id/transaction_type"
+            app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />
+
+        <TextView
+            android:id="@+id/transaction_type_text"
+            style="@style/TextStyleSemiboldWhite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/history_received"
+            app:layout_constraintStart_toEndOf="@+id/transaction_symbol"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Receive" />
+
+        <TextView
+            android:id="@+id/transaction_amount"
+            style="@style/TextStyleNormalPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/example_card_lot"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
+            app:layout_constraintStart_toEndOf="@+id/transaction_symbol"/>
+
+        <TextView
+            android:id="@+id/transaction_amount_suffix"
+            style="@style/TextStyleLightPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="BAN"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
+            app:layout_constraintStart_toEndOf="@+id/transaction_amount"/>
+        <!--<TextView-->
+        <!--android:id="@+id/transaction_date"-->
+        <!--style="@style/TextStyleAddress"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@{transaction.timestamp}"-->
+        <!--tools:text="1 min ago"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/home_transaction_guideline_vert"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />-->
+
+        <TextView
+            android:id="@+id/transaction_address"
+            style="@style/TextStyleAddress"
+            android:textSize="@dimen/tx_address_text_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/example_card_from"
+            app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/home_transaction_guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/home_transaction_guideline_horiz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

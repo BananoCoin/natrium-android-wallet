@@ -79,39 +79,39 @@ public enum AvailableLanguage {
     public String getDisplayName() {
         switch (name) {
             case "ENGLISH":
-                return "English (EN)";
+                return "English (en)";
             case "FRENCH":
-                return "Français (FR)";
+                return "Français (fr)";
             case "GERMAN":
-                return "Deutsch (DE)";
+                return "Deutsch (de)";
             case "SPANISH":
-                return "Español (ES)";
+                return "Español (es)";
             case "HINDI":
-                return "हिन्दी (HI)";
+                return "हिन्दी (hi)";
             case "HUNGARIAN":
-                return "Magyar (HU)";
+                return "Magyar (hu)";
             case "HEBREW":
-                return "Hebrew (HE)";
+                return "Hebrew (he)";
             case "DUTCH":
-                return "Nederlands (NL)";
+                return "Nederlands (nl)";
             case "PORTUGUESE":
-                return "Português (PT)";
+                return "Português (pt)";
             case "RUSSIAN":
-                return "Русский язык (RU)";
+                return "Русский язык (ru)";
             case "SWEDISH":
-                return "Svenska (SV)";
+                return "Svenska (sv)";
             case "TAGALOG":
-                return "Tagalog (TL)";
+                return "Tagalog (tl)";
             case "TURKISH":
-                return "Türkçe (TR)";
+                return "Türkçe (tr)";
             case "VIETNAMESE":
-                return "Tiếng Việt (VI)";
+                return "Tiếng Việt (vi)";
             case "CHINESE_SIMPLIFIED":
-                return "简化字 (ZH)";
+                return "簡體字 (zh-Hans)";
             case "CHINESE_TRADITIONAL":
-                return "正體字 (ZH-TW)";
+                return "繁體字 (zh-Hant)";
             case "MALAY":
-                return "Bahasa Melayu (MS)";
+                return "Bahasa Melayu (ms)";
             default:
                 return "DEFAULT";
         }

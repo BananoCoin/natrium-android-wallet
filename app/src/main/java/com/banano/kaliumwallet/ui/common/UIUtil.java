@@ -99,6 +99,22 @@ public class UIUtil {
     }
 
     /**
+     * Replace occurences of BANANO with yellow text
+     *
+     * @param s     Spannable
+     * @param context Context
+     */
+    public static Spannable colorizeBanano(String s, Context context) {
+        Spannable sp = new SpannableString(s);
+        if (context == null) {
+            return sp;
+        }
+        int indexStart = s.toUpperCase().indexOf("BANANO");
+        sp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), indexStart, indexStart+6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        return sp;
+    }
+
+    /**
      * Colorize a string in the following manner:
      * First 11 characters are yellow
      * Last 6 characters are yellow

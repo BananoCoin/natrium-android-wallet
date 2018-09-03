@@ -168,6 +168,35 @@
                     app:layout_constraintTop_toBottomOf="@id/home_top_card"
                     app:layout_constraintBottom_toTopOf="@id/home_swiperefresh"/>
 
+                <android.support.v4.widget.NestedScrollView
+                    android:id="@+id/example_cards"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginTop="@dimen/tx_history_top_margin"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <include
+                            android:id="@+id/intro_text"
+                            layout="@layout/welcome_account_item_intro"/>
+
+                        <include
+                            android:id="@+id/sent_example"
+                            layout="@layout/welcome_account_item_send"/>
+
+                        <include
+                            android:id="@+id/received_example"
+                            layout="@layout/welcome_account_item_receive"/>
+                    </LinearLayout>
+
+                </android.support.v4.widget.NestedScrollView>
+
                 <android.support.v4.widget.SwipeRefreshLayout
 
                     android:id="@+id/home_swiperefresh"
