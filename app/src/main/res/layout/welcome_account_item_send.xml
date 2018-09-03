@@ -3,27 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-        <!-- Data -->
-        <variable
-            name="accountHistoryItem"
-            type="com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem" />
-        <variable
-            name="handlers"
-            type="com.banano.kaliumwallet.ui.home.HomeFragment.ClickHandlers" />
-    </data>
-
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/bg_transaction_item"
+        android:background="@drawable/bg_transaction_item_normal"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="@dimen/tx_card_padding"
-        android:paddingBottom="@dimen/tx_card_padding"
-        android:tag="@{accountHistoryItem}"
-        android:onClick="@{handlers::onClickTransaction}">
+        android:paddingBottom="@dimen/tx_card_padding">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/transaction_type"
@@ -32,9 +20,8 @@
             app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz"
-            app:srcCompat="@{accountHistoryItem.isSend ? @drawable/ic_send : @drawable/ic_receive}"
-            tools:ignore="UnusedAttribute"
-            tools:srcCompat="@drawable/ic_receive" />
+            app:srcCompat="@drawable/ic_send"
+            tools:ignore="UnusedAttribute"/>
 
         <TextView
             android:id="@+id/transaction_symbol"
@@ -51,18 +38,16 @@
             style="@style/TextStyleSemiboldWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{accountHistoryItem.isSend ? @string/history_sent : @string/history_received}"
+            android:text="@string/history_sent"
             app:layout_constraintStart_toEndOf="@+id/transaction_symbol"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Receive" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/transaction_amount"
             style="@style/TextStyleNormalPrimary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{accountHistoryItem.formattedAmount}"
-            tools:text="2323034.43"
+            android:text="@string/example_card_little"
             app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
             app:layout_constraintStart_toEndOf="@+id/transaction_symbol"/>
 
@@ -76,15 +61,15 @@
             app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
             app:layout_constraintStart_toEndOf="@+id/transaction_amount"/>
         <!--<TextView-->
-            <!--android:id="@+id/transaction_date"-->
-            <!--style="@style/TextStyleAddress"-->
-            <!--android:layout_width="70dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@{transaction.timestamp}"-->
-            <!--tools:text="1 min ago"-->
-            <!--app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/home_transaction_guideline_vert"-->
-            <!--app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />-->
+        <!--android:id="@+id/transaction_date"-->
+        <!--style="@style/TextStyleAddress"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@{transaction.timestamp}"-->
+        <!--tools:text="1 min ago"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/home_transaction_guideline_vert"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />-->
 
         <TextView
             android:id="@+id/transaction_address"
@@ -92,8 +77,7 @@
             android:textSize="@dimen/tx_address_text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{accountHistoryItem.addressShort}"
-            tools:text="3gntug … p7ijg"
+            android:text="@string/example_card_to"
             app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />

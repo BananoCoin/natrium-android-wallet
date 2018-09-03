@@ -42,6 +42,12 @@
     <string name="history_sent">Naipadala</string>
     <string name="history_received">Natanggap</string>
     <string name="transaction_details">Tingnan ang detalye</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Maligayang pagdating sa Kalium. Ganito ang makikita mong transaksyon pag nakatanggap ka ng BANANO:</string>
+    <string name="example_card_little">Kakaunting</string>
+    <string name="example_card_lot">Maraming</string>
+    <string name="example_card_to">para sa iba</string>
+    <string name="example_card_from">galing sa iba</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Mga setting</string>

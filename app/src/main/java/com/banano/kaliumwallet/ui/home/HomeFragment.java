@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 
 import com.banano.kaliumwallet.model.PriceConversion;
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
+import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import com.banano.kaliumwallet.util.svg.SvgSoftwareLayerSetter;
@@ -298,6 +299,9 @@ public class HomeFragment extends BaseFragment {
 
     @Subscribe
     public void receiveHistory(WalletHistoryUpdate walletHistoryUpdate) {
+        if (wallet.getAccountHistory().size() > 0) {
+            binding.exampleCards.setVisibility(View.GONE);
+        }
         controller.setData(wallet.getAccountHistory(), new ClickHandlers());
         binding.homeSwiperefresh.setRefreshing(false);
         binding.homeRecyclerview.getLayoutManager().scrollToPosition(0);
@@ -311,6 +315,10 @@ public class HomeFragment extends BaseFragment {
     @Subscribe
     public void receiveSubscribe(WalletSubscribeUpdate walletSubscribeUpdate) {
         updateAmounts();
+        if (wallet.getOpenBlock() == null) {
+            binding.introText.exampleIntroText.setText(UIUtil.colorizeBanano(binding.introText.exampleIntroText.getText().toString(), getContext()));
+            binding.exampleCards.setVisibility(View.VISIBLE);
+        }
     }
 
     @Subscribe

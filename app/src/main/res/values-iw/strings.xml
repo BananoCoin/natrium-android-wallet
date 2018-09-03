@@ -42,6 +42,12 @@
     <string name="history_sent">נשלח</string>
     <string name="history_received">התקבל</string>
     <string name="transaction_details">ראה פרטים</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">ברוך הבא לקאליום. ברגע שתקבל באנאנו, הטרנסקציות יופיעו כך:</string>
+    <string name="example_card_little">קצת</string>
+    <string name="example_card_lot">הרבה</string>
+    <string name="example_card_to">לקוף רנדומלי</string>
+    <string name="example_card_from">מקוף רנדומלי</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">הגדרות</string>

@@ -42,6 +42,12 @@
     <string name="history_sent">發送</string>
     <string name="history_received">收到</string>
     <string name="transaction_details">查看詳情</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">歡迎來到Kalium。當您收到或發送BANANO時，它將如下所示.</string>
+    <string name="example_card_little">一點</string>
+    <string name="example_card_lot">很多</string>
+    <string name="example_card_to">給一隻未知的猴子</string>
+    <string name="example_card_from">從一隻未知的猴子</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">設置</string>

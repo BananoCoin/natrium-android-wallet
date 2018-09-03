@@ -29,6 +29,12 @@
     <string name="home_send_cta">Trimite</string>
     <string name="home_receive_cta">Primește</string>
     <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Bun venit la Kalium. Odată ce primiți sau trimiteți BANANO, tranzacțiile vor arăta astfel:</string>
+    <string name="example_card_little">Un pic de</string>
+    <string name="example_card_lot">O mulțime de</string>
+    <string name="example_card_to">unui om oarecare</string>
+    <string name="example_card_from">de la un om oarecare</string>
     <string name="error_message">Conectare nereușită. Încercați din nou.</string>
     <string name="transaction_header">Tranzacții</string>
     <string name="history_sent">Trimise</string>

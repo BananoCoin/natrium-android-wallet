@@ -42,6 +42,12 @@
     <string name="history_sent">भेजे -  </string>
     <string name="history_received">मिले -</string>
     <string name="transaction_details">अधिक जानकारी देखें </string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">केलियम में आपका स्वागत है। बनानो प्राप्त करने पर सभी लेनदेन इस तरह नीचे दिखाई देंगे -</string>
+    <string name="example_card_little">थोड़े से</string>
+    <string name="example_card_lot">बहुत सारे</string>
+    <string name="example_card_to">अजनबी बंदर को</string>
+    <string name="example_card_from">अजनबी बंदर से</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">सेटिंग्स </string>

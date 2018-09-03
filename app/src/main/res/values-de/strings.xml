@@ -42,6 +42,12 @@
     <string name="history_sent">Gesendet</string>
     <string name="history_received">Empfangen</string>
     <string name="transaction_details">Details ansehen</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro"> Willkommen bei Kalium. Wenn du Banano sendest oder empfängst, sieht es aus wie folgt: </string>
+    <string name="example_card_little">Ein paar</string>
+    <string name="example_card_lot">Ein paar mehr</string>
+    <string name="example_card_to">An jemanden</string>
+    <string name="example_card_from">Von jemandem</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Einstellungen</string>

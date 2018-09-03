@@ -42,6 +42,12 @@
     <string name="history_sent">Küldött</string>
     <string name="history_received">Fogadott</string>
     <string name="transaction_details">Részletek Mutatása</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Üdvözöljük a Kaliumban. Miután megkapta a BANANO-t, a tranzakciók így fognak megjelenni:</string>
+    <string name="example_card_little">Egy kicsit</string>
+    <string name="example_card_lot">Nagyon</string>
+    <string name="example_card_to">egy véletlenszerű majomhoz</string>
+    <string name="example_card_from">egy véletlen majomból</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Beállítások</string>
