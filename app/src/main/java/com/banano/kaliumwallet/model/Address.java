@@ -86,16 +86,15 @@ public class Address implements Serializable {
         return true;
     }
 
-    private String parseAddress(String address) {
-        if (address != null) {
-            address = address.toLowerCase();
-            String[] _split = address.split(":");
+    private String parseAddress(String addressString) {
+        String ret;
+        if (addressString != null) {
+            addressString = addressString.toLowerCase();
+            ret = findAddress(addressString);
+            String[] _split = addressString.split(":");
             if (_split.length > 1) {
                 String _addressString = _split[1];
                 Uri uri = Uri.parse(_addressString);
-                if (uri.getPath() != null) {
-                    address = uri.getPath();
-                }
                 if (uri.getQueryParameter("amount") != null && !uri.getQueryParameter("amount").equals("")) {
                     try {
                         this.amount = (new BigDecimal(uri.getQueryParameter("amount"))).toString();
@@ -103,18 +102,18 @@ public class Address implements Serializable {
                     }
                 }
             }
-            return cleanAddress(address);
+            return ret;
         }
         return null;
     }
 
     /**
-     * cleanAddress - Extracts a ban_ address from a string
+     * findAddress - Finds a ban_ address in a string
      *
      * @param address
      * @return
      */
-    private String cleanAddress(String address) {
+    private String findAddress(String address) {
         if (address.contains("ban_")) {
             address = address.substring(address.lastIndexOf("ban_"));
             if (address.length() >= 64) {
