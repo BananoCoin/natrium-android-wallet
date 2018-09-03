@@ -42,6 +42,12 @@
     <string name="history_sent">Skickat</string>
     <string name="history_received">Mottagit</string>
     <string name="transaction_details">Visa detaljer</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Välkommen till Kalium. Så snart du tar emot BANANO, visas transaktionerna på detta vis:</string>
+    <string name="example_card_little">Lite</string>
+    <string name="example_card_lot">Många</string>
+    <string name="example_card_to">Till någon apa</string>
+    <string name="example_card_from">Från någon apa</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Inställningar</string>

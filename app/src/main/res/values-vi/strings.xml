@@ -42,6 +42,12 @@
     <string name="history_sent">Đã gửi</string>
     <string name="history_received">Đã nhận</string>
     <string name="transaction_details">Xem chi tiết</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Chào mừng bạn đến với Kalium. Khi bạn nhận được BANANO, giao dịch sẽ hiển thị như sau:</string>
+    <string name="example_card_little">một chút</string>
+    <string name="example_card_lot">rất nhiều</string>
+    <string name="example_card_to">với một con khỉ ngẫu nhiên</string>
+    <string name="example_card_from">từ một con khỉ ngẫu nhiên</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Cài đặt</string>

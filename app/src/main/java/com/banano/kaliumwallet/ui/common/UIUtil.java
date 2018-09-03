@@ -106,11 +106,15 @@ public class UIUtil {
      */
     public static Spannable colorizeBanano(String s, Context context) {
         Spannable sp = new SpannableString(s);
-        if (context == null) {
+        if (context == null || !s.toUpperCase().contains("BANANO")) {
             return sp;
         }
         int indexStart = s.toUpperCase().indexOf("BANANO");
-        sp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), indexStart, indexStart+6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        int indexEnd = 6;
+        if (indexStart < 0) {
+            return sp;
+        }
+        sp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), indexStart, indexStart+indexEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return sp;
     }
 

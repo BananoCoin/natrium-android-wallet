@@ -42,6 +42,12 @@
     <string name="history_sent">Gönderildi</string>
     <string name="history_received">Alındı</string>
     <string name="transaction_details">Ayrıntılar</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Kalium’a hoşgeldin. Hesabına BANANO geldiğinde işlemlerin şu şekilde görünecek:</string>
+    <string name="example_card_little">Birazcık</string>
+    <string name="example_card_lot">Bir sürü</string>
+    <string name="example_card_to">rastgele bir maymuna</string>
+    <string name="example_card_from">rastgele bir maymundan</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Ayarlar</string>

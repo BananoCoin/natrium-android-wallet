@@ -42,6 +42,12 @@
     <string name="history_sent">Enviado</string>
     <string name="history_received">Recebido</string>
     <string name="transaction_details">Ver detalhes</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Bem-vindo a Kalium. Quando você receber BANANO, as transações aparecerão assim:</string>
+    <string name="example_card_little">Uma pequena</string>
+    <string name="example_card_lot">Um monte de</string>
+    <string name="example_card_to">Para um macaco aleatório</string>
+    <string name="example_card_from">De um macaco aleatório</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Configurações</string>

@@ -42,8 +42,14 @@
     <string name="history_sent">Отправлено</string>
     <string name="history_received">Получено</string>
     <string name="transaction_details">Посмотреть Детали</string>
+    <!--Отображается при отсутствии транзакций  -->
+    <string name="example_card_intro">Добро пожаловать в Kalium.Когда вы получите или отправите BANANO,это будет отображено ниже.</string>
+    <string name="example_card_little">Немного</string>
+    <string name="example_card_lot">Много</string>
+    <string name="example_card_to">К случайной обезьяне</string>
+    <string name="example_card_from">От случайной обезьяны</string>
 
-    <!-- Settings Screen -->
+/    <!-- Settings Screen -->
     <string name="settings_title">Настройки</string>
     <string name="settings_local_currency">Сменить Валюту</string>
     <string name="settings_change_language">Язык</string>

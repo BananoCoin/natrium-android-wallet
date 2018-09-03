@@ -42,6 +42,12 @@
     <string name="history_sent">Dihantar</string>
     <string name="history_received">Diterima</string>
     <string name="transaction_details">Lihat Butiran</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Selamat datang ke Kalium. Setelah anda menerima BANANO, transaksi akan muncul seperti ini:</string>
+    <string name="example_card_little">Sedikit</string>
+    <string name="example_card_lot">Banyak</string>
+    <string name="example_card_to">kepada monyet rawak</string>
+    <string name="example_card_from">dari monyet rawak</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Tetapan</string>

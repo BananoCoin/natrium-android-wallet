@@ -43,7 +43,7 @@
     <string name="history_received">Received</string>
     <string name="transaction_details">View Details</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Welcome to Kalium. After you receive BANANO your transactions will be listed here.</string>
+    <string name="example_card_intro">Welcome to Kalium. Once you receive BANANO, transactions will show up like this:</string>
     <string name="example_card_little">A little</string>
     <string name="example_card_lot">A lot of</string>
     <string name="example_card_to">to a random monkey</string>

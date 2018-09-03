@@ -8,8 +8,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/bg_transaction_item_normal"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
         android:paddingTop="@dimen/tx_card_padding"
         android:paddingBottom="@dimen/tx_card_padding">
 
@@ -28,8 +28,7 @@
             android:id="@+id/transaction_symbol"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp"
+            android:layout_marginStart="20dp"
             android:drawablePadding="3dp"
             app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
             app:layout_constraintStart_toEndOf="@+id/transaction_type"

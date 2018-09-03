@@ -36,6 +36,12 @@
     <string name="history_sent">Envoyé</string>
     <string name="history_received">Reçu</string>
     <string name="transaction_details">Détails</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Bienvenue sur Kalium. Lorsque vous recevrez des BANANO, les transactions apparaîtront içi.</string>
+    <string name="example_card_little">Un peu de</string>
+    <string name="example_card_lot">Beaucoup de</string>
+    <string name="example_card_to">à un monKey aléatoire</string>
+    <string name="example_card_from">d\'un monKey aléatoire</string>
     <!-- Settings Screen -->
     <string name="settings_title">Réglages</string>
     <string name="settings_local_currency">Changer de devise</string>

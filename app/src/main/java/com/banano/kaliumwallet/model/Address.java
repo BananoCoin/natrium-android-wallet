@@ -1,16 +1,14 @@
 package com.banano.kaliumwallet.model;
 
-import android.graphics.Color;
 import android.net.Uri;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 
 import org.libsodium.jni.NaCl;
 import org.libsodium.jni.Sodium;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.banano.kaliumwallet.KaliumUtil;
 
@@ -114,12 +112,11 @@ public class Address implements Serializable {
      * @return
      */
     private String findAddress(String address) {
-        if (address.contains("ban_")) {
-            address = address.substring(address.lastIndexOf("ban_"));
-            if (address.length() >= 64) {
-                address = address.substring(0, 64);
-            }
+        Pattern p = Pattern.compile("(ban)(_)(1|3)[13456789abcdefghijkmnopqrstuwxyz]{59}");
+        Matcher matcher = p.matcher(address);
+        if (matcher.find()) {
+            return matcher.group(0);
         }
-        return address;
+        return "";
     }
 }
