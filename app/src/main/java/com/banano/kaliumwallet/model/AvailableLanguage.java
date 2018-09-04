@@ -69,7 +69,7 @@ public enum AvailableLanguage {
             case "VIETNAMESE":
                 return "vi";
             case "CHINESE_SIMPLIFIED":
-                return "zh-cn";
+                return "zh";
             case "CHINESE_TRADITIONAL":
                 return "zh-tw";
             case "MALAY":
