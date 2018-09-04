@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <string name="app_name" translatable="false">Kalium</string>
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+<resources>
     <string name="intro_welcome_title">Bun venit la Kalium. Pentru a continua, puteți crea un nou portofel sau puteți importa unul existent.</string>
     <string name="intro_welcome_new_wallet">Portofel nou</string>
     <string name="intro_welcome_have_wallet">Importă portofelul"</string>
@@ -28,7 +25,6 @@
     <string name="fingerprint_text">Senzor de amprente</string>
     <string name="home_send_cta">Trimite</string>
     <string name="home_receive_cta">Primește</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <!-- Shown when there are no transactions -->
     <string name="example_card_intro">Bun venit la Kalium. Odată ce primiți sau trimiteți BANANO, tranzacțiile vor arăta astfel:</string>
     <string name="example_card_little">Un pic de</string>
@@ -84,8 +80,6 @@
     <string name="receive_copy_cta">Copiază adresa</string>
     <string name="receive_copied">Adresă copiată</string>
     <string name="receive_share_title">Share via…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">Cod QR</string>
     <string name="send_title">Trimite de la:</string>

@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Welkom bij Kalium. Creëer een nieuwe wallet of importeer een bestaande wallet om verder te gaan.</string>
     <string name="intro_welcome_new_wallet">Nieuwe wallet</string>
@@ -36,18 +30,17 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Verstuur</string>
     <string name="home_receive_cta">Ontvang</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Verbinding mislukt. Probeer het alsjeblieft nog eens.</string>
     <string name="transaction_header">Transacties</string>
     <string name="history_sent">Verstuurd</string>
     <string name="history_received">Ontvangen</string>
     <string name="transaction_details">Bekijk details</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Welkom bij Kalium. Zodra u BANANO ontvangt, worden de transacties als volgt weergegeven:</string>
-    <string name="example_card_little">Een beetje</string>
-    <string name="example_card_lot">Veel</string>
-    <string name="example_card_to">voor een willekeurige aap</string>
-    <string name="example_card_from">van een willekeurige aap</string>
+    <string name="example_card_intro">Welkom bij Kalium. Zo zien je BANANO transacties eruit:</string>
+    <string name="example_card_little">Een paar</string>
+    <string name="example_card_lot">Heel veel</string>
+    <string name="example_card_to">naar die ene aap</string>
+    <string name="example_card_from">van die andere aap</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Instellingen</string>
@@ -97,8 +90,6 @@
     <string name="receive_copy_cta">Kopieer adres</string>
     <string name="receive_copied">Adres gekopieerd</string>
     <string name="receive_share_title">Deel via...</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Code</string>
 

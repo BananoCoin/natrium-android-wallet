@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">歡迎來到Kalium。下一步，您可以創建新錢包或導入現有錢包</string>
     <string name="intro_welcome_new_wallet">創建新錢包</string>
@@ -36,7 +30,6 @@
     <!-- Home Screen -->
     <string name="home_send_cta">發送</string>
     <string name="home_receive_cta">接收</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">連接時出現問題。請再試一次。</string>
     <string name="transaction_header">交易</string>
     <string name="history_sent">發送</string>
@@ -97,8 +90,6 @@
     <string name="receive_copy_cta">複製地址</string>
     <string name="receive_copied">地址已復制</string>
     <string name="receive_share_title">通過...分享</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">二維碼</string>
 

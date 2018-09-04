@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Selamat datang ke Kalium. Untuk bersambung, anda boleh membuat dompet yang baru atau import dompet yang sedia ada.</string>
     <string name="intro_welcome_new_wallet">Dompet Baru</string>
@@ -36,18 +30,17 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Hantar</string>
     <string name="home_receive_cta">Terima</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Terdapat masalah semasa menyambung.Sila cuba lagi.</string>
     <string name="transaction_header">Transaksi</string>
     <string name="history_sent">Dihantar</string>
     <string name="history_received">Diterima</string>
     <string name="transaction_details">Lihat Butiran</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Selamat datang ke Kalium. Setelah anda menerima BANANO, transaksi akan muncul seperti ini:</string>
+    <string name="example_card_intro">Selamat datang ke Kalium. Sekali anda menerima BANANO, transaksi akan terlihat seperti ini:</string>
     <string name="example_card_little">Sedikit</string>
     <string name="example_card_lot">Banyak</string>
-    <string name="example_card_to">kepada monyet rawak</string>
-    <string name="example_card_from">dari monyet rawak</string>
+    <string name="example_card_to">kepada monyet rambang</string>
+    <string name="example_card_from">dari monyet rambang</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Tetapan</string>
@@ -99,8 +92,6 @@
     <string name="receive_copy_cta">Salinkan alamat</string>
     <string name="receive_copied">Alamat disalinkan</string>
     <string name="receive_share_title">Kongsi melalui…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">Kod QR</string>
 

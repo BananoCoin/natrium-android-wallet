@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">	ברוך הבא לקאליום. בכדי להמשיך, אתה רשאי לייצר ארנק חדש או לייבא אחד קיים.</string>
     <string name="intro_welcome_new_wallet">ארנק חדש</string>
@@ -36,7 +30,6 @@
     <!-- Home Screen -->
     <string name="home_send_cta">שלח</string>
     <string name="home_receive_cta">קבל</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">היתה בעיה בהתחברות. בבקשה תנסה שוב.</string>
     <string name="transaction_header">טרנסקציות</string>
     <string name="history_sent">נשלח</string>
@@ -100,8 +93,6 @@
     <string name="receive_copy_cta">העתק כתובת</string>
     <string name="receive_copied">כתובת הועתקה</string>
     <string name="receive_share_title">שתף בעזרת....</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">באנאנו</string>
     <string name="receive_qrcode_description">ברקוד</string>
 

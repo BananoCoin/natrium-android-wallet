@@ -1,14 +1,8 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Добро пожаловать в Kalium. Чтобы продолжить, можно создать новый кошелек или импортировать уже существующий.</string>
     <string name="intro_welcome_new_wallet">Новый кошелёк</string>
-    <string name="intro_welcome_have_wallet">Импортировать существующий кошелёк</string>
+    <string name="intro_welcome_have_wallet">Импортировать</string>
     <!-- Intro New Wallet Screens -->
     <string name="intro_new_wallet_seed">Ниже Seed вашего кошелька.Крайне важно,чтобы Вы сохранили Seed и никогда не хранили его как обычный текст или как скриншот.</string>
     <string name="intro_new_wallet_seed_copied">Seed скопирован в буфер обмена.\в нём сохраниться в течение 2 минут.</string>
@@ -36,7 +30,6 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Отправить</string>
     <string name="home_receive_cta">Получить</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Возникла проблема при подключении. Пожалуйста, попробуйте снова.</string>
     <string name="transaction_header">Транзакции</string>
     <string name="history_sent">Отправлено</string>
@@ -72,7 +65,7 @@
     <string name="settings_fingerprint_method">Отпечаток пальца</string>
     <string name="settings_pin_method">PIN-код</string>
     <!-- Change Rep -->
-    <string name="change_representative_header">Сменить представителя</string>
+    <string name="change_representative_header">Сменить\nпредставителя</string>
     <string name="change_representative_header_short">Изменить</string>
     <string name="change_representative_info_header">Что такое представитель?</string>
     <string name="change_representative_info">Представитель-это учетная запись, счёт, который голосует за консенсус сети. Право голоса взвешивается по балансу, вы можете делегировать свой баланс, чтобы увеличить вес голоса представителя, которому вы доверяете. Ваш представитель не имеет права распоряжаться вашими средствами. Вы должны выбрать представителя, который имеет мало времени простоя и заслуживает доверия.</string>
@@ -81,7 +74,7 @@
     <string name="change_representative_cancel">Отмена</string>
     <string name="change_representative_invalid">Недопустимый адрес представителя</string>
     <string name="change_representative_current_header">В настоящее время представлен</string>
-    <string name="change_representative_hint">Введите нового представителя</string>
+    <string name="change_representative_hint">Новый представитель</string>
     <string name="change_representative_success">Представитель успешно изменён.</string>
     <string name="change_representative_error">Не удалось сменить представителя. Повторите попытку позже.</string>
     <string name="change_representative_fingerprint">Подтвердить отпечаток пальца для изменения представителя.</string>
@@ -99,8 +92,6 @@
     <string name="receive_copy_cta">Копировать адрес</string>
     <string name="receive_copied">Адрес скопирован</string>
     <string name="receive_share_title">Отправить через…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Код</string>
 
