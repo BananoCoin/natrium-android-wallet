@@ -28,16 +28,46 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <RelativeLayout
-                android:id="@+id/copy_btn_container"
+                android:id="@+id/add_contact_btn_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginStart="45dp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
-                app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert">
+                android:layout_marginTop="30dp">
+
+                <Button
+                    android:id="@+id/add_contact_btn"
+                    style="@style/OutlineButton"
+                    android:background="@drawable/bg_outline_button_normal"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contact_add"
+                    tools:ignore="UnusedAttribute" />
+
+
+                <Button
+                    android:id="@+id/add_contact_btn_overlay"
+                    style="@style/OutlineButton"
+                    android:background="@drawable/bg_transparent_button"
+                    android:gravity="center_horizontal"
+                    android:textColor="@android:color/transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{handlers::onClickContact}"
+                    android:text="N/A"
+                    tools:ignore="UnusedAttribute" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/copy_btn_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="45dp"
+                android:layout_marginStart="45dp">
 
                 <Button
                     android:id="@+id/tran_details_copy"

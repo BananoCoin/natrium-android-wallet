@@ -17,12 +17,18 @@ import android.view.WindowManager;
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.broadcastreceiver.ClipboardAlarmReceiver;
 import com.banano.kaliumwallet.databinding.FragmentTransactionDetailsBinding;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.ui.webview.WebViewDialogFragment;
+
+import javax.inject.Inject;
+
+import io.realm.Realm;
+import io.realm.RealmQuery;
 
 /**
  * Tran Details Dialog
@@ -31,10 +37,16 @@ public class TranDetailsFragment extends BaseDialogFragment {
     private FragmentTransactionDetailsBinding binding;
     public static String TAG = TranDetailsFragment.class.getSimpleName();
     private Runnable mRunnable;
+    private Runnable mContactRunnable;
     private Handler mHandler;
     private String mAddress;
     private String mBlockHash;
     private boolean copyRunning = false;
+    private boolean contactRunning = false;
+    private boolean isContact = false;
+
+    @Inject
+    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -80,7 +92,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
 
         // Anchor to bottom
         Window window = getDialog().getWindow();
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int)UIUtil.convertDpToPixel(240, getContext()));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int)UIUtil.convertDpToPixel(320, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow
@@ -107,7 +119,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
             public void onTap(View view) { }
         }, SwipeDismissTouchListener.TOP_TO_BOTTOM));
 
-        // Set runnable to reset address copied text
+        // Set runnable to reset address copied text, contact added text
         mHandler = new Handler();
         mRunnable = () -> {
             copyRunning = false;
@@ -115,6 +127,28 @@ public class TranDetailsFragment extends BaseDialogFragment {
             binding.tranDetailsCopy.setTextColor(getResources().getColor(R.color.gray));
             binding.tranDetailsCopy.setText(getString(R.string.receive_copy_cta));
         };
+        mContactRunnable = () -> {
+            contactRunning = false;
+            binding.addContactBtn.setBackground(getResources().getDrawable(R.drawable.bg_outline_button_normal));
+            binding.addContactBtn.setTextColor(getResources().getColor(R.color.yellow));
+            if (isContact) {
+                isContact = false;
+                binding.addContactBtn.setText(getString(R.string.contact_add));
+            } else {
+                isContact = true;
+                binding.addContactBtn.setText(getString(R.string.contact_remove));
+            }
+        };
+
+        // Show add/remove contact if applicable
+        RealmQuery realmQuery = realm.where(Contact.class);
+        realmQuery.equalTo("address", mAddress);
+        if (realmQuery.count() > 0) {
+            isContact = true;
+            binding.addContactBtn.setText(getString(R.string.contact_remove));
+        } else {
+            isContact = false;
+        }
 
         return view;
     }
@@ -124,6 +158,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
         super.onDestroyView();
         if (mHandler != null  && mRunnable != null) {
             mHandler.removeCallbacks(mRunnable);
+            mHandler.removeCallbacks(mContactRunnable);
         }
     }
 
@@ -158,6 +193,35 @@ public class TranDetailsFragment extends BaseDialogFragment {
                         WebViewDialogFragment.TAG);
 
                 ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+            }
+        }
+
+        public void onClickContact(View view) {
+            if (!contactRunning) {
+                contactRunning = true;
+                RealmQuery realmQuery = realm.where(Contact.class);
+                realmQuery.equalTo("address", mAddress);
+                if (realmQuery.count() > 0) {
+                    // Delete contact
+                    Contact toDelete = (Contact) realmQuery.findFirst();
+                    realm.executeTransaction(realm -> {
+                        toDelete.deleteFromRealm();
+                    });
+                    binding.addContactBtn.setText(getString(R.string.contact_removed));
+                } else {
+                    // Add contact
+                    realm.executeTransaction(realm -> {
+                        Contact newContact = realm.createObject(Contact.class);
+                        newContact.setAddress(mAddress);
+                    });
+                    binding.addContactBtn.setText(getString(R.string.contact_added));
+                }
+                binding.addContactBtn.setBackground(getResources().getDrawable(R.drawable.bg_green_button_outline_normal));
+                binding.addContactBtn.setTextColor(getResources().getColor(R.color.green_light));
+                if (mHandler != null) {
+                    mHandler.removeCallbacks(mRunnable);
+                    mHandler.postDelayed(mContactRunnable, 900);
+                }
             }
         }
 

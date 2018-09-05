@@ -150,6 +150,18 @@
             app:layout_constraintStart_toStartOf="@+id/send_guideling_vert"
             tools:text="Invalid Address" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/contact_recyclerview"
+            android:background="@drawable/bg_edittext"
+            android:layout_width="@dimen/input_width"
+            android:layout_height="80dp"
+            android:requiresFadingEdge="vertical"
+            android:theme="@style/AppThemeYellow"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/send_address_container"/>
+
         <RelativeLayout
             android:id="@+id/send_address_container"
             android:layout_width="@dimen/input_width"
