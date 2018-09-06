@@ -319,6 +319,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
 
     private void contactAdded() {
         contactAdded = true;
+        binding.contactAddClose.setVisibility(View.GONE);
         binding.contactAddHeader.setText(R.string.contact_added_header);
         binding.contactAddHeader.setTextColor(getResources().getColor(R.color.green_light));
         binding.contactName.setTextColor(getResources().getColor(R.color.green_light));
