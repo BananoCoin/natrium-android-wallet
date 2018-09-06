@@ -23,6 +23,7 @@ import com.banano.kaliumwallet.MainActivity;
 import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
+import com.banano.kaliumwallet.util.LocaleUtil;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.Reprint;
 import com.hwangjr.rxbus.annotation.Subscribe;
@@ -161,10 +162,8 @@ public class SettingsFragment extends BaseFragment {
                     Locale locale;
                     if (key == AvailableLanguage.DEFAULT) {
                         locale = sharedPreferencesUtil.getDefaultLocale();
-                    } else if (key == AvailableLanguage.CHINESE_TRADITIONAL) {
-                        locale = Locale.TRADITIONAL_CHINESE;
                     } else {
-                        locale = new Locale(key.getLocaleString());
+                        locale = LocaleUtil.getLocaleFromStr(key.getLocaleString());
                     }
                     Locale.setDefault(locale);
                     Configuration config = new Configuration();

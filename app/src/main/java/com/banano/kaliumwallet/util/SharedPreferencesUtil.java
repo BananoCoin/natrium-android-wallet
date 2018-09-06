@@ -80,15 +80,7 @@ public class SharedPreferencesUtil {
 
     public Locale getDefaultLocale() {
         String localeStr = get(DEFAULT_LOCALE, Locale.getDefault().toString()).replace("-", "_");
-        String[] args = localeStr.split("_");
-        if (args.length > 2) {
-            return new Locale(args[0], args[1], args[2]);
-        } else if (args.length > 1) {
-            return new Locale(args[0], args[1].toUpperCase());
-        } else if (args.length == 1) {
-            return new Locale(args[0]);
-        }
-        return Locale.getDefault();
+        return LocaleUtil.getLocaleFromStr(localeStr);
     }
 
     public AvailableLanguage getLanguage() {

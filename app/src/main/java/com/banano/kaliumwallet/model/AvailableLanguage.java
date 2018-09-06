@@ -14,8 +14,10 @@ public enum AvailableLanguage {
     HEBREW("HEBREW"),
     HINDI("HINDI"),
     HUNGARIAN("HUNGARIAN"),
+    INDONESIAN("INDONESIAN"),
     MALAY("MALAY"),
     PORTUGUESE("PORTUGUESE"),
+    ROMANIAN("ROMANIAN"),
     RUSSIAN("RUSSIAN"),
     SPANISH("SPANISH"),
     SWEDISH("SWEDISH"),
@@ -51,10 +53,14 @@ public enum AvailableLanguage {
                 return "hu";
             case "HEBREW":
                 return "iw";
+            case "INDONESIAN":
+                return "in";
             case "DUTCH":
                 return "nl";
             case "PORTUGUESE":
                 return "pt";
+            case "ROMANIAN":
+                return "ro";
             case "RUSSIAN":
                 return "ru";
             case "SWEDISH":
@@ -92,10 +98,14 @@ public enum AvailableLanguage {
                 return "Magyar (hu)";
             case "HEBREW":
                 return "Hebrew (he)";
+            case "INDONESIAN":
+                return "bahasa Indonesia (in)";
             case "DUTCH":
                 return "Nederlands (nl)";
             case "PORTUGUESE":
                 return "Português (pt)";
+            case "ROMANIAN":
+                return "Romanian (ro)";
             case "RUSSIAN":
                 return "Русский язык (ru)";
             case "SWEDISH":

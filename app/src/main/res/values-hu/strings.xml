@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Üdvözöllek a Kaliumban! Hozz létre egy új tárcát, vagy importálj egy létezőt.</string>
     <string name="intro_welcome_new_wallet">Új Tárca</string>
@@ -36,18 +30,17 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Küldés</string>
     <string name="home_receive_cta">Fogadás</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Probléma a kapcsolattal. Próbálkozz újra.</string>
     <string name="transaction_header">Tranzakciók</string>
     <string name="history_sent">Küldött</string>
     <string name="history_received">Fogadott</string>
     <string name="transaction_details">Részletek Mutatása</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Üdvözöljük a Kaliumban. Miután megkapta a BANANO-t, a tranzakciók így fognak megjelenni:</string>
-    <string name="example_card_little">Egy kicsit</string>
-    <string name="example_card_lot">Nagyon</string>
-    <string name="example_card_to">egy véletlenszerű majomhoz</string>
-    <string name="example_card_from">egy véletlen majomból</string>
+    <string name="example_card_intro">Üdvözöllek a Kaliumban! Így fogod látni a tranzakcióid, amikor kapsz BANANO-t.</string>
+    <string name="example_card_little">Egy kevés</string>
+    <string name="example_card_lot">Rengeteg</string>
+    <string name="example_card_to">Egy random majomnak</string>
+    <string name="example_card_from">Egy random majomtól</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Beállítások</string>
@@ -99,8 +92,6 @@
     <string name="receive_copy_cta">Cím Másolása</string>
     <string name="receive_copied">Cím Másolva</string>
     <string name="receive_share_title">Megosztás ezzel…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Kód</string>
 

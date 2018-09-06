@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Chào mừng đến với Kalium. Để tiếp tục, bạn có thể tạo một ví mới hoặc nhập một ví hiện có.</string>
     <string name="intro_welcome_new_wallet">Tạo ví mới</string>
@@ -36,18 +30,17 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Gửi</string>
     <string name="home_receive_cta">Nhận được</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Đã xảy ra sự cố khi kết nối. Vui lòng thử lại.</string>
     <string name="transaction_header">Giao dịch</string>
     <string name="history_sent">Đã gửi</string>
     <string name="history_received">Đã nhận</string>
     <string name="transaction_details">Xem chi tiết</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Chào mừng bạn đến với Kalium. Khi bạn nhận được BANANO, giao dịch sẽ hiển thị như sau:</string>
-    <string name="example_card_little">một chút</string>
-    <string name="example_card_lot">rất nhiều</string>
-    <string name="example_card_to">với một con khỉ ngẫu nhiên</string>
-    <string name="example_card_from">từ một con khỉ ngẫu nhiên</string>
+    <string name="example_card_intro">Chào mừng tới Kalium. Khi bạn nhận được BANANO, giao dịch sẽ được hiển thị như sau:</string>
+    <string name="example_card_little">Một vài</string>
+    <string name="example_card_lot">Rất nhiều</string>
+    <string name="example_card_to">Tới một con Khỉ</string>
+    <string name="example_card_from">Từ một con Khỉ</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Cài đặt</string>
@@ -99,8 +92,6 @@
     <string name="receive_copy_cta">Sao chép địa chỉ</string>
     <string name="receive_copied">Đã sao chép địa chỉ</string>
     <string name="receive_share_title">Chia sẻ qua…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">Mã QR</string>
 

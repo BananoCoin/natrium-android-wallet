@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->a
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Maligayang pagdating sa Kalium. Para magpatuloy, gumawa ng bagong wallet o gamitin ang dating wallet.</string>
     <string name="intro_welcome_new_wallet">Bagong Wallet</string>
@@ -36,7 +30,6 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Magpadala</string>
     <string name="home_receive_cta">Tumanggap</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Nagkaproblema sa pagkonekta. Subukan ulit.</string>
     <string name="transaction_header">Mga transaksyon</string>
     <string name="history_sent">Naipadala</string>
@@ -99,8 +92,6 @@
     <string name="receive_copy_cta">Kopyahin ang Address</string>
     <string name="receive_copied">Ang Address ay nakopya</string>
     <string name="receive_share_title">I-share sa pamamagitan ng...</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Code</string>
 

@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Bem-vindo a Kalium. Para continuar, você pode criar uma nova carteira ou importar uma existente.</string>
     <string name="intro_welcome_new_wallet">Nova Carteira</string>
@@ -36,7 +30,6 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Enviar</string>
     <string name="home_receive_cta">Receber</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Houve um problema na conexão. Por favor, tente novamente.</string>
     <string name="transaction_header">Transações</string>
     <string name="history_sent">Enviado</string>
@@ -44,10 +37,10 @@
     <string name="transaction_details">Ver detalhes</string>
     <!-- Shown when there are no transactions -->
     <string name="example_card_intro">Bem-vindo a Kalium. Quando você receber BANANO, as transações aparecerão assim:</string>
-    <string name="example_card_little">Uma pequena</string>
-    <string name="example_card_lot">Um monte de</string>
-    <string name="example_card_to">Para um macaco aleatório</string>
-    <string name="example_card_from">De um macaco aleatório</string>
+    <string name="example_card_little">Algumas</string>
+    <string name="example_card_lot">Várias</string>
+    <string name="example_card_to">Para algum macaco</string>
+    <string name="example_card_from">De algum macaco</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Configurações</string>
@@ -94,8 +87,6 @@
     <string name="receive_copy_cta">Copiar Endereço</string>
     <string name="receive_copied">Endereço Copiado</string>
     <string name="receive_share_title">Compartilhar via…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Code</string>
 

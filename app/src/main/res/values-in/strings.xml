@@ -1,0 +1,125 @@
+<resources>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Selamat datang di Kalium. Untuk melanjutkan, anda bisa membuat dompet baru atau mengimpor dompet lama anda.</string>
+    <string name="intro_welcome_new_wallet">Buat Dompet</string>
+    <string name="intro_welcome_have_wallet">Impor Dompet</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Dibawah ini adalah benih dompet anda. Sangat penting bahwa anda harus menyimpan benih dompet anda dan tidak pernah menyimpannya dalam bentuk dokumen tertulis atau tangkapan layar.</string>
+    <string name="intro_new_wallet_seed_copied">Benih disalin kedalam papan klip.\n Hanya bisa ditempel dalam waktu 2 menit.</string>
+    <string name="intro_new_wallet_seed_header">Benih</string>
+    <string name="intro_new_wallet_seed_backup_header">Simpan benih anda</string>
+    <string name="intro_new_wallet_backup">Apakah anda yakin sudah menyimpan benih anda dengan aman?</string>
+    <string name="intro_new_wallet_backup_yes">Ya</string>
+    <string name="intro_new_wallet_backup_no">Tidak</string>
+    <string name="intro_new_wallet_warning_header">Tolong jangan berbohong.</string>
+    <string name="intro_new_wallet_warning">Anda fikir anda tidak akan kehilangan dompet anda jika tidak menyimpan benihnya.</string>
+    <string name="intro_new_wallet_not_lying">Saya Tidak Bohong</string>
+    <string name="intro_new_wallet_okay">Oke :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Impor Benih</string>
+    <string name="intro_seed_info">Masukkan benih dompet anda dibawah ini.</string>
+    <string name="intro_seed_invalid">Benih tidak sesuai</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Buat pin 4 angka</string>
+    <string name="pin_confirm_title">Konfirmasi pin anda</string>
+    <string name="pin_enter_title">Masukkan pin</string>
+    <string name="pin_confirm_error">Pin tidak sama</string>
+    <string name="pin_error">Pin yang dimasukkan salah</string>
+    <string name="fingerprint_text">Sensor sentuh</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Kirim</string>
+    <string name="home_receive_cta">Terima</string>
+    <string name="error_message">Ada kesalahan pada koneksi. Silahkan ulangi lagi.</string>
+    <string name="transaction_header">Transaksi</string>
+    <string name="history_sent">Terkirim</string>
+    <string name="history_received">Diterima</string>
+    <string name="transaction_details">Lihat Rincian</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Hai, Saat anda mengirim dan menerima BANANO, akan terlihat seperti ini:</string>
+    <string name="example_card_little">Sedikit</string>
+    <string name="example_card_lot"> Banyak</string>
+    <string name="example_card_to">ke monkey lain</string>
+    <string name="example_card_from">dari monkey lain</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="settings_local_currency">Ubah Mata Uang</string>
+    <string name="settings_change_language">Bahasa</string>
+    <string name="settings_default_language_string">Default Sistem</string>
+    <string name="settings_backup_seed">Simpan Benih</string>
+    <string name="settings_change_rep">Ubah Perwakilan</string>
+    <string name="settings_share">Bagikan Kalium</string>
+    <string name="settings_logout">Keluar</string>
+    <string name="settings_logout_alert_title">PERINGATAN</string>
+    <string name="settings_logout_alert_message">Keluar akan menghapus benih anda dan semua data terkait kalium dari perangkat ini. Jika benih anda belum disimpan, Anda tidak akan pernah bisa mengakses dana anda lagi.</string>
+    <string name="settings_logout_alert_confirm_cta">Hapus benih dan keluar</string>
+    <string name="settings_logout_alert_cancel_cta">Batal</string>
+    <string name="settings_logout_warning_title">Anda Yakin?</string>
+    <string name="settings_logout_warning_message">Selama anda yakin sudah menyimpan benih anda dengan aman, anda tidak perlu khawatir.</string>
+    <string name="settings_logout_warning_confirm">Ya</string>
+    <string name="settings_logout_warning_cancel">Batal</string>
+    <string name="settings_manage_header">Mengelola</string>
+    <string name="settings_preferences_header">Preferensi</string>
+    <string name="settings_disable_fingerprint">Metode Otentikasi</string>
+    <string name="settings_fingerprint_method">Sidik jari</string>
+    <string name="settings_pin_method">PIN</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Ubah\nPerwakilan</string>
+    <string name="change_representative_header_short">Ubah</string>
+    <string name="change_representative_info_header">Apa itu perwakilan?</string>
+    <string name="change_representative_info">Perwakilan adalah akun yang memberikan suara untuk konsensus jaringan. Kekuatan voting ditimbang dengan keseimbangan, Anda dapat mendelegasikan saldo Anda untuk menambah berat suara dari perwakilan yang Anda percayai. Perwakilan Anda tidak memiliki kekuasaan atas dana Anda. Anda harus memilih perwakilan yang memiliki sedikit waktu henti dan dapat dipercaya.</string>
+    <string name="change_representative_dialog_close">Tutup</string>
+    <string name="change_representative_change">Ubah</string>
+    <string name="change_representative_cancel">Batal</string>
+    <string name="change_representative_invalid">Alamat Perwakilan Salah</string>
+    <string name="change_representative_current_header">Saat ini diwakilkan oleh</string>
+    <string name="change_representative_hint">Masukkan perwakilan baru</string>
+    <string name="change_representative_success">Perwakilan Berhasil Diubah</string>
+    <string name="change_representative_error">Gagal untuk merubah perwakilan. Silahkan mencoba kembali.</string>
+    <string name="change_representative_fingerprint">Konfirmasi sidik jari untuk mengubah perwakilan.</string>
+    <string name="change_representative_pin">Masukkan pin untuk mengubah perwakilan</string>
+    <!-- Share -->
+    <string name="share_title">Bagikan lewat...</string>
+    <string name="share_extra">Ayo Cek Kalium! Banano\'s official Android Wallet!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Simpan Benih Dompet</string>
+    <string name="settings_fingerprint_title">Konfirmasi sidik jari untuk menyimpan benih.</string>
+    <string name="settings_pin_title">Masukkan pin untuk melihat benih dompet Anda.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Bagikan</string>
+    <string name="receive_copy_cta">Salin Alamat</string>
+    <string name="receive_copied">Alamat berhasil disalin.</string>
+    <string name="receive_share_title">Bagikan lewat…</string>
+    <string name="receive_card_title">Banano</string>
+    <string name="receive_qrcode_description">QR Code</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Kirim Dari:</string>
+    <string name="send_address_hint">Masukkan Alamat</string>
+    <string name="send_amount_hint">Masukkan Jumlah</string>
+    <string name="send_max">Maksimum</string>
+    <string name="send_send_cta">Kirim</string>
+    <string name="send_balance">(%s BAN)</string>
+    <string name="send_sent">Terkirim</string>
+    <string name="send_scan_qr">Pindai QR Code</string>
+    <string name="send_sending">Mengirim</string>
+    <string name="send_to">Kepada:</string>
+    <string name="sent_to">Terkirim Kepada:</string>
+    <string name="send_confirm">Konfirmasi</string>
+    <string name="send_cancel">Batal</string>
+    <string name="send_close">Tutup</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Masukkan Tidak Valid</string>
+    <string name="send_invalid_address">Alamat Tujuan Tidak Valid</string>
+    <string name="send_insufficient_balance">Saldo Tidak mencukupi</string>
+    <string name="send_amount_error">Jumlah yang dimasukkan tidak valid</string>
+    <string name="send_generic_error">Terjadi kesalahan. Coba lagi nanti.</string>
+    <string name="send_no_frontier">Tidak dapat menemukan batas akun (akun mungkin tidak terbuka).</string>
+    <string name="send_fingerprint_description">Konfirmasi sidik jari untuk mengirim %s Banano</string>
+    <string name="send_pin_description">Kirim %s Banano?</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Pindai QR code\n alamat Banano</string>
+</resources>

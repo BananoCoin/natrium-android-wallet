@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">केलियम में आपका स्वागत है। आगे बढ़ने के लिए, आप एक नया वॉलेट बना सकते हैं या एक मौजूदा वॉलेट खोल सकते हैं। </string>
     <string name="intro_welcome_new_wallet">नया वॉलेट</string>
@@ -36,7 +30,6 @@
     <!-- Home Screen -->
     <string name="home_send_cta">भेजें </string>
     <string name="home_receive_cta">प्राप्त करें</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">कनेक्ट करने में एक समस्या थी। फिर से कोशिश करें ।</string>
     <string name="transaction_header">लेनदेन</string>
     <string name="history_sent">भेजे -  </string>
@@ -97,8 +90,6 @@
     <string name="receive_copy_cta">पता कॉपी करें </string>
     <string name="receive_copied">पता कॉपी हो गया </string>
     <string name="receive_share_title">इस माध्यम से साझा (शेयर) करें - </string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">बनानो</string>
     <string name="receive_qrcode_description">क्यू आर कोड </string>
 
