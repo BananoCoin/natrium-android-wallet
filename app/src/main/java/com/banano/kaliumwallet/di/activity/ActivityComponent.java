@@ -1,6 +1,7 @@
 package com.banano.kaliumwallet.di.activity;
 
 import com.banano.kaliumwallet.model.KaliumWallet;
+import com.banano.kaliumwallet.ui.contact.AddContactDialogFragment;
 import com.banano.kaliumwallet.ui.home.TranDetailsFragment;
 import com.banano.kaliumwallet.ui.intro.IntroNewWalletBackupFragment;
 import com.banano.kaliumwallet.ui.intro.IntroNewWalletWarningFragment;
@@ -38,6 +39,8 @@ public interface ActivityComponent {
     Gson provideGson();
 
     void inject(AccountService accountService);
+
+    void inject(AddContactDialogFragment addContactDialogFragment);
 
     void inject(BackupSeedDialogFragment backupSeedDialogFragment);
 

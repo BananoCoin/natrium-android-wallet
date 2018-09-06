@@ -106,8 +106,8 @@
     <string name="send_to">至：</string>
     <string name="sent_to">發給：</string>
     <string name="send_confirm">確認</string>
-    <string name="send_cancel">取消</string>
-    <string name="send_close">關閉</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_close">關閉</string>
     <string name="send_alert_dialog_ok">好</string>
     <string name="send_alert_dialog_title">輸入無效</string>
     <string name="send_invalid_address">無效的目標地址</string>

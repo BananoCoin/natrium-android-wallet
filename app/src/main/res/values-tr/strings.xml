@@ -109,8 +109,8 @@
     <string name="send_to">Adres:</string>
     <string name="sent_to">Alıcı:</string>
     <string name="send_confirm">Onayla</string>
-    <string name="send_cancel">İptal</string>
-    <string name="send_close">Kapat</string>
+    <string name="dialog_cancel">İptal</string>
+    <string name="dialog_close">Kapat</string>
     <string name="send_alert_dialog_ok">Tamam</string>
     <string name="send_alert_dialog_title">Geçersiz Girdi</string>
     <string name="send_invalid_address">Geçersiz bir adres girdiniz</string>

@@ -108,8 +108,8 @@
     <string name="send_to">Ke:</string>
     <string name="sent_to">Dihantar ke:</string>
     <string name="send_confirm">Konfirm</string>
-    <string name="send_cancel">Batal</string>
-    <string name="send_close">Tutup</string>
+    <string name="dialog_cancel">Batal</string>
+    <string name="dialog_close">Tutup</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Input tidak sah</string>
     <string name="send_invalid_address">Alamat destinasi tidak sah</string>

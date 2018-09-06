@@ -108,8 +108,8 @@
     <string name="send_to">Sa:</string>
     <string name="sent_to">Pinadala sa:</string>
     <string name="send_confirm">Kumpirmahin</string>
-    <string name="send_cancel">Kanselahin</string>
-    <string name="send_close">Isara</string>
+    <string name="dialog_cancel">Kanselahin</string>
+    <string name="dialog_close">Isara</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Hindi wasto ang Input</string>
     <string name="send_invalid_address">Hindi wasto ang Destination Address</string>

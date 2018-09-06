@@ -108,8 +108,8 @@
     <string name="send_to">Küldés ide:</string>
     <string name="sent_to">Elküldve ide:</string>
     <string name="send_confirm">Megerősít</string>
-    <string name="send_cancel">Mégse</string>
-    <string name="send_close">Bezárás</string>
+    <string name="dialog_cancel">Mégse</string>
+    <string name="dialog_close">Bezárás</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Helytelen Adat</string>
     <string name="send_invalid_address">Helytelen Cím</string>

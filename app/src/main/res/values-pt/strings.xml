@@ -103,8 +103,8 @@
     <string name="send_to">Para:</string>
     <string name="sent_to">Enviado para:</string>
     <string name="send_confirm">Confirmar</string>
-    <string name="send_cancel">Cancelar</string>
-    <string name="send_close">Fechar</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_close">Fechar</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Entrada Inválida</string>
     <string name="send_invalid_address">Endereço de Destino Inválido</string>

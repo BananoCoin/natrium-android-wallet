@@ -94,8 +94,8 @@
     <string name="send_to">Către</string>
     <string name="sent_to">Trmite către:</string>
     <string name="send_confirm">Confirmare</string>
-    <string name="send_cancel">Renunţare</string>
-    <string name="send_close">Închide</string>
+    <string name="dialog_cancel">Renunţare</string>
+    <string name="dialog_close">Închide</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Input invalid</string>
     <string name="send_invalid_address">Adresa de destinație este invalidă</string>

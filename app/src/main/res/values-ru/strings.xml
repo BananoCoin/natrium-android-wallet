@@ -108,8 +108,8 @@
     <string name="send_to">на:</string>
     <string name="sent_to">Отправлено на:</string>
     <string name="send_confirm">Подтвердить</string>
-    <string name="send_cancel">Отмена</string>
-    <string name="send_close">Закрыть</string>
+    <string name="dialog_cancel">Отмена</string>
+    <string name="dialog_close">Закрыть</string>
     <string name="send_alert_dialog_ok">Да</string>
     <string name="send_alert_dialog_title">Неверный ввод</string>
     <string name="send_invalid_address">Неверный адрес назначения</string>

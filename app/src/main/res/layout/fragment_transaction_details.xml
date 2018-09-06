@@ -28,43 +28,10 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <RelativeLayout
-                android:id="@+id/add_contact_btn_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="30dp">
-
-                <Button
-                    android:id="@+id/add_contact_btn"
-                    style="@style/OutlineButton"
-                    android:background="@drawable/bg_outline_button_normal"
-                    android:gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/contact_add"
-                    tools:ignore="UnusedAttribute" />
-
-
-                <Button
-                    android:id="@+id/add_contact_btn_overlay"
-                    style="@style/OutlineButton"
-                    android:background="@drawable/bg_transparent_green_button"
-                    android:gravity="center_horizontal"
-                    android:textColor="@android:color/transparent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:onClick="@{handlers::onClickContact}"
-                    android:text="N/A"
-                    tools:ignore="UnusedAttribute" />
-
-            </RelativeLayout>
-
-            <RelativeLayout
                 android:id="@+id/copy_btn_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginStart="45dp">
@@ -90,6 +57,21 @@
                     android:onClick="@{handlers::onClickCopy}"
                     android:text="N/A"
                     tools:ignore="UnusedAttribute" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/add_contact_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:onClick="@{handlers::onClickAddContact}"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_contact_add"
+                    android:elevation="5dp"/>
 
             </RelativeLayout>
 

@@ -107,8 +107,8 @@
     <string name="send_to">À:</string>
     <string name="sent_to">Envoyé À:</string>
     <string name="send_confirm">Confirmer</string>
-    <string name="send_cancel">Annuler</string>
-    <string name="send_close">Fermer</string>
+    <string name="dialog_cancel">Annuler</string>
+    <string name="dialog_close">Fermer</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Saisie invalide</string>
     <string name="send_invalid_address">Adresse du destinataire invalide</string>

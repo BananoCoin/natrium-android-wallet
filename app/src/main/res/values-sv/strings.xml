@@ -106,8 +106,8 @@
     <string name="send_to">Till:</string>
     <string name="sent_to">Skickat till:</string>
     <string name="send_confirm">Bekräfta</string>
-    <string name="send_cancel">Avbryt</string>
-    <string name="send_close">Stäng</string>
+    <string name="dialog_cancel">Avbryt</string>
+    <string name="dialog_close">Stäng</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Ogiltigt inmatning</string>
     <string name="send_invalid_address">Ogiltig mottagaradress</string>

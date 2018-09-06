@@ -109,8 +109,8 @@
     <string name="send_to">מ:</string>
     <string name="sent_to">נשלח ל:</string>
     <string name="send_confirm">אשר</string>
-    <string name="send_cancel">בטל</string>
-    <string name="send_close">סגור</string>
+    <string name="dialog_cancel">בטל</string>
+    <string name="dialog_close">סגור</string>
     <string name="send_alert_dialog_ok">בסדר</string>
     <string name="send_alert_dialog_title">קלט לא תקין</string>
     <string name="send_invalid_address">כתובת יעד אינה תקינה</string>

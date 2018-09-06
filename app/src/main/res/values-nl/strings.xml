@@ -106,8 +106,8 @@
     <string name="send_to">Naar:</string>
     <string name="sent_to">Verstuur naar:</string>
     <string name="send_confirm">Bevestig</string>
-    <string name="send_cancel">Annuleer</string>
-    <string name="send_close">Sluit</string>
+    <string name="dialog_cancel">Annuleer</string>
+    <string name="dialog_close">Sluit</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Ongeldige invoer</string>
     <string name="send_invalid_address">Ongeldige ontvanger</string>

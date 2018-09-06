@@ -106,8 +106,8 @@
     <string name="send_to">An:</string>
     <string name="sent_to">Gesendet an:</string>
     <string name="send_confirm">Bestätigen</string>
-    <string name="send_cancel">Abbrechen</string>
-    <string name="send_close">Schließen</string>
+    <string name="dialog_cancel">Abbrechen</string>
+    <string name="dialog_close">Schließen</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Ungültige Eingabe</string>
     <string name="send_invalid_address">Ungültige Empfänger-Adresse</string>

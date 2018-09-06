@@ -3,6 +3,10 @@
 
     <string name="version_display" translatable="false">Kalium v%1$s</string>
 
+    <!-- Generic -->
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_close">Close</string>
+
     <!-- API -->
     <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
@@ -117,8 +121,6 @@
     <string name="send_to">To:</string>
     <string name="sent_to">Sent To:</string>
     <string name="send_confirm">Confirm</string>
-    <string name="send_cancel">Cancel</string>
-    <string name="send_close">Close</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Invalid Input</string>
     <string name="send_invalid_address">Address entered was invalid</string>
@@ -136,6 +138,15 @@
     <string name="contact_added">Added</string>
     <string name="contact_remove">Remove Contact</string>
     <string name="contact_removed">Removed</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Add Contact:</string>
+    <string name="contact_added_header">Added:</string>
+    <string name="contact_add_button">Add Contact</string>
+    <string name="contact_name_hint">Enter a Name @</string>
+    <string name="contact_name_missing">Choose a Name for this Contact</string>
+    <string name="contact_name_exists">Contact Already Exists</string>
+    <string name="contact_address_hint">Enter an Address</string>
+    <string name="contact_address_exists">A Contact Already has that Address</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan a Banano \naddress QR code</string>

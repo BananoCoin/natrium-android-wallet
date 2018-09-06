@@ -199,7 +199,7 @@
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
             android:onClick="@{handlers::onClickClose}"
-            android:text="@string/send_close"
+            android:text="@string/dialog_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/change_rep_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/change_rep_guideline_vert"
