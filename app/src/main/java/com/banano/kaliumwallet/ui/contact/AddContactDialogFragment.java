@@ -242,9 +242,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
         binding.contactAddress.setTypeface(tf);
         binding.contactAddressPaste.setVisibility(View.GONE);
-        binding.contactAddress.setTextIsSelectable(false);
-        binding.contactAddress.setFocusable(false);
-        binding.contactAddress.setFocusableInTouchMode(false);
+        binding.contactAddress.setEnabled(false);
     }
 
     private void showAddressError(int str_id) {
@@ -287,8 +285,8 @@ public class AddContactDialogFragment extends BaseDialogFragment {
 
     private boolean validateName() {
         String name = binding.contactName.getText().toString().trim();
-        if (name.startsWith("@")) {
-            name = name.substring(1, name.length());
+        if (!name.startsWith("@")) {
+            name = "@" + name;
         }
         if (name.isEmpty()) {
             showNameError(R.string.contact_name_missing);
