@@ -32,6 +32,8 @@ public class AccountHistoryResponseItem {
     @SerializedName("hash")
     private String hash;
 
+    private String contactName;
+
     public AccountHistoryResponseItem() {
     }
 
@@ -84,5 +86,13 @@ public class AccountHistoryResponseItem {
 
     public boolean isSend() {
         return this.type.equals(BlockTypes.SEND.toString());
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 }

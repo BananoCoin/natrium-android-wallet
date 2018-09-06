@@ -92,7 +92,7 @@
             android:textSize="@dimen/tx_address_text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{accountHistoryItem.addressShort}"
+            android:text="@{accountHistoryItem.contactName != null ? accountHistoryItem.contactName : accountHistoryItem.addressShort}"
             tools:text="3gntug … p7ijg"
             app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
             app:layout_constraintEnd_toEndOf="parent"

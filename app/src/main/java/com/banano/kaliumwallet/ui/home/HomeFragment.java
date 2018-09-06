@@ -21,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.PriceConversion;
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
 import com.banano.kaliumwallet.ui.common.UIUtil;
@@ -34,6 +35,9 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -56,6 +60,7 @@ import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
 import timber.log.Timber;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
@@ -77,6 +82,7 @@ public class HomeFragment extends BaseFragment {
     public boolean retrying = false;
     private Handler mHandler;
     private Runnable mRunnable;
+    private HashMap<String, String> mContactCache = new HashMap<>();
 
     @Inject
     AccountService accountService;
@@ -174,7 +180,14 @@ public class HomeFragment extends BaseFragment {
 
         // Initialize transaction history
         if (wallet != null && wallet.getAccountHistory() != null) {
-            controller.setData(wallet.getAccountHistory(), new ClickHandlers());
+            List<AccountHistoryResponseItem> historyList = wallet.getAccountHistory();
+            for (AccountHistoryResponseItem item : historyList) {
+                String name = getContactName(item.getAccount());
+                if (name != null) {
+                    item.setContactName(name);
+                }
+            }
+            controller.setData(historyList, new ClickHandlers());
         }
 
         updateAmounts();
@@ -297,12 +310,33 @@ public class HomeFragment extends BaseFragment {
         return view;
     }
 
+    private String getContactName(String address) {
+        if (mContactCache.containsKey(address)) {
+            return mContactCache.get(address);
+        }
+        RealmQuery realmQuery = realm.where(Contact.class);
+        realmQuery.equalTo("address", address);
+        if (realmQuery.count() > 0) {
+            Contact c = (Contact) realmQuery.findFirst();
+            mContactCache.put(address, c.getName());
+            return c.getName();
+        }
+        return null;
+    }
+
     @Subscribe
     public void receiveHistory(WalletHistoryUpdate walletHistoryUpdate) {
         if (wallet.getAccountHistory().size() > 0) {
             binding.exampleCards.setVisibility(View.GONE);
         }
-        controller.setData(wallet.getAccountHistory(), new ClickHandlers());
+        List<AccountHistoryResponseItem> historyList = wallet.getAccountHistory();
+        for (AccountHistoryResponseItem item : historyList) {
+            String name = getContactName(item.getAccount());
+            if (name != null) {
+                item.setContactName(name);
+            }
+        }
+        controller.setData(historyList, new ClickHandlers());
         binding.homeSwiperefresh.setRefreshing(false);
         binding.homeRecyclerview.getLayoutManager().scrollToPosition(0);
     }
