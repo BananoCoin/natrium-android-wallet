@@ -21,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.banano.kaliumwallet.bus.TransactionItemClicked;
 import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.PriceConversion;
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
@@ -76,13 +77,13 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
 })
 public class HomeFragment extends BaseFragment {
     private FragmentHomeBinding binding;
-    private WalletController controller;
     public static String TAG = HomeFragment.class.getSimpleName();
     private DownloadOrRetreiveFileTask downloadMonkeyTask;
     public boolean retrying = false;
     private Handler mHandler;
     private Runnable mRunnable;
     private HashMap<String, String> mContactCache = new HashMap<>();
+    private AccountHistoryAdapter mAdapter;
 
     @Inject
     AccountService accountService;
@@ -160,9 +161,10 @@ public class HomeFragment extends BaseFragment {
         KeyboardUtil.hideKeyboard(getActivity());
 
         // initialize recyclerview (list of wallet transactions)
-        controller = new WalletController();
         binding.homeRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        binding.homeRecyclerview.setAdapter(controller.getAdapter());
+        mAdapter = new AccountHistoryAdapter(new ArrayList<>());
+        mAdapter.setHasStableIds(true);
+        binding.homeRecyclerview.setAdapter(mAdapter);
         mRunnable = () -> {
             retrying = false;
             binding.homeSwiperefresh.setRefreshing(false);
@@ -187,7 +189,7 @@ public class HomeFragment extends BaseFragment {
                     item.setContactName(name);
                 }
             }
-            controller.setData(historyList, new ClickHandlers());
+            mAdapter.updateList(historyList);
         }
 
         updateAmounts();
@@ -336,7 +338,7 @@ public class HomeFragment extends BaseFragment {
                 item.setContactName(name);
             }
         }
-        controller.setData(historyList, new ClickHandlers());
+        mAdapter.updateList(historyList);
         binding.homeSwiperefresh.setRefreshing(false);
         binding.homeRecyclerview.getLayoutManager().scrollToPosition(0);
     }
@@ -377,6 +379,16 @@ public class HomeFragment extends BaseFragment {
         } else {
             retrying = false;
         }
+    }
+
+    @Subscribe
+    public void receiveTranItemClick(TransactionItemClicked tran) {
+        // show details dialog
+        TranDetailsFragment dialog = TranDetailsFragment.newInstance(tran.getHash(), tran.getAccount());
+        dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
+                TranDetailsFragment.TAG);
+
+        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
     }
 
     private void updateAmounts() {
@@ -433,20 +445,6 @@ public class HomeFragment extends BaseFragment {
                         SendDialogFragment.TAG);
 
                 executePendingTransactions();
-            }
-        }
-
-        public void onClickTransaction(View view) {
-            if (getActivity() instanceof WindowControl) {
-                AccountHistoryResponseItem accountHistoryItem = (AccountHistoryResponseItem) view.getTag();
-                if (accountHistoryItem != null) {
-                    // show details dialog
-                    TranDetailsFragment dialog = TranDetailsFragment.newInstance(accountHistoryItem.getHash(), accountHistoryItem.getAccount());
-                    dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                            TranDetailsFragment.TAG);
-
-                    executePendingTransactions();
-                }
             }
         }
 

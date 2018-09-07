@@ -324,6 +324,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
         binding.contactRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
+        adapter.setHasStableIds(true);
         binding.contactRecyclerview.setAdapter(adapter);
 
         // Hacky thing to hide buttons when recyclerview is open.

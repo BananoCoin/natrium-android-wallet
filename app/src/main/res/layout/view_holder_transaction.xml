@@ -8,9 +8,6 @@
         <variable
             name="accountHistoryItem"
             type="com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem" />
-        <variable
-            name="handlers"
-            type="com.banano.kaliumwallet.ui.home.HomeFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -22,8 +19,7 @@
         android:paddingEnd="20dp"
         android:paddingTop="@dimen/tx_card_padding"
         android:paddingBottom="@dimen/tx_card_padding"
-        android:tag="@{accountHistoryItem}"
-        android:onClick="@{handlers::onClickTransaction}">
+        android:tag="@{accountHistoryItem}">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/transaction_type"
