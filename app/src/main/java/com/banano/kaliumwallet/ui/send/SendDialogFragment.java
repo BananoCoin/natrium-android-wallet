@@ -18,6 +18,7 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -32,6 +33,7 @@ import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
+import com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.DigitsInputFilter;
@@ -182,10 +184,14 @@ public class SendDialogFragment extends BaseDialogFragment {
                 String curText = binding.sendAddress.getText().toString().trim();
                 if (curText.startsWith("@")) {
                     binding.contactRecyclerview.setVisibility(View.VISIBLE);
+                    binding.sendAddress.setGravity(Gravity.START);
+                    binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext_bottom_round));
                     updateContactSearch();
                     return;
                 } else {
                     binding.contactRecyclerview.setVisibility(View.GONE);
+                    binding.sendAddress.setGravity(Gravity.CENTER);
+                    binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
                 }
                 if (curText.equals(lastText)) {
                     if (fromColorization) {
@@ -280,6 +286,7 @@ public class SendDialogFragment extends BaseDialogFragment {
                 binding.sendScanQr.setVisibility(View.VISIBLE);
                 binding.sendButton.setVisibility(View.VISIBLE);
                 binding.contactRecyclerview.setVisibility(View.GONE);
+                binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
                 binding.sendAddress.setHint(R.string.send_address_hint);
             }
         });
@@ -302,11 +309,22 @@ public class SendDialogFragment extends BaseDialogFragment {
                             binding.sendButton.setVisibility(View.GONE);
                         } else {
                             binding.contactRecyclerview.setVisibility(View.GONE);
+                            binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
                             binding.sendScanQr.setVisibility(View.VISIBLE);
                             binding.sendButton.setVisibility(View.VISIBLE);
                         }
                     }
                 });
+
+        //
+        binding.contactRecyclerview.setOnTouchListener(new View.OnTouchListener() {
+            @Override public boolean onTouch(View view, MotionEvent motionEvent) {
+                //hideKeyboard(edittext);
+                //hideKeyboard(binding.sendAmount);
+                binding.sendAmount.clearFocus();
+                return false;
+            }
+        });
 
         return view;
     }
@@ -316,7 +334,8 @@ public class SendDialogFragment extends BaseDialogFragment {
         if (!searchTerm.startsWith("@")) {
             return;
         }
-        List<Contact> contacts = realm.where(Contact.class).beginsWith("name", searchTerm, Case.INSENSITIVE).findAll();
+        searchTerm = searchTerm.substring(1, searchTerm.length());
+        List<Contact> contacts = realm.where(Contact.class).contains("name", searchTerm, Case.INSENSITIVE).findAll();
         ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
         binding.contactRecyclerview.swapAdapter(adapter, false);
     }
@@ -474,6 +493,11 @@ public class SendDialogFragment extends BaseDialogFragment {
                 Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
                 binding.sendAddress.setText(address.getAddress());
             }
+        }
+
+        public void onClickContact(View view) {
+            Contact contact = (Contact) view.getTag();
+            binding.sendAddress.setText(contact.getName());
         }
     }
 

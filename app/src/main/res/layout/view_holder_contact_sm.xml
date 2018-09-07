@@ -16,11 +16,16 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_sm_contact_item"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:tag="@{contact}">
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:tag="@{contact}"
+        android:onClick="@{handlers::onClickContact}">
 
 
         <TextView
