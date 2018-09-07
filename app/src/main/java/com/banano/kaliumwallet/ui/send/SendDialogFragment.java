@@ -9,7 +9,6 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -18,22 +17,23 @@ import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Toast;
 
 import com.banano.kaliumwallet.R;
+import com.banano.kaliumwallet.bus.ContactSelected;
+import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentSendBinding;
 import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
-import com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.DigitsInputFilter;
@@ -44,12 +44,9 @@ import com.banano.kaliumwallet.ui.contact.ContactSelectionAdapter;
 import com.banano.kaliumwallet.ui.scan.ScanActivity;
 import com.banano.kaliumwallet.util.NumberUtil;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
-
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -57,8 +54,6 @@ import javax.inject.Inject;
 
 import io.realm.Case;
 import io.realm.Realm;
-import io.realm.RealmQuery;
-import io.realm.RealmResults;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
@@ -123,6 +118,9 @@ public class SendDialogFragment extends BaseDialogFragment {
         view = binding.getRoot();
         binding.setHandlers(new ClickHandlers());
 
+        // subscribe to bus
+        RxBus.get().register(this);
+
         // Set balance hint
         binding.sendBalance.setText(getString(R.string.send_balance, wallet.getAccountBalanceBanano()));
 
@@ -130,6 +128,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         Window window = getDialog().getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
         // Shadow
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -189,6 +188,9 @@ public class SendDialogFragment extends BaseDialogFragment {
                     updateContactSearch();
                     return;
                 } else {
+                    if (!fromColorization) {
+                        binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
+                    }
                     binding.contactRecyclerview.setVisibility(View.GONE);
                     binding.sendAddress.setGravity(Gravity.CENTER);
                     binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
@@ -279,12 +281,12 @@ public class SendDialogFragment extends BaseDialogFragment {
         });
         binding.sendAddress.setOnFocusChangeListener((View view, boolean isFocused) -> {
             if (isFocused) {
-                binding.sendScanQr.setVisibility(View.GONE);
-                binding.sendButton.setVisibility(View.GONE);
                 binding.sendAddress.setHint("");
+                if (binding.sendAddress.getText().toString().startsWith("@")) {
+                    binding.sendAddress.setGravity(Gravity.START);
+                }
             } else {
-                binding.sendScanQr.setVisibility(View.VISIBLE);
-                binding.sendButton.setVisibility(View.VISIBLE);
+                binding.sendAddress.setGravity(Gravity.CENTER);
                 binding.contactRecyclerview.setVisibility(View.GONE);
                 binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
                 binding.sendAddress.setHint(R.string.send_address_hint);
@@ -297,36 +299,43 @@ public class SendDialogFragment extends BaseDialogFragment {
         ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
         binding.contactRecyclerview.setAdapter(adapter);
 
-        // Keyboard hack
-        // TODO buttons get shoved up above the content when keyboard is open, so hide them
-        KeyboardVisibilityEvent.setEventListener(
-                getActivity(),
-                new KeyboardVisibilityEventListener() {
-                    @Override
-                    public void onVisibilityChanged(boolean isOpen) {
-                        if (isOpen) {
-                            binding.sendScanQr.setVisibility(View.GONE);
-                            binding.sendButton.setVisibility(View.GONE);
-                        } else {
-                            binding.contactRecyclerview.setVisibility(View.GONE);
-                            binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
-                            binding.sendScanQr.setVisibility(View.VISIBLE);
-                            binding.sendButton.setVisibility(View.VISIBLE);
-                        }
-                    }
-                });
-
-        //
-        binding.contactRecyclerview.setOnTouchListener(new View.OnTouchListener() {
-            @Override public boolean onTouch(View view, MotionEvent motionEvent) {
-                //hideKeyboard(edittext);
-                //hideKeyboard(binding.sendAmount);
-                binding.sendAmount.clearFocus();
-                return false;
+        // Hacky thing to hide buttons when recyclerview is open.
+        // For some reason RecyclerView causes the buttons to be pushed above the keyboard when it's visible/
+        // So we have the window set to resize, and use window size change to detect keyboard open/close
+        // And hide/show the buttons based on that
+        view.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            int heightDiff = view.getRootView().getHeight() - view.getHeight();
+            if (heightDiff > UIUtil.convertDpToPixel(200, getContext())) {
+                binding.sendButton.setVisibility(View.GONE);
+                binding.sendScanQr.setVisibility(View.GONE);
+            } else {
+                if (binding.sendButton.getVisibility() != View.VISIBLE) {
+                    animateView(binding.sendButton, View.VISIBLE, 1.0f, 300);
+                }
+                if (binding.sendScanQr.getVisibility() != View.VISIBLE) {
+                    animateView(binding.sendScanQr, View.VISIBLE, 1.0f, 300);
+                }
+                binding.sendContainer.requestFocus();
+                //binding.sendButton.setVisibility(View.VISIBLE);
+                //binding.sendScanQr.setVisibility(View.VISIBLE);
             }
         });
 
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // unregister from bus
+        RxBus.get().unregister(this);
+    }
+
+    @Subscribe
+    public void receiveContactSelected(ContactSelected contactSelected) {
+        binding.sendAddress.setText(contactSelected.getName());
+        hideKeyboard(binding.sendAddress);
+        binding.sendContainer.requestFocus();
     }
 
     private void updateContactSearch() {
@@ -337,6 +346,16 @@ public class SendDialogFragment extends BaseDialogFragment {
         searchTerm = searchTerm.substring(1, searchTerm.length());
         List<Contact> contacts = realm.where(Contact.class).contains("name", searchTerm, Case.INSENSITIVE).findAll();
         ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
+        if (contacts.size() == 1) {
+            String name = binding.sendAddress.getText().toString().trim();
+            if (contacts.get(0).getName().equals(name)) {
+                binding.sendAddress.setTextColor(getResources().getColor(R.color.yellow));
+            } else {
+                binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
+            }
+        } else {
+            binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
+        }
         binding.contactRecyclerview.swapAdapter(adapter, false);
     }
 
@@ -350,12 +369,22 @@ public class SendDialogFragment extends BaseDialogFragment {
     }
 
     private boolean validateAddress() {
+        String address = binding.sendAddress.getText().toString().trim();
+        if (address.startsWith("@")) {
+            Contact c = realm.where(Contact.class).equalTo("name", address).findFirst();
+            if (c != null) {
+                address = c.getAddress();
+            } else {
+                showAddressError(R.string.contact_invalid_name);
+                return false;
+            }
+        }
         // check for valid address
-        if (binding.sendAddress.getText().toString().trim().isEmpty()) {
+        if (address.isEmpty()) {
             showAddressError(R.string.send_enter_address);
             return false;
         }
-        Address destination = new Address(binding.sendAddress.getText().toString());
+        Address destination = new Address(address);
         if (!destination.isValidAddress()) {
             showAddressError(R.string.send_invalid_address);
             return false;
@@ -493,11 +522,6 @@ public class SendDialogFragment extends BaseDialogFragment {
                 Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
                 binding.sendAddress.setText(address.getAddress());
             }
-        }
-
-        public void onClickContact(View view) {
-            Contact contact = (Contact) view.getTag();
-            binding.sendAddress.setText(contact.getName());
         }
     }
 

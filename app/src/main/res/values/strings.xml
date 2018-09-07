@@ -136,6 +136,7 @@
     <!-- Address Book/Contacts -->
     <string name="contact_add">Add Contact</string>
     <string name="contact_added">Contact Added</string>
+    <string name="contact_invalid_name">Invalid Contact Name</string>
     <!-- Add Contact Dialog -->
     <string name="contact_add_header">Add Contact:</string>
     <string name="contact_added_header">Added:</string>

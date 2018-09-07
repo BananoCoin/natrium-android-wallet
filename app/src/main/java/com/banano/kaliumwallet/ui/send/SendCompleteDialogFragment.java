@@ -14,10 +14,16 @@ import android.view.WindowManager;
 
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.databinding.FragmentSendCompleteBinding;
+import com.banano.kaliumwallet.model.Address;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
+
+import javax.inject.Inject;
+
+import io.realm.Realm;
 
 /**
  * Send complete screen
@@ -25,6 +31,9 @@ import com.banano.kaliumwallet.ui.common.UIUtil;
 public class SendCompleteDialogFragment extends BaseDialogFragment {
     private FragmentSendCompleteBinding binding;
     public static String TAG = SendCompleteDialogFragment.class.getSimpleName();
+
+    @Inject
+    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -63,6 +72,18 @@ public class SendCompleteDialogFragment extends BaseDialogFragment {
         view = binding.getRoot();
         binding.setHandlers(new ClickHandlers());
 
+        // get address
+        Contact contact = null;
+        Address address;
+        if (destination.startsWith("@")) {
+            contact = realm.where(Contact.class).equalTo("name", destination).findFirst();
+        }
+        if (contact != null) {
+            address = new Address(contact.getAddress());
+        } else {
+            address = new Address(destination);
+        }
+
         // Restrict height
         Window window = getDialog().getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -97,8 +118,13 @@ public class SendCompleteDialogFragment extends BaseDialogFragment {
 
         // colorize address text
         if (binding != null &&
-                destination != null) {
-            binding.sentDestination.setText(UIUtil.getColorizedSpannableGreen(destination, getContext()));
+                address.getAddress() != null) {
+            if (contact != null) {
+                String prependString = contact.getName() + "\n";
+                binding.sentDestination.setText(UIUtil.getColorizedSpannableGreenPrepend(prependString, address.getAddress(), getContext()));
+            } else {
+                binding.sentDestination.setText(UIUtil.getColorizedSpannableGreen(destination, getContext()));
+            }
         }
 
         binding.sentAmount.setText(String.format("%s BAN", amount));

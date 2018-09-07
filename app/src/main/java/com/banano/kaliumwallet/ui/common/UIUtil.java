@@ -21,6 +21,10 @@ public class UIUtil {
     public static final double LARGE_DEVICE_DIALOG_HEIGHT = 0.85;
     public static final double LARGE_DEVICE_DIALOG_HEIGHT_SMALLER = 0.83;
 
+    /** TODO
+     * All these colorize methods could be cleaned up quite a bit
+     */
+
     /**
      * Colorize a string in the following manner:
      * First 11 characters are yellow transparent
@@ -77,6 +81,19 @@ public class UIUtil {
         }
     }
 
+    public static void colorizeSpannableBright(String prependString, Spannable s, Context context) {
+        if (context == null) {
+            return;
+        }
+        int offset = prependString.length();
+        if (s.length() > 0) {
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 0, s.length() > 10 ? 11 + offset : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (s.length() > 58) {
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 58 + offset, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+    }
+
     /**
      * Colorize a string in the following manner:
      * First 11 characters are yellow transparent
@@ -97,6 +114,20 @@ public class UIUtil {
             }
         }
     }
+    public static void colorizeSpannableGreen(String prependString, Spannable s, Context context) {
+        if (context == null) {
+            return;
+        }
+        int offset = prependString.length();
+        if (s.length() > 0) {
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.green_light)), 0, s.length() > 10 ? 11 + offset : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (s.length() > 58) {
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.white_90)),  11 + offset, 58 + offset, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.green_light)), 58 + offset, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+    }
+
 
     /**
      * Replace occurences of BANANO with yellow text
@@ -148,6 +179,12 @@ public class UIUtil {
         return sp;
     }
 
+    public static Spannable getColorizedSpannableBrightPrepend(String prependString, String s, Context context) {
+        Spannable sp = new SpannableString(prependString + s);
+        colorizeSpannableBright(prependString, sp, context);
+        return sp;
+    }
+
     /**
      * Colorize a string in the following manner:
      * First 11 characters are green
@@ -163,6 +200,13 @@ public class UIUtil {
         colorizeSpannableGreen(sp, context);
         return sp;
     }
+
+    public static Spannable getColorizedSpannableGreenPrepend(String prependString, String s, Context context) {
+        Spannable sp = new SpannableString(prependString + s);
+        colorizeSpannableGreen(prependString, sp, context);
+        return sp;
+    }
+
 
     /**
      * Colorize a string in the following manner:

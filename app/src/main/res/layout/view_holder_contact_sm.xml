@@ -8,24 +8,17 @@
         <variable
             name="contact"
             type="com.banano.kaliumwallet.model.Contact" />
-        <variable
-            name="handlers"
-            type="com.banano.kaliumwallet.ui.send.SendDialogFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_sm_contact_item"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:tag="@{contact}"
-        android:onClick="@{handlers::onClickContact}">
+        android:tag="@{contact}">
 
 
         <TextView

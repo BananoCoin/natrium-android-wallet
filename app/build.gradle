@@ -136,9 +136,6 @@ dependencies {
     // Lottie Android
     implementation "com.airbnb.android:lottie:$LOTTIE_VERSION"
 
-    // Keyboard Detection
-    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.1.0'
-
     // Testing
     testAnnotationProcessor("com.google.dagger:dagger-compiler:$DAGGER_VERSION")
     androidTestAnnotationProcessor("com.google.dagger:dagger-compiler:$DAGGER_VERSION")

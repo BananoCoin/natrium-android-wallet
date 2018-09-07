@@ -66,6 +66,7 @@
                 android:id="@+id/sent_destination"
                 style="@style/TextStyleAddressAlt"
                 android:textSize="@dimen/text_size_normal"
+                android:textColor="@color/green_light"
                 android:background="@drawable/bg_edittext"
                 android:layout_height="wrap_content"
                 android:layout_width="@dimen/input_width"

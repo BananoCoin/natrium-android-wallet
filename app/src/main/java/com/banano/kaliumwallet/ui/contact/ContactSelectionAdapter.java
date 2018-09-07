@@ -3,9 +3,12 @@ package com.banano.kaliumwallet.ui.contact;
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.banano.kaliumwallet.R;
+import com.banano.kaliumwallet.bus.ContactSelected;
+import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.ViewHolderContactSmBinding;
 import com.banano.kaliumwallet.model.Contact;
 
@@ -26,6 +29,14 @@ public class ContactSelectionAdapter  extends RecyclerView.Adapter<ContactSelect
                 R.layout.view_holder_contact_sm, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(binding);
+        View view = binding.getRoot();
+        view.setOnClickListener((View v) -> {
+            Contact c = (Contact) view.getTag();
+            if (c != null) {
+                RxBus.get().post(new ContactSelected(c.getName(), c.getAddress()));
+            }
+        });
+
         return viewHolder;
     }
 

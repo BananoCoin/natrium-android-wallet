@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import com.banano.kaliumwallet.bus.SendInvalidAmount;
 import com.banano.kaliumwallet.databinding.FragmentSendConfirmBinding;
 import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.model.AuthMethod;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -111,7 +113,21 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         RxBus.get().register(this);
 
         // get address
-        address = new Address(destination);
+        Contact contact = null;
+        if (destination.startsWith("@")) {
+            contact = realm.where(Contact.class).equalTo("name", destination).findFirst();
+            if (contact == null) {
+                if (mTargetFragment != null) {
+                    mTargetFragment.onActivityResult(getTargetRequestCode(), SEND_FAILED, mActivity.getIntent());
+                }
+                dismiss();
+            }
+        }
+        if (contact != null) {
+            address = new Address(contact.getAddress());
+        } else {
+            address = new Address(destination);
+        }
 
         // Set send amount
         wallet.setSendBananoAmount(amount);
@@ -133,7 +149,12 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
                 binding.sendDestination != null &&
                 address != null &&
                 address.getAddress() != null) {
-            binding.sendDestination.setText(UIUtil.getColorizedSpannableBright(address.getAddress(), getContext()));
+            if (contact != null) {
+                String prependString = contact.getName() + "\n";
+                binding.sendDestination.setText(UIUtil.getColorizedSpannableBrightPrepend(prependString, address.getAddress(), getContext()));
+            } else {
+                binding.sendDestination.setText(UIUtil.getColorizedSpannableBright(address.getAddress(), getContext()));
+            }
         }
 
         binding.sendAmount.setText(String.format("%s BAN", amount));

@@ -1,6 +1,10 @@
 package com.banano.kaliumwallet.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import io.realm.RealmObject;
+import timber.log.Timber;
 
 public class Contact extends RealmObject {
     private String name;
@@ -52,5 +56,17 @@ public class Contact extends RealmObject {
                 "name='" + name + '\'' +
                 ", address='" + address +
                 '}';
+    }
+
+    public JSONObject getJson() {
+        JSONObject contact = new JSONObject();
+        try {
+            contact.put("name", name);
+            contact.put("address", address);
+        } catch (JSONException e) {
+            Timber.e(e);
+            return null;
+        }
+        return contact;
     }
 }
