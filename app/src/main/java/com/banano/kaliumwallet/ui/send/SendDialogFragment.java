@@ -8,7 +8,10 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -54,6 +57,7 @@ import javax.inject.Inject;
 
 import io.realm.Case;
 import io.realm.Realm;
+import io.realm.RealmQuery;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
@@ -66,6 +70,8 @@ public class SendDialogFragment extends BaseDialogFragment {
     public static String TAG = SendDialogFragment.class.getSimpleName();
     private Address address;
     private Activity mActivity;
+    private Handler mHandler;
+    private Runnable mRunnable;
 
     @Inject
     KaliumWallet wallet;
@@ -169,6 +175,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         // Set color on destination  when valid
         binding.sendAddress.addTextChangedListener(new TextWatcher() {
             String lastText = "";
+            boolean toContact = false;
             boolean isColorized = false;
             boolean fromColorization = false;
 
@@ -182,6 +189,12 @@ public class SendDialogFragment extends BaseDialogFragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = binding.sendAddress.getText().toString().trim();
                 if (curText.startsWith("@")) {
+                    if (toContact) {
+                        toContact = false;
+                        updateContactSearch();
+                        binding.sendAddress.clearFocus();
+                        return;
+                    }
                     binding.contactRecyclerview.setVisibility(View.VISIBLE);
                     binding.sendAddress.setGravity(Gravity.START);
                     binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext_bottom_round));
@@ -223,10 +236,17 @@ public class SendDialogFragment extends BaseDialogFragment {
                     Address address = new Address(curText);
                     if (address.isValidAddress()) {
                         hideAddressError();
-                        isColorized = true;
-                        fromColorization = true;
-                        binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
-                        binding.sendAddress.setSelection(address.getAddress().length());
+                        Contact c = realm.where(Contact.class).equalTo("address", address.getAddress()).findFirst();
+                        if (c != null) {
+                            lastText = c.getName();
+                            toContact = true;
+                            binding.sendAddress.setText(c.getName());
+                        } else {
+                            isColorized = true;
+                            fromColorization = true;
+                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
+                            binding.sendAddress.setSelection(address.getAddress().length());
+                        }
                     } else {
                         if (isColorized) {
                             fromColorization = false;
@@ -269,7 +289,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         // Hide keyboard in amount field when return is pushed
         binding.sendAddress.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.sendAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        binding.sendAddress.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         // Remove hint when focused
         binding.sendAmount.setOnFocusChangeListener((View view, boolean isFocused) -> {
@@ -290,11 +310,18 @@ public class SendDialogFragment extends BaseDialogFragment {
                 binding.contactRecyclerview.setVisibility(View.GONE);
                 binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
                 binding.sendAddress.setHint(R.string.send_address_hint);
+                if (binding.sendAddress.getText().toString().startsWith("@")) {
+                    RealmQuery realmQuery = realm.where(Contact.class);
+                    realmQuery.equalTo("name", binding.sendAddress.getText().toString());
+                    if (realmQuery.count() == 0) {
+                        binding.sendAddress.setText("");
+                    }
+                }
             }
         });
 
         // Prepare contacts info
-        List<Contact> contacts = realm.where(Contact.class).findAll();
+        List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
         binding.contactRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
         binding.contactRecyclerview.setAdapter(adapter);
@@ -303,21 +330,19 @@ public class SendDialogFragment extends BaseDialogFragment {
         // For some reason RecyclerView causes the buttons to be pushed above the keyboard when it's visible/
         // So we have the window set to resize, and use window size change to detect keyboard open/close
         // And hide/show the buttons based on that
+        mHandler = new Handler();
+        mRunnable = () -> {
+            binding.sendButton.setVisibility(View.VISIBLE);
+            binding.sendScanQr.setVisibility(View.VISIBLE);
+        };
         view.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
             int heightDiff = view.getRootView().getHeight() - view.getHeight();
             if (heightDiff > UIUtil.convertDpToPixel(200, getContext())) {
                 binding.sendButton.setVisibility(View.GONE);
                 binding.sendScanQr.setVisibility(View.GONE);
             } else {
-                if (binding.sendButton.getVisibility() != View.VISIBLE) {
-                    animateView(binding.sendButton, View.VISIBLE, 1.0f, 300);
-                }
-                if (binding.sendScanQr.getVisibility() != View.VISIBLE) {
-                    animateView(binding.sendScanQr, View.VISIBLE, 1.0f, 300);
-                }
+                mHandler.postDelayed(mRunnable, 100);
                 binding.sendContainer.requestFocus();
-                //binding.sendButton.setVisibility(View.VISIBLE);
-                //binding.sendScanQr.setVisibility(View.VISIBLE);
             }
         });
 
@@ -329,6 +354,9 @@ public class SendDialogFragment extends BaseDialogFragment {
         super.onDestroyView();
         // unregister from bus
         RxBus.get().unregister(this);
+        if (mHandler != null && mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
+        }
     }
 
     @Subscribe
@@ -344,19 +372,26 @@ public class SendDialogFragment extends BaseDialogFragment {
             return;
         }
         searchTerm = searchTerm.substring(1, searchTerm.length());
-        List<Contact> contacts = realm.where(Contact.class).contains("name", searchTerm, Case.INSENSITIVE).findAll();
+        List<Contact> contacts = realm.where(Contact.class).contains("name", searchTerm, Case.INSENSITIVE).findAll().sort("name");
         ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
-        if (contacts.size() == 1) {
+        binding.contactRecyclerview.swapAdapter(adapter, false);
+        // Colorize name if a valid contact
+        if (contacts.size() > 0) {
             String name = binding.sendAddress.getText().toString().trim();
-            if (contacts.get(0).getName().equals(name)) {
-                binding.sendAddress.setTextColor(getResources().getColor(R.color.yellow));
-            } else {
+            boolean foundMatch = false;
+            for (Contact c : contacts) {
+                if (c.getName().equals(name)) {
+                    binding.sendAddress.setTextColor(getResources().getColor(R.color.yellow));
+                    foundMatch = true;
+                    break;
+                }
+            }
+            if (!foundMatch) {
                 binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
             }
         } else {
             binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
         }
-        binding.contactRecyclerview.swapAdapter(adapter, false);
     }
 
     private void showAddressError(int str_id) {

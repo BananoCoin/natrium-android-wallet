@@ -223,7 +223,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
 
         // Hide keyboard in new rep field when return is pushed
         binding.newRep.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.newRep.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        binding.newRep.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         // Remove hint when focused
         binding.newRep.setOnFocusChangeListener((View view, boolean isFocused) -> {

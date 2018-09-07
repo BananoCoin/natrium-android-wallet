@@ -216,7 +216,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
 
         // Hide keyboard in amount field when return is pushed
         binding.contactName.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.contactAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        binding.contactAddress.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         // Remove hint when focused
         binding.contactName.setOnFocusChangeListener((View view, boolean isFocused) -> {

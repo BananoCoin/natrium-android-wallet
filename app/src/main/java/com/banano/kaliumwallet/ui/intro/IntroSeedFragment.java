@@ -99,7 +99,7 @@ public class IntroSeedFragment extends BaseFragment {
 
         // Hide keyboard in seed field when return is pushed
         binding.introImportSeed.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.introImportSeed.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        binding.introImportSeed.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         // Colorize seed when correct
         binding.introImportSeed.addTextChangedListener(new TextWatcher() {

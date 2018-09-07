@@ -44,6 +44,11 @@ public class ContactSelectionAdapter  extends RecyclerView.Adapter<ContactSelect
     public void onBindViewHolder(ViewHolder holder, int position) {
         Contact contact = contactList.get(position);
         holder.contactItemBinding.setContact(contact);
+        if (position == (getItemCount() - 1)) {
+            holder.contactItemBinding.contactDivider.setVisibility(View.INVISIBLE);
+        } else {
+            holder.contactItemBinding.contactDivider.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
