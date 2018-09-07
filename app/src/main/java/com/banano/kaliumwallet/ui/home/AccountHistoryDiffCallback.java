@@ -29,7 +29,7 @@ public class AccountHistoryDiffCallback extends DiffUtil.Callback{
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldItems.get(oldItemPosition).equals(newItems.get(newItemPosition));
+        return oldItems.get(oldItemPosition).getHash().equals(newItems.get(newItemPosition).getHash());
     }
 
     @Override

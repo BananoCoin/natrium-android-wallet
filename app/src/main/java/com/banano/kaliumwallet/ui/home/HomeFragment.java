@@ -163,7 +163,6 @@ public class HomeFragment extends BaseFragment {
         // initialize recyclerview (list of wallet transactions)
         binding.homeRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new AccountHistoryAdapter(new ArrayList<>());
-        mAdapter.setHasStableIds(true);
         binding.homeRecyclerview.setAdapter(mAdapter);
         mRunnable = () -> {
             retrying = false;
