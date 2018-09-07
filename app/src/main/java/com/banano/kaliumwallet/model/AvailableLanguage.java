@@ -17,6 +17,7 @@ public enum AvailableLanguage {
     INDONESIAN("INDONESIAN"),
     MALAY("MALAY"),
     PORTUGUESE("PORTUGUESE"),
+    ROMANIAN("ROMANIAN"),
     RUSSIAN("RUSSIAN"),
     SPANISH("SPANISH"),
     SWEDISH("SWEDISH"),
@@ -58,6 +59,8 @@ public enum AvailableLanguage {
                 return "nl";
             case "PORTUGUESE":
                 return "pt";
+            case "ROMANIAN":
+                return "ro";
             case "RUSSIAN":
                 return "ru";
             case "SWEDISH":
@@ -101,6 +104,8 @@ public enum AvailableLanguage {
                 return "Nederlands (nl)";
             case "PORTUGUESE":
                 return "Português (pt)";
+            case "ROMANIAN":
+                return "Romanian (ro)";
             case "RUSSIAN":
                 return "Русский язык (ru)";
             case "SWEDISH":

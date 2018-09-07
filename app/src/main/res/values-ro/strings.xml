@@ -39,11 +39,11 @@
     <string name="settings_title">Setări</string>
     <string name="settings_local_currency">Schimbă moneda</string>
     <string name="settings_change_language">Limba</string>
-    <string name="settings_default_language_string">Defectiune de sistem</string>
+    <string name="settings_default_language_string">Limba implicită</string>
     <string name="settings_backup_seed">Copie de rezervă pentru seed</string>
     <string name="settings_change_rep">Schimbă reprezentantul</string>
     <string name="settings_share">Share Kalium</string>
-    <string name="settings_logout">Deconctare</string>
+    <string name="settings_logout">Deconectare</string>
     <string name="settings_logout_alert_title">AVERTISMENT</string>
     <string name="settings_logout_alert_message">Prin deconectare vom elimina seed-ul și toate datele legate de Kalium de pe acest dispozitiv. Dacă seed-ul nu are o copie de rezervă/backup, fondurile for fi pierdute permanent.</string>
     <string name="settings_logout_alert_confirm_cta">Șterge seed-ul și deconectează-mă</string>
@@ -52,7 +52,7 @@
     <string name="settings_logout_warning_message">Dacă aveți seed-ul salvat nu există motive de îngrijorare.</string>
     <string name="settings_logout_warning_confirm">Da</string>
     <string name="settings_logout_warning_cancel">Renunţare</string>
-    <string name="settings_manage_header">Administra</string>
+    <string name="settings_manage_header">Administrare</string>
     <string name="settings_preferences_header">Preferințe</string>
     <string name="settings_disable_fingerprint">Metoda de Autentificare</string>
     <string name="settings_fingerprint_method">Amprentă Digitală</string>
