@@ -152,14 +152,16 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/contact_recyclerview"
-            android:background="@drawable/bg_edittext"
+            android:background="@drawable/bg_contact_recyclerview"
             android:layout_width="@dimen/input_width"
-            android:layout_height="80dp"
+            android:layout_height="120dp"
+            android:padding="10dp"
+            android:isScrollContainer="false"
             android:requiresFadingEdge="vertical"
             android:theme="@style/AppThemeYellow"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/send_guideling_vert"
+            app:layout_constraintStart_toStartOf="@+id/send_guideling_vert"
             app:layout_constraintBottom_toTopOf="@id/send_address_container"/>
 
         <RelativeLayout

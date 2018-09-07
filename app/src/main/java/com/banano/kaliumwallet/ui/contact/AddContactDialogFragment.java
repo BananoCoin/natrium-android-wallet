@@ -238,7 +238,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
     }
 
     private void hidePaste() {
-        binding.contactAddress.setPadding((int)UIUtil.convertDpToPixel(40, getContext()), binding.contactAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(40, getContext()), binding.contactAddress.getPaddingBottom());
+        binding.contactAddress.setPadding((int)UIUtil.convertDpToPixel(35, getContext()), binding.contactAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(35, getContext()), binding.contactAddress.getPaddingBottom());
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
         binding.contactAddress.setTypeface(tf);
         binding.contactAddressPaste.setVisibility(View.GONE);

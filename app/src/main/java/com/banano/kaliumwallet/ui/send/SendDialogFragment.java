@@ -9,6 +9,8 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -26,6 +28,7 @@ import android.widget.Toast;
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.databinding.FragmentSendBinding;
 import com.banano.kaliumwallet.model.Address;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -35,16 +38,25 @@ import com.banano.kaliumwallet.ui.common.DigitsInputFilter;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
+import com.banano.kaliumwallet.ui.contact.ContactSelectionAdapter;
 import com.banano.kaliumwallet.ui.scan.ScanActivity;
 import com.banano.kaliumwallet.util.NumberUtil;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
+
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
 
+import io.realm.Case;
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
@@ -168,6 +180,13 @@ public class SendDialogFragment extends BaseDialogFragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = binding.sendAddress.getText().toString().trim();
+                if (curText.startsWith("@")) {
+                    binding.contactRecyclerview.setVisibility(View.VISIBLE);
+                    updateContactSearch();
+                    return;
+                } else {
+                    binding.contactRecyclerview.setVisibility(View.GONE);
+                }
                 if (curText.equals(lastText)) {
                     if (fromColorization) {
                         fromColorization = false;
@@ -254,13 +273,52 @@ public class SendDialogFragment extends BaseDialogFragment {
         });
         binding.sendAddress.setOnFocusChangeListener((View view, boolean isFocused) -> {
             if (isFocused) {
+                binding.sendScanQr.setVisibility(View.GONE);
+                binding.sendButton.setVisibility(View.GONE);
                 binding.sendAddress.setHint("");
             } else {
+                binding.sendScanQr.setVisibility(View.VISIBLE);
+                binding.sendButton.setVisibility(View.VISIBLE);
+                binding.contactRecyclerview.setVisibility(View.GONE);
                 binding.sendAddress.setHint(R.string.send_address_hint);
             }
         });
 
+        // Prepare contacts info
+        List<Contact> contacts = realm.where(Contact.class).findAll();
+        binding.contactRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
+        binding.contactRecyclerview.setAdapter(adapter);
+
+        // Keyboard hack
+        // TODO buttons get shoved up above the content when keyboard is open, so hide them
+        KeyboardVisibilityEvent.setEventListener(
+                getActivity(),
+                new KeyboardVisibilityEventListener() {
+                    @Override
+                    public void onVisibilityChanged(boolean isOpen) {
+                        if (isOpen) {
+                            binding.sendScanQr.setVisibility(View.GONE);
+                            binding.sendButton.setVisibility(View.GONE);
+                        } else {
+                            binding.contactRecyclerview.setVisibility(View.GONE);
+                            binding.sendScanQr.setVisibility(View.VISIBLE);
+                            binding.sendButton.setVisibility(View.VISIBLE);
+                        }
+                    }
+                });
+
         return view;
+    }
+
+    private void updateContactSearch() {
+        String searchTerm = binding.sendAddress.getText().toString();
+        if (!searchTerm.startsWith("@")) {
+            return;
+        }
+        List<Contact> contacts = realm.where(Contact.class).beginsWith("name", searchTerm, Case.INSENSITIVE).findAll();
+        ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
+        binding.contactRecyclerview.swapAdapter(adapter, false);
     }
 
     private void showAddressError(int str_id) {
