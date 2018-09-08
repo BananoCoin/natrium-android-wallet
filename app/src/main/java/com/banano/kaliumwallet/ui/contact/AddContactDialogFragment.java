@@ -20,6 +20,8 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 
 import com.banano.kaliumwallet.R;
+import com.banano.kaliumwallet.bus.ContactAdded;
+import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentContactAddBinding;
 import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.model.Contact;
@@ -328,6 +330,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
         binding.addContactBtn.setBackground(getResources().getDrawable(R.drawable.bg_green_button_normal));
         binding.addContactClose.setTextColor(getResources().getColor(R.color.green_light));
         binding.addContactClose.setBackground(getResources().getDrawable(R.drawable.bg_green_button_outline));
+        RxBus.get().post(new ContactAdded());
     }
 
     public class ClickHandlers {

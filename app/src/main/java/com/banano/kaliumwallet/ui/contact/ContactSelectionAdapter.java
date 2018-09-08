@@ -1,6 +1,7 @@
 package com.banano.kaliumwallet.ui.contact;
 
 import android.databinding.DataBindingUtil;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,5 +64,12 @@ public class ContactSelectionAdapter  extends RecyclerView.Adapter<ContactSelect
             super(contactSmItemLayoutBinding.getRoot());
             contactItemBinding = contactSmItemLayoutBinding;
         }
+    }
+
+    public void updateList(List<Contact> newList) {
+        List<Contact> oldList = this.contactList;
+        this.contactList = newList;
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ContactSelectionDiffCallback(oldList, newList), true);
+        diffResult.dispatchUpdatesTo(this);
     }
 }

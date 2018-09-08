@@ -72,6 +72,7 @@ public class SendDialogFragment extends BaseDialogFragment {
     private Activity mActivity;
     private Handler mHandler;
     private Runnable mRunnable;
+    private ContactSelectionAdapter mAdapter;
 
     @Inject
     KaliumWallet wallet;
@@ -323,9 +324,9 @@ public class SendDialogFragment extends BaseDialogFragment {
         // Prepare contacts info
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
         binding.contactRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
-        adapter.setHasStableIds(true);
-        binding.contactRecyclerview.setAdapter(adapter);
+        mAdapter = new ContactSelectionAdapter(contacts);
+        binding.contactRecyclerview.setItemAnimator(null);
+        binding.contactRecyclerview.setAdapter(mAdapter);
 
         // Hacky thing to hide buttons when recyclerview is open.
         // For some reason RecyclerView causes the buttons to be pushed above the keyboard when it's visible/
@@ -374,8 +375,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         }
         searchTerm = searchTerm.substring(1, searchTerm.length());
         List<Contact> contacts = realm.where(Contact.class).contains("name", searchTerm, Case.INSENSITIVE).findAll().sort("name");
-        ContactSelectionAdapter adapter = new ContactSelectionAdapter(contacts);
-        binding.contactRecyclerview.swapAdapter(adapter, false);
+        mAdapter.updateList(contacts);
         // Colorize name if a valid contact
         if (contacts.size() > 0) {
             String name = binding.sendAddress.getText().toString().trim();

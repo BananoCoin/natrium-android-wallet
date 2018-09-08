@@ -34,7 +34,16 @@ public class AccountHistoryDiffCallback extends DiffUtil.Callback{
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldItems.get(oldItemPosition).getHash().equals(newItems.get(newItemPosition).getHash());
+        String oldContactName = "";
+        String newContactName = "";
+        if (oldItems.get(oldItemPosition).getContactName() != null) {
+            oldContactName = oldItems.get(oldItemPosition).getContactName();
+        }
+        if (newItems.get(newItemPosition).getContactName() != null) {
+            newContactName = newItems.get(newItemPosition).getContactName();
+        }
+        return (oldItems.get(oldItemPosition).getAccount().equals(newItems.get(newItemPosition).getAccount()) &&
+                oldContactName.equals(newContactName));
     }
 
     @Nullable

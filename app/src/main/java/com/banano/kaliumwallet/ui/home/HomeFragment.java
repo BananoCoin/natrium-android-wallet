@@ -21,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.banano.kaliumwallet.bus.ContactAdded;
 import com.banano.kaliumwallet.bus.TransactionItemClicked;
 import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.PriceConversion;
@@ -181,14 +182,7 @@ public class HomeFragment extends BaseFragment {
 
         // Initialize transaction history
         if (wallet != null && wallet.getAccountHistory() != null) {
-            List<AccountHistoryResponseItem> historyList = wallet.getAccountHistory();
-            for (AccountHistoryResponseItem item : historyList) {
-                String name = getContactName(item.getAccount());
-                if (name != null) {
-                    item.setContactName(name);
-                }
-            }
-            mAdapter.updateList(historyList);
+            updateAccountHistory();
         }
 
         updateAmounts();
@@ -325,11 +319,7 @@ public class HomeFragment extends BaseFragment {
         return null;
     }
 
-    @Subscribe
-    public void receiveHistory(WalletHistoryUpdate walletHistoryUpdate) {
-        if (wallet.getAccountHistory().size() > 0) {
-            binding.exampleCards.setVisibility(View.GONE);
-        }
+    private void updateAccountHistory() {
         List<AccountHistoryResponseItem> historyList = wallet.getAccountHistory();
         for (AccountHistoryResponseItem item : historyList) {
             String name = getContactName(item.getAccount());
@@ -338,6 +328,19 @@ public class HomeFragment extends BaseFragment {
             }
         }
         mAdapter.updateList(historyList);
+    }
+
+    @Subscribe
+    public void receiveContactAdded(ContactAdded contactAdded) {
+        updateAccountHistory();
+    }
+
+    @Subscribe
+    public void receiveHistory(WalletHistoryUpdate walletHistoryUpdate) {
+        if (wallet.getAccountHistory().size() > 0) {
+            binding.exampleCards.setVisibility(View.GONE);
+        }
+        updateAccountHistory();
         binding.homeSwiperefresh.setRefreshing(false);
         binding.homeRecyclerview.getLayoutManager().scrollToPosition(0);
     }
