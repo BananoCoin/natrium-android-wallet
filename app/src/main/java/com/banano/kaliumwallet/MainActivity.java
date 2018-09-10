@@ -19,6 +19,7 @@ import com.banano.kaliumwallet.di.activity.ActivityModule;
 import com.banano.kaliumwallet.di.activity.DaggerActivityComponent;
 import com.banano.kaliumwallet.di.application.ApplicationComponent;
 import com.banano.kaliumwallet.model.AvailableLanguage;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -87,6 +88,15 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             config.locale = locale;
             getBaseContext().getResources().updateConfiguration(config,
                     getBaseContext().getResources().getDisplayMetrics());
+        }
+
+        if (!sharedPreferencesUtil.isDefaultContactAdded()) {
+            realm.executeTransaction(realm -> {
+                Contact newContact = realm.createObject(Contact.class);
+                newContact.setAddress("ban_1ka1ium4pfue3uxtntqsrib8mumxgazsjf58gidh1xeo5te3whsq8z476goo");
+                newContact.setName("KaliumDonations");
+            });
+            sharedPreferencesUtil.setDefaultContactAdded();
         }
 
         initUi();

@@ -214,6 +214,9 @@ public class HomeFragment extends BaseFragment {
                     } catch (Exception e) {
                         Timber.e("Failed to load monKey file");
                         e.printStackTrace();
+                        if (monkey.exists()) {
+                            monkey.delete();
+                        }
                     }
                 });
                 downloadMonkeyTask.execute(url);

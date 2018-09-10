@@ -9,7 +9,7 @@
     <string name="dialog_confirm">Confirm</string>
 
     <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <string name="monkey_api_url" translatable="false">https://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Welcome to Kalium. To proceed, you may create a new wallet or import an existing one.</string>
     <string name="intro_welcome_new_wallet">New Wallet</string>
@@ -153,13 +153,17 @@
     <string name="contact_remove_header">Remove:</string>
     <string name="contact_remove_btn">Remove Contact</string>
     <!-- Export/Import -->
-    <string name="contact_import_chooser">Choose file to import</string>
-    <string name="contact_export_chooser">Choose export location</string>
-    <string name="contact_export_choose_btn">Save</string>
     <string name="contact_removed">%s has been removed from contacts!</string>
     <string name="contact_export_none">There are no contacts to export</string>
     <string name="contact_export_error">Failed to export contacts</string>
-    <string name="contact_export_permission_error">Cannot save file without permission</string>
+    <string name="contact_import_error">Failed to import contacts</string>
+    <string name="contact_import_success">Successfully imported %d contacts</string>
+    <string name="contact_import_warning_header">Warning</string>
+    <string name="contact_import_warning">All existing contacts will be deleted! Do you wish to proceed?</string>
+    <string name="contact_import_yes">Yes</string>
+    <string name="contact_import_no">Cancel</string>
+    <string name="contact_import_permission_error">Please allow Kalium permission to read from device storage.</string>
+    <string name="contact_export_permission_error">Please allow Kalium permission to write to device storage.</string>
     <string name="contact_export_success">Contacts saved to %s</string>
 
     <!-- Scan Screen -->

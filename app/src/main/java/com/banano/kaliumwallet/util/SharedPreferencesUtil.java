@@ -26,6 +26,7 @@ public class SharedPreferencesUtil {
     private static final String CHANGED_REPRESENTATIVE = "user_set_representative";
     private static final String AUTH_METHOD = "auth_method";
     private static final String PRICE_CONVERSION = "price_conversion";
+    private static final String DEFAULT_CONTACT_ADDED = "default_contact_added";
 
     private final SharedPreferences mPrefs;
 
@@ -140,5 +141,13 @@ public class SharedPreferencesUtil {
 
     public void setPriceConversion(PriceConversion conversion) {
         set(PRICE_CONVERSION, conversion.toString());
+    }
+
+    public boolean isDefaultContactAdded() {
+        return get(DEFAULT_CONTACT_ADDED, false);
+    }
+
+    public void setDefaultContactAdded() {
+        set(DEFAULT_CONTACT_ADDED, true);
     }
 }

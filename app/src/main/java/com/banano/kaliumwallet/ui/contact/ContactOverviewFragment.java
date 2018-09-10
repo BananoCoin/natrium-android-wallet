@@ -1,12 +1,18 @@
 package com.banano.kaliumwallet.ui.contact;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,14 +29,15 @@ import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
-import com.codekidlabs.storagechooser.StorageChooser;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import org.json.JSONArray;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,10 +54,15 @@ import timber.log.Timber;
  */
 public class ContactOverviewFragment extends BaseFragment {
     public static final String TAG = ContactOverviewFragment.class.getSimpleName();
+    private static final int READ_STORAGE_PERMISSION = 1;
     private static final int WRITE_STORAGE_PERMISSION = 2;
+    private static final int READ_RESULT_CODE = 3;
 
     private FragmentContactOverviewBinding binding;
     private ContactOverviewSelectionAdapter mAdapter;
+
+    private boolean showExport = false;
+    private boolean showImport = false;
 
     @Inject
     Realm realm;
@@ -76,6 +88,8 @@ public class ContactOverviewFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // inject
+        showExport = false;
+        showImport = false;
         if (getActivity() instanceof ActivityWithComponent) {
             ((ActivityWithComponent) getActivity()).getActivityComponent().inject(this);
         }
@@ -98,16 +112,19 @@ public class ContactOverviewFragment extends BaseFragment {
         return view;
     }
 
-    @Subscribe
-    public void receiveContactAdded(ContactAdded contactAdded) {
+    private void refreshContacts() {
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
         mAdapter.updateList(realm.copyFromRealm(contacts));
     }
 
     @Subscribe
+    public void receiveContactAdded(ContactAdded contactAdded) {
+        refreshContacts();
+    }
+
+    @Subscribe
     public void receiveContactRemoved(ContactRemoved contactRemoved) {
-        List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
-        mAdapter.updateList(realm.copyFromRealm(contacts));
+        refreshContacts();
     }
 
     @Subscribe
@@ -134,16 +151,77 @@ public class ContactOverviewFragment extends BaseFragment {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    showExportDialog();
+                    if (showExport) {
+                        showExport = false;
+                        showExportDialog();
+                    }
                 } else {
                     UIUtil.showToast(getString(R.string.contact_export_permission_error), getContext());
                 }
             }
+            case READ_STORAGE_PERMISSION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (showImport) {
+                        showImport = false;
+                        showImportDialog();
+                    }
+                } else {
+                    UIUtil.showToast(getString(R.string.contact_import_permission_error), getContext());
+                }
+            }
         }
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent resultData) {
+        if (requestCode == READ_RESULT_CODE && resultCode == Activity.RESULT_OK) {
+            if (resultData != null) {
+                int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
+                AlertDialog alertDialog = new AlertDialog.Builder(getContext(), style)
+                        .setTitle(R.string.contact_import_warning_header)
+                        .setMessage(R.string.contact_import_warning)
+                        .setCancelable(true)
+                        .setPositiveButton(R.string.contact_import_yes, (DialogInterface dialogInterface, int i) -> {
+                            realm.executeTransaction(realm -> {
+                                try (InputStream is = getContext().getContentResolver().openInputStream(resultData.getData())) {
+                                    realm.where(Contact.class).findAll().deleteAllFromRealm();
+                                    realm.createAllFromJson(Contact.class, is);
+                                    long count = realm.where(Contact.class).count();
+                                    UIUtil.showToast(getString(R.string.contact_import_success, count), getContext());
+                                } catch (Exception e) {
+                                    Timber.e(e);
+                                    UIUtil.showToast(getString(R.string.contact_import_error), getContext());
+                                }
+                            });
+                            refreshContacts();
+                        })
+                        .setNegativeButton(R.string.contact_import_no, (DialogInterface dialogInterface, int i) -> {
+                        })
+                        .show();
+            }
+        }
+    }
+
+    private void showImportDialog() {
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            showImport = true;
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, READ_STORAGE_PERMISSION);
+            return;
+        }
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("application/octet-stream");
+        startActivityForResult(intent, READ_RESULT_CODE);
+    }
+
     private void showExportDialog() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
+            showExport = true;
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_STORAGE_PERMISSION);
             return;
         }
@@ -156,35 +234,18 @@ public class ContactOverviewFragment extends BaseFragment {
         for (Contact c : contacts) {
             contactJson.put(c.getJson());
         }
-        // Initialize Builder
-        StorageChooser.Theme theme = new StorageChooser.Theme(getContext());
-        theme.setScheme(getResources().getIntArray(R.array.file_chooser_theme));
-        StorageChooser chooser = new StorageChooser.Builder()
-                .withActivity(getActivity())
-                .withFragmentManager(getActivity().getFragmentManager())
-                .withMemoryBar(true)
-                .allowCustomPath(true)
-                .setTheme(theme)
-                .setDialogTitle(getString(R.string.contact_export_chooser))
-                .setType(StorageChooser.DIRECTORY_CHOOSER)
-                .build();
-        chooser.show();
-        chooser.setOnSelectListener(new StorageChooser.OnSelectListener() {
-            @Override
-            public void onSelect(String path) {
-                try {
-                    DateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss", Locale.US);
-                    String fileName = String.format("%s_contacts_%s.json", getString(R.string.app_name), dateFormat.format(new Date()));
-                    FileWriter out = new FileWriter(new File(path, fileName));
-                    out.write(contactJson.toString());
-                    out.close();
-                    UIUtil.showToast(getString(R.string.contact_export_success, new File(path, fileName).getAbsoluteFile()), getContext());
-                } catch (IOException e) {
-                    Timber.e(e);
-                    UIUtil.showToast(getString(R.string.contact_export_error), getContext());
-                }
-            }
-        });
+        // Save file
+        try {
+            DateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss", Locale.US);
+            String fileName = String.format("%s_contacts_%s.json", getString(R.string.app_name), dateFormat.format(new Date())).toLowerCase();
+            FileWriter out = new FileWriter(new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName));
+            out.write(contactJson.toString());
+            out.close();
+            UIUtil.showToast(getString(R.string.contact_export_success, new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName).getAbsoluteFile()), getContext());
+        } catch (IOException e) {
+            Timber.e(e);
+            UIUtil.showToast(getString(R.string.contact_export_error), getContext());
+        }
     }
 
     public class ClickHandlers {
@@ -206,6 +267,10 @@ public class ContactOverviewFragment extends BaseFragment {
 
         public void onClickExport(View view) {
             showExportDialog();
+        }
+
+        public void onClickImport(View view) {
+            showImportDialog();
         }
     }
 }
