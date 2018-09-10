@@ -2,17 +2,16 @@ package com.banano.kaliumwallet.ui.contact;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -183,7 +182,6 @@ public class ContactOverviewFragment extends BaseFragment {
                 AlertDialog alertDialog = new AlertDialog.Builder(getContext(), style)
                         .setTitle(R.string.contact_import_warning_header)
                         .setMessage(R.string.contact_import_warning)
-                        .setCancelable(true)
                         .setPositiveButton(R.string.contact_import_yes, (DialogInterface dialogInterface, int i) -> {
                             realm.executeTransaction(realm -> {
                                 try (InputStream is = getContext().getContentResolver().openInputStream(resultData.getData())) {
