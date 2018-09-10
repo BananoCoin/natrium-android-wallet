@@ -315,7 +315,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="left|start">
 
-            <fragment android:name="com.banano.kaliumwallet.ui.settings.SettingsFragment"
+            <FrameLayout
+                android:id="@+id/settings_frag_container"
                 android:layout_weight="1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent" />

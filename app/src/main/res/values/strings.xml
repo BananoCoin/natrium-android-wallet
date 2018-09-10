@@ -146,6 +146,10 @@
     <string name="contact_name_exists">Contact Already Exists</string>
     <string name="contact_address_hint">Enter an Address</string>
     <string name="contact_address_exists">A Contact Already has that Address</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Contacts</string>
+    <string name="contact_settings_item">Contacts</string>
+
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan a Banano \naddress QR code</string>

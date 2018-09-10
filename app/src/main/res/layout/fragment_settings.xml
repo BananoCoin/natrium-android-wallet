@@ -251,6 +251,46 @@
                     app:layout_constraintTop_toBottomOf="@+id/manage_category_text" />
 
                 <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/ic_address_book"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="30dp"
+                    app:srcCompat="@drawable/ic_address_book"
+                    android:elevation="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settings_contacts_container"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_contacts_container"/>
+
+                <LinearLayout
+                    android:id="@+id/settings_contacts_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settings_item_height"
+                    android:paddingStart="70dp"
+                    android:background="@drawable/bg_settings_item"
+                    android:orientation="vertical"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{handlers::onClickContacts}"
+                    app:layout_constraintStart_toEndOf="@+id/ic_backup_seed"
+                    app:layout_constraintTop_toBottomOf="@+id/top_line" >
+                    <TextView
+                        android:id="@+id/settings_contacts"
+                        style="@style/TextStyleNormalPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/white_90"
+                        android:text="@string/contact_settings_item" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/settings_contacts_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white_10"
+                    app:layout_constraintTop_toBottomOf="@+id/settings_contacts_container"/>
+
+                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_backup_seed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -272,7 +312,7 @@
                     android:focusable="true"
                     android:onClick="@{handlers::onClickBackupSeed}"
                     app:layout_constraintStart_toEndOf="@+id/ic_backup_seed"
-                    app:layout_constraintTop_toBottomOf="@+id/top_line" >
+                    app:layout_constraintTop_toBottomOf="@+id/settings_contacts_bottom" >
                     <TextView
                         android:id="@+id/settings_backup_seed"
                         style="@style/TextStyleNormalPrimary"

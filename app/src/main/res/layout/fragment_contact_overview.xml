@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="version"
+            type="String" />
+
+        <variable
+            name="handlers"
+            type="com.banano.kaliumwallet.ui.settings.SettingsFragment.ClickHandlers" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/gray_dark"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/contacts_header"
+            style="@style/TextStyleHeader"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:gravity="start"
+            android:textAlignment="gravity"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_header"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+            android:id="@+id/divider_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_10"
+            app:layout_constraintBottom_toTopOf="@+id/contact_recyclerview"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/contact_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:requiresFadingEdge="vertical"
+            android:theme="@style/AppThemeYellow"
+            app:layout_constraintTop_toBottomOf="@+id/contacts_header"
+            app:layout_constraintBottom_toTopOf="@+id/add_contact_btn"
+            app:layout_constraintEnd_toStartOf="@+id/home_transaction_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/home_transaction_guideline_vert" />
+
+        <Button
+            android:id="@+id/add_contact_btn"
+            style="@style/OutlineButton"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:text="@string/contact_add_button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/home_transaction_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/home_transaction_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/home_transaction_guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

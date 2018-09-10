@@ -2,6 +2,7 @@ package com.banano.kaliumwallet.di.activity;
 
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.ui.contact.AddContactDialogFragment;
+import com.banano.kaliumwallet.ui.contact.ContactOverviewFragment;
 import com.banano.kaliumwallet.ui.home.TranDetailsFragment;
 import com.banano.kaliumwallet.ui.intro.IntroNewWalletBackupFragment;
 import com.banano.kaliumwallet.ui.intro.IntroNewWalletWarningFragment;
@@ -45,6 +46,8 @@ public interface ActivityComponent {
     void inject(BackupSeedDialogFragment backupSeedDialogFragment);
 
     void inject(ChangeRepDialogFragment changeRepDialogFragment);
+
+    void inject(ContactOverviewFragment contactOverviewFragment);
 
     void inject(CreatePinDialogFragment createPinDialogFragment);
 

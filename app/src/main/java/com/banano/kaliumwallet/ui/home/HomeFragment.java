@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.ViewDragHelper;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,6 +29,7 @@ import com.banano.kaliumwallet.model.PriceConversion;
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
 import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
+import com.banano.kaliumwallet.ui.settings.SettingsFragment;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import com.banano.kaliumwallet.util.svg.SvgSoftwareLayerSetter;
 import com.bumptech.glide.Glide;
@@ -302,6 +304,10 @@ public class HomeFragment extends BaseFragment {
             }
         });
 
+        // Add sttings fragment to drawer container
+        FragmentTransaction ft = ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().beginTransaction();
+        ft.replace(R.id.settings_frag_container, SettingsFragment.newInstance()).commit();
+
         return view;
     }
 
@@ -328,11 +334,13 @@ public class HomeFragment extends BaseFragment {
             }
         }
         mAdapter.updateList(historyList);
+        binding.homeRecyclerview.getLayoutManager().scrollToPosition(0);
     }
 
     @Subscribe
     public void receiveContactAdded(ContactAdded contactAdded) {
         updateAccountHistory();
+        mAdapter.notifyDataSetChanged();
     }
 
     @Subscribe
@@ -342,7 +350,6 @@ public class HomeFragment extends BaseFragment {
         }
         updateAccountHistory();
         binding.homeSwiperefresh.setRefreshing(false);
-        binding.homeRecyclerview.getLayoutManager().scrollToPosition(0);
     }
 
     @Subscribe

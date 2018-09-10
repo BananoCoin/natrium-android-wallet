@@ -7,6 +7,8 @@ import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -23,6 +25,7 @@ import com.banano.kaliumwallet.MainActivity;
 import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
+import com.banano.kaliumwallet.ui.contact.ContactOverviewFragment;
 import com.banano.kaliumwallet.util.LocaleUtil;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.Reprint;
@@ -467,6 +470,15 @@ public class SettingsFragment extends BaseFragment {
                         })
                         .show();
             }
+        }
+
+        public void onClickContacts(View view) {
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
+                    R.anim.enter_slide_right, R.anim.exit_slide_left);
+            ContactOverviewFragment fragment = ContactOverviewFragment.newInstance();
+            ft.add(R.id.settings_frag_container, fragment, ContactOverviewFragment.TAG).addToBackStack(null).commit();
         }
     }
 

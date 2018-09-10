@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Data -->
+        <variable
+            name="contact"
+            type="com.banano.kaliumwallet.model.Contact" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_settings_item"
+        android:paddingTop="@dimen/tx_card_padding"
+        android:paddingBottom="@dimen/tx_card_padding"
+        android:tag="@{contact}">
+
+        <TextView
+            android:id="@+id/contact_name"
+            style="@style/TextStyleSemiboldWhite"
+            android:layout_marginStart="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{contact.name}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="\@bbedward" />
+
+        <TextView
+            android:id="@+id/contact_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TextStyleAddress"
+            android:layout_marginStart="30dp"
+            android:textSize="@dimen/tx_address_text_size"
+            android:text="@{contact.addressShort}"
+            app:layout_constraintTop_toBottomOf="@+id/contact_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="ban_123456...789"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
