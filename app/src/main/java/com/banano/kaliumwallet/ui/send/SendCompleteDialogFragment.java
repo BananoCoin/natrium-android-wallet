@@ -29,11 +29,10 @@ import io.realm.Realm;
  * Send complete screen
  */
 public class SendCompleteDialogFragment extends BaseDialogFragment {
-    private FragmentSendCompleteBinding binding;
     public static String TAG = SendCompleteDialogFragment.class.getSimpleName();
-
     @Inject
     Realm realm;
+    private FragmentSendCompleteBinding binding;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)

@@ -42,7 +42,7 @@
     <string name="example_card_to">К случайной обезьяне</string>
     <string name="example_card_from">От случайной обезьяны</string>
 
-/    <!-- Settings Screen -->
+    /    <!-- Settings Screen -->
     <string name="settings_title">Настройки</string>
     <string name="settings_local_currency">Сменить Валюту</string>
     <string name="settings_change_language">Язык</string>
@@ -107,7 +107,7 @@
     <string name="send_sending">Отправить</string>
     <string name="send_to">на:</string>
     <string name="sent_to">Отправлено на:</string>
-    <string name="send_confirm">Подтвердить</string>
+    <string name="dialog_confirm">Подтвердить</string>
     <string name="dialog_cancel">Отмена</string>
     <string name="dialog_close">Закрыть</string>
     <string name="send_alert_dialog_ok">Да</string>

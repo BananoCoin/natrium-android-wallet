@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
-import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -57,24 +56,20 @@ import io.realm.Realm;
  * Send confirm screen
  */
 public class SendConfirmDialogFragment extends BaseDialogFragment {
-    private FragmentSendConfirmBinding binding;
     public static String TAG = SendConfirmDialogFragment.class.getSimpleName();
+    @Inject
+    KaliumWallet wallet;
+    @Inject
+    AccountService accountService;
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
+    @Inject
+    Realm realm;
+    private FragmentSendConfirmBinding binding;
     private Address address;
     private AlertDialog fingerprintDialog;
     private Activity mActivity;
     private Fragment mTargetFragment;
-
-    @Inject
-    KaliumWallet wallet;
-
-    @Inject
-    AccountService accountService;
-
-    @Inject
-    SharedPreferencesUtil sharedPreferencesUtil;
-
-    @Inject
-    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -107,7 +102,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         }
 
         String destination = getArguments().getString("destination");
-        String amount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat( getArguments().getString("amount")));
+        String amount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(getArguments().getString("amount")));
 
         // subscribe to bus
         RxBus.get().register(this);
@@ -267,6 +262,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
 
     /**
      * Pin entered correctly
+     *
      * @param pinComplete PinComplete object
      */
     @Subscribe

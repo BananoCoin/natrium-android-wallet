@@ -93,7 +93,7 @@
     <string name="send_sending">Trimitere...</string>
     <string name="send_to">Către</string>
     <string name="sent_to">Trmite către:</string>
-    <string name="send_confirm">Confirmare</string>
+    <string name="dialog_confirm">Confirmare</string>
     <string name="dialog_cancel">Renunţare</string>
     <string name="dialog_close">Închide</string>
     <string name="send_alert_dialog_ok">OK</string>

@@ -5,12 +5,12 @@ import android.support.multidex.MultiDexApplication;
 import android.support.v7.app.AppCompatDelegate;
 import android.util.Base64;
 
-import com.github.ajalt.reprint.core.Reprint;
-
 import com.banano.kaliumwallet.di.application.ApplicationComponent;
 import com.banano.kaliumwallet.di.application.ApplicationModule;
 import com.banano.kaliumwallet.di.application.DaggerApplicationComponent;
 import com.banano.kaliumwallet.util.Vault;
+import com.github.ajalt.reprint.core.Reprint;
+
 import io.realm.Realm;
 import timber.log.Timber;
 
@@ -20,6 +20,10 @@ import timber.log.Timber;
 
 public class KaliumApplication extends MultiDexApplication {
     private ApplicationComponent mApplicationComponent;
+
+    public static KaliumApplication getApplication(Context context) {
+        return (KaliumApplication) context.getApplicationContext();
+    }
 
     public void onCreate() {
         super.onCreate();
@@ -67,9 +71,5 @@ public class KaliumApplication extends MultiDexApplication {
      */
     public ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
-    }
-
-    public static KaliumApplication getApplication(Context context) {
-        return (KaliumApplication) context.getApplicationContext();
     }
 }

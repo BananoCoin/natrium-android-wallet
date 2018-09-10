@@ -15,7 +15,7 @@ import com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem
 
 import java.util.List;
 
-public class AccountHistoryAdapter  extends RecyclerView.Adapter<AccountHistoryAdapter.ViewHolder> {
+public class AccountHistoryAdapter extends RecyclerView.Adapter<AccountHistoryAdapter.ViewHolder> {
     private List<AccountHistoryResponseItem> historyList;
 
     public AccountHistoryAdapter(List<AccountHistoryResponseItem> flsLst) {
@@ -24,7 +24,7 @@ public class AccountHistoryAdapter  extends RecyclerView.Adapter<AccountHistoryA
 
     @Override
     public AccountHistoryAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                 int viewType) {
+                                                               int viewType) {
         ViewHolderTransactionBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 R.layout.view_holder_transaction, parent, false);
@@ -52,19 +52,19 @@ public class AccountHistoryAdapter  extends RecyclerView.Adapter<AccountHistoryA
         return historyList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public void updateList(List<AccountHistoryResponseItem> newList) {
+        List<AccountHistoryResponseItem> oldList = this.historyList;
+        this.historyList = newList;
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new AccountHistoryDiffCallback(oldList, newList), true);
+        diffResult.dispatchUpdatesTo(this);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolderTransactionBinding tranItemBinding;
 
         public ViewHolder(ViewHolderTransactionBinding tranBinding) {
             super(tranBinding.getRoot());
             tranItemBinding = tranBinding;
         }
-    }
-
-    public void updateList(List<AccountHistoryResponseItem> newList) {
-        List<AccountHistoryResponseItem> oldList = this.historyList;
-        this.historyList = newList;
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new AccountHistoryDiffCallback(oldList, newList), true);
-        diffResult.dispatchUpdatesTo(this);
     }
 }

@@ -23,29 +23,10 @@ import timber.log.Timber;
  * Settings main screen
  */
 public class CreatePinDialogFragment extends BaseDialogFragment {
-    private FragmentCreatePinBinding binding;
-    public static String TAG = CreatePinDialogFragment.class.getSimpleName();
     private static final int PIN_LENGTH = 4;
+    public static String TAG = CreatePinDialogFragment.class.getSimpleName();
+    private FragmentCreatePinBinding binding;
     private String firstPin = null;
-
-    /**
-     * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
-     *
-     * @return ReceiveDialogFragment instance
-     */
-    public static CreatePinDialogFragment newInstance() {
-        Bundle args = new Bundle();
-        CreatePinDialogFragment fragment = new CreatePinDialogFragment();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_FRAME, R.style.AppTheme_Modal_Window);
-    }
-
     private PinLockListener pinLockListener = new PinLockListener() {
         @Override
         public void onComplete(String pin) {
@@ -84,6 +65,23 @@ public class CreatePinDialogFragment extends BaseDialogFragment {
         }
     };
 
+    /**
+     * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
+     *
+     * @return ReceiveDialogFragment instance
+     */
+    public static CreatePinDialogFragment newInstance() {
+        Bundle args = new Bundle();
+        CreatePinDialogFragment fragment = new CreatePinDialogFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setStyle(STYLE_NO_FRAME, R.style.AppTheme_Modal_Window);
+    }
 
     @Nullable
     @Override

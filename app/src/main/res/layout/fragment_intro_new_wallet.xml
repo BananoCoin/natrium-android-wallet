@@ -25,12 +25,12 @@
             android:id="@+id/intro_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:padding="5dp"
             android:layout_marginTop="30dp"
             android:onClick="@{handlers::onClickBack}"
-            app:srcCompat="@drawable/ic_back"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:srcCompat="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/intro_new_wallet_header"
@@ -63,49 +63,49 @@
 
         <TextView
             android:id="@+id/intro_new_wallet_seed"
-            android:background="@drawable/bg_edittext"
-            android:textColor="@color/yellow"
             style="@style/TextStyleAddressAlt"
             android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:onClick="@{handlers::onClickSeed}"
+            android:background="@drawable/bg_edittext"
             android:gravity="center"
-            android:paddingTop="10dp"
+            android:onClick="@{handlers::onClickSeed}"
             android:paddingBottom="10dp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
+            android:paddingTop="10dp"
             android:text="@{seed}"
-            tools:text="CA31BAB2EE24A76C1F172F87C724D704C8B69415123190F80340D3F86D3F96EB"
+            android:textColor="@color/yellow"
             app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_guideline_vert"
-            app:layout_constraintTop_toBottomOf="@+id/intro_new_wallet_info" />
+            app:layout_constraintTop_toBottomOf="@+id/intro_new_wallet_info"
+            tools:text="CA31BAB2EE24A76C1F172F87C724D704C8B69415123190F80340D3F86D3F96EB" />
 
         <TextView
             android:id="@+id/new_wallet_seed_copied"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="@dimen/address_text_size"
-            android:textColor="@color/green_light"
             android:fontFamily="@font/nunitosans_bold"
-            android:textAlignment="center"
-            android:visibility="invisible"
             android:text="@string/intro_new_wallet_seed_copied"
-            app:layout_constraintTop_toBottomOf="@+id/intro_new_wallet_seed"
+            android:textAlignment="center"
+            android:textColor="@color/green_light"
+            android:textSize="@dimen/address_text_size"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_guideline_vert" />
+            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/intro_new_wallet_seed" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/intro_new_wallet_next"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:padding="5dp"
             android:layout_marginBottom="30dp"
             android:onClick="@{handlers::onClickNext}"
-            app:srcCompat="@drawable/ic_forward_icon"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_forward_icon" />
 
         <android.support.constraint.Guideline
             android:id="@+id/intro_new_wallet_guideline_vert"

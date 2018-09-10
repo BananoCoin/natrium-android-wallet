@@ -105,7 +105,7 @@
     <string name="send_sending">भेजा जा रहा है - </string>
     <string name="send_to">इसको - </string>
     <string name="sent_to">इसको भेजा गया -</string>
-    <string name="send_confirm">पुष्टि (कन्फर्म) करें </string>
+    <string name="dialog_confirm">पुष्टि (कन्फर्म) करें </string>
     <string name="dialog_cancel">रद्द (कैंसल) करें</string>
     <string name="dialog_close">बंद करें </string>
     <string name="send_alert_dialog_ok">ठीक है </string>

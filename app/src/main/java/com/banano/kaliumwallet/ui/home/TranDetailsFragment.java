@@ -35,17 +35,16 @@ import io.realm.RealmQuery;
  * Tran Details Dialog
  */
 public class TranDetailsFragment extends BaseDialogFragment {
-    private FragmentTransactionDetailsBinding binding;
     public static String TAG = TranDetailsFragment.class.getSimpleName();
+    @Inject
+    Realm realm;
+    private FragmentTransactionDetailsBinding binding;
     private Runnable mRunnable;
     private Handler mHandler;
     private String mAddress;
     private String mBlockHash;
     private boolean copyRunning = false;
     private boolean isContact = false;
-
-    @Inject
-    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -92,7 +91,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
 
         // Anchor to bottom
         Window window = getDialog().getWindow();
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int)UIUtil.convertDpToPixel(240, getContext()));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) UIUtil.convertDpToPixel(240, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow
@@ -116,7 +115,8 @@ public class TranDetailsFragment extends BaseDialogFragment {
             }
 
             @Override
-            public void onTap(View view) { }
+            public void onTap(View view) {
+            }
         }, SwipeDismissTouchListener.TOP_TO_BOTTOM));
 
         // Set runnable to reset address copied text, contact added text
@@ -145,7 +145,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mHandler != null  && mRunnable != null) {
+        if (mHandler != null && mRunnable != null) {
             mHandler.removeCallbacks(mRunnable);
         }
     }

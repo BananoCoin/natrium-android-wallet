@@ -108,7 +108,7 @@
     <string name="send_sending">נשלח</string>
     <string name="send_to">מ:</string>
     <string name="sent_to">נשלח ל:</string>
-    <string name="send_confirm">אשר</string>
+    <string name="dialog_confirm">אשר</string>
     <string name="dialog_cancel">בטל</string>
     <string name="dialog_close">סגור</string>
     <string name="send_alert_dialog_ok">בסדר</string>

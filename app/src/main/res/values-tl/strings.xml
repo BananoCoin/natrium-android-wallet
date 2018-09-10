@@ -107,7 +107,7 @@
     <string name="send_sending">Pinapadala</string>
     <string name="send_to">Sa:</string>
     <string name="sent_to">Pinadala sa:</string>
-    <string name="send_confirm">Kumpirmahin</string>
+    <string name="dialog_confirm">Kumpirmahin</string>
     <string name="dialog_cancel">Kanselahin</string>
     <string name="dialog_close">Isara</string>
     <string name="send_alert_dialog_ok">OK</string>

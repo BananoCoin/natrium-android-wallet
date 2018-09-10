@@ -14,32 +14,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_settings_item"
-        android:paddingTop="@dimen/tx_card_padding"
-        android:paddingBottom="@dimen/tx_card_padding"
         android:tag="@{contact}">
+
+        <View
+            android:id="@+id/divider_line_top"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_10"
+            app:layout_constraintBottom_toTopOf="@+id/contact_name" />
 
         <TextView
             android:id="@+id/contact_name"
             style="@style/TextStyleSemiboldWhite"
-            android:layout_marginStart="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="@dimen/tx_card_padding"
             android:text="@{contact.name}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_line_top"
             tools:text="\@bbedward" />
 
         <TextView
             android:id="@+id/contact_address"
+            style="@style/TextStyleAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextStyleAddress"
             android:layout_marginStart="30dp"
-            android:textSize="@dimen/tx_address_text_size"
             android:text="@{contact.addressShort}"
-            app:layout_constraintTop_toBottomOf="@+id/contact_name"
+            android:textSize="@dimen/tx_address_text_size"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="ban_123456...789"/>
+            app:layout_constraintTop_toBottomOf="@+id/contact_name"
+            tools:text="ban_123456...789" />
+
+        <View
+            android:id="@+id/divider_line_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/tx_card_padding"
+            android:background="@color/white_10"
+            app:layout_constraintTop_toBottomOf="@+id/contact_address" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

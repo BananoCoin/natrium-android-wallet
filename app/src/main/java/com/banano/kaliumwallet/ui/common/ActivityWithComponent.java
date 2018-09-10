@@ -9,5 +9,6 @@ import com.banano.kaliumwallet.di.application.ApplicationComponent;
 
 public interface ActivityWithComponent {
     ActivityComponent getActivityComponent();
+
     ApplicationComponent getApplicationComponent();
 }

@@ -15,7 +15,7 @@ import com.banano.kaliumwallet.model.Contact;
 
 import java.util.List;
 
-public class ContactOverviewSelectionAdapter  extends RecyclerView.Adapter<ContactOverviewSelectionAdapter.ViewHolder> {
+public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<ContactOverviewSelectionAdapter.ViewHolder> {
     private List<Contact> contactList;
 
     public ContactOverviewSelectionAdapter(List<Contact> flsLst) {
@@ -24,7 +24,7 @@ public class ContactOverviewSelectionAdapter  extends RecyclerView.Adapter<Conta
 
     @Override
     public ContactOverviewSelectionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                 int viewType) {
+                                                                         int viewType) {
         ViewHolderContactBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 R.layout.view_holder_contact, parent, false);
@@ -45,6 +45,9 @@ public class ContactOverviewSelectionAdapter  extends RecyclerView.Adapter<Conta
     public void onBindViewHolder(ViewHolder holder, int position) {
         Contact contact = contactList.get(position);
         holder.contactItemBinding.setContact(contact);
+        if (position > 0) {
+            holder.contactItemBinding.dividerLineTop.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -52,19 +55,19 @@ public class ContactOverviewSelectionAdapter  extends RecyclerView.Adapter<Conta
         return contactList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public void updateList(List<Contact> newList) {
+        List<Contact> oldList = this.contactList;
+        this.contactList = newList;
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ContactSelectionDiffCallback(oldList, newList), false);
+        diffResult.dispatchUpdatesTo(this);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolderContactBinding contactItemBinding;
 
         public ViewHolder(ViewHolderContactBinding contactItemLayoutBinding) {
             super(contactItemLayoutBinding.getRoot());
             contactItemBinding = contactItemLayoutBinding;
         }
-    }
-
-    public void updateList(List<Contact> newList) {
-        List<Contact> oldList = this.contactList;
-        this.contactList = newList;
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ContactSelectionDiffCallback(oldList, newList), true);
-        diffResult.dispatchUpdatesTo(this);
     }
 }

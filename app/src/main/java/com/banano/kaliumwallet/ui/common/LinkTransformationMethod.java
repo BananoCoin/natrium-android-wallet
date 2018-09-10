@@ -15,7 +15,7 @@ public class LinkTransformationMethod implements TransformationMethod {
     public CharSequence getTransformation(CharSequence source, View view) {
         if (view instanceof TextView) {
             TextView textView = (TextView) view;
-             if (textView.getText() == null || !(textView.getText() instanceof Spannable)) {
+            if (textView.getText() == null || !(textView.getText() instanceof Spannable)) {
                 return source;
             }
             SpannableString text = (SpannableString) textView.getText();

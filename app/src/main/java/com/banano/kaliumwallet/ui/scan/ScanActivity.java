@@ -6,17 +6,17 @@ import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.banano.kaliumwallet.R;
 import com.google.zxing.Result;
 
-import com.banano.kaliumwallet.R;
 import me.dm7.barcodescanner.core.IViewFinder;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 
 
 public class ScanActivity extends BaseScannerActivity implements ZXingScannerView.ResultHandler {
-    private ZXingScannerView mScannerView;
     public static final String QR_CODE_RESULT = "QRCodeResult";
     public static final String EXTRA_TITLE = "ScanActivityTitle";
+    private ZXingScannerView mScannerView;
 
     @Override
     public void onCreate(Bundle state) {

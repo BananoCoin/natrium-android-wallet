@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="file_chooser_theme">
+        <!-- Overview -->
+        <item>@color/gray</item> <!--  Top Header bg -->
+        <item>@color/white_90</item> <!-- header text   -->
+        <item>@color/gray_dark</item> <!-- list bg  -->
+        <item>@color/white_90</item> <!--  storage list name text  -->
+        <item>@color/white_60</item> <!-- free space text  -->
+        <item>@color/yellow</item> <!-- memory bar -->
+
+        <!-- secondary dialog colors -->
+        <item>@color/yellow</item> <!-- folder tint -->
+        <item>@color/gray_dark</item> <!-- list bg -->
+        <item>@color/white_90</item> <!-- list text -->
+        <item>@color/black_25</item> <!-- address bar tint -->
+        <item>@color/white_60</item> <!-- new folder hint tint -->
+        <item>@color/yellow</item> <!-- select button color -->
+        <item>@color/gray_dark</item> <!-- new folder layour bg -->
+        <item>@color/yellow</item> <!-- fab multiselect color -->
+        <item>@color/gray_dark</item> <!-- address bar bg -->
+    </array>
+</resources>

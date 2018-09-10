@@ -4,15 +4,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import java.util.Locale;
-import java.util.UUID;
-
 import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.AvailableCurrency;
 import com.banano.kaliumwallet.model.AvailableLanguage;
 import com.banano.kaliumwallet.model.PreconfiguredRepresentatives;
 import com.banano.kaliumwallet.model.PriceConversion;
 import com.github.ajalt.reprint.core.Reprint;
+
+import java.util.Locale;
 
 /**
  * Shared Preferences utility module
@@ -74,13 +73,13 @@ public class SharedPreferencesUtil {
         set(LOCAL_CURRENCY, localCurrency.toString());
     }
 
-    public void setDefaultLocale(Locale locale) {
-        set(DEFAULT_LOCALE, locale.toString());
-    }
-
     public Locale getDefaultLocale() {
         String localeStr = get(DEFAULT_LOCALE, Locale.getDefault().toString()).replace("-", "_");
         return LocaleUtil.getLocaleFromStr(localeStr);
+    }
+
+    public void setDefaultLocale(Locale locale) {
+        set(DEFAULT_LOCALE, locale.toString());
     }
 
     public AvailableLanguage getLanguage() {

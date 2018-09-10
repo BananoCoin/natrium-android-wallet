@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.ViewDragHelper;
@@ -22,12 +23,32 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.ContactAdded;
+import com.banano.kaliumwallet.bus.ContactRemoved;
+import com.banano.kaliumwallet.bus.RxBus;
+import com.banano.kaliumwallet.bus.SocketError;
 import com.banano.kaliumwallet.bus.TransactionItemClicked;
+import com.banano.kaliumwallet.bus.WalletHistoryUpdate;
+import com.banano.kaliumwallet.bus.WalletPriceUpdate;
+import com.banano.kaliumwallet.bus.WalletSubscribeUpdate;
+import com.banano.kaliumwallet.databinding.FragmentHomeBinding;
 import com.banano.kaliumwallet.model.Contact;
+import com.banano.kaliumwallet.model.Credentials;
+import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.model.PriceConversion;
+import com.banano.kaliumwallet.network.AccountService;
+import com.banano.kaliumwallet.network.model.response.AccountCheckResponse;
+import com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem;
 import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
+import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
+import com.banano.kaliumwallet.ui.common.BaseFragment;
+import com.banano.kaliumwallet.ui.common.FragmentUtility;
+import com.banano.kaliumwallet.ui.common.KeyboardUtil;
 import com.banano.kaliumwallet.ui.common.UIUtil;
+import com.banano.kaliumwallet.ui.common.WindowControl;
+import com.banano.kaliumwallet.ui.contact.ContactOverviewFragment;
+import com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
 import com.banano.kaliumwallet.ui.settings.SettingsFragment;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
@@ -45,24 +66,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.banano.kaliumwallet.R;
-import com.banano.kaliumwallet.bus.RxBus;
-import com.banano.kaliumwallet.bus.SocketError;
-import com.banano.kaliumwallet.bus.WalletHistoryUpdate;
-import com.banano.kaliumwallet.bus.WalletPriceUpdate;
-import com.banano.kaliumwallet.bus.WalletSubscribeUpdate;
-import com.banano.kaliumwallet.databinding.FragmentHomeBinding;
-import com.banano.kaliumwallet.model.Credentials;
-import com.banano.kaliumwallet.model.KaliumWallet;
-import com.banano.kaliumwallet.network.AccountService;
-import com.banano.kaliumwallet.network.model.response.AccountCheckResponse;
-import com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem;
-import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
-import com.banano.kaliumwallet.ui.common.BaseFragment;
-import com.banano.kaliumwallet.ui.common.KeyboardUtil;
-import com.banano.kaliumwallet.ui.common.WindowControl;
-import com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment;
-
 import io.realm.Realm;
 import io.realm.RealmQuery;
 import timber.log.Timber;
@@ -79,26 +82,22 @@ import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOption
                 method = "setImageDrawable")
 })
 public class HomeFragment extends BaseFragment {
-    private FragmentHomeBinding binding;
     public static String TAG = HomeFragment.class.getSimpleName();
-    private DownloadOrRetreiveFileTask downloadMonkeyTask;
     public boolean retrying = false;
+    @Inject
+    AccountService accountService;
+    @Inject
+    KaliumWallet wallet;
+    @Inject
+    Realm realm;
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
+    private FragmentHomeBinding binding;
+    private DownloadOrRetreiveFileTask downloadMonkeyTask;
     private Handler mHandler;
     private Runnable mRunnable;
     private HashMap<String, String> mContactCache = new HashMap<>();
     private AccountHistoryAdapter mAdapter;
-
-    @Inject
-    AccountService accountService;
-
-    @Inject
-    KaliumWallet wallet;
-
-    @Inject
-    Realm realm;
-
-    @Inject
-    SharedPreferencesUtil sharedPreferencesUtil;
 
     /**
      * Create new instance of the fragment (handy pattern if any data needs to be passed to it)
@@ -242,7 +241,7 @@ public class HomeFragment extends BaseFragment {
             // get dragger responsible for the dragging of the left drawer
             Field draggerField = DrawerLayout.class.getDeclaredField("mLeftDragger");
             draggerField.setAccessible(true);
-            ViewDragHelper vdh = (ViewDragHelper)draggerField.get(binding.drawerLayout);
+            ViewDragHelper vdh = (ViewDragHelper) draggerField.get(binding.drawerLayout);
 
             // get access to the private field which defines
             // how far from the edge dragging can start
@@ -251,7 +250,7 @@ public class HomeFragment extends BaseFragment {
 
             // increase the edge size - while x2 should be good enough,
             // try bigger values to easily see the difference
-            int origEdgeSize = (int)edgeSizeField.get(vdh);
+            int origEdgeSize = (int) edgeSizeField.get(vdh);
             int newEdgeSize = origEdgeSize * 5;
             edgeSizeField.setInt(vdh, newEdgeSize);
 
@@ -296,6 +295,14 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onDrawerClosed(@NonNull View view) {
                 setStatusBarGray();
+                // Close contacts if open
+                Fragment contactOverviewFragment = ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().findFragmentByTag(ContactOverviewFragment.TAG);
+                if (contactOverviewFragment != null) {
+                    FragmentUtility.disableFragmentAnimations = true;
+                    ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().popBackStackImmediate();
+                    ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+                    FragmentUtility.disableFragmentAnimations = false;
+                }
             }
 
             @Override
@@ -331,6 +338,8 @@ public class HomeFragment extends BaseFragment {
             String name = getContactName(item.getAccount());
             if (name != null) {
                 item.setContactName(name);
+            } else {
+                item.setContactName(null);
             }
         }
         mAdapter.updateList(historyList);
@@ -341,6 +350,17 @@ public class HomeFragment extends BaseFragment {
     public void receiveContactAdded(ContactAdded contactAdded) {
         updateAccountHistory();
         mAdapter.notifyDataSetChanged();
+        UIUtil.showToast(getString(R.string.contact_added, contactAdded.getName()), getContext());
+    }
+
+    @Subscribe
+    public void receiveContactRemoved(ContactRemoved contactRemoved) {
+        if (mContactCache.containsValue(contactRemoved.getName())) {
+            mContactCache.remove(contactRemoved.getAddress());
+        }
+        updateAccountHistory();
+        mAdapter.notifyDataSetChanged();
+        UIUtil.showToast(getString(R.string.contact_removed, contactRemoved.getName()), getContext());
     }
 
     @Subscribe

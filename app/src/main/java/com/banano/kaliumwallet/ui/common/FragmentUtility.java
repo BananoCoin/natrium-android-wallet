@@ -16,6 +16,7 @@ import com.banano.kaliumwallet.util.ExceptionHandler;
 public class FragmentUtility {
     private FragmentManager mFragmentManager;
     private int mContainerViewId;
+    public static boolean disableFragmentAnimations = false;
 
     public FragmentUtility(FragmentManager fragmentManager) {
         mFragmentManager = fragmentManager;
@@ -247,6 +248,10 @@ public class FragmentUtility {
         this.mContainerViewId = containerViewId;
     }
 
+    public void cleanUp() {
+        mFragmentManager = null;
+    }
+
     public enum Animation {
         NONE(0, 0),
         CROSSFADE(android.R.animator.fade_in, android.R.animator.fade_out),
@@ -269,10 +274,6 @@ public class FragmentUtility {
         public int getExit() {
             return mExit;
         }
-    }
-
-    public void cleanUp() {
-        mFragmentManager = null;
     }
 
 }

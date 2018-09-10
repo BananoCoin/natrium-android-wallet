@@ -1,8 +1,7 @@
 package com.banano.kaliumwallet.network.model.response;
 
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.util.NumberUtil;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Account History Item
@@ -46,12 +45,12 @@ public class PendingTransactionResponseItem {
         return amount;
     }
 
-    public String getFormattedAmount() {
-        return NumberUtil.getRawAsUsableString(amount);
-    }
-
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public String getFormattedAmount() {
+        return NumberUtil.getRawAsUsableString(amount);
     }
 
     public String getHash() {

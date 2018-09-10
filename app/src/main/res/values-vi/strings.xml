@@ -107,7 +107,7 @@
     <string name="send_sending">Đang gửi</string>
     <string name="send_to">tới:</string>
     <string name="sent_to">Gửi tới:</string>
-    <string name="send_confirm">Xác nhận</string>
+    <string name="dialog_confirm">Xác nhận</string>
     <string name="dialog_cancel">Hủy</string>
     <string name="dialog_close">Đóng</string>
     <string name="send_alert_dialog_ok">Đồng ý</string>

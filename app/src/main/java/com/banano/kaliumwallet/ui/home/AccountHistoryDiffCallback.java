@@ -7,7 +7,7 @@ import com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem
 
 import java.util.List;
 
-public class AccountHistoryDiffCallback extends DiffUtil.Callback{
+public class AccountHistoryDiffCallback extends DiffUtil.Callback {
 
     List<AccountHistoryResponseItem> oldItems;
     List<AccountHistoryResponseItem> newItems;

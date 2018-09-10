@@ -5,6 +5,7 @@ package com.banano.kaliumwallet;
  */
 
 import com.banano.kaliumwallet.util.SecureRandomUtil;
+
 import org.libsodium.jni.NaCl;
 import org.libsodium.jni.Sodium;
 
@@ -12,10 +13,9 @@ import java.math.BigInteger;
 import java.security.SecureRandom;
 
 public class KaliumUtil {
-    private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
     public final static String addressCodeArray = "13456789abcdefghijkmnopqrstuwxyz";
     public final static char[] addressCodeCharArray = addressCodeArray.toCharArray();
-
+    private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 
     /**
      * Generate a new Wallet Seed
@@ -27,9 +27,9 @@ public class KaliumUtil {
         SecureRandom random = SecureRandomUtil.secureRandom();
         byte[] randomBytes = new byte[numchars / 2];
         random.nextBytes(randomBytes);
-      
+
         StringBuilder sb = new StringBuilder(numchars);
-        for(byte b: randomBytes){        
+        for (byte b : randomBytes) {
             sb.append(String.format("%02X", b));
         }
         return sb.toString();
@@ -154,18 +154,19 @@ public class KaliumUtil {
 
     /**
      * Compute hash for a universal (state) block
-     * @param account This account's ban_ address.
-     * @param previous Previous head block on account; 0 if open block.
+     *
+     * @param account        This account's ban_ address.
+     * @param previous       Previous head block on account; 0 if open block.
      * @param representative Representative ban_ address.
-     * @param balance Resulting balance
-     * @param link Multipurpose Field
+     * @param balance        Resulting balance
+     * @param link           Multipurpose Field
      * @return String of hash
      */
     public static String computeStateHash(String account,
-                                         String previous,
-                                         String representative,
-                                         String balance,
-                                         String link) {
+                                          String previous,
+                                          String representative,
+                                          String balance,
+                                          String link) {
         Sodium sodium = NaCl.sodium();
 
         byte[] temp = hexToBytes("6");
@@ -200,8 +201,8 @@ public class KaliumUtil {
     /**
      * Compute hash to use to generate a change work block
      *
-     * @param previous         Previous transaction
-     * @param representative   Representative address
+     * @param previous       Previous transaction
+     * @param representative Representative address
      * @return String of hash
      */
     public static String computeChangeHash(String previous, String representative) {

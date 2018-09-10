@@ -1,8 +1,7 @@
 package com.banano.kaliumwallet.network.model.response;
 
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.network.model.BaseResponse;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Error response from service

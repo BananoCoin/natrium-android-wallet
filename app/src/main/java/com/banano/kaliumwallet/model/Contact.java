@@ -26,6 +26,10 @@ public class Contact extends RealmObject {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getAddressShort() {
         int frontStartIndex = 0;
         int frontEndIndex = 11;
@@ -33,10 +37,6 @@ public class Contact extends RealmObject {
         return address.substring(frontStartIndex, frontEndIndex) +
                 "..." +
                 address.substring(backStartIndex, address.length());
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     @Override

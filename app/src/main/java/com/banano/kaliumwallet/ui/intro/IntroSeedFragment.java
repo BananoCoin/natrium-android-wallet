@@ -2,7 +2,6 @@ package com.banano.kaliumwallet.ui.intro;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -14,16 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
-
-import com.banano.kaliumwallet.bus.Logout;
-import com.banano.kaliumwallet.ui.common.KeyboardUtil;
-import com.banano.kaliumwallet.ui.home.HomeFragment;
-import com.banano.kaliumwallet.util.ExceptionHandler;
-import com.github.ajalt.reprint.core.Reprint;
-import com.hwangjr.rxbus.annotation.Subscribe;
-
-import javax.inject.Inject;
 
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.CreatePin;
@@ -34,11 +23,17 @@ import com.banano.kaliumwallet.network.AccountService;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.FragmentUtility;
+import com.banano.kaliumwallet.ui.common.KeyboardUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
+import com.banano.kaliumwallet.ui.home.HomeFragment;
+import com.banano.kaliumwallet.util.ExceptionHandler;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+import com.hwangjr.rxbus.annotation.Subscribe;
+
+import javax.inject.Inject;
+
 import io.realm.Realm;
 
-import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
 
 /**
@@ -46,17 +41,14 @@ import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
  */
 
 public class IntroSeedFragment extends BaseFragment {
-    private FragmentIntroSeedBinding binding;
     public static String TAG = IntroSeedFragment.class.getSimpleName();
-
     @Inject
     Realm realm;
-
     @Inject
     AccountService accountService;
-
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
+    private FragmentIntroSeedBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,6 +156,26 @@ public class IntroSeedFragment extends BaseFragment {
         }
     }
 
+    private void goToHomeScreen() {
+        // go to home screen
+        if (getActivity() instanceof WindowControl) {
+            ((WindowControl) getActivity()).getFragmentUtility().clearStack();
+            ((WindowControl) getActivity()).getFragmentUtility().replace(
+                    HomeFragment.newInstance(),
+                    FragmentUtility.Animation.ENTER_LEFT_EXIT_RIGHT,
+                    FragmentUtility.Animation.ENTER_RIGHT_EXIT_LEFT,
+                    HomeFragment.TAG
+            );
+        }
+    }
+
+    private void createAndStoreCredentials(String seed) {
+        realm.beginTransaction();
+        Credentials credentials = realm.createObject(Credentials.class);
+        credentials.setSeed(seed);
+        realm.commitTransaction();
+    }
+
     public class ClickHandlers {
         public void onClickPaste(View view) {
             // copy address to clipboard
@@ -201,25 +213,5 @@ public class IntroSeedFragment extends BaseFragment {
                 ExceptionHandler.handle(new Exception("Problem accessing generated seed"));
             }
         }
-    }
-
-    private void goToHomeScreen() {
-        // go to home screen
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).getFragmentUtility().clearStack();
-            ((WindowControl) getActivity()).getFragmentUtility().replace(
-                    HomeFragment.newInstance(),
-                    FragmentUtility.Animation.ENTER_LEFT_EXIT_RIGHT,
-                    FragmentUtility.Animation.ENTER_RIGHT_EXIT_LEFT,
-                    HomeFragment.TAG
-            );
-        }
-    }
-
-    private void createAndStoreCredentials(String seed) {
-        realm.beginTransaction();
-        Credentials credentials = realm.createObject(Credentials.class);
-        credentials.setSeed(seed);
-        realm.commitTransaction();
     }
 }

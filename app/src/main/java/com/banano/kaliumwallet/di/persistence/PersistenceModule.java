@@ -3,14 +3,15 @@ package com.banano.kaliumwallet.di.persistence;
 import android.content.Context;
 import android.util.Base64;
 
-import javax.inject.Named;
-
 import com.banano.kaliumwallet.bus.Logout;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.db.Migration;
 import com.banano.kaliumwallet.di.application.ApplicationScope;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import com.banano.kaliumwallet.util.Vault;
+
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 import io.realm.Realm;

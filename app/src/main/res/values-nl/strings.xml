@@ -105,7 +105,7 @@
     <string name="send_sending">Versturen</string>
     <string name="send_to">Naar:</string>
     <string name="sent_to">Verstuur naar:</string>
-    <string name="send_confirm">Bevestig</string>
+    <string name="dialog_confirm">Bevestig</string>
     <string name="dialog_cancel">Annuleer</string>
     <string name="dialog_close">Sluit</string>
     <string name="send_alert_dialog_ok">OK</string>

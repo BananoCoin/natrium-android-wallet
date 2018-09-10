@@ -7,7 +7,7 @@ import com.banano.kaliumwallet.model.Contact;
 
 import java.util.List;
 
-public class ContactSelectionDiffCallback extends DiffUtil.Callback{
+public class ContactSelectionDiffCallback extends DiffUtil.Callback {
 
     List<Contact> oldItems;
     List<Contact> newItems;

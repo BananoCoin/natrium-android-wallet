@@ -1,8 +1,7 @@
 package com.banano.kaliumwallet.network.model.response;
 
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.network.model.BaseResponse;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Response from subscribe request
@@ -58,7 +57,6 @@ public class SubscribeResponse extends BaseResponse {
     }
 
 
-
     public String getFrontier() {
         return frontier;
     }
@@ -83,12 +81,12 @@ public class SubscribeResponse extends BaseResponse {
         this.representative_block = representative_block;
     }
 
-    public void setRepresentative(String representative) {
-        this.representative = representative;
-    }
-
     public String getRepresentative() {
         return representative;
+    }
+
+    public void setRepresentative(String representative) {
+        this.representative = representative;
     }
 
     public String getBalance() {

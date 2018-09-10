@@ -2,17 +2,17 @@ package com.banano.kaliumwallet.model;
 
 import android.support.test.runner.AndroidJUnit4;
 
+import com.banano.kaliumwallet.di.activity.TestActivityComponent;
+import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import javax.inject.Inject;
-
-import com.banano.kaliumwallet.di.activity.TestActivityComponent;
-import com.banano.kaliumwallet.util.SharedPreferencesUtil;
-
 import java.math.BigDecimal;
+
+import javax.inject.Inject;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,13 +23,11 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(AndroidJUnit4.class)
 public class AddressTest {
-    private TestActivityComponent testActivityComponent;
-
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
-
     @Inject
     KaliumWallet nanoWallet;
+    private TestActivityComponent testActivityComponent;
 
     public AddressTest() {
     }

@@ -106,7 +106,7 @@
     <string name="send_sending">Envoi en cours</string>
     <string name="send_to">À:</string>
     <string name="sent_to">Envoyé À:</string>
-    <string name="send_confirm">Confirmer</string>
+    <string name="dialog_confirm">Confirmer</string>
     <string name="dialog_cancel">Annuler</string>
     <string name="dialog_close">Fermer</string>
     <string name="send_alert_dialog_ok">OK</string>

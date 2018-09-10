@@ -102,7 +102,7 @@
     <string name="send_sending">Enviando</string>
     <string name="send_to">Para:</string>
     <string name="sent_to">Enviado para:</string>
-    <string name="send_confirm">Confirmar</string>
+    <string name="dialog_confirm">Confirmar</string>
     <string name="dialog_cancel">Cancelar</string>
     <string name="dialog_close">Fechar</string>
     <string name="send_alert_dialog_ok">OK</string>

@@ -107,7 +107,7 @@
     <string name="send_sending">Mengirim</string>
     <string name="send_to">Kepada:</string>
     <string name="sent_to">Terkirim Kepada:</string>
-    <string name="send_confirm">Konfirmasi</string>
+    <string name="dialog_confirm">Konfirmasi</string>
     <string name="dialog_cancel">Batal</string>
     <string name="dialog_close">Tutup</string>
     <string name="send_alert_dialog_ok">OK</string>

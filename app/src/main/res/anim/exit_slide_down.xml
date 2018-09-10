@@ -4,9 +4,9 @@
         android:duration="150"
         android:fromYDelta="0%"
         android:interpolator="@android:anim/accelerate_interpolator"
-        android:toYDelta="100%"/>
+        android:toYDelta="100%" />
     <alpha
         android:duration="150"
         android:fromAlpha="1.0"
-        android:toAlpha="0.0"/>
+        android:toAlpha="0.0" />
 </set>

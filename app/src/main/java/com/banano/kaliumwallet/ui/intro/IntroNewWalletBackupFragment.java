@@ -7,11 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.CreatePin;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentIntroNewWalletSeedBackupBinding;
-
-import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
@@ -31,9 +30,8 @@ import io.realm.Realm;
  */
 
 public class IntroNewWalletBackupFragment extends BaseFragment {
-    FragmentIntroNewWalletSeedBackupBinding binding;
     public static String TAG = IntroNewWalletBackupFragment.class.getSimpleName();
-
+    FragmentIntroNewWalletSeedBackupBinding binding;
     @Inject
     Realm realm;
 

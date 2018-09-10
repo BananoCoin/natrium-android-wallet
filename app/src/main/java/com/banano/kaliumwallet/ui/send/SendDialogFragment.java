@@ -10,8 +10,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -22,11 +20,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Toast;
 
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.ContactSelected;
@@ -66,25 +62,21 @@ import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
  * Send main screen
  */
 public class SendDialogFragment extends BaseDialogFragment {
-    private FragmentSendBinding binding;
     public static String TAG = SendDialogFragment.class.getSimpleName();
+    @Inject
+    KaliumWallet wallet;
+    @Inject
+    AccountService accountService;
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
+    @Inject
+    Realm realm;
+    private FragmentSendBinding binding;
     private Address address;
     private Activity mActivity;
     private Handler mHandler;
     private Runnable mRunnable;
     private ContactSelectionAdapter mAdapter;
-
-    @Inject
-    KaliumWallet wallet;
-
-    @Inject
-    AccountService accountService;
-
-    @Inject
-    SharedPreferencesUtil sharedPreferencesUtil;
-
-    @Inject
-    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -181,10 +173,12 @@ public class SendDialogFragment extends BaseDialogFragment {
             boolean fromColorization = false;
 
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
-            public void afterTextChanged(Editable editable) {  }
+            public void afterTextChanged(Editable editable) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -218,18 +212,18 @@ public class SendDialogFragment extends BaseDialogFragment {
                             hideAddressError();
                             isColorized = true;
                             fromColorization = true;
-                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
                             binding.sendAddress.setSelection(address.getAddress().length());
                         }
                     }
                     return;
                 } else if (curText.length() > 0 && lastText.length() == 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
-                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(55, getContext()), binding.sendAddress.getPaddingBottom());
+                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int) UIUtil.convertDpToPixel(55, getContext()), binding.sendAddress.getPaddingBottom());
                     binding.sendAddress.setTypeface(tf);
                 } else if (curText.length() == 0 && lastText.length() > 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/nunitosans_extralight.ttf");
-                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(20, getContext()), binding.sendAddress.getPaddingBottom());
+                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int) UIUtil.convertDpToPixel(20, getContext()), binding.sendAddress.getPaddingBottom());
                     binding.sendAddress.setTypeface(tf);
                 }
                 if (!curText.equals(lastText)) {
@@ -498,10 +492,7 @@ public class SendDialogFragment extends BaseDialogFragment {
                 showSendCompleteDialog();
                 dismiss();
             } else if (resultCode == SEND_FAILED) {
-                Toast.makeText(getContext(),
-                        getString(R.string.send_generic_error),
-                        Toast.LENGTH_SHORT)
-                        .show();
+                UIUtil.showToast(getString(R.string.send_generic_error), getContext());
             } else if (resultCode == SEND_FAILED_AMOUNT) {
                 wallet.setSendBananoAmount(wallet.getUsableAccountBalanceBanano().toString());
                 binding.setWallet(wallet);
@@ -527,6 +518,13 @@ public class SendDialogFragment extends BaseDialogFragment {
                 }
             }
         }
+    }
+
+    /**
+     * Execute all pending transactions
+     */
+    private void executePendingTransactions() {
+        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
     }
 
     public class ClickHandlers {
@@ -559,12 +557,5 @@ public class SendDialogFragment extends BaseDialogFragment {
                 binding.sendAddress.setText(address.getAddress());
             }
         }
-    }
-
-    /**
-     * Execute all pending transactions
-     */
-    private void executePendingTransactions() {
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
     }
 }

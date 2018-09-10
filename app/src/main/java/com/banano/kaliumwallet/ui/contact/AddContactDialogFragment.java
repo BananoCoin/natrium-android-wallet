@@ -1,6 +1,7 @@
 package com.banano.kaliumwallet.ui.contact;
 
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
 
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.ContactAdded;
@@ -29,12 +31,14 @@ import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
+import com.banano.kaliumwallet.ui.scan.ScanActivity;
 
 import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
+import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
 
 /**
@@ -72,7 +76,6 @@ public class AddContactDialogFragment extends BaseDialogFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        showPaste = false;
         contactAdded = false;
         // init dependency injection
         if (getActivity() instanceof ActivityWithComponent) {
@@ -127,6 +130,8 @@ public class AddContactDialogFragment extends BaseDialogFragment {
             showPaste = false;
             binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address, getContext()));
             hidePaste();
+        } else {
+            showPaste = true;
         }
         // Set color on contact address  when valid
         binding.contactAddress.addTextChangedListener(new TextWatcher() {
@@ -135,10 +140,12 @@ public class AddContactDialogFragment extends BaseDialogFragment {
             boolean fromColorization = false;
 
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
-            public void afterTextChanged(Editable editable) {  }
+            public void afterTextChanged(Editable editable) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -155,7 +162,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
                             hideAddressError();
                             isColorized = true;
                             fromColorization = true;
-                            binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
                             binding.contactAddress.setSelection(address.getAddress().length());
                         }
                     }
@@ -164,13 +171,13 @@ public class AddContactDialogFragment extends BaseDialogFragment {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
                     binding.contactAddress.setTypeface(tf);
                     if (showPaste) {
-                        binding.contactAddress.setPadding(binding.contactAddress.getPaddingLeft(), binding.contactAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(55, getContext()), binding.contactAddress.getPaddingBottom());
+                        binding.contactAddress.setPadding(binding.contactAddress.getPaddingLeft(), binding.contactAddress.getPaddingTop(), (int) UIUtil.convertDpToPixel(55, getContext()), binding.contactAddress.getPaddingBottom());
                     }
                 } else if (curText.length() == 0 && lastText.length() > 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/nunitosans_extralight.ttf");
                     binding.contactAddress.setTypeface(tf);
                     if (showPaste) {
-                        binding.contactAddress.setPadding(binding.contactAddress.getPaddingLeft(), binding.contactAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(20, getContext()), binding.contactAddress.getPaddingBottom());
+                        binding.contactAddress.setPadding(binding.contactAddress.getPaddingLeft(), binding.contactAddress.getPaddingTop(), (int) UIUtil.convertDpToPixel(20, getContext()), binding.contactAddress.getPaddingBottom());
                     }
                 }
                 if (!curText.equals(lastText)) {
@@ -180,7 +187,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
                         hideAddressError();
                         isColorized = true;
                         fromColorization = true;
-                        binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                        binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
                         binding.contactAddress.setSelection(address.getAddress().length());
                     } else {
                         if (isColorized) {
@@ -240,11 +247,12 @@ public class AddContactDialogFragment extends BaseDialogFragment {
     }
 
     private void hidePaste() {
-        binding.contactAddress.setPadding((int)UIUtil.convertDpToPixel(35, getContext()), binding.contactAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(35, getContext()), binding.contactAddress.getPaddingBottom());
+        binding.contactAddress.setPadding((int) UIUtil.convertDpToPixel(35, getContext()), binding.contactAddress.getPaddingTop(), (int) UIUtil.convertDpToPixel(35, getContext()), binding.contactAddress.getPaddingBottom());
         Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
         binding.contactAddress.setTypeface(tf);
         binding.contactAddressPaste.setVisibility(View.GONE);
         binding.contactAddress.setEnabled(false);
+        binding.contactAddQr.setVisibility(View.GONE);
     }
 
     private void showAddressError(int str_id) {
@@ -317,6 +325,26 @@ public class AddContactDialogFragment extends BaseDialogFragment {
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == SCAN_RESULT) {
+            // Make sure the request was successful
+            if (resultCode == RESULT_OK) {
+                Bundle res = data.getExtras();
+                if (res != null) {
+                    // parse address
+                    Address address = new Address(res.getString(ScanActivity.QR_CODE_RESULT));
+
+                    // set to scanned value
+                    if (address.getAddress() != null) {
+                        binding.contactAddress.setText(address.getAddress());
+                    }
+                }
+            }
+        }
+    }
+
+    /*
     private void contactAdded() {
         contactAdded = true;
         binding.contactAddClose.setVisibility(View.GONE);
@@ -330,8 +358,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
         binding.addContactBtn.setBackground(getResources().getDrawable(R.drawable.bg_green_button_normal));
         binding.addContactClose.setTextColor(getResources().getColor(R.color.green_light));
         binding.addContactClose.setBackground(getResources().getDrawable(R.drawable.bg_green_button_outline));
-        RxBus.get().post(new ContactAdded());
-    }
+    }*/
 
     public class ClickHandlers {
         public void onClickClose(View v) {
@@ -356,7 +383,12 @@ public class AddContactDialogFragment extends BaseDialogFragment {
                 newContact.setAddress(binding.contactAddress.getText().toString());
                 newContact.setName(binding.contactName.getText().toString());
             });
-            contactAdded();
+            RxBus.get().post(new ContactAdded(binding.contactName.getText().toString()));
+            dismiss();
+        }
+
+        public void onClickScan(View v) {
+            startScanActivity(getString(R.string.scan_send_instruction_label), false);
         }
     }
 }

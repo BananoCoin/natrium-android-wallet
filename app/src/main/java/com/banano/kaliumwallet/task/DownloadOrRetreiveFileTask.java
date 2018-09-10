@@ -42,7 +42,7 @@ public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, File> {
                 byte[] buffer = new byte[1024];
                 int bufferLength = 0;
 
-                while ( (bufferLength = inputStream.read(buffer)) > 0 ) {
+                while ((bufferLength = inputStream.read(buffer)) > 0) {
                     fileOutput.write(buffer, 0, bufferLength);
                 }
             }

@@ -24,26 +24,26 @@
         <TextView
             android:id="@+id/settings_header"
             style="@style/TextStyleHeader"
-            android:textSize="30sp"
-            android:textAllCaps="false"
-            android:gravity="start"
-            android:textAlignment="gravity"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:gravity="start"
             android:text="@string/settings_title"
-            android:layout_alignParentTop="true"/>
+            android:textAlignment="gravity"
+            android:textAllCaps="false"
+            android:textSize="30sp" />
 
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/settings_scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/AppThemeYellow"
-            android:scrollbars="none"
+            android:layout_above="@+id/settings_app_name"
             android:layout_below="@+id/settings_header"
-            android:layout_above="@+id/settings_app_name">
+            android:scrollbars="none"
+            android:theme="@style/AppThemeYellow">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -55,68 +55,68 @@
                 <TextView
                     android:id="@+id/prefs_category_text"
                     style="@style/TextStyleLightPrimary"
-                    android:textSize="@dimen/settings_category_text_size"
-                    android:textStyle=""
-                    android:textColor="@color/white_60"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30dp"
                     android:layout_marginTop="30dp"
+                    android:paddingStart="30dp"
                     android:text="@string/settings_preferences_header"
+                    android:textColor="@color/white_60"
+                    android:textSize="@dimen/settings_category_text_size"
+                    android:textStyle=""
+                    app:layout_constraintBottom_toTopOf="@+id/prefs_divider"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@+id/prefs_divider"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
                 <View
                     android:id="@+id/prefs_divider"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="10dp"
                     android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/prefs_category_text"/>
+                    app:layout_constraintTop_toBottomOf="@+id/prefs_category_text" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_currency"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_currency"
-                    android:paddingStart="30dp"
                     android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_currency_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_currency_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_currency_container"/>
+                    app:srcCompat="@drawable/ic_currency" />
 
                 <LinearLayout
                     android:id="@+id/settings_currency_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
-                    android:paddingTop="9dp"
-                    android:paddingStart="70dp"
-                    android:orientation="vertical"
-                    android:onClick="@{handlers::onClickCurrency}"
                     android:clickable="true"
                     android:focusable="true"
+                    android:onClick="@{handlers::onClickCurrency}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
+                    android:paddingTop="9dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_currency"
-                    app:layout_constraintTop_toBottomOf="@+id/prefs_divider" >
+                    app:layout_constraintTop_toBottomOf="@+id/prefs_divider">
+
                     <TextView
                         android:id="@+id/settings_local_currency"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:textColor="@color/white_90"
-                        android:text="@string/settings_local_currency" />
+                        android:text="@string/settings_local_currency"
+                        android:textColor="@color/white_90" />
 
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/settings_currency_spinner"
-                        android:background="@null"
-                        android:theme="@style/SpinnerTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="@null"
                         android:gravity="center_vertical"
-                        />
+                        android:theme="@style/SpinnerTheme" />
                 </LinearLayout>
 
                 <View
@@ -124,48 +124,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_currency_container"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_currency_container" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_language"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_language_icon"
-                    android:paddingStart="30dp"
                     android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_language_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_language_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_language_container"/>
+                    app:srcCompat="@drawable/ic_language_icon" />
 
                 <LinearLayout
                     android:id="@+id/settings_language_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
-                    android:paddingTop="9dp"
-                    android:paddingStart="70dp"
-                    android:orientation="vertical"
-                    android:onClick="@{handlers::onClickLanguage}"
                     android:clickable="true"
                     android:focusable="true"
+                    android:onClick="@{handlers::onClickLanguage}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
+                    android:paddingTop="9dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_language"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_currency_bottom" >
+                    app:layout_constraintTop_toBottomOf="@+id/settings_currency_bottom">
+
                     <TextView
                         android:id="@+id/settings_language"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:textColor="@color/white_90"
-                        android:text="@string/settings_change_language" />
+                        android:text="@string/settings_change_language"
+                        android:textColor="@color/white_90" />
 
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/settings_language_spinner"
-                        android:background="@null"
-                        android:theme="@style/SpinnerTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical" />
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:theme="@style/SpinnerTheme" />
                 </LinearLayout>
 
                 <View
@@ -173,114 +174,116 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_language_container"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_language_container" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_fingerprint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/ic_fingerprint_yellow"
+                    android:elevation="5dp"
                     android:paddingStart="30dp"
                     android:visibility="gone"
-                    android:elevation="5dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_auth_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_auth_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_auth_container"/>
+                    app:srcCompat="@drawable/ic_fingerprint_yellow" />
 
                 <LinearLayout
                     android:id="@+id/settings_auth_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
-                    android:paddingTop="9dp"
-                    android:visibility="gone"
-                    android:paddingStart="70dp"
-                    android:orientation="vertical"
-                    android:onClick="@{handlers::onClickAuthMethod}"
                     android:clickable="true"
                     android:focusable="true"
+                    android:onClick="@{handlers::onClickAuthMethod}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
+                    android:paddingTop="9dp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toEndOf="@+id/ic_fingerprint"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_language_bottom" >
+                    app:layout_constraintTop_toBottomOf="@+id/settings_language_bottom">
+
                     <TextView
                         android:id="@+id/settings_auth_method"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
-                        android:textColor="@color/white_90"
-                        android:text="@string/settings_disable_fingerprint" />
+                        android:text="@string/settings_disable_fingerprint"
+                        android:textColor="@color/white_90" />
 
                     <android.support.v7.widget.AppCompatSpinner
                         android:id="@+id/settings_auth_spinner"
-                        android:background="@null"
-                        android:theme="@style/SpinnerTheme"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical" />
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:theme="@style/SpinnerTheme" />
                 </LinearLayout>
 
                 <View
                     android:id="@+id/settings_auth_bottom"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_auth_container"/>
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/settings_auth_container" />
 
                 <TextView
                     android:id="@+id/manage_category_text"
                     style="@style/TextStyleLightPrimary"
-                    android:textSize="@dimen/settings_category_text_size"
-                    android:textStyle=""
-                    android:textColor="@color/white_60"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30dp"
                     android:layout_marginTop="30dp"
+                    android:paddingStart="30dp"
                     android:text="@string/settings_manage_header"
+                    android:textColor="@color/white_60"
+                    android:textSize="@dimen/settings_category_text_size"
+                    android:textStyle=""
+                    app:layout_constraintBottom_toTopOf="@+id/top_line"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_auth_bottom"
-                    app:layout_constraintBottom_toTopOf="@+id/top_line"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_auth_bottom" />
 
                 <View
                     android:id="@+id/top_line"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/white_10"
                     android:layout_marginTop="10dp"
+                    android:background="@color/white_10"
                     app:layout_constraintTop_toBottomOf="@+id/manage_category_text" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_address_book"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30dp"
-                    app:srcCompat="@drawable/ic_address_book"
                     android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_contacts_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_contacts_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_contacts_container"/>
+                    app:srcCompat="@drawable/ic_address_book" />
 
                 <LinearLayout
                     android:id="@+id/settings_contacts_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
-                    android:paddingStart="70dp"
                     android:background="@drawable/bg_settings_item"
-                    android:orientation="vertical"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="@{handlers::onClickContacts}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_backup_seed"
-                    app:layout_constraintTop_toBottomOf="@+id/top_line" >
+                    app:layout_constraintTop_toBottomOf="@+id/top_line">
+
                     <TextView
                         android:id="@+id/settings_contacts"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="@color/white_90"
-                        android:text="@string/contact_settings_item" />
+                        android:text="@string/contact_settings_item"
+                        android:textColor="@color/white_90" />
                 </LinearLayout>
 
                 <View
@@ -288,39 +291,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_contacts_container"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_contacts_container" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_backup_seed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30dp"
-                    app:srcCompat="@drawable/ic_backup_seed"
                     android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_seed_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_seed_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_seed_container"/>
+                    app:srcCompat="@drawable/ic_backup_seed" />
 
                 <LinearLayout
                     android:id="@+id/settings_seed_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
-                    android:paddingStart="70dp"
                     android:background="@drawable/bg_settings_item"
-                    android:orientation="vertical"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="@{handlers::onClickBackupSeed}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_backup_seed"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_contacts_bottom" >
+                    app:layout_constraintTop_toBottomOf="@+id/settings_contacts_bottom">
+
                     <TextView
                         android:id="@+id/settings_backup_seed"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="@color/white_90"
-                        android:text="@string/settings_backup_seed" />
+                        android:text="@string/settings_backup_seed"
+                        android:textColor="@color/white_90" />
                 </LinearLayout>
 
                 <View
@@ -328,39 +332,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_seed_container"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_seed_container" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_change_representative"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30dp"
-                    app:srcCompat="@drawable/ic_change_rep"
                     android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_rep_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_rep_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_rep_container"/>
+                    app:srcCompat="@drawable/ic_change_rep" />
 
                 <LinearLayout
                     android:id="@+id/settings_rep_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
-                    android:paddingStart="70dp"
                     android:background="@drawable/bg_settings_item"
-                    android:orientation="vertical"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="@{handlers::onClickChange}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_change_representative"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_seed_bottom" >
+                    app:layout_constraintTop_toBottomOf="@+id/settings_seed_bottom">
+
                     <TextView
                         android:id="@+id/settings_change_rep"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="@color/white_90"
-                        android:text="@string/settings_change_rep" />
+                        android:text="@string/settings_change_rep"
+                        android:textColor="@color/white_90" />
                 </LinearLayout>
 
                 <View
@@ -368,39 +373,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_rep_container"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_rep_container" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30dp"
-                    app:srcCompat="@drawable/ic_share"
                     android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_share_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_share_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_share_container"/>
+                    app:srcCompat="@drawable/ic_share" />
 
                 <LinearLayout
                     android:id="@+id/settings_share_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
-                    android:paddingStart="70dp"
-                    android:orientation="vertical"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="@{handlers::onClickShare}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_share"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_rep_bottom" >
+                    app:layout_constraintTop_toBottomOf="@+id/settings_rep_bottom">
+
                     <TextView
                         android:id="@+id/settings_share"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="@color/white_90"
-                        android:text="@string/settings_share" />
+                        android:text="@string/settings_share"
+                        android:textColor="@color/white_90" />
                 </LinearLayout>
 
                 <View
@@ -408,39 +414,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_share_container"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_share_container" />
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/ic_lock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="30dp"
-                    app:srcCompat="@drawable/ic_lock"
                     android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_lock_container"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/settings_lock_container"
-                    app:layout_constraintBottom_toBottomOf="@+id/settings_lock_container"/>
+                    app:srcCompat="@drawable/ic_lock" />
 
                 <LinearLayout
                     android:id="@+id/settings_lock_container"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/settings_item_height"
                     android:background="@drawable/bg_settings_item"
-                    android:paddingStart="70dp"
-                    android:orientation="vertical"
                     android:clickable="true"
                     android:focusable="true"
                     android:onClick="@{handlers::onClickLogOut}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_lock"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_share_bottom" >
+                    app:layout_constraintTop_toBottomOf="@+id/settings_share_bottom">
+
                     <TextView
                         android:id="@+id/settings_lock"
                         style="@style/TextStyleNormalPrimary"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
-                        android:textColor="@color/white_90"
-                        android:text="@string/settings_logout" />
+                        android:text="@string/settings_logout"
+                        android:textColor="@color/white_90" />
                 </LinearLayout>
 
                 <View
@@ -448,7 +455,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/white_10"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_lock_container"/>
+                    app:layout_constraintTop_toBottomOf="@+id/settings_lock_container" />
 
                 <android.support.constraint.Guideline
                     android:id="@+id/settings_guideline_horiz"
@@ -470,13 +477,13 @@
         <TextView
             android:id="@+id/settings_app_name"
             style="@style/TextStyleLightPrimary"
-            android:textColor="@color/white_20"
-            android:text="@{version}"
-            tools:text="Kalium v0.0.1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_alignParentBottom="true"
-            android:gravity="center" />
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:text="@{version}"
+            android:textColor="@color/white_20"
+            tools:text="Kalium v0.0.1" />
     </RelativeLayout>
 </layout>

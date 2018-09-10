@@ -8,9 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import javax.inject.Inject;
-
-import com.banano.kaliumwallet.BuildConfig;
 import com.banano.kaliumwallet.KaliumUtil;
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.databinding.FragmentIntroWelcomeBinding;
@@ -21,6 +18,9 @@ import com.banano.kaliumwallet.ui.common.FragmentUtility;
 import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+
+import javax.inject.Inject;
+
 import io.realm.Realm;
 
 /**
@@ -28,14 +28,12 @@ import io.realm.Realm;
  */
 
 public class IntroWelcomeFragment extends BaseFragment {
-    private FragmentIntroWelcomeBinding binding;
     public static String TAG = IntroWelcomeFragment.class.getSimpleName();
-
     @Inject
     Realm realm;
-
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
+    private FragmentIntroWelcomeBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,10 +54,10 @@ public class IntroWelcomeFragment extends BaseFragment {
         // Set drawable left (programatically for compat)
         Drawable startPlusDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.ic_plus_icon);
         binding.introWelcomeButtonNewWallet.setCompoundDrawablesRelativeWithIntrinsicBounds(startPlusDrawable, null, null, null);
-        binding.introWelcomeButtonNewWallet.setCompoundDrawablePadding((int)(UIUtil.convertDpToPixel(34, getContext()) * -1));
-        Drawable startImportDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.ic_import);
+        binding.introWelcomeButtonNewWallet.setCompoundDrawablePadding((int) (UIUtil.convertDpToPixel(34, getContext()) * -1));
+        Drawable startImportDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.ic_import_wallet);
         binding.introWelcomeButtonHaveWallet.setCompoundDrawablesRelativeWithIntrinsicBounds(startImportDrawable, null, null, null);
-        binding.introWelcomeButtonHaveWallet.setCompoundDrawablePadding((int)(UIUtil.convertDpToPixel(34, getContext()) * -1));
+        binding.introWelcomeButtonHaveWallet.setCompoundDrawablePadding((int) (UIUtil.convertDpToPixel(34, getContext()) * -1));
 
         return view;
     }

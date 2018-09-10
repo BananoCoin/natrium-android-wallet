@@ -25,11 +25,11 @@
             android:id="@+id/receive_close"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="10dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:onClick="@{handlers::onClickClose}"
             android:background="@drawable/bg_image_button"
+            android:onClick="@{handlers::onClickClose}"
+            android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close" />
@@ -37,27 +37,27 @@
         <TextView
             android:id="@+id/receive_address"
             style="@style/TextStyleAddress"
-            android:textSize="@dimen/address_text_size"
-            android:lineSpacingMultiplier="1.2"
-            android:lineSpacingExtra="3dp"
-            android:textColor="@color/white_60"
-            android:layout_height="wrap_content"
             android:layout_width="@dimen/address_width_three_row"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/receive_card_margin_top"
+            android:lineSpacingExtra="3dp"
+            android:lineSpacingMultiplier="1.2"
             android:textAlignment="center"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/white_60"
+            android:textSize="@dimen/address_text_size"
             app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
 
         <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/qr_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/receive_address"
             app:layout_constraintBottom_toTopOf="@+id/receive_button_share"
             app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert">
+            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/receive_address">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -86,12 +86,12 @@
         <Button
             android:id="@+id/receive_button_share"
             style="@style/OutlineButton"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
+            android:gravity="center_horizontal"
             android:onClick="@{handlers::onClickShare}"
             android:text="@string/receive_share_cta"
             app:layout_constraintBottom_toTopOf="@+id/copy_btn_container"
@@ -113,10 +113,10 @@
             <Button
                 android:id="@+id/receive_button_copy"
                 style="@style/PrimaryButton"
-                android:background="@drawable/bg_solid_button_normal"
-                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_solid_button_normal"
+                android:gravity="center_horizontal"
                 android:text="@string/receive_copy_cta"
                 tools:ignore="UnusedAttribute" />
 
@@ -124,13 +124,13 @@
             <Button
                 android:id="@+id/receive_button_copy_overlay"
                 style="@style/PrimaryButton"
-                android:background="@drawable/bg_transparent_button"
-                android:gravity="center_horizontal"
-                android:textColor="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_transparent_button"
+                android:gravity="center_horizontal"
                 android:onClick="@{handlers::onClickCopy}"
                 android:text="N/A"
+                android:textColor="@android:color/transparent"
                 tools:ignore="UnusedAttribute" />
 
         </RelativeLayout>

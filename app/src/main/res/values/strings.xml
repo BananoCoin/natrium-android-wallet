@@ -6,6 +6,7 @@
     <!-- Generic -->
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_close">Close</string>
+    <string name="dialog_confirm">Confirm</string>
 
     <!-- API -->
     <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
@@ -120,7 +121,6 @@
     <string name="send_sending">Sending</string>
     <string name="send_to">To:</string>
     <string name="sent_to">Sent To:</string>
-    <string name="send_confirm">Confirm</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Invalid Input</string>
     <string name="send_invalid_address">Address entered was invalid</string>
@@ -135,11 +135,10 @@
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Add Contact</string>
-    <string name="contact_added">Contact Added</string>
+    <string name="contact_added">%s has been added to contacts!</string>
     <string name="contact_invalid_name">Invalid Contact Name</string>
     <!-- Add Contact Dialog -->
     <string name="contact_add_header">Add Contact:</string>
-    <string name="contact_added_header">Added:</string>
     <string name="contact_add_button">Add Contact</string>
     <string name="contact_name_hint">Enter a Name @</string>
     <string name="contact_name_missing">Choose a Name for this Contact</string>
@@ -149,7 +148,19 @@
     <!-- Contacts Settings -->
     <string name="contact_header">Contacts</string>
     <string name="contact_settings_item">Contacts</string>
-
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Contact:</string>
+    <string name="contact_remove_header">Remove:</string>
+    <string name="contact_remove_btn">Remove Contact</string>
+    <!-- Export/Import -->
+    <string name="contact_import_chooser">Choose file to import</string>
+    <string name="contact_export_chooser">Choose export location</string>
+    <string name="contact_export_choose_btn">Save</string>
+    <string name="contact_removed">%s has been removed from contacts!</string>
+    <string name="contact_export_none">There are no contacts to export</string>
+    <string name="contact_export_error">Failed to export contacts</string>
+    <string name="contact_export_permission_error">Cannot save file without permission</string>
+    <string name="contact_export_success">Contacts saved to %s</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan a Banano \naddress QR code</string>

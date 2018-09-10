@@ -108,7 +108,7 @@
     <string name="send_sending">Miktar:</string>
     <string name="send_to">Adres:</string>
     <string name="sent_to">Alıcı:</string>
-    <string name="send_confirm">Onayla</string>
+    <string name="dialog_confirm">Onayla</string>
     <string name="dialog_cancel">İptal</string>
     <string name="dialog_close">Kapat</string>
     <string name="send_alert_dialog_ok">Tamam</string>

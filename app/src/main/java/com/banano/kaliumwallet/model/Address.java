@@ -2,6 +2,8 @@ package com.banano.kaliumwallet.model;
 
 import android.net.Uri;
 
+import com.banano.kaliumwallet.KaliumUtil;
+
 import org.libsodium.jni.NaCl;
 import org.libsodium.jni.Sodium;
 
@@ -9,8 +11,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.banano.kaliumwallet.KaliumUtil;
 
 /**
  * Address class

@@ -15,7 +15,7 @@ import com.banano.kaliumwallet.model.Contact;
 
 import java.util.List;
 
-public class ContactSelectionAdapter  extends RecyclerView.Adapter<ContactSelectionAdapter.ViewHolder> {
+public class ContactSelectionAdapter extends RecyclerView.Adapter<ContactSelectionAdapter.ViewHolder> {
     private List<Contact> contactList;
 
     public ContactSelectionAdapter(List<Contact> flsLst) {
@@ -24,7 +24,7 @@ public class ContactSelectionAdapter  extends RecyclerView.Adapter<ContactSelect
 
     @Override
     public ContactSelectionAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                    int viewType) {
+                                                                 int viewType) {
         ViewHolderContactSmBinding binding = DataBindingUtil.inflate(
                 LayoutInflater.from(parent.getContext()),
                 R.layout.view_holder_contact_sm, parent, false);
@@ -57,19 +57,19 @@ public class ContactSelectionAdapter  extends RecyclerView.Adapter<ContactSelect
         return contactList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public void updateList(List<Contact> newList) {
+        List<Contact> oldList = this.contactList;
+        this.contactList = newList;
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ContactSelectionDiffCallback(oldList, newList), false);
+        diffResult.dispatchUpdatesTo(this);
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolderContactSmBinding contactItemBinding;
 
         public ViewHolder(ViewHolderContactSmBinding contactSmItemLayoutBinding) {
             super(contactSmItemLayoutBinding.getRoot());
             contactItemBinding = contactSmItemLayoutBinding;
         }
-    }
-
-    public void updateList(List<Contact> newList) {
-        List<Contact> oldList = this.contactList;
-        this.contactList = newList;
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ContactSelectionDiffCallback(oldList, newList), true);
-        diffResult.dispatchUpdatesTo(this);
     }
 }

@@ -14,19 +14,19 @@
         android:id="@+id/add_contact_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_modal"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:background="@drawable/bg_modal">
+        android:focusableInTouchMode="true">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/contact_add_close"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="10dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:onClick="@{handlers::onClickClose}"
             android:background="@drawable/bg_image_button"
+            android:onClick="@{handlers::onClickClose}"
+            android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close" />
@@ -38,51 +38,64 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/send_header_margin"
             android:text="@string/contact_add_header"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/add_contact_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"/>
+            app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/contact_add_qr"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_image_button"
+            android:onClick="@{handlers::onClickScan}"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_qr" />
 
         <EditText
             android:id="@+id/contact_name"
-            android:fontFamily="@font/nunitosans_extralight"
-            android:background="@drawable/bg_edittext"
-            android:textSize="@dimen/text_size_normal"
-            android:textColor="@color/yellow"
-            android:layout_height="wrap_content"
             android:layout_width="@dimen/input_width"
-            android:paddingLeft="10dp"
-            android:paddingStart="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingRight="10dp"
-            android:paddingEnd="10dp"
-            android:singleLine="true"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:background="@drawable/bg_edittext"
+            android:fontFamily="@font/nunitosans_extralight"
             android:gravity="center_horizontal"
             android:hint="@string/contact_name_hint"
+            android:paddingBottom="10dp"
+            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:singleLine="true"
+            android:textColor="@color/yellow"
             android:textColorHint="@color/white_60"
-            app:layout_constraintTop_toBottomOf="@+id/contact_add_header"
+            android:textSize="@dimen/text_size_normal"
             app:layout_constraintBottom_toTopOf="@+id/contact_name_validation"
             app:layout_constraintEnd_toStartOf="@+id/add_contact_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/contact_add_header"
             app:layout_constraintVertical_chainStyle="packed"
-            tools:text="\@bbedwards"/>
+            tools:text="\@bbedwards" />
 
         <TextView
             android:id="@+id/contact_name_validation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
-            android:textSize="12sp"
-            android:textColor="@color/yellow"
             android:fontFamily="@font/nunitosans_regular"
             android:textAlignment="center"
+            android:textColor="@color/yellow"
+            android:textSize="12sp"
             android:visibility="invisible"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintTop_toBottomOf="@+id/contact_name"
             app:layout_constraintBottom_toTopOf="@+id/contact_address_container"
             app:layout_constraintEnd_toStartOf="@+id/add_contact_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/contact_name"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="Contact Already Exists" />
 
         <RelativeLayout
@@ -90,48 +103,47 @@
             android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintTop_toBottomOf="@+id/contact_name_validation"
             app:layout_constraintBottom_toTopOf="@+id/contact_address_validation"
             app:layout_constraintEnd_toStartOf="@+id/add_contact_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert">
+            app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/contact_name_validation"
+            app:layout_constraintVertical_chainStyle="packed">
 
             <EditText
                 android:id="@+id/contact_address"
-                android:fontFamily="@font/nunitosans_extralight"
-                android:background="@drawable/bg_edittext"
-                android:textSize="@dimen/text_size_normal"
-                android:textColor="@color/white_60"
-                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:lineSpacingMultiplier="1.2"
-                android:lineSpacingExtra="3dp"
-                android:maxLines="3"
-                android:paddingLeft="20dp"
-                android:paddingStart="20dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:paddingRight="20dp"
-                android:paddingEnd="20dp"
-                android:inputType="textMultiLine"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/nunitosans_extralight"
                 android:gravity="center_horizontal"
                 android:hint="@string/contact_address_hint"
+                android:inputType="textMultiLine"
+                android:lineSpacingExtra="3dp"
+                android:lineSpacingMultiplier="1.2"
+                android:maxLines="3"
+                android:paddingBottom="10dp"
+                android:paddingEnd="20dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingStart="20dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/white_60"
                 android:textColorHint="@color/white_60"
+                android:textSize="@dimen/text_size_normal"
                 tools:fontFamily="@font/overpass_mono_light"
-                tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg"/>
+                tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
 
             <android.support.v7.widget.AppCompatImageButton
                 android:id="@+id/contact_address_paste"
-                android:fontFamily="@font/nunitosans_extralight"
                 android:layout_width="@dimen/send_paste_button"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_paste"
-                android:onClick="@{handlers::onClickPaste}"
+                android:layout_marginEnd="10dp"
                 android:background="@android:color/transparent"
-                />
+                android:fontFamily="@font/nunitosans_extralight"
+                android:onClick="@{handlers::onClickPaste}"
+                app:srcCompat="@drawable/ic_paste" />
 
         </RelativeLayout>
 
@@ -139,16 +151,16 @@
             android:id="@+id/contact_address_validation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:textColor="@color/yellow"
             android:fontFamily="@font/nunitosans_regular"
             android:textAlignment="center"
+            android:textColor="@color/yellow"
+            android:textSize="12sp"
             android:visibility="invisible"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintTop_toBottomOf="@+id/contact_address_container"
             app:layout_constraintBottom_toTopOf="@+id/add_contact_btn_container"
             app:layout_constraintEnd_toStartOf="@+id/add_contact_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/contact_address_container"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="Invalid Address" />
 
         <RelativeLayout
@@ -165,10 +177,10 @@
             <Button
                 android:id="@+id/add_contact_btn"
                 style="@style/PrimaryButton"
-                android:background="@drawable/bg_solid_button_normal"
-                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_solid_button_normal"
+                android:gravity="center_horizontal"
                 android:text="@string/contact_add_button"
                 tools:ignore="UnusedAttribute" />
 
@@ -176,13 +188,13 @@
             <Button
                 android:id="@+id/add_contact_btn_overlay"
                 style="@style/PrimaryButton"
-                android:background="@drawable/bg_transparent_button"
-                android:gravity="center_horizontal"
-                android:textColor="@android:color/transparent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_transparent_button"
+                android:gravity="center_horizontal"
                 android:onClick="@{handlers::onClickAdd}"
                 android:text="N/A"
+                android:textColor="@android:color/transparent"
                 tools:ignore="UnusedAttribute" />
 
         </RelativeLayout>
@@ -190,18 +202,18 @@
         <Button
             android:id="@+id/add_contact_close"
             style="@style/OutlineButton"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
+            android:gravity="center_horizontal"
             android:onClick="@{handlers::onClickClose}"
-            android:text="Close"
-            tools:ignore="UnusedAttribute"
+            android:text="@string/dialog_close"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/add_contact_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"/>
+            app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
+            tools:ignore="UnusedAttribute" />
 
         <android.support.constraint.Guideline
             android:id="@+id/add_contact_guideline_vert"

@@ -7,7 +7,6 @@ import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -16,17 +15,33 @@ import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.banano.kaliumwallet.BuildConfig;
 import com.banano.kaliumwallet.MainActivity;
+import com.banano.kaliumwallet.R;
+import com.banano.kaliumwallet.bus.CreatePin;
+import com.banano.kaliumwallet.bus.Logout;
+import com.banano.kaliumwallet.bus.PinComplete;
+import com.banano.kaliumwallet.bus.RxBus;
+import com.banano.kaliumwallet.databinding.FragmentSettingsBinding;
 import com.banano.kaliumwallet.model.AuthMethod;
+import com.banano.kaliumwallet.model.AvailableCurrency;
 import com.banano.kaliumwallet.model.AvailableLanguage;
+import com.banano.kaliumwallet.model.Credentials;
+import com.banano.kaliumwallet.model.StringWithTag;
+import com.banano.kaliumwallet.network.AccountService;
+import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
+import com.banano.kaliumwallet.ui.common.FragmentUtility;
+import com.banano.kaliumwallet.ui.common.UIUtil;
+import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.ui.contact.ContactOverviewFragment;
 import com.banano.kaliumwallet.util.LocaleUtil;
+import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.Reprint;
 import com.hwangjr.rxbus.annotation.Subscribe;
@@ -38,40 +53,23 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import com.banano.kaliumwallet.BuildConfig;
-import com.banano.kaliumwallet.R;
-import com.banano.kaliumwallet.bus.CreatePin;
-import com.banano.kaliumwallet.bus.Logout;
-import com.banano.kaliumwallet.bus.PinComplete;
-import com.banano.kaliumwallet.bus.RxBus;
-import com.banano.kaliumwallet.databinding.FragmentSettingsBinding;
-import com.banano.kaliumwallet.model.AvailableCurrency;
-import com.banano.kaliumwallet.model.Credentials;
-import com.banano.kaliumwallet.model.StringWithTag;
-import com.banano.kaliumwallet.network.AccountService;
-import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
-import com.banano.kaliumwallet.ui.common.WindowControl;
-import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import io.realm.Realm;
 
 /**
  * Settings main screen
  */
 public class SettingsFragment extends BaseFragment {
-    private FragmentSettingsBinding binding;
     public static String TAG = SettingsFragment.class.getSimpleName();
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
+    @Inject
+    Realm realm;
+    @Inject
+    AccountService accountService;
+    private FragmentSettingsBinding binding;
     private AlertDialog fingerprintDialog;
     private boolean backupSeedPinEntered = false;
     private boolean languageInitialized = false;
-
-    @Inject
-    SharedPreferencesUtil sharedPreferencesUtil;
-
-    @Inject
-    Realm realm;
-
-    @Inject
-    AccountService accountService;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -340,15 +338,9 @@ public class SettingsFragment extends BaseFragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == CHANGE_RESULT) {
             if (resultCode == CHANGE_COMPLETE) {
-                Toast.makeText(getContext(),
-                        getString(R.string.change_representative_success),
-                        Toast.LENGTH_SHORT)
-                        .show();
+                UIUtil.showToast(getString(R.string.change_representative_success), getContext());
             } else if (resultCode == CHANGE_FAILED) {
-                Toast.makeText(getContext(),
-                        getString(R.string.change_representative_error),
-                        Toast.LENGTH_SHORT)
-                        .show();
+                UIUtil.showToast(getString(R.string.change_representative_error), getContext());
             }
         }
     }
@@ -366,6 +358,32 @@ public class SettingsFragment extends BaseFragment {
         BackupSeedDialogFragment dialog = BackupSeedDialogFragment.newInstance();
         dialog.show(getFragmentManager(), BackupSeedDialogFragment.TAG);
         getFragmentManager().executePendingTransactions();
+    }
+
+    private void showFingerprintDialog(View view) {
+        int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), style);
+        builder.setMessage(getString(R.string.settings_fingerprint_title));
+        builder.setView(view);
+        SpannableString negativeText = new SpannableString(getString(android.R.string.cancel));
+        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        builder.setNegativeButton(negativeText, (dialog, which) -> Reprint.cancelAuthentication());
+
+        fingerprintDialog = builder.create();
+        fingerprintDialog.setCanceledOnTouchOutside(true);
+        // display dialog
+        fingerprintDialog.show();
+    }
+
+    private void showFingerprintError(AuthenticationFailureReason reason, CharSequence message, View view) {
+        if (isAdded()) {
+            final HashMap<String, String> customData = new HashMap<>();
+            customData.put("description", reason.name());
+            TextView textView = view.findViewById(R.id.fingerprint_textview);
+            textView.setText(message.toString());
+            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.error));
+            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fingerprint_error, 0, 0, 0);
+        }
     }
 
     public class ClickHandlers {
@@ -473,38 +491,26 @@ public class SettingsFragment extends BaseFragment {
         }
 
         public void onClickContacts(View view) {
-            FragmentManager fm = getFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right,
-                    R.anim.enter_slide_right, R.anim.exit_slide_left);
-            ContactOverviewFragment fragment = ContactOverviewFragment.newInstance();
-            ft.add(R.id.settings_frag_container, fragment, ContactOverviewFragment.TAG).addToBackStack(null).commit();
+            if (getActivity() instanceof WindowControl) {
+                FragmentTransaction ft = ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().beginTransaction();
+                ft.setCustomAnimations(R.anim.slide_in_right,
+                        R.anim.slide_out_left,
+                        R.anim.slide_in_left,
+                        R.anim.slide_out_right);
+                ContactOverviewFragment fragment = ContactOverviewFragment.newInstance();
+                ft.replace(R.id.settings_frag_container, fragment, ContactOverviewFragment.TAG).addToBackStack(null).commit();
+                ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+            }
         }
     }
 
-    private void showFingerprintDialog(View view) {
-        int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), style);
-        builder.setMessage(getString(R.string.settings_fingerprint_title));
-        builder.setView(view);
-        SpannableString negativeText = new SpannableString(getString(android.R.string.cancel));
-        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        builder.setNegativeButton(negativeText, (dialog, which) -> Reprint.cancelAuthentication());
-
-        fingerprintDialog = builder.create();
-        fingerprintDialog.setCanceledOnTouchOutside(true);
-        // display dialog
-        fingerprintDialog.show();
-    }
-
-    private void showFingerprintError(AuthenticationFailureReason reason, CharSequence message, View view) {
-        if (isAdded()) {
-            final HashMap<String, String> customData = new HashMap<>();
-            customData.put("description", reason.name());
-            TextView textView = view.findViewById(R.id.fingerprint_textview);
-            textView.setText(message.toString());
-            textView.setTextColor(ContextCompat.getColor(getContext(), R.color.error));
-            textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fingerprint_error, 0, 0, 0);
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        if (FragmentUtility.disableFragmentAnimations) {
+            Animation a = new Animation() { };
+            a.setDuration(0);
+            return a;
         }
+        return super.onCreateAnimation(transit, enter, nextAnim);
     }
 }

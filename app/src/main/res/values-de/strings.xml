@@ -105,7 +105,7 @@
     <string name="send_sending">Sende</string>
     <string name="send_to">An:</string>
     <string name="sent_to">Gesendet an:</string>
-    <string name="send_confirm">Bestätigen</string>
+    <string name="dialog_confirm">Bestätigen</string>
     <string name="dialog_cancel">Abbrechen</string>
     <string name="dialog_close">Schließen</string>
     <string name="send_alert_dialog_ok">OK</string>
