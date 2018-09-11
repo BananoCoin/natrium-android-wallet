@@ -120,6 +120,25 @@
     <string name="send_fingerprint_description">Bekräfta fingeravtryck för att skicka %s Banano</string>
     <string name="send_pin_description">Skicka %s Banano?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Lägg till kontakt</string>
+    <string name="contact_added">%s har lagts till under kontakter!</string>
+    <string name="contact_invalid_name">Ogiltigt kontaktnamn</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Lägg till kontakt:</string>
+    <string name="contact_add_button">Lägg till kontakt</string>
+    <string name="contact_name_hint">Ange ett namn @</string>
+    <string name="contact_name_missing">Välj ett namn för denna kontakt</string>
+    <string name="contact_name_exists">Kontakten existerar redan</string>
+    <string name="contact_address_hint">Ange en adress</string>
+    <string name="contact_address_exists">Adressen används av annan kontakt</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Kontakter</string>
+    <string name="contact_settings_item">Kontakter</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Kontakter:</string>
+    <string name="contact_remove_header">Ta bort:</string>
+    <string name="contact_remove_btn">Ta bort kontakt</string>
     <string name="contact_remove_sure">Är du säker på att du vill radera %s?</string>
     <!-- Export/Import -->
     <string name="contact_removed">%s har raderats från dina kontakter!</string>
