@@ -6,86 +6,86 @@
     <!-- API -->
     <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Bienvenido a Kalium. Para continuar, puedes crear una nueva billetera o importar una existente.</string>
+    <string name="intro_welcome_title">Bienvenido a Kalium. Para continuar, cree una billetera nueva o importe una ya existente.</string>
     <string name="intro_welcome_new_wallet">Nueva billetera</string>
     <string name="intro_welcome_have_wallet">Importar billetera</string>
     <!-- Intro New Wallet Screens -->
-    <string name="intro_new_wallet_seed">Abajo puedes encontrar la semilla de tu billetera. Es crucial que le hagas una copia de seguridad y nunca la almacenes como texto plano o como captura de pantalla.</string>
-    <string name="intro_new_wallet_seed_copied">Tu semilla ha sido copiada al portapapeles.\n Puedes pegarla sólo durante los próximos 2 minutos.</string>
+    <string name="intro_new_wallet_seed">Esta es la semilla de su billetera. Es importante que guarde una copia de seguridad, y que nunca la almacene en un documento de texto o como una captura de pantalla.</string>
+    <string name="intro_new_wallet_seed_copied">Su semilla ha sido copiada al portapapeles.\n Podrá pegarla solo durante los próximos dos minutos.</string>
     <string name="intro_new_wallet_seed_header">Semilla</string>
-    <string name="intro_new_wallet_seed_backup_header">Respalda tu semilla</string>
-    <string name="intro_new_wallet_backup">¿Estás seguro que respaldaste la semilla de tu billetera?</string>
+    <string name="intro_new_wallet_seed_backup_header">Haga una copia de seguridad de su semilla</string>
+    <string name="intro_new_wallet_backup">¿Está seguro de haber copiado y almacenado correctamente la semilla de su billetera?</string>
     <string name="intro_new_wallet_backup_yes">Sí</string>
     <string name="intro_new_wallet_backup_no">No</string>
-    <string name="intro_new_wallet_warning_header">Por favor, no mientas.</string>
-    <string name="intro_new_wallet_warning">Aunque no lo creas, perderás todo si no la has respaldado.</string>
+    <string name="intro_new_wallet_warning_header">Por favor, no mienta.</string>
+    <string name="intro_new_wallet_warning">Pensará que no, pero la perderá si no hace una copia de seguridad.</string>
     <string name="intro_new_wallet_not_lying">¡No estoy mintiendo!</string>
-    <string name="intro_new_wallet_okay">Ok :(</string>
+    <string name="intro_new_wallet_okay">Vale :(</string>
     <!-- Intro Import Wallet Screen -->
     <string name="intro_seed_header">Importar semilla</string>
-    <string name="intro_seed_info">Por favor, introduce tu semilla</string>
-    <string name="intro_seed_invalid">Semilla inválida</string>
+    <string name="intro_seed_info">Introduzca la semilla de su billetera:</string>
+    <string name="intro_seed_invalid">La semilla no es correcta</string>
     <!-- Pin Screen -->
-    <string name="pin_create_title">Crea un pin de 4-digitos</string>
-    <string name="pin_confirm_title">Confirma tu pin</string>
-    <string name="pin_enter_title">Introduce tu pin</string>
-    <string name="pin_confirm_error">Los pins no coinciden</string>
-    <string name="pin_error">El pin introducido no es válido</string>
+    <string name="pin_create_title">Crear un código PIN de 4 dígitos</string>
+    <string name="pin_confirm_title">Confirmar PIN</string>
+    <string name="pin_enter_title">Introducir PIN</string>
+    <string name="pin_confirm_error">Los PIN no coinciden.</string>
+    <string name="pin_error">El PIN introducido no es válido.</string>
     <string name="fingerprint_text">Sensor tactil</string>
 
     <!-- Home Screen -->
     <string name="home_send_cta">Enviar</string>
     <string name="home_receive_cta">Recibir</string>
     <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
-    <string name="error_message">Hubo un problema con la conexión, por favor intenta de nuevo.</string>
+    <string name="error_message">Hubo un error de conexión. Por favor, inténtelo de nuevo.</string>
     <string name="transaction_header">Transacciones</string>
-    <string name="history_sent">Enviadas</string>
-    <string name="history_received">Recibidas</string>
+    <string name="history_sent">Enviados</string>
+    <string name="history_received">Recibidos</string>
     <string name="transaction_details">Ver detalles</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Configuración</string>
     <string name="settings_local_currency">Cambiar moneda</string>
-    <string name="settings_backup_seed">Respaldo de semilla</string>
+    <string name="settings_backup_seed">Hacer una copia de seguridad de su semilla</string>
     <string name="settings_change_rep">Cambiar representante</string>
     <string name="settings_share">Compartir Kalium</string>
     <string name="settings_logout">Cerrar sesión</string>
-    <string name="settings_logout_alert_title">ALERTA</string>
-    <string name="settings_logout_alert_message">Al cerrar la sesión se eliminarán tu semilla y todos los datos relacionados con Kalium de este dispositivo. Si tu semilla no está respaldada, nunca más podrás acceder a tus fondos.</string>
+    <string name="settings_logout_alert_title">AVISO</string>
+    <string name="settings_logout_alert_message">Cerrar sesión eliminará su semilla, y todos los datos relativos a Kalium serán borrados de este dispositivo. Si no ha almacenado una copia de su semilla, nunca será capaz de volver a acceder a sus fondos.</string>
     <string name="settings_logout_alert_confirm_cta">Eliminar semilla y cerrar sesión</string>
     <string name="settings_logout_alert_cancel_cta">Cancelar</string>
-    <string name="settings_logout_warning_title">¿Estás seguro?</string>
-    <string name="settings_logout_warning_message">Siempre y cuando hayas hecho un respaldo de tu semilla, no tienes nada de que preocuparte.</string>
+    <string name="settings_logout_warning_title">¿Está seguro?</string>
+    <string name="settings_logout_warning_message">Si tiene una copia de seguridad de su semilla, no tendrá nada de lo que preocuparse.</string>
     <string name="settings_logout_warning_confirm">Sí</string>
     <string name="settings_logout_warning_cancel">Cancelar</string>
     <!-- Change Rep -->
-    <string name="change_representative_header">Cambiar\n cuenta representativa</string>
+    <string name="change_representative_header">Cambiar\n representante</string>
     <string name="change_representative_header_short">Cambiar</string>
-    <string name="change_representative_info_header">¿Qué es una cuenta representativa?</string>
-    <string name="change_representative_info">Una cuenta representativa es aquella que vota con el fin del alcanzar el consenso en la red. Como el voto se pondera por el saldo total de todas las cuentas a las que representa, puedes delegar tu saldo para aumentar el poder de votación de un representante en el que confías. Es importante notar que tu cuenta representativa no tiene poder alguno sobre tus fondos. Asimismo, es buena idea elegir un representante que tenga poco tiempo de inactividad y sea confiable.</string>
+    <string name="change_representative_info_header">¿Qué es un representante?</string>
+    <string name="change_representative_info">Un representante es una cuenta que emite votaciones para el consenso de la red, y el poder de dicho voto se mide según el balance de la misma. El balance de su propia billetera se puede delegar a otro representante para incrementar su poder de votación. Su representante NO tiene ninguna capacidad de gestión sobre sus fondos. Lo ideal es elegir un representante estable y de confianza.</string>
     <string name="change_representative_dialog_close">Cerrar</string>
     <string name="change_representative_change">Cambiar</string>
     <string name="change_representative_cancel">Cancelar</string>
-    <string name="change_representative_invalid">Dirección inválida de cuenta representantiva</string>
-    <string name="change_representative_current_header">Actualmente representado por</string>
-    <string name="change_representative_hint">Ingresa una nueva cuenta representativa</string>
+    <string name="change_representative_invalid">La cuenta de este representante no es válida.</string>
+    <string name="change_representative_current_header">Su representante actual es:</string>
+    <string name="change_representative_hint">Representante cambiado correctamente</string>
     <string name="change_representative_success">Cuenta representativa cambiada exitosamente</string>
-    <string name="change_representative_error">No se pudo cambiar la cuenta representativa. Inténtalo de nuevo más tarde.</string>
+    <string name="change_representative_error">No se ha podido cambiar el representante. Por favor, inténtelo de nuevo.</string>
     <string name="change_representative_fingerprint">Confirma tu huella dactilar para cambiar la cuenta representantiva</string>
     <string name="change_representative_pin">Introduce el pin para cambiar la cuenta representativa</string>
     <!-- Share -->
-    <string name="share_title">Compartir mediante...</string>
-    <string name="share_extra">¡Échale un vistazo a Kalium! La billetera de Banano oficial para Android</string>
+    <string name="share_title">Compartir vía...</string>
+    <string name="share_extra">¡Eche un vistazo a Kalium, la billetera oficial de Banano para Android!</string>
     <!-- Backup Seed -->
-    <string name="settings_show_seed">Respaldar semilla</string>
-    <string name="settings_fingerprint_title">Confirma tu huella dactilar para respaldar la semilla de la billetera.</string>
-    <string name="settings_pin_title">Introduce tu pin para ver la semilla.</string>
+    <string name="settings_show_seed">Ver semilla</string>
+    <string name="settings_fingerprint_title">Confirme con huella dactilar para hacer una copia de seguridad de su semilla.</string>
+    <string name="settings_pin_title">Introduzca el PIN para mostrar la semilla de su billetera</string>
 
     <!-- Receive Screen -->
     <string name="receive_share_cta">Compartir</string>
-    <string name="receive_copy_cta">Copiar dirección</string>
-    <string name="receive_copied">Dirección copiada</string>
-    <string name="receive_share_title">Compartir mediante…</string>
+    <string name="receive_copy_cta">Copiar billetera</string>
+    <string name="receive_copied">Billetera copiada</string>
+    <string name="receive_share_title">Compartir vía…</string>
     <string name="receive_card_label_one" translatable="false">$BAN</string>
     <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
@@ -93,29 +93,29 @@
 
     <!-- Send Screens -->
     <string name="send_title">Enviar desde:</string>
-    <string name="send_address_hint">Introducir dirección</string>
-    <string name="send_amount_hint">Introducir monto</string>
+    <string name="send_address_hint">Introducir billetera</string>
+    <string name="send_amount_hint">Introducir cantidad</string>
     <string name="send_max">Máximo</string>
     <string name="send_send_cta">Enviar</string>
     <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Enviado</string>
     <string name="send_scan_qr">Escanear código QR</string>
     <string name="send_sending">Enviando</string>
-    <string name="send_to">Para:</string>
+    <string name="send_to">A:</string>
     <string name="sent_to">Enviar a:</string>
     <string name="send_confirm">Confirmar</string>
     <string name="send_cancel">Cancelar</string>
     <string name="send_close">Cerrar</string>
-    <string name="send_alert_dialog_ok">OK</string>
-    <string name="send_alert_dialog_title">Contenido inválido</string>
-    <string name="send_invalid_address">Dirección inválida de destino</string>
-    <string name="send_insufficient_balance">Saldo insuficiente</string>
-    <string name="send_amount_error">La cantidad introducida es inválida</string>
-    <string name="send_generic_error">Ha ocurrido un error, intenta de nuevo más tarde.</string>
-    <string name="send_no_frontier"> No se pudo encontrar la cuenta (esta puede no estar abierta)</string>
-    <string name="send_fingerprint_description">Confirma tu huella dactilar para enviar %s Banano</string>
-    <string name="send_pin_description">Enviar %s Banano?</string>
+    <string name="send_alert_dialog_ok">Entendido</string>
+    <string name="send_alert_dialog_title">Entrada no válida</string>
+    <string name="send_invalid_address">Billetera de destino incorrecta</string>
+    <string name="send_insufficient_balance">Fondos insuficientes</string>
+    <string name="send_amount_error">La cantidad introducida no es válida.</string>
+    <string name="send_generic_error">Ha ocurrido un error. Por favor, inténtelo de nuevo.</string>
+    <string name="send_no_frontier">Ha ocurrido un error. Es posible que la billetera aún no haya sido abierta.</string>
+    <string name="send_fingerprint_description">Confirme su huella dactilar para enviar %s Banano.</string>
+    <string name="send_pin_description">¿Enviar %s Banano?</string>
 
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Escanea el código QR \ncorrespondiente a una dirección de banano.</string>
+    <string name="scan_send_instruction_label">Escanear un código QR\naddress de una billetera de Banano.</string>
 </resources>
