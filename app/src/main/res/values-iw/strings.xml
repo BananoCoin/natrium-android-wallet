@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">	ברוך הבא לקאליום. בכדי להמשיך, אתה רשאי לייצר ארנק חדש או לייבא אחד קיים.</string>
     <string name="intro_welcome_new_wallet">ארנק חדש</string>
@@ -36,16 +30,23 @@
     <!-- Home Screen -->
     <string name="home_send_cta">שלח</string>
     <string name="home_receive_cta">קבל</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">היתה בעיה בהתחברות. בבקשה תנסה שוב.</string>
     <string name="transaction_header">טרנסקציות</string>
     <string name="history_sent">נשלח</string>
     <string name="history_received">התקבל</string>
     <string name="transaction_details">ראה פרטים</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">ברוך הבא לקאליום. ברגע שתקבל באנאנו, הטרנסקציות יופיעו כך:</string>
+    <string name="example_card_little">קצת</string>
+    <string name="example_card_lot">הרבה</string>
+    <string name="example_card_to">לקוף רנדומלי</string>
+    <string name="example_card_from">מקוף רנדומלי</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">הגדרות</string>
     <string name="settings_local_currency">שנה מטבע חליפין</string>
+    <string name="settings_change_language">שפה</string>
+    <string name="settings_default_language_string">בְּרִירַת מֶחדָל</string>
     <string name="settings_backup_seed">גבה סיד</string>
     <string name="settings_change_rep">שנה נציג</string>
     <string name="settings_share">שתף את קאליום</string>
@@ -58,6 +59,11 @@
     <string name="settings_logout_warning_message">כל עוד גיבית את הסיד שלך, אין לך מה לדאוג.</string>
     <string name="settings_logout_warning_confirm">כן</string>
     <string name="settings_logout_warning_cancel">בטל</string>
+    <string name="settings_manage_header">נהל</string>
+    <string name="settings_preferences_header">העדפות</string>
+    <string name="settings_disable_fingerprint">שיטת אימות</string>
+    <string name="settings_fingerprint_method">טביעת אצבע</string>
+    <string name="settings_pin_method">קוד</string>
     <!-- Change Rep -->
     <string name="change_representative_header">שנה\nנציג</string>
     <string name="change_representative_header_short">שנה</string>
@@ -87,8 +93,6 @@
     <string name="receive_copy_cta">העתק כתובת</string>
     <string name="receive_copied">כתובת הועתקה</string>
     <string name="receive_share_title">שתף בעזרת....</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">באנאנו</string>
     <string name="receive_qrcode_description">ברקוד</string>
 
@@ -111,6 +115,8 @@
     <string name="send_alert_dialog_title">קלט לא תקין</string>
     <string name="send_invalid_address">כתובת יעד אינה תקינה</string>
     <string name="send_insufficient_balance">אין מספיק מטבעות בחשבון</string>
+    <string name="send_enter_address">הזן יעד</string>
+    <string name="send_enter_amount">הזן סכום</string>
     <string name="send_amount_error">הכמות שהוכנסה אינה תקינה</string>
     <string name="send_generic_error">קרתה תקלה. נסה שוב מאוחר יותר</string>
     <string name="send_no_frontier">חשבון לא נמצא (סביר שהוא לא נפתח)</string>

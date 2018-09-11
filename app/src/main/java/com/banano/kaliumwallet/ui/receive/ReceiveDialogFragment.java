@@ -4,30 +4,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.content.FileProvider;
-import android.text.Html;
 import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.github.sumimakito.awesomeqr.AwesomeQRCode;
@@ -56,11 +49,11 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
     public static String TAG = ReceiveDialogFragment.class.getSimpleName();
     private static final int QRCODE_SIZE = 240;
     private static final String TEMP_FILE_NAME = "bananoreceive.png";
-    private static final String ADDRESS_KEY = "com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment.Address";
     private Address address;
     private String fileName;
     private Runnable mRunnable;
     private Handler mHandler;
+    private boolean copyRunning = false;
 
     @Inject
     Realm realm;
@@ -93,6 +86,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         if (getDialog() != null) {
             getDialog().setCanceledOnTouchOutside(true);
         }
+        copyRunning = false;
 
         // get data
         Credentials credentials = realm.where(Credentials.class).findFirst();
@@ -108,19 +102,8 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
 
         // Restrict height
         Window window = getDialog().getWindow();
-        Point size = new Point();
 
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT_SMALLER;
-        } else {
-            ViewGroup.MarginLayoutParams qrMargin = (ViewGroup.MarginLayoutParams)binding.qrContainer.getLayoutParams();
-            qrMargin.bottomMargin = (int)UIUtil.convertDpToPixel(5, getContext());
-            binding.qrContainer.setLayoutParams(qrMargin);
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(true, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow
@@ -159,6 +142,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         }
 
         // Tweak layout for shorter devices
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
         float ratio = ((float)metrics.heightPixels / (float)metrics.widthPixels);
         if (ratio < 1.8) {
             binding.receiveOuter.getLayoutParams().height = (int)UIUtil.convertDpToPixel(260, getContext());
@@ -200,7 +184,8 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         // Set runnable to reset address copied text
         mHandler = new Handler();
         mRunnable = () -> {
-            binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_solid_button));
+            copyRunning = false;
+            binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_solid_button_normal));
             binding.receiveButtonCopy.setTextColor(getResources().getColor(R.color.gray));
             binding.receiveButtonCopy.setText(getString(R.string.receive_copy_cta));
         };
@@ -216,9 +201,64 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Set QR bg for compat
+        if (getResources() != null && getContext() != null && binding != null && binding.receiveOuter != null) {
+            Drawable qrBackground = VectorDrawableCompat.create(getResources(), R.drawable.qr_border, getContext().getTheme());
+            binding.receiveOuter.setBackground(qrBackground);
+        }
+    }
+
+    private Bitmap trimBitmap(Bitmap source) {
+        int firstX = 0, firstY = 0;
+        int lastX = source.getWidth();
+        int lastY = source.getHeight();
+        int[] pixels = new int[source.getWidth() * source.getHeight()];
+        source.getPixels(pixels, 0, source.getWidth(), 0, 0, source.getWidth(), source.getHeight());
+        loop:
+        for (int x = 0; x < source.getWidth(); x++) {
+            for (int y = 0; y < source.getHeight(); y++) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    firstX = x;
+                    break loop;
+                }
+            }
+        }
+        loop:
+        for (int y = 0; y < source.getHeight(); y++) {
+            for (int x = firstX; x < source.getWidth(); x++) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    firstY = y;
+                    break loop;
+                }
+            }
+        }
+        loop:
+        for (int x = source.getWidth() - 1; x >= firstX; x--) {
+            for (int y = source.getHeight() - 1; y >= firstY; y--) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    lastX = x;
+                    break loop;
+                }
+            }
+        }
+        loop:
+        for (int y = source.getHeight() - 1; y >= firstY; y--) {
+            for (int x = source.getWidth() - 1; x >= firstX; x--) {
+                if (pixels[x + (y * source.getWidth())] != Color.TRANSPARENT) {
+                    lastY = y;
+                    break loop;
+                }
+            }
+        }
+        return Bitmap.createBitmap(source, firstX, firstY, lastX - firstX, lastY - firstY);
+    }
+
     public Bitmap setViewToBitmapImage(View view) {
         //Define a bitmap with the same size as the view
-        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Bitmap returnedBitmap = Bitmap.createBitmap(1230, 609, Bitmap.Config.ARGB_8888);
         //Bind a canvas to it
         Canvas canvas = new Canvas(returnedBitmap);
         //Get the view's background
@@ -233,7 +273,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         // draw the view on the canvas
         view.draw(canvas);
         //return the bitmap
-        return returnedBitmap;
+        return trimBitmap(returnedBitmap);
     }
 
     public void saveImage(Bitmap finalBitmap) {
@@ -276,18 +316,22 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
 
         public void onClickCopy(View view) {
             // copy address to clipboard
-            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            android.content.ClipData clip = android.content.ClipData.newPlainText(ClipboardAlarmReceiver.CLIPBOARD_NAME, address.getAddress());
-            if (clipboard != null) {
-                clipboard.setPrimaryClip(clip);
-            }
+            if (!copyRunning) {
+                copyRunning = true;
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText(ClipboardAlarmReceiver.CLIPBOARD_NAME, address.getAddress());
+                if (clipboard != null) {
+                    clipboard.setPrimaryClip(clip);
+                }
 
-            binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button));
-            binding.receiveButtonCopy.setTextColor(getResources().getColor(R.color.green_dark));
-            binding.receiveButtonCopy.setText(getString(R.string.receive_copied));
+                binding.receiveButtonCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button_normal));
+                binding.receiveButtonCopy.setTextColor(getResources().getColor(R.color.green_dark));
+                binding.receiveButtonCopy.setText(getString(R.string.receive_copied));
 
-            if (mHandler != null) {
-                mHandler.postDelayed(mRunnable, 700);
+                if (mHandler != null) {
+                    mHandler.removeCallbacks(mRunnable);
+                    mHandler.postDelayed(mRunnable, 900);
+                }
             }
         }
     }

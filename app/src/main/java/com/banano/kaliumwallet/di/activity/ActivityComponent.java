@@ -9,6 +9,7 @@ import com.banano.kaliumwallet.ui.send.SendConfirmDialogFragment;
 import com.banano.kaliumwallet.ui.send.SendDialogFragment;
 import com.banano.kaliumwallet.ui.settings.BackupSeedDialogFragment;
 import com.banano.kaliumwallet.ui.settings.ChangeRepDialogFragment;
+import com.banano.kaliumwallet.ui.settings.SettingsFragment;
 import com.google.gson.Gson;
 
 import com.banano.kaliumwallet.MainActivity;
@@ -21,7 +22,7 @@ import com.banano.kaliumwallet.ui.intro.IntroWelcomeFragment;
 import com.banano.kaliumwallet.ui.pin.CreatePinDialogFragment;
 import com.banano.kaliumwallet.ui.pin.PinDialogFragment;
 import com.banano.kaliumwallet.ui.receive.ReceiveDialogFragment;
-import com.banano.kaliumwallet.ui.settings.SettingsDialogFragment;
+
 import dagger.Component;
 
 @Component(modules = {ActivityModule.class}, dependencies = {ApplicationComponent.class})
@@ -70,7 +71,7 @@ public interface ActivityComponent {
 
     void inject(SendCompleteDialogFragment sendCompleteDialogFragment);
 
-    void inject(SettingsDialogFragment settingsDialogFragment);
+    void inject(SettingsFragment settingsDialogFragment);
 
     void inject(TranDetailsFragment tranDetailsFragment);
 }

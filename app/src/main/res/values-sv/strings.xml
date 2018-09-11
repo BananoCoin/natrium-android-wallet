@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Välkommen till Kalium. För att fortsätta, behöver du skapa en ny plånbok eller importera en befintlig.</string>
     <string name="intro_welcome_new_wallet">Ny plånbok</string>
@@ -36,16 +30,23 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Skicka</string>
     <string name="home_receive_cta">Ta emot</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Det uppstod ett problem vid anslutningen. Var vänlig försök igen.</string>
     <string name="transaction_header">Transaktioner</string>
     <string name="history_sent">Skickat</string>
     <string name="history_received">Mottagit</string>
     <string name="transaction_details">Visa detaljer</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Välkommen till Kalium. Så snart du tar emot BANANO, visas transaktionerna på detta vis:</string>
+    <string name="example_card_little">Lite</string>
+    <string name="example_card_lot">Många</string>
+    <string name="example_card_to">Till någon apa</string>
+    <string name="example_card_from">Från någon apa</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Inställningar</string>
     <string name="settings_local_currency">Ändra valuta</string>
+    <string name="settings_change_language">Språk</string>
+    <string name="settings_default_language_string">Systemfel</string>
     <string name="settings_backup_seed">Säkerhetskopiera seed</string>
     <string name="settings_change_rep">Byt representant</string>
     <string name="settings_share">Dela Kalium</string>
@@ -58,6 +59,11 @@
     <string name="settings_logout_warning_message">Så länge du har säkerhetskopierat din seed har du inget att oroa dig över.</string>
     <string name="settings_logout_warning_confirm">Ja</string>
     <string name="settings_logout_warning_cancel">Avbryt</string>
+    <string name="settings_manage_header">Förvaltning</string>
+    <string name="settings_preferences_header">Inställningar</string>
+    <string name="settings_disable_fingerprint">Autentiseringsmetod</string>
+    <string name="settings_fingerprint_method">Fingeravtryck</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Ändra\nRepresentant</string>
     <string name="change_representative_header_short">Ändra</string>
@@ -84,8 +90,6 @@
     <string name="receive_copy_cta">Kopiera adress</string>
     <string name="receive_copied">Adress kopierad</string>
     <string name="receive_share_title">Dela via…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR-kod</string>
 
@@ -108,6 +112,8 @@
     <string name="send_alert_dialog_title">Ogiltigt inmatning</string>
     <string name="send_invalid_address">Ogiltig mottagaradress</string>
     <string name="send_insufficient_balance">Saknas täckning</string>
+    <string name="send_enter_address">Ange en destination</string>
+    <string name="send_enter_amount">Ange ett belopp</string>
     <string name="send_amount_error">Det angivna beloppet var ogiltigt</string>
     <string name="send_generic_error">Ett fel har uppstått. Försök igen senare.</string>
     <string name="send_no_frontier">Gick inte att hitta frontier (kontot kanske inte är öppnat än)</string>

@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Bienvenido a Kalium. Para continuar, cree una billetera nueva o importe una ya existente.</string>
     <string name="intro_welcome_new_wallet">Nueva billetera</string>
@@ -36,17 +30,24 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Enviar</string>
     <string name="home_receive_cta">Recibir</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Hubo un error de conexión. Por favor, inténtelo de nuevo.</string>
     <string name="transaction_header">Transacciones</string>
     <string name="history_sent">Enviados</string>
     <string name="history_received">Recibidos</string>
     <string name="transaction_details">Ver detalles</string>
+    <!-- Se muestra cuando no hay transacciones -->
+    <string name="example_card_intro">Bienvenido a Kalium. Una vez que envíe o reciba BANANO, las transacciones se verán así:</string>
+    <string name="example_card_little">Algunos</string>
+    <string name="example_card_lot">Muchos</string>
+    <string name="example_card_to">a un mono</string>
+    <string name="example_card_from">de un mono</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Configuración</string>
     <string name="settings_local_currency">Cambiar moneda</string>
     <string name="settings_backup_seed">Hacer una copia de seguridad de su semilla</string>
+    <string name="settings_change_language">Idioma</string>
+    <string name="settings_default_language_string">Sistema por defecto</string>
     <string name="settings_change_rep">Cambiar representante</string>
     <string name="settings_share">Compartir Kalium</string>
     <string name="settings_logout">Cerrar sesión</string>
@@ -58,6 +59,11 @@
     <string name="settings_logout_warning_message">Si tiene una copia de seguridad de su semilla, no tendrá nada de lo que preocuparse.</string>
     <string name="settings_logout_warning_confirm">Sí</string>
     <string name="settings_logout_warning_cancel">Cancelar</string>
+    <string name="settings_manage_header">Administrar</string>
+    <string name="settings_preferences_header">Preferencias</string>
+    <string name="settings_disable_fingerprint">Método de Autenticación</string>
+    <string name="settings_fingerprint_method">Huella Digital</string>
+    <string name="settings_pin_method">Código PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Cambiar\n representante</string>
     <string name="change_representative_header_short">Cambiar</string>
@@ -86,8 +92,6 @@
     <string name="receive_copy_cta">Copiar billetera</string>
     <string name="receive_copied">Billetera copiada</string>
     <string name="receive_share_title">Compartir vía…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">Código QR</string>
 
@@ -112,6 +116,8 @@
     <string name="send_insufficient_balance">Fondos insuficientes</string>
     <string name="send_amount_error">La cantidad introducida no es válida.</string>
     <string name="send_generic_error">Ha ocurrido un error. Por favor, inténtelo de nuevo.</string>
+    <string name="send_enter_address">Por favor ingrese un destino</string>
+    <string name="send_enter_amount">Por favor ingrese un monto</string>
     <string name="send_no_frontier">Ha ocurrido un error. Es posible que la billetera aún no haya sido abierta.</string>
     <string name="send_fingerprint_description">Confirme su huella dactilar para enviar %s Banano.</string>
     <string name="send_pin_description">¿Enviar %s Banano?</string>

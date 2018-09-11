@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -19,8 +18,6 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,6 +33,7 @@ import com.banano.kaliumwallet.bus.PinComplete;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentChangeRepBinding;
 import com.banano.kaliumwallet.model.Address;
+import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -121,19 +119,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
         // Restrict height
         Window window = getDialog().getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
-        } else {
-            ViewGroup.MarginLayoutParams topMargin = (ViewGroup.MarginLayoutParams)binding.repFieldContainer.getLayoutParams();
-            topMargin.topMargin = (int)UIUtil.convertDpToPixel(25, getContext());
-            binding.repFieldContainer.setLayoutParams(topMargin);
-            binding.changeRepHeader.setText(getString(R.string.change_representative_header_short));
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow
@@ -179,6 +165,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
         binding.newRep.addTextChangedListener(new TextWatcher() {
             String lastText = "";
             boolean isColorized = false;
+            boolean fromColorization = false;
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -189,8 +176,19 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = binding.newRep.getText().toString().trim();
-                // TODO colorize address on double paste
                 if (curText.equals(lastText)) {
+                    if (fromColorization) {
+                        fromColorization = false;
+                    } else {
+                        Address address = new Address(curText);
+                        if (address.isValidAddress()) {
+                            hideAddressError();
+                            isColorized = true;
+                            fromColorization = true;
+                            binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.newRep.setSelection(address.getAddress().length());
+                        }
+                    }
                     return;
                 } else if (curText.length() > 0 && lastText.length() == 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
@@ -207,10 +205,12 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
                     if (address.isValidAddress()) {
                         hideAddressError();
                         isColorized = true;
+                        fromColorization = true;
                         binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
                         binding.newRep.setSelection(address.getAddress().length());
                     } else {
                         if (isColorized) {
+                            fromColorization = false;
                             binding.newRep.setText(new SpannableString(curText));
                             binding.newRep.setSelection(curText.length());
                             isColorized = false;
@@ -399,7 +399,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             }
             Credentials credentials = realm.where(Credentials.class).findFirst();
 
-            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered() && sharedPreferencesUtil.getAuthMethod() == AuthMethod.FINGERPRINT) {
                 // show fingerprint dialog
                 LayoutInflater factory = LayoutInflater.from(getContext());
                 @SuppressLint("InflateParams") final View viewFingerprint = factory.inflate(R.layout.view_fingerprint, null);
@@ -408,7 +408,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
                         .subscribe(result -> {
                             switch (result.status) {
                                 case SUCCESS:
-                                    fingerprintDialog.hide();
+                                    fingerprintDialog.dismiss();
                                     executeChange(binding.newRep.getText().toString());
                                     break;
                                 case NONFATAL_FAILURE:
@@ -430,7 +430,8 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             // paste to rep field
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             if (clipboard != null && clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(MIMETYPE_TEXT_PLAIN)) {
-                binding.newRep.setText(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                binding.newRep.setText(address.getAddress());
             }
         }
     }

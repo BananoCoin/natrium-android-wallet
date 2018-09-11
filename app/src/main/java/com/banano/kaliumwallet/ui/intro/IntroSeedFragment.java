@@ -74,8 +74,6 @@ public class IntroSeedFragment extends BaseFragment {
                 inflater, R.layout.fragment_intro_seed, container, false);
         view = binding.getRoot();
 
-        hideToolbar();
-
         // subscribe to bus
         RxBus.get().register(this);
 

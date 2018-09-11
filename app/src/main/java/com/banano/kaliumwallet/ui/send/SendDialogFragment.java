@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,8 +14,6 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.SpannableString;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +39,6 @@ import com.banano.kaliumwallet.ui.scan.ScanActivity;
 import com.banano.kaliumwallet.util.NumberUtil;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Locale;
 
@@ -118,22 +114,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         // Restrict height
         Window window = getDialog().getWindow();
-        Point size = new Point();
-
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
-        } else {
-            ViewGroup.MarginLayoutParams headerMargin = (ViewGroup.MarginLayoutParams)binding.sendFromHeader.getLayoutParams();
-            headerMargin.topMargin = (int)UIUtil.convertDpToPixel(15, getContext());
-            binding.sendFromHeader.setLayoutParams(headerMargin);
-            ViewGroup.MarginLayoutParams sendAmountMargin = (ViewGroup.MarginLayoutParams)binding.sendAmountContainer.getLayoutParams();
-            sendAmountMargin.topMargin = (int)UIUtil.convertDpToPixel(15, getContext());
-            binding.sendAmountContainer.setLayoutParams(sendAmountMargin);
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // Shadow
@@ -176,6 +157,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         binding.sendAddress.addTextChangedListener(new TextWatcher() {
             String lastText = "";
             boolean isColorized = false;
+            boolean fromColorization = false;
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
@@ -186,8 +168,19 @@ public class SendDialogFragment extends BaseDialogFragment {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = binding.sendAddress.getText().toString().trim();
-                // TODO colorize address on double paste
                 if (curText.equals(lastText)) {
+                    if (fromColorization) {
+                        fromColorization = false;
+                    } else {
+                        Address address = new Address(curText);
+                        if (address.isValidAddress()) {
+                            hideAddressError();
+                            isColorized = true;
+                            fromColorization = true;
+                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.sendAddress.setSelection(address.getAddress().length());
+                        }
+                    }
                     return;
                 } else if (curText.length() > 0 && lastText.length() == 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
@@ -204,10 +197,12 @@ public class SendDialogFragment extends BaseDialogFragment {
                     if (address.isValidAddress()) {
                         hideAddressError();
                         isColorized = true;
+                        fromColorization = true;
                         binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
                         binding.sendAddress.setSelection(address.getAddress().length());
                     } else {
                         if (isColorized) {
+                            fromColorization = false;
                             binding.sendAddress.setText(new SpannableString(curText));
                             binding.sendAddress.setSelection(curText.length());
                             isColorized = false;
@@ -279,6 +274,10 @@ public class SendDialogFragment extends BaseDialogFragment {
 
     private boolean validateAddress() {
         // check for valid address
+        if (binding.sendAddress.getText().toString().trim().isEmpty()) {
+            showAddressError(R.string.send_enter_address);
+            return false;
+        }
         Address destination = new Address(binding.sendAddress.getText().toString());
         if (!destination.isValidAddress()) {
             showAddressError(R.string.send_invalid_address);
@@ -301,6 +300,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         BigInteger sendAmount = NumberUtil.getAmountAsRawBigInteger(wallet.getSendBananoAmount());
         // check that amount being sent is less than or equal to account balance
         if (wallet.getSendBananoAmount().isEmpty()) {
+            showAmountError(R.string.send_enter_amount);
             return false;
         } else if (sendAmount.compareTo(new BigInteger("0")) <= -1 || sendAmount.compareTo(new BigInteger("0")) == 0) {
             showAmountError(R.string.send_amount_error);
@@ -413,7 +413,8 @@ public class SendDialogFragment extends BaseDialogFragment {
             // copy address to clipboard
             android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
             if (clipboard != null && clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(MIMETYPE_TEXT_PLAIN)) {
-                binding.sendAddress.setText(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
+                binding.sendAddress.setText(address.getAddress());
             }
         }
     }

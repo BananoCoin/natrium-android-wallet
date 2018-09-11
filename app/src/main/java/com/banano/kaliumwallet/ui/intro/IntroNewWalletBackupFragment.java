@@ -65,8 +65,6 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
                 inflater, R.layout.fragment_intro_new_wallet_seed_backup, container, false);
         view = binding.getRoot();
 
-        hideToolbar();
-
         // subscribe to bus
         RxBus.get().register(this);
 

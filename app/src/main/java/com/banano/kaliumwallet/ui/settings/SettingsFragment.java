@@ -3,29 +3,27 @@ package com.banano.kaliumwallet.ui.settings;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.view.Display;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
+import com.banano.kaliumwallet.MainActivity;
+import com.banano.kaliumwallet.model.AuthMethod;
+import com.banano.kaliumwallet.model.AvailableLanguage;
+import com.banano.kaliumwallet.ui.common.BaseFragment;
+import com.banano.kaliumwallet.util.LocaleUtil;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
 import com.github.ajalt.reprint.core.Reprint;
 import com.hwangjr.rxbus.annotation.Subscribe;
@@ -33,6 +31,7 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
@@ -48,7 +47,6 @@ import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.StringWithTag;
 import com.banano.kaliumwallet.network.AccountService;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
-import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import io.realm.Realm;
@@ -56,11 +54,12 @@ import io.realm.Realm;
 /**
  * Settings main screen
  */
-public class SettingsDialogFragment extends BaseDialogFragment {
+public class SettingsFragment extends BaseFragment {
     private FragmentSettingsBinding binding;
-    public static String TAG = SettingsDialogFragment.class.getSimpleName();
+    public static String TAG = SettingsFragment.class.getSimpleName();
     private AlertDialog fingerprintDialog;
     private boolean backupSeedPinEntered = false;
+    private boolean languageInitialized = false;
 
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
@@ -74,11 +73,11 @@ public class SettingsDialogFragment extends BaseDialogFragment {
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
      *
-     * @return New instance of SettingsDialogFragment
+     * @return New instance of SettingsFragment
      */
-    public static SettingsDialogFragment newInstance() {
+    public static SettingsFragment newInstance() {
         Bundle args = new Bundle();
-        SettingsDialogFragment fragment = new SettingsDialogFragment();
+        SettingsFragment fragment = new SettingsFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -86,7 +85,6 @@ public class SettingsDialogFragment extends BaseDialogFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(STYLE_NO_FRAME, R.style.AppTheme_Modal_WindowLeft);
     }
 
     @Nullable
@@ -98,55 +96,12 @@ public class SettingsDialogFragment extends BaseDialogFragment {
         }
         backupSeedPinEntered = false;
 
-        // TODO fix this, this doesn't work well after onResume
-        /*
-        if (getDialog() != null) {
-            getDialog().setCanceledOnTouchOutside(true);
-        }*/
-
         // inflate the view
         binding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_settings, container, false);
         view = binding.getRoot();
         binding.setHandlers(new ClickHandlers());
         binding.setVersion(getString(R.string.version_display, BuildConfig.VERSION_NAME));
-
-        // Restrict width
-        Window window = getDialog().getWindow();
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Point size = new Point();
-
-        Display display = window.getWindowManager().getDefaultDisplay();
-        display.getSize(size);
-
-        int width = size.x;
-
-        window.setLayout((int) (width * 0.9), WindowManager.LayoutParams.MATCH_PARENT);
-        window.setGravity(Gravity.LEFT);
-
-        // Shadow
-        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        WindowManager.LayoutParams windowParams = window.getAttributes();
-        windowParams.dimAmount = 0.60f;
-        windowParams.flags |= WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-        window.setAttributes(windowParams);
-
-        // Swipe left to dismiss
-        getDialog().getWindow().getDecorView().setOnTouchListener(new SwipeDismissTouchListener(getDialog().getWindow().getDecorView(),
-                null, new SwipeDismissTouchListener.DismissCallbacks() {
-            @Override
-            public boolean canDismiss(Object token) {
-                return true;
-            }
-
-            @Override
-            public void onDismiss(View view, Object token) {
-                dismiss();
-            }
-
-            @Override
-            public void onTap(View view) { }
-        }, SwipeDismissTouchListener.LEFT_TO_RIGHT));
 
         // subscribe to bus
         RxBus.get().register(this);
@@ -181,14 +136,104 @@ public class SettingsDialogFragment extends BaseDialogFragment {
             }
         });
         // set selected item with value saved in shared preferences
-        binding.settingsCurrencySpinner.setSelection(getIndexOf(sharedPreferencesUtil.getLocalCurrency(), availableCurrencies));
+        binding.settingsCurrencySpinner.setSelection(getIndexOfCurrency(sharedPreferencesUtil.getLocalCurrency(), availableCurrencies));
 
-/*
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            binding.settingsShowNewSeed.setVisibility(credentials.getNewlyGeneratedSeed() != null ? View.VISIBLE : View.GONE);
+        // Setup language spinner
+        languageInitialized = false;
+        List<StringWithTag> availableLanguages = getAllLanguages();
+        ArrayAdapter<StringWithTag> languageAdapter = new ArrayAdapter<>(getContext(),
+                R.layout.view_spinner_item,
+                availableLanguages
+        );
+        languageAdapter.setDropDownViewResource(R.layout.view_spinner_dropdown_item);
+        binding.settingsLanguageSpinner.setVisibility(View.VISIBLE);
+        binding.settingsLanguageSpinner.setAdapter(languageAdapter);
+        binding.settingsLanguageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (!languageInitialized) {
+                    languageInitialized = true;
+                    return;
+                }
+                StringWithTag swt = (StringWithTag) adapterView.getItemAtPosition(i);
+                AvailableLanguage key = (AvailableLanguage) swt.tag;
+                if (key != null) {
+                    sharedPreferencesUtil.setLanguage(key);
+                    Locale locale;
+                    if (key == AvailableLanguage.DEFAULT) {
+                        locale = sharedPreferencesUtil.getDefaultLocale();
+                    } else {
+                        locale = LocaleUtil.getLocaleFromStr(key.getLocaleString());
+                    }
+                    Locale.setDefault(locale);
+                    Configuration config = new Configuration();
+                    config.locale = locale;
+                    getContext().getResources().updateConfiguration(config,
+                            getContext().getResources().getDisplayMetrics());
+                    if (getActivity() != null) {
+                        Intent refresh = new Intent(getContext(), MainActivity.class);
+                        startActivity(refresh);
+                        getActivity().finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        if (sharedPreferencesUtil.getLanguage() == AvailableLanguage.DEFAULT) {
+            binding.settingsLanguageSpinner.setSelection(0);
+        } else {
+            binding.settingsLanguageSpinner.setSelection(getIndexOfLanguage(sharedPreferencesUtil.getLanguage(), availableLanguages));
         }
-*/
+
+        // Setup fingerprint/pin option. Only display if actually has sensor and a fingerprint registered
+        if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            binding.settingsAuthBottom.setVisibility(View.VISIBLE);
+            binding.settingsAuthContainer.setVisibility(View.VISIBLE);
+            binding.icFingerprint.setVisibility(View.VISIBLE);
+            // Setup spinner
+            List<StringWithTag> authMethods = new ArrayList<>();
+            authMethods.add(new StringWithTag(getString(R.string.settings_fingerprint_method), AuthMethod.FINGERPRINT));
+            authMethods.add(new StringWithTag(getString(R.string.settings_pin_method), AuthMethod.PIN));
+            ArrayAdapter<StringWithTag> authAdapter = new ArrayAdapter<>(getContext(),
+                    R.layout.view_spinner_item,
+                    authMethods
+            );
+            authAdapter.setDropDownViewResource(R.layout.view_spinner_dropdown_item);
+            binding.settingsAuthSpinner.setVisibility(View.VISIBLE);
+            binding.settingsAuthSpinner.setAdapter(authAdapter);
+            binding.settingsAuthSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    StringWithTag swt = (StringWithTag) adapterView.getItemAtPosition(i);
+                    AuthMethod key = (AuthMethod) swt.tag;
+                    if (key != null) {
+                        sharedPreferencesUtil.setAuthMethod(key);
+                    }
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+
+                }
+            });
+            int i = 0;
+            for (StringWithTag authMethod : authMethods) {
+                if (authMethod.tag.equals(sharedPreferencesUtil.getAuthMethod())) {
+                    binding.settingsAuthSpinner.setSelection(i);
+                    break;
+                }
+                i++;
+            }
+        } else {
+            binding.settingsAuthBottom.setVisibility(View.GONE);
+            binding.settingsAuthContainer.setVisibility(View.GONE);
+            binding.icFingerprint.setVisibility(View.GONE);
+        }
+
         return view;
     }
 
@@ -244,10 +289,43 @@ public class SettingsDialogFragment extends BaseDialogFragment {
      *
      * @return Index of a particular currency in the spinner
      */
-    private int getIndexOf(AvailableCurrency currency, List<StringWithTag> availableCurrencies) {
+    private int getIndexOfCurrency(AvailableCurrency currency, List<StringWithTag> availableCurrencies) {
         int i = 0;
         for (StringWithTag availableCurrency : availableCurrencies) {
             if (availableCurrency.tag.equals(currency)) {
+                return i;
+            }
+            i++;
+        }
+        return 0;
+    }
+
+    /**
+     * Get list of all of the available languages
+     *
+     * @return List of all locales app has translations for
+     */
+    private List<StringWithTag> getAllLanguages() {
+        List<StringWithTag> itemList = new ArrayList<>();
+        // Add current system language
+        itemList.add(new StringWithTag(getString(R.string.settings_default_language_string), AvailableLanguage.DEFAULT));
+        for (AvailableLanguage language : AvailableLanguage.values()) {
+            if (language != AvailableLanguage.DEFAULT) {
+                itemList.add(new StringWithTag(language.getDisplayName(), language));
+            }
+        }
+        return itemList;
+    }
+
+    /**
+     * Get Index of a particular language
+     *
+     * @return Index of a particular language in the spinner
+     */
+    private int getIndexOfLanguage(AvailableLanguage language, List<StringWithTag> availableLanguages) {
+        int i = 0;
+        for (StringWithTag availableLanguage : availableLanguages) {
+            if (availableLanguage.tag.equals(language)) {
                 return i;
             }
             i++;
@@ -276,22 +354,28 @@ public class SettingsDialogFragment extends BaseDialogFragment {
         // show change rep dialog
         ChangeRepDialogFragment dialog = ChangeRepDialogFragment.newInstance();
         dialog.setTargetFragment(this, CHANGE_RESULT);
-        dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                ChangeRepDialogFragment.TAG);
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+        dialog.show(getFragmentManager(), ChangeRepDialogFragment.TAG);
+        getFragmentManager().executePendingTransactions();
     }
 
     private void showBackupSeedDialog() {
         // show backup seed dialog
         BackupSeedDialogFragment dialog = BackupSeedDialogFragment.newInstance();
-        dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                BackupSeedDialogFragment.TAG);
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+        dialog.show(getFragmentManager(), BackupSeedDialogFragment.TAG);
+        getFragmentManager().executePendingTransactions();
     }
 
     public class ClickHandlers {
+        public void onClickAuthMethod(View view) {
+            binding.settingsAuthSpinner.performClick();
+        }
+
         public void onClickCurrency(View view) {
             binding.settingsCurrencySpinner.performClick();
+        }
+
+        public void onClickLanguage(View view) {
+            binding.settingsLanguageSpinner.performClick();
         }
 
         public void onClickChange(View view) {
@@ -303,7 +387,7 @@ public class SettingsDialogFragment extends BaseDialogFragment {
         public void onClickBackupSeed(View view) {
             Credentials credentials = realm.where(Credentials.class).findFirst();
 
-            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered() && sharedPreferencesUtil.getAuthMethod() == AuthMethod.FINGERPRINT) {
                 // show fingerprint dialog
                 LayoutInflater factory = LayoutInflater.from(getContext());
                 @SuppressLint("InflateParams") final View viewFingerprint = factory.inflate(R.layout.view_fingerprint, null);
@@ -312,7 +396,7 @@ public class SettingsDialogFragment extends BaseDialogFragment {
                         .subscribe(result -> {
                             switch (result.status) {
                                 case SUCCESS:
-                                    fingerprintDialog.hide();
+                                    fingerprintDialog.dismiss();
                                     showBackupSeedDialog();
                                     break;
                                 case NONFATAL_FAILURE:
@@ -371,7 +455,7 @@ public class SettingsDialogFragment extends BaseDialogFragment {
                                     .setMessage(R.string.settings_logout_warning_message)
                                     .setPositiveButton(yes, (dialogWarn, whichWarn) -> {
                                         RxBus.get().post(new Logout());
-                                        dismiss();
+                                        //dismiss();
                                     })
                                     .setNegativeButton(negative, (dialogWarn, whichWarn) -> {
                                         // do nothing which dismisses the dialog

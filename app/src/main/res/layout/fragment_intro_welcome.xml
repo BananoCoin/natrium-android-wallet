@@ -36,78 +36,39 @@
             android:layout_marginTop="44dp"
             android:gravity="left"
             android:text="@string/intro_welcome_title"
-            app:layout_constraintBottom_toTopOf="@+id/intro_new_container"
+            app:layout_constraintBottom_toTopOf="@+id/intro_welcome_button_new_wallet"
             app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/intro_welcome_logo"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <RelativeLayout
-            android:id="@+id/intro_new_container"
+        <Button
+            android:id="@+id/intro_welcome_button_new_wallet"
+            style="@style/PrimaryButton"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            app:layout_constraintBottom_toTopOf="@+id/intro_import_container"
+            android:text="@string/intro_welcome_new_wallet"
+            android:paddingStart="20dp"
+            android:onClick="@{handlers::onClickNewWallet}"
+            app:layout_constraintBottom_toTopOf="@+id/intro_welcome_button_have_wallet"
             app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert">
+            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert"/>
 
-
-            <Button
-                android:id="@+id/intro_welcome_button_new_wallet"
-                style="@style/PrimaryButton"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/intro_welcome_new_wallet"
-                android:onClick="@{handlers::onClickNewWallet}" />
-
-            <ImageView
-                android:id="@+id/new_wallet_icon"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_plus_icon"
-                android:elevation="5dp"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/intro_import_container"
+        <Button
+            android:id="@+id/intro_welcome_button_have_wallet"
+            style="@style/OutlineButton"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/intro_welcome_have_wallet"
+            android:onClick="@{handlers::onClickHaveWallet}"
             android:layout_marginBottom="15dp"
+            android:paddingStart="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert">
-
-            <Button
-                android:id="@+id/intro_welcome_button_have_wallet"
-                style="@style/OutlineButton"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/intro_welcome_have_wallet"
-                android:onClick="@{handlers::onClickHaveWallet}" />
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/import_wallet_icon"
-                android:layout_width="45dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_import"
-                android:background="@android:color/transparent"
-                />
-
-        </RelativeLayout>
+            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert" />
 
 
         <android.support.constraint.Guideline

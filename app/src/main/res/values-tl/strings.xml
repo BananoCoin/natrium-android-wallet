@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->a
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Maligayang pagdating sa Kalium. Para magpatuloy, gumawa ng bagong wallet o gamitin ang dating wallet.</string>
     <string name="intro_welcome_new_wallet">Bagong Wallet</string>
@@ -36,16 +30,23 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Magpadala</string>
     <string name="home_receive_cta">Tumanggap</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Nagkaproblema sa pagkonekta. Subukan ulit.</string>
     <string name="transaction_header">Mga transaksyon</string>
     <string name="history_sent">Naipadala</string>
     <string name="history_received">Natanggap</string>
     <string name="transaction_details">Tingnan ang detalye</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Maligayang pagdating sa Kalium. Ganito ang makikita mong transaksyon pag nakatanggap ka ng BANANO:</string>
+    <string name="example_card_little">Kakaunting</string>
+    <string name="example_card_lot">Maraming</string>
+    <string name="example_card_to">para sa iba</string>
+    <string name="example_card_from">galing sa iba</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Mga setting</string>
     <string name="settings_local_currency">Palitan ang Currency</string>
+    <string name="settings_change_language">Wika</string>
+    <string name="settings_default_language_string">Default na System</string>
     <string name="settings_backup_seed">I-back up ang Seed</string>
     <string name="settings_change_rep">Palitan ang Representative</string>
     <string name="settings_share">I-share ang Kalium</string>
@@ -58,6 +59,11 @@
     <string name="settings_logout_warning_message">Wala kang dapat ikabahala basta may back up ka ng iyong seed.</string>
     <string name="settings_logout_warning_confirm">Oo</string>
     <string name="settings_logout_warning_cancel">Kanselahin</string>
+    <string name="settings_manage_header">Pamamahala</string>
+    <string name="settings_preferences_header">Kagustuhan</string>
+    <string name="settings_disable_fingerprint">Pamamaraan Authentication</string>
+    <string name="settings_fingerprint_method">Fingerprint</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Palitan ang\nRepresentative</string>
     <string name="change_representative_header_short">Palitan</string>
@@ -86,8 +92,6 @@
     <string name="receive_copy_cta">Kopyahin ang Address</string>
     <string name="receive_copied">Ang Address ay nakopya</string>
     <string name="receive_share_title">I-share sa pamamagitan ng...</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Code</string>
 
@@ -110,6 +114,8 @@
     <string name="send_alert_dialog_title">Hindi wasto ang Input</string>
     <string name="send_invalid_address">Hindi wasto ang Destination Address</string>
     <string name="send_insufficient_balance">Hindi sapat ang balanse</string>
+    <string name="send_enter_address">Mangyaring magpasok ng patutunguhan</string>
+    <string name="send_enter_amount">Mangyaring magpasok ng isang halaga</string>
     <string name="send_amount_error">Hindi wasto ang nilagay na halaga</string>
     <string name="send_generic_error">Nagkaroon ng error. Subukan ulit mamaya.</string>
     <string name="send_no_frontier">Hindi mahanap ang hangganan ng account (maaaring hindi pa nabuksan ang account)</string>

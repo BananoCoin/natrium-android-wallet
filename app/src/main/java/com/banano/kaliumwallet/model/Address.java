@@ -1,16 +1,14 @@
 package com.banano.kaliumwallet.model;
 
-import android.graphics.Color;
 import android.net.Uri;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ForegroundColorSpan;
 
 import org.libsodium.jni.NaCl;
 import org.libsodium.jni.Sodium;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.banano.kaliumwallet.KaliumUtil;
 
@@ -26,8 +24,7 @@ public class Address implements Serializable {
     }
 
     public Address(String value) {
-        this.value = value;
-        parseAddress();
+        this.value = parseAddress(value);
     }
 
     public String getShortString() {
@@ -87,15 +84,15 @@ public class Address implements Serializable {
         return true;
     }
 
-    private void parseAddress() {
-        if (this.value != null) {
-            String[] _split = value.split(":");
+    private String parseAddress(String addressString) {
+        String ret;
+        if (addressString != null) {
+            addressString = addressString.toLowerCase();
+            ret = findAddress(addressString);
+            String[] _split = addressString.split(":");
             if (_split.length > 1) {
                 String _addressString = _split[1];
                 Uri uri = Uri.parse(_addressString);
-                if (uri.getPath() != null) {
-                    this.value = uri.getPath();
-                }
                 if (uri.getQueryParameter("amount") != null && !uri.getQueryParameter("amount").equals("")) {
                     try {
                         this.amount = (new BigDecimal(uri.getQueryParameter("amount"))).toString();
@@ -103,9 +100,23 @@ public class Address implements Serializable {
                     }
                 }
             }
-
+            return ret;
         }
-
+        return null;
     }
 
+    /**
+     * findAddress - Finds a ban_ address in a string
+     *
+     * @param address
+     * @return
+     */
+    private String findAddress(String address) {
+        Pattern p = Pattern.compile("(ban)(_)(1|3)[13456789abcdefghijkmnopqrstuwxyz]{59}");
+        Matcher matcher = p.matcher(address);
+        if (matcher.find()) {
+            return matcher.group(0);
+        }
+        return "";
+    }
 }

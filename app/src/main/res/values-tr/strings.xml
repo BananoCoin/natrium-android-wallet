@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Kalium\'a hoşgeldiniz. Devam etmek için yeni bir cüzdan oluşturabilir veya var olanı içe aktarabilirsiniz.</string>
     <string name="intro_welcome_new_wallet">Yeni Cüzdan</string>
@@ -36,16 +30,23 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Gönder</string>
     <string name="home_receive_cta">İste</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Bağlantı hatası oluştu. Lütfen tekrar deneyin.</string>
-    <string name="transaction_header">Transferler</string>
+    <string name="transaction_header">İşlemler</string>
     <string name="history_sent">Gönderildi</string>
     <string name="history_received">Alındı</string>
     <string name="transaction_details">Ayrıntılar</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Kalium’a hoşgeldin. Hesabına BANANO geldiğinde işlemlerin şu şekilde görünecek:</string>
+    <string name="example_card_little">Birazcık</string>
+    <string name="example_card_lot">Bir sürü</string>
+    <string name="example_card_to">rastgele bir maymuna</string>
+    <string name="example_card_from">rastgele bir maymundan</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Ayarlar</string>
     <string name="settings_local_currency">Para Birimi</string>
+    <string name="settings_change_language">Dil</string>
+    <string name="settings_default_language_string">Sistem Dili</string>
     <string name="settings_backup_seed">Seed\'i Yedekle</string>
     <string name="settings_change_rep">Temsilci Değiştir</string>
     <string name="settings_share">Kalium\'u Paylaş</string>
@@ -57,7 +58,12 @@
     <string name="settings_logout_warning_title">Emin misiniz?</string>
     <string name="settings_logout_warning_message">Seed\'inizi yedeklediyseniz endişe etmenize gerek yok.</string>
     <string name="settings_logout_warning_confirm">Evet</string>
-    <string name="settings_logout_warning_cancel">İptal</string>>
+    <string name="settings_logout_warning_cancel">İptal</string>
+    <string name="settings_manage_header">Yönet</string>
+    <string name="settings_preferences_header">Tercihler</string>
+    <string name="settings_disable_fingerprint">Doğrulama Metodu</string>
+    <string name="settings_fingerprint_method">Parmak İzi</string>
+    <string name="settings_pin_method">Pin Kodu</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Temsilciyi\nDeğiştir</string>
     <string name="change_representative_header_short">Değiştir</string>
@@ -87,8 +93,6 @@
     <string name="receive_copy_cta">Adresi Kopyala</string>
     <string name="receive_copied">Kopyalandı</string>
     <string name="receive_share_title">Şununla paylaş…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Kodu</string>
 
@@ -109,8 +113,10 @@
     <string name="send_close">Kapat</string>
     <string name="send_alert_dialog_ok">Tamam</string>
     <string name="send_alert_dialog_title">Geçersiz Girdi</string>
-    <string name="send_invalid_address">Geçersiz Varış Adresi</string>
+    <string name="send_invalid_address">Geçersiz bir adres girdiniz</string>
     <string name="send_insufficient_balance">Yetersiz Bakiye</string>
+    <string name="send_enter_address">Lütfen bir adres girin</string>
+    <string name="send_enter_amount">Lütfen bir miktar girin</string>
     <string name="send_amount_error">Geçersiz bir miktar girdiniz</string>
     <string name="send_generic_error">Bir hata oluştu. Daha sonra tekrar deneyin.</string>
     <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>

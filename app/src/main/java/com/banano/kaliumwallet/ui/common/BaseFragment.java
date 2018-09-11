@@ -25,6 +25,9 @@ import com.banano.kaliumwallet.util.ExceptionHandler;
  */
 
 public class BaseFragment extends Fragment {
+    protected static final int CHANGE_FAILED = 8;
+    protected static final int CHANGE_COMPLETE = 9;
+    protected static final int CHANGE_RESULT = 10;
 
     protected View view;
 
@@ -35,64 +38,16 @@ public class BaseFragment extends Fragment {
         setStatusBarColor(R.color.gray);
     }
 
+    /**
+     * Set status bar color to dark gray
+     */
+    protected void setStatusBarDarkGray() {
+        setStatusBarColor(R.color.gray_dark);
+    }
+
     private void setStatusBarColor(int color) {
         if (getActivity() instanceof WindowControl) {
             ((WindowControl) getActivity()).setStatusBarColor(color);
-        }
-    }
-
-    private void setIconsDark(View view) {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setDarkIcons(view);
-        }
-    }
-
-    /**
-     * Hide the app toolbar
-     */
-    protected void hideToolbar() {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setToolbarVisible(false);
-        }
-    }
-
-    /**
-     * Show the app toolbar
-     */
-    protected void showToolbar() {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setToolbarVisible(true);
-        }
-    }
-
-    /**
-     * Set the title of the toolbar
-     */
-    protected void setTitle(String title) {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setTitle(title);
-        }
-    }
-
-    /**
-     * Set drawable on the toolbar
-     *
-     * @param drawable Drawable reference
-     */
-    protected void setTitleDrawable(int drawable) {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setTitleDrawable(drawable);
-        }
-    }
-
-    /**
-     * Enable or disable back button
-     *
-     * @param enabled Is enabled or not
-     */
-    protected void setBackEnabled(boolean enabled) {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setBackEnabled(enabled);
         }
     }
 

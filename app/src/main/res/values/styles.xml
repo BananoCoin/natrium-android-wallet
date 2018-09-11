@@ -102,68 +102,68 @@
 
     <style name="OutlineButton">
         <item name="android:background">@drawable/bg_outline_button</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/yellow</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@font/nunitosans_bold</item>
-        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingTop">@dimen/button_padding_top</item>
         <item name="android:paddingLeft">14dp</item>
         <item name="android:paddingRight">14dp</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
     </style>
 
     <style name="PrimaryButton">
         <item name="android:background">@drawable/bg_solid_button</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/gray</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@font/nunitosans_bold</item>
-        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingTop">@dimen/button_padding_top</item>
         <item name="android:paddingLeft">14dp</item>
         <item name="android:paddingRight">14dp</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
     </style>
 
     <style name="OutlineButtonGreen">
         <item name="android:background">@drawable/bg_green_button_outline</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/green_light</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@font/nunitosans_bold</item>
-        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingTop">@dimen/button_padding_top</item>
         <item name="android:paddingLeft">14dp</item>
         <item name="android:paddingRight">14dp</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
     </style>
 
     <style name="PrimaryButtonGreen">
         <item name="android:background">@drawable/bg_green_button</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
         <item name="android:textColor">@color/green_dark</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">@font/nunitosans_bold</item>
-        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingTop">@dimen/button_padding_top</item>
         <item name="android:paddingLeft">14dp</item>
         <item name="android:paddingRight">14dp</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
     </style>
 
     <style name="TextStyleSubcurrency">
         <item name="android:textColor">@color/white_60</item>
         <item name="android:fontFamily">@font/nunitosans_semibold</item>
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">@dimen/subcurrency_text</item>
     </style>
 
     <style name="TextStyleHeader">
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">@dimen/text_size_header</item>
         <item name="android:textColor">@color/white_90</item>
         <item name="android:textAlignment">center</item>
         <item name="android:textAllCaps">true</item>
@@ -195,7 +195,7 @@
     </style>
 
     <style name="TextStyleParagraph">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/text_size_paragraph</item>
         <item name="android:textColor">@color/white_90</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:fontFamily">@font/nunitosans_light</item>
@@ -239,7 +239,7 @@
     </style>
 
     <style name="TextStyleBananoBalance">
-        <item name="android:textSize">38sp</item>
+        <item name="android:textSize">34sp</item>
         <item name="android:textColor">@color/yellow</item>
         <item name="android:gravity">end</item>
         <item name="android:fontFamily">@font/nunitosans_extrabold</item>
@@ -252,7 +252,7 @@
     </style>
 
     <style name="TextStyleAddressAlt">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/address_text_size</item>
         <item name="android:textColor">@color/white_90</item>
         <item name="android:fontFamily">@font/overpass_mono_light</item>
         <item name="android:textAlignment">center</item>
@@ -261,7 +261,7 @@
     </style>
 
     <style name="TextStyleNormalPrimary">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:textColor">@color/yellow_dark_transparent</item>
         <item name="android:gravity">center_horizontal</item>
         <item name="android:fontFamily">@font/nunitosans_semibold</item>
@@ -274,13 +274,13 @@
     </style>
 
     <style name="TextStyleSemiboldWhite">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:textColor">@color/white_90</item>
         <item name="android:fontFamily">@font/nunitosans_semibold</item>
     </style>
 
     <style name="TextStyleLightPrimary">
-        <item name="android:textSize">15sp</item>
+        <item name="android:textSize">@dimen/text_size_normal</item>
         <item name="android:textColor">@color/yellow_dark_transparent</item>
         <item name="android:fontFamily">@font/nunitosans_light</item>
     </style>

@@ -34,6 +34,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
     private Handler mHandler;
     private String mAddress;
     private String mBlockHash;
+    private boolean copyRunning = false;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -65,6 +66,7 @@ public class TranDetailsFragment extends BaseDialogFragment {
         if (getDialog() != null) {
             getDialog().setCanceledOnTouchOutside(true);
         }
+        copyRunning = false;
 
         // Get args
         mAddress = getArguments().getString("address");
@@ -108,7 +110,8 @@ public class TranDetailsFragment extends BaseDialogFragment {
         // Set runnable to reset address copied text
         mHandler = new Handler();
         mRunnable = () -> {
-            binding.tranDetailsCopy.setBackground(getResources().getDrawable(R.drawable.bg_solid_button));
+            copyRunning = false;
+            binding.tranDetailsCopy.setBackground(getResources().getDrawable(R.drawable.bg_solid_button_normal));
             binding.tranDetailsCopy.setTextColor(getResources().getColor(R.color.gray));
             binding.tranDetailsCopy.setText(getString(R.string.receive_copy_cta));
         };
@@ -127,19 +130,23 @@ public class TranDetailsFragment extends BaseDialogFragment {
 
     public class ClickHandlers {
         public void onClickCopy(View view) {
-            // copy address to clipboard
-            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
-            android.content.ClipData clip = android.content.ClipData.newPlainText(ClipboardAlarmReceiver.CLIPBOARD_NAME, mAddress);
-            if (clipboard != null) {
-                clipboard.setPrimaryClip(clip);
-            }
+            if (!copyRunning) {
+                copyRunning = true;
+                // copy address to clipboard
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText(ClipboardAlarmReceiver.CLIPBOARD_NAME, mAddress);
+                if (clipboard != null) {
+                    clipboard.setPrimaryClip(clip);
+                }
 
-            binding.tranDetailsCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button));
-            binding.tranDetailsCopy.setTextColor(getResources().getColor(R.color.green_dark));
-            binding.tranDetailsCopy.setText(getString(R.string.receive_copied));
+                binding.tranDetailsCopy.setBackground(getResources().getDrawable(R.drawable.bg_green_button_normal));
+                binding.tranDetailsCopy.setTextColor(getResources().getColor(R.color.green_dark));
+                binding.tranDetailsCopy.setText(getString(R.string.receive_copied));
 
-            if (mHandler != null) {
-                mHandler.postDelayed(mRunnable, 700);
+                if (mHandler != null) {
+                    mHandler.removeCallbacks(mRunnable);
+                    mHandler.postDelayed(mRunnable, 900);
+                }
             }
         }
 
@@ -152,6 +159,10 @@ public class TranDetailsFragment extends BaseDialogFragment {
 
                 ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
             }
+        }
+
+        public void onClickClose(View view) {
+            dismiss();
         }
     }
 }

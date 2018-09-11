@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">欢迎来到Kalium。下一步，您可以创建新钱包或导入现有钱包</string>
     <string name="intro_welcome_new_wallet">创建新钱包</string>
@@ -36,16 +30,23 @@
     <!-- Home Screen -->
     <string name="home_send_cta">发送</string>
     <string name="home_receive_cta">接收</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">连接时出现问题。请再试一次。</string>
     <string name="transaction_header">交易</string>
     <string name="history_sent">发送</string>
     <string name="history_received">收到</string>
     <string name="transaction_details">查看详情</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">欢迎来到Kalium。当您收到或发送BANANO时，它将如下所示.</string>
+    <string name="example_card_little">一点</string>
+    <string name="example_card_lot">很多</string>
+    <string name="example_card_to">给一只未知的猴子</string>
+    <string name="example_card_from">从一只未知的猴子</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">设置</string>
     <string name="settings_local_currency">改变货币</string>
+    <string name="settings_change_language">语言</string>
+    <string name="settings_default_language_string">系统默认</string>
     <string name="settings_backup_seed">备份种子</string>
     <string name="settings_change_rep">变更代理人</string>
     <string name="settings_share">分享Kalium</string>
@@ -58,6 +59,11 @@
     <string name="settings_logout_warning_message">只要你有备份你的种子，就没有什么可担心的</string>
     <string name="settings_logout_warning_confirm"> 是</string>
     <string name="settings_logout_warning_cancel">取消</string>
+    <string name="settings_manage_header">管理</string>
+    <string name="settings_preferences_header">偏好</string>
+    <string name="settings_disable_fingerprint">验证方法</string>
+    <string name="settings_fingerprint_method">指纹</string>
+    <string name="settings_pin_method">识别码</string>
     <!-- Change Rep -->
     <string name="change_representative_header">变更代理人</string>
     <string name="change_representative_header_short">更改</string>
@@ -84,8 +90,6 @@
     <string name="receive_copy_cta">复制地址</string>
     <string name="receive_copied">地址已复制</string>
     <string name="receive_share_title">通过...分享</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">二维码</string>
 
@@ -103,11 +107,13 @@
     <string name="sent_to">发给：</string>
     <string name="send_confirm">确认</string>
     <string name="send_cancel">取消</string>
-    <string name="send_close">关</string>
+    <string name="send_close">关闭</string>
     <string name="send_alert_dialog_ok">好</string>
     <string name="send_alert_dialog_title">输入无效</string>
     <string name="send_invalid_address">无效的目标地址</string>
     <string name="send_insufficient_balance">平衡不足</string>
+    <string name="send_enter_address">请输入目的地</string>
+    <string name="send_enter_amount">请输入金额</string>
     <string name="send_amount_error">输入的金额无效</string>
     <string name="send_generic_error">发生错误。稍后再试。</string>
     <string name="send_no_frontier">找不到帐号边框（帐号可能无法打开）</string>

@@ -23,12 +23,11 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/receive_close"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:padding="5dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="19dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:onClick="@{handlers::onClickClose}"
             android:background="@drawable/bg_image_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,13 +37,13 @@
         <TextView
             android:id="@+id/receive_address"
             style="@style/TextStyleAddress"
-            android:textSize="16sp"
+            android:textSize="@dimen/address_text_size"
             android:lineSpacingMultiplier="1.2"
             android:lineSpacingExtra="3dp"
             android:textColor="@color/white_60"
             android:layout_height="wrap_content"
-            android:layout_width="220dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="@dimen/address_width_three_row"
+            android:layout_marginTop="@dimen/receive_card_margin_top"
             android:textAlignment="center"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
@@ -95,26 +94,46 @@
             android:layout_marginStart="45dp"
             android:onClick="@{handlers::onClickShare}"
             android:text="@string/receive_share_cta"
-            app:layout_constraintBottom_toTopOf="@+id/receive_button_copy"
+            app:layout_constraintBottom_toTopOf="@+id/copy_btn_container"
             app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
             tools:ignore="UnusedAttribute" />
 
-        <Button
-            android:id="@+id/receive_button_copy"
-            style="@style/PrimaryButton"
-            android:gravity="center_horizontal"
+        <RelativeLayout
+            android:id="@+id/copy_btn_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
-            android:onClick="@{handlers::onClickCopy}"
-            android:text="@string/receive_copy_cta"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert"
-            tools:ignore="UnusedAttribute" />
+            app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert">
+
+            <Button
+                android:id="@+id/receive_button_copy"
+                style="@style/PrimaryButton"
+                android:background="@drawable/bg_solid_button_normal"
+                android:gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/receive_copy_cta"
+                tools:ignore="UnusedAttribute" />
+
+
+            <Button
+                android:id="@+id/receive_button_copy_overlay"
+                style="@style/PrimaryButton"
+                android:background="@drawable/bg_transparent_button"
+                android:gravity="center_horizontal"
+                android:textColor="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="@{handlers::onClickCopy}"
+                android:text="N/A"
+                tools:ignore="UnusedAttribute" />
+
+        </RelativeLayout>
 
         <android.support.constraint.Guideline
             android:id="@+id/receive_guideline_vert"

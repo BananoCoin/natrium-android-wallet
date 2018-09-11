@@ -71,7 +71,7 @@ import timber.log.Timber;
  */
 
 public class AccountService {
-    public static final int TIMEOUT_MILLISECONDS = 5000;
+    public static final int TIMEOUT_MILLISECONDS = 10000;
 
     private WebSocket websocket;
     private boolean connected = false;
@@ -128,7 +128,7 @@ public class AccountService {
                 .writeTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS)
                 .readTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS)
                 .connectTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS)
-                .pingInterval(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS)
+                .pingInterval(5000, TimeUnit.MILLISECONDS)
                 .build();
 
         Request request = new Request.Builder()
@@ -683,6 +683,9 @@ public class AccountService {
      * @param balance     Remaining balance after a send
      */
     public void requestSend(String previous, Address destination, BigInteger balance) {
+        // Clear anything in queue
+        requestQueue.clear();
+
         // create a work block
         requestQueue.add(new RequestItem<>(new WorkRequest(previous)));
 

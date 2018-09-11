@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Welkom bij Kalium. Creëer een nieuwe wallet of importeer een bestaande wallet om verder te gaan.</string>
     <string name="intro_welcome_new_wallet">Nieuwe wallet</string>
@@ -18,7 +12,7 @@
     <string name="intro_new_wallet_backup_yes">Ja</string>
     <string name="intro_new_wallet_backup_no">Nee</string>
     <string name="intro_new_wallet_warning_header">Niet jokken alsjeblieft.</string>
-    <string name="intro_new_wallet_warning">Misschien denk je er te makkelijk over, maar je raakt 'm echt kwijt als je geen back-up maakt!</string>
+    <string name="intro_new_wallet_warning">Misschien denk je er te makkelijk over, maar je raakt \'m echt kwijt als je geen back-up maakt!</string>
     <string name="intro_new_wallet_not_lying">Ik jok niet!</string>
     <string name="intro_new_wallet_okay">Oké. :(</string>
     <!-- Intro Import Wallet Screen -->
@@ -36,16 +30,23 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Verstuur</string>
     <string name="home_receive_cta">Ontvang</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">Verbinding mislukt. Probeer het alsjeblieft nog eens.</string>
     <string name="transaction_header">Transacties</string>
     <string name="history_sent">Verstuurd</string>
     <string name="history_received">Ontvangen</string>
     <string name="transaction_details">Bekijk details</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Welkom bij Kalium. Zo zien je BANANO transacties eruit:</string>
+    <string name="example_card_little">Een paar</string>
+    <string name="example_card_lot">Heel veel</string>
+    <string name="example_card_to">naar die ene aap</string>
+    <string name="example_card_from">van die andere aap</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Instellingen</string>
     <string name="settings_local_currency">Verander valuta</string>
+    <string name="settings_change_language">Taal</string>
+    <string name="settings_default_language_string">Systeemfout</string>
     <string name="settings_backup_seed">Maak seed back-up</string>
     <string name="settings_change_rep">Verander representative</string>
     <string name="settings_share">Deel Kalium</string>
@@ -58,6 +59,11 @@
     <string name="settings_logout_warning_message">Als je een back-up hebt gemaakt van je seed, is er niks aan de hand.</string>
     <string name="settings_logout_warning_confirm">Ja</string>
     <string name="settings_logout_warning_cancel">Annuleer</string>
+    <string name="settings_manage_header">Beheren</string>
+    <string name="settings_preferences_header">Voorkeuren</string>
+    <string name="settings_disable_fingerprint">Verificatiemethode</string>
+    <string name="settings_fingerprint_method">Vingerafdruk</string>
+    <string name="settings_pin_method">Pincode</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Verander\nRepresentative</string>
     <string name="change_representative_header_short">Verander</string>
@@ -84,8 +90,6 @@
     <string name="receive_copy_cta">Kopieer adres</string>
     <string name="receive_copied">Adres gekopieerd</string>
     <string name="receive_share_title">Deel via...</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">Banano</string>
     <string name="receive_qrcode_description">QR Code</string>
 
@@ -108,6 +112,8 @@
     <string name="send_alert_dialog_title">Ongeldige invoer</string>
     <string name="send_invalid_address">Ongeldige ontvanger</string>
     <string name="send_insufficient_balance">Onvoldoende saldo</string>
+    <string name="send_enter_address">Voer alstublieft een bestemming in</string>
+    <string name="send_enter_amount">Vul alstublieft een bedrag in</string>
     <string name="send_amount_error">Ongeldig bedrag ingevuld</string>
     <string name="send_generic_error">Er ging iets fout, probeer het alsjeblieft nog een keer.</string>
     <string name="send_no_frontier">Account niet gevonden (dit kan betekenen dat je account niet geopend is)</string>

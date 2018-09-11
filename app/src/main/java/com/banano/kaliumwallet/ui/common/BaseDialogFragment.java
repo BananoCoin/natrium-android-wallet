@@ -94,12 +94,6 @@ public class BaseDialogFragment extends DialogFragment {
         }
     }
 
-    private void setIconsDark(View view) {
-        if (getActivity() instanceof WindowControl) {
-            ((WindowControl) getActivity()).setDarkIcons(view);
-        }
-    }
-
     /**
      * Set alarm for 2 minutes to clear the clipboard
      */

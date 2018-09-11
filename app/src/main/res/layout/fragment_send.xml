@@ -32,12 +32,11 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/send_close"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:padding="5dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="19dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:onClick="@{handlers::onClickClose}"
             android:background="@drawable/bg_image_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +48,7 @@
             style="@style/TextStyleHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="@dimen/send_header_margin"
             android:text="@string/send_title"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/send_guideling_vert"
@@ -58,12 +57,12 @@
         <TextView
             android:id="@+id/send_from_address"
             style="@style/TextStyleAddress"
-            android:textSize="16sp"
+            android:textSize="@dimen/address_text_size"
             android:lineSpacingMultiplier="1.2"
             android:lineSpacingExtra="3dp"
             android:textColor="@color/white_60"
             android:layout_height="wrap_content"
-            android:layout_width="220dp"
+            android:layout_width="@dimen/address_width_three_row"
             android:layout_marginTop="15dp"
             android:textAlignment="center"
             app:layout_constraintTop_toBottomOf="@+id/send_from_header"
@@ -74,7 +73,7 @@
         <TextView
             android:id="@+id/send_balance"
             style="@style/TextStyleLightPrimary"
-            android:textSize="16sp"
+            android:textSize="@dimen/text_size_normal"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_marginTop="5dp"
@@ -86,9 +85,9 @@
 
         <RelativeLayout
             android:id="@+id/send_amount_container"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="@dimen/send_header_margin_two"
             app:layout_constraintTop_toBottomOf="@+id/send_balance"
             app:layout_constraintEnd_toStartOf="@+id/send_guideling_vert"
             app:layout_constraintStart_toStartOf="@+id/send_guideling_vert">
@@ -97,7 +96,7 @@
                 android:id="@+id/send_amount"
                 android:fontFamily="@font/nunitosans_extralight"
                 android:background="@drawable/bg_edittext"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_normal"
                 android:textColor="@color/yellow"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -127,11 +126,11 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
-                android:textSize="14sp"
+                android:textSize="@dimen/text_size_max_button"
                 android:text="@string/send_max"
                 android:onClick="@{handlers::onClickMax}"
                 android:textAllCaps="true"
-                android:textColor="@color/yellow_dark_transparent" />
+                android:textColor="@color/yellow" />
 
         </RelativeLayout>
 
@@ -139,6 +138,7 @@
             android:id="@+id/send_amount_validation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
             android:textSize="12sp"
             android:textColor="@color/yellow"
             android:fontFamily="@font/nunitosans_regular"
@@ -152,7 +152,7 @@
 
         <RelativeLayout
             android:id="@+id/send_address_container"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             app:layout_constraintTop_toBottomOf="@+id/send_amount_validation"
@@ -164,7 +164,7 @@
                 android:id="@+id/send_address"
                 android:fontFamily="@font/nunitosans_extralight"
                 android:background="@drawable/bg_edittext"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_normal"
                 android:textColor="@color/white_60"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
@@ -185,9 +185,9 @@
                 tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg"/>
 
             <android.support.v7.widget.AppCompatImageButton
-                android:id="@+id/send_address_copy"
+                android:id="@+id/send_address_paste"
                 android:fontFamily="@font/nunitosans_extralight"
-                android:layout_width="45dp"
+                android:layout_width="@dimen/send_paste_button"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_marginEnd="10dp"

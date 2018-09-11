@@ -1,10 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
-
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
-
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">केलियम में आपका स्वागत है। आगे बढ़ने के लिए, आप एक नया वॉलेट बना सकते हैं या एक मौजूदा वॉलेट खोल सकते हैं। </string>
     <string name="intro_welcome_new_wallet">नया वॉलेट</string>
@@ -36,16 +30,23 @@
     <!-- Home Screen -->
     <string name="home_send_cta">भेजें </string>
     <string name="home_receive_cta">प्राप्त करें</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
     <string name="error_message">कनेक्ट करने में एक समस्या थी। फिर से कोशिश करें ।</string>
     <string name="transaction_header">लेनदेन</string>
     <string name="history_sent">भेजे -  </string>
     <string name="history_received">मिले -</string>
     <string name="transaction_details">अधिक जानकारी देखें </string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">केलियम में आपका स्वागत है। बनानो प्राप्त करने पर सभी लेनदेन इस तरह नीचे दिखाई देंगे -</string>
+    <string name="example_card_little">थोड़े से</string>
+    <string name="example_card_lot">बहुत सारे</string>
+    <string name="example_card_to">अजनबी बंदर को</string>
+    <string name="example_card_from">अजनबी बंदर से</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">सेटिंग्स </string>
     <string name="settings_local_currency">मुद्रा (करेंसी) बदलें</string>
+    <string name="settings_change_language">भाषा</string>
+    <string name="settings_default_language_string">प्रणालीगत चूक</string>
     <string name="settings_backup_seed">बीज (सीड) बैकअप करें</string>
     <string name="settings_change_rep">प्रतिनिधि (रिप्रेजेन्टेटिव) बदलें</string>
     <string name="settings_share">केलियम साझा (शेयर) करें</string>
@@ -58,6 +59,11 @@
     <string name="settings_logout_warning_message">अगर आपने अपने बीज को बैकअप कर लिया है, तो आपको चिंता करने की कोई आवश्यकता नहीं है।</string>
     <string name="settings_logout_warning_confirm">हाँ </string>
     <string name="settings_logout_warning_cancel">रद्द (कैंसल) करें</string>
+    <string name="settings_manage_header">प्रबंधन | मैनेज</string>
+    <string name="settings_preferences_header">पसंद | प्रेफरेन्सेस</string>
+    <string name="settings_disable_fingerprint">प्रमाणीकरण (ऑथेंटिकेशन) का तरीका</string>
+    <string name="settings_fingerprint_method">उंगली का निशान</string>
+    <string name="settings_pin_method">पिन</string>
     <!-- Change Rep -->
     <string name="change_representative_header">प्रतिनिधि (रिप्रेजेन्टेटिव) \nबदलें</string>
     <string name="change_representative_header_short">बदलें</string>
@@ -68,7 +74,7 @@
     <string name="change_representative_cancel">रद्द (कैंसल) करें</string>
     <string name="change_representative_invalid">प्रतिनिधि (रिप्रेजेन्टेटिव) का पता गलत है </string>
     <string name="change_representative_current_header">वर्तमान प्रतिनिधि (रिप्रेजेन्टेटिव)</string>
-    <string name="change_representative_hint">नए प्रतिनिधि (रिप्रेजेन्टेटिव) का पता दर्ज करें</string>
+    <string name="change_representative_hint">नए प्रतिनिधि का पता दर्ज करें</string>
     <string name="change_representative_success">प्रतिनिधि (रिप्रेजेन्टेटिव) सफलतापूर्वक बदल गया</string>
     <string name="change_representative_error">प्रतिनिधि (रिप्रेजेन्टेटिव) बदलने में असफल। बाद में फिर से प्रयास करें।</string>
     <!-- Share -->
@@ -84,8 +90,6 @@
     <string name="receive_copy_cta">पता कॉपी करें </string>
     <string name="receive_copied">पता कॉपी हो गया </string>
     <string name="receive_share_title">इस माध्यम से साझा (शेयर) करें - </string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
     <string name="receive_card_title">बनानो</string>
     <string name="receive_qrcode_description">क्यू आर कोड </string>
 
@@ -108,9 +112,11 @@
     <string name="send_alert_dialog_title">गलत इनपुट </string>
     <string name="send_invalid_address">गलत (डेस्टिनेशन) गंतव्य पता</string>
     <string name="send_insufficient_balance">अपर्याप्त शेष राशि (बैलेंस)</string>
+    <string name="send_enter_address">कृपया एक पता दर्ज करें</string>
+    <string name="send_enter_amount">कृपया राशि दर्ज करें</string>
     <string name="send_amount_error">डाली गयी धन राशि गलत है </string>
     <string name="send_generic_error">एक समस्या हुई। बाद में फिर से कोशिश करें।</string>
-    <string name="send_no_frontier">खाता नहीं मिल सका (हो सकता है खता नहीं खुला हो)</string>
+    <string name="send_no_frontier">खाता नहीं मिल सका (हो सकता है खाताा नहीं खुला हो)</string>
     <string name="send_fingerprint_description">उंगली के निशान की सहायता से %s बनानो भेजें </string>
     <string name="send_pin_description">%s बनानो भेजें ? </string>
 

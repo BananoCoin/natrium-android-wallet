@@ -42,10 +42,18 @@
     <string name="history_sent">Sent</string>
     <string name="history_received">Received</string>
     <string name="transaction_details">View Details</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Welcome to Kalium. Once you receive BANANO, transactions will show up like this:</string>
+    <string name="example_card_little">A little</string>
+    <string name="example_card_lot">A lot of</string>
+    <string name="example_card_to">to a random monkey</string>
+    <string name="example_card_from">from a random monkey</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
     <string name="settings_local_currency">Change Currency</string>
+    <string name="settings_change_language">Language</string>
+    <string name="settings_default_language_string">System Default</string>
     <string name="settings_backup_seed">Backup Seed</string>
     <string name="settings_change_rep">Change Representative</string>
     <string name="settings_share">Share Kalium</string>
@@ -58,6 +66,11 @@
     <string name="settings_logout_warning_message">As long as you\'ve backed up your seed you have nothing to worry about.</string>
     <string name="settings_logout_warning_confirm">Yes</string>
     <string name="settings_logout_warning_cancel">Cancel</string>
+    <string name="settings_manage_header">Manage</string>
+    <string name="settings_preferences_header">Preferences</string>
+    <string name="settings_disable_fingerprint">Authentication Method</string>
+    <string name="settings_fingerprint_method">Fingerprint</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Change\nRepresentative</string>
     <string name="change_representative_header_short">Change</string>
@@ -108,8 +121,10 @@
     <string name="send_close">Close</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Invalid Input</string>
-    <string name="send_invalid_address">Invalid Destination Address</string>
+    <string name="send_invalid_address">Address entered was invalid</string>
     <string name="send_insufficient_balance">Insufficient Balance</string>
+    <string name="send_enter_address">Please enter an address</string>
+    <string name="send_enter_amount">Please enter an amount</string>
     <string name="send_amount_error">Amount entered was invalid</string>
     <string name="send_generic_error">An error occurred. Try again later.</string>
     <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>

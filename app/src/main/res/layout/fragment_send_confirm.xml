@@ -22,36 +22,13 @@
         android:layout_height="match_parent"
         android:background="@drawable/bg_modal">
 
-        <FrameLayout
-            android:id="@+id/progress_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:animateLayoutChanges="true"
-            android:background="@drawable/bg_rounded_black_transparent"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:elevation="5dp"
-            android:visibility="gone">
-
-            <ProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:indeterminate="true"/>
-
-        </FrameLayout>
-
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/send_confirm_close"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:padding="5dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="19dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             android:onClick="@{handlers::onClickClose}"
             android:background="@drawable/bg_image_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,10 +52,10 @@
                 android:id="@+id/send_amount"
                 android:fontFamily="@font/nunitosans_bold"
                 android:background="@drawable/bg_edittext"
-                android:textSize="16sp"
+                android:textSize="@dimen/text_size_normal"
                 android:textColor="@color/yellow"
                 android:layout_height="wrap_content"
-                android:layout_width="300dp"
+                android:layout_width="@dimen/input_width"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:padding="10dp"
@@ -96,10 +73,11 @@
             <TextView
                 android:id="@+id/send_destination"
                 style="@style/TextStyleAddressAlt"
+                android:textSize="@dimen/text_size_normal"
                 android:background="@drawable/bg_edittext"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content"
-                android:layout_width="300dp"
+                android:layout_width="@dimen/input_width"
                 android:layout_marginTop="10dp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
@@ -149,6 +127,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
+
+        <RelativeLayout
+            android:id="@+id/progress_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/bg_rounded_black_transparent"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="5dp"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:paddingTop="100dp"
+                app:lottie_rawRes="@raw/send_anim"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
+
+        </RelativeLayout>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

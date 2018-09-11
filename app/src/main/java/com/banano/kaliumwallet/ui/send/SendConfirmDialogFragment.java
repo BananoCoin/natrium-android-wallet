@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,8 +13,6 @@ import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
-import android.util.DisplayMetrics;
-import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,6 +28,7 @@ import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.bus.SendInvalidAmount;
 import com.banano.kaliumwallet.databinding.FragmentSendConfirmBinding;
 import com.banano.kaliumwallet.model.Address;
+import com.banano.kaliumwallet.model.AuthMethod;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -127,14 +125,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         // Restrict height
         Window window = getDialog().getWindow();
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        int height = metrics.heightPixels;
-        double heightPercent = UIUtil.SMALL_DEVICE_DIALOG_HEIGHT;
-        if (metrics.heightPixels > 1500) {
-            heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
-        }
-        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, (int) (height * heightPercent));
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
 
         // colorize address text
@@ -284,7 +275,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         public void onClickConfirm(View view) {
             Credentials credentials = realm.where(Credentials.class).findFirst();
 
-            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered()) {
+            if (Reprint.isHardwarePresent() && Reprint.hasFingerprintRegistered() && sharedPreferencesUtil.getAuthMethod() == AuthMethod.FINGERPRINT) {
                 // show fingerprint dialog
                 LayoutInflater factory = LayoutInflater.from(getContext());
                 @SuppressLint("InflateParams") final View viewFingerprint = factory.inflate(R.layout.view_fingerprint, null);
@@ -293,7 +284,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
                         .subscribe(result -> {
                             switch (result.status) {
                                 case SUCCESS:
-                                    fingerprintDialog.hide();
+                                    fingerprintDialog.dismiss();
                                     executeSend();
                                     break;
                                 case NONFATAL_FAILURE:
