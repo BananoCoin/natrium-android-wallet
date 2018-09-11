@@ -2,8 +2,6 @@ package com.banano.kaliumwallet.ui.contact;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
@@ -26,7 +24,7 @@ import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentContactOverviewBinding;
 import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.model.Contact;
-import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
+import com.banano.kaliumwallet.task.DownloadOrRetrieveFileTask;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.UIUtil;
@@ -34,10 +32,8 @@ import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import org.json.JSONArray;
-import org.libsodium.jni.crypto.Hash;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -125,7 +121,7 @@ public class ContactOverviewFragment extends BaseFragment {
     private void initMonkeys() {
         // Find contacts
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
-        DownloadOrRetreiveFileTask downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+        DownloadOrRetrieveFileTask downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
         downloadMonkeyTask.setListener((List<File> monkeys) -> {
             if (monkeys == null || monkeys.isEmpty()) {
                 return;
@@ -155,7 +151,7 @@ public class ContactOverviewFragment extends BaseFragment {
 
     @Subscribe
     public void receiveContactAdded(ContactAdded contactAdded) {
-        DownloadOrRetreiveFileTask downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+        DownloadOrRetrieveFileTask downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
         downloadMonkeyTask.setListener((List<File> monkeys) -> {
             if (monkeys == null || monkeys.isEmpty()) {
                 refreshContacts();

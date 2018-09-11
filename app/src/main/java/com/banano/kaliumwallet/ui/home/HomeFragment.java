@@ -40,7 +40,7 @@ import com.banano.kaliumwallet.model.PriceConversion;
 import com.banano.kaliumwallet.network.AccountService;
 import com.banano.kaliumwallet.network.model.response.AccountCheckResponse;
 import com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem;
-import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
+import com.banano.kaliumwallet.task.DownloadOrRetrieveFileTask;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.FragmentUtility;
@@ -93,7 +93,7 @@ public class HomeFragment extends BaseFragment {
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
     private FragmentHomeBinding binding;
-    private DownloadOrRetreiveFileTask downloadMonkeyTask;
+    private DownloadOrRetrieveFileTask downloadMonkeyTask;
     private Handler mHandler;
     private Runnable mRunnable;
     private HashMap<String, String> mContactCache = new HashMap<>();
@@ -199,7 +199,7 @@ public class HomeFragment extends BaseFragment {
             if (credentials.getAddressString() != null) {
                 // Download monKey if doesn't exist
                 String url = getString(R.string.monkey_api_url, credentials.getAddressString());
-                downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+                downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
                 downloadMonkeyTask.setListener((List<File> monkeys) -> {
                     if (monkeys == null || monkeys.isEmpty()) {
                         return;
@@ -364,9 +364,11 @@ public class HomeFragment extends BaseFragment {
         mAdapter.notifyDataSetChanged();
         UIUtil.showToast(getString(R.string.contact_added, contactAdded.getName()), getContext());
         // Download monKey in background, try to have it available for later
-        String url = getString(R.string.monkey_api_url, contactAdded.getAddress());
-        downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
-        downloadMonkeyTask.execute(url);
+        if (contactAdded.getAddress() != null) {
+            String url = getString(R.string.monkey_api_url, contactAdded.getAddress());
+            downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
+            downloadMonkeyTask.execute(url);
+        }
     }
 
     @Subscribe

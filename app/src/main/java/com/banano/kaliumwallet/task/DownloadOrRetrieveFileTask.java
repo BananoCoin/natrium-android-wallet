@@ -14,11 +14,11 @@ import java.util.List;
 
 import timber.log.Timber;
 
-public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, List<File>> {
+public class DownloadOrRetrieveFileTask extends AsyncTask<String, Void, List<File>> {
     private DownloadOrRetreiveFileTaskListener listener;
     private File fileDir;
 
-    public DownloadOrRetreiveFileTask(File fileDir) {
+    public DownloadOrRetrieveFileTask(File fileDir) {
         this.fileDir = fileDir;
     }
 

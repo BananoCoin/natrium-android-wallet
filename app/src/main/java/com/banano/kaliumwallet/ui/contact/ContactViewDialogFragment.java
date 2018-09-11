@@ -23,7 +23,7 @@ import com.banano.kaliumwallet.bus.ContactRemoved;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentContactViewBinding;
 import com.banano.kaliumwallet.model.Contact;
-import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
+import com.banano.kaliumwallet.task.DownloadOrRetrieveFileTask;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
@@ -130,7 +130,7 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
 
         // Download monKey
         String url = getString(R.string.monkey_api_url, address);
-        DownloadOrRetreiveFileTask downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+        DownloadOrRetrieveFileTask downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
         downloadMonkeyTask.setListener((List<File> monkeys) -> {
             if (monkeys == null || monkeys.isEmpty()) {
                 return;
