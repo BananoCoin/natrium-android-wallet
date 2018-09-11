@@ -152,16 +152,15 @@
     <string name="contact_view_header">Contact:</string>
     <string name="contact_remove_header">Remove:</string>
     <string name="contact_remove_btn">Remove Contact</string>
+    <string name="contact_remove_sure">Are you sure you want to delete %s?</string>
     <!-- Export/Import -->
     <string name="contact_removed">%s has been removed from contacts!</string>
     <string name="contact_export_none">There are no contacts to export</string>
     <string name="contact_export_error">Failed to export contacts</string>
     <string name="contact_import_error">Failed to import contacts</string>
     <string name="contact_import_success">Successfully imported %d contacts</string>
+    <string name="contact_import_none">Found no contacts to import</string>
     <string name="contact_import_warning_header">Warning</string>
-    <string name="contact_import_warning">All existing contacts will be deleted! Do you wish to proceed?</string>
-    <string name="contact_import_yes">Yes</string>
-    <string name="contact_import_no">Cancel</string>
     <string name="contact_import_permission_error">Please allow Kalium permission to read from device storage.</string>
     <string name="contact_export_permission_error">Please allow Kalium permission to write to device storage.</string>
     <string name="contact_export_success">Contacts saved to %s</string>

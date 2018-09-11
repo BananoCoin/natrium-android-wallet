@@ -111,7 +111,7 @@ public class Address implements Serializable {
      * @param address
      * @return
      */
-    private String findAddress(String address) {
+    public static final String findAddress(String address) {
         Pattern p = Pattern.compile("(ban)(_)(1|3)[13456789abcdefghijkmnopqrstuwxyz]{59}");
         Matcher matcher = p.matcher(address);
         if (matcher.find()) {

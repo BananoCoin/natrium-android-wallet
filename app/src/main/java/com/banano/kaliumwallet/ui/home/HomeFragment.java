@@ -183,6 +183,9 @@ public class HomeFragment extends BaseFragment {
 
         // Initialize transaction history
         if (wallet != null && wallet.getAccountHistory() != null) {
+            if (wallet.getAccountHistory().size() > 0) {
+                binding.loadingAnimation.setVisibility(View.GONE);
+            }
             updateAccountHistory();
         }
 
@@ -196,26 +199,29 @@ public class HomeFragment extends BaseFragment {
             if (credentials.getAddressString() != null) {
                 // Download monKey if doesn't exist
                 String url = getString(R.string.monkey_api_url, credentials.getAddressString());
-                downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir(), String.format("%s.svg", credentials.getAddressString()));
-                downloadMonkeyTask.setListener((File monkey) -> {
-                    if (monkey == null) {
+                downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+                downloadMonkeyTask.setListener((List<File> monkeys) -> {
+                    if (monkeys == null || monkeys.isEmpty()) {
                         return;
                     }
-                    try {
-                        binding.homeMonkey.setVisibility(View.VISIBLE);
-                        Uri svgUri = Uri.fromFile(monkey);
-                        RequestBuilder<PictureDrawable> requestBuilder;
-                        requestBuilder = Glide.with(getContext())
-                                .as(PictureDrawable.class)
-                                .transition(withCrossFade())
-                                .listener(new SvgSoftwareLayerSetter());
-                        requestBuilder.load(svgUri).into(binding.homeMonkey);
-                        requestBuilder.load(svgUri).into(binding.monkeyOverlayImg);
-                    } catch (Exception e) {
-                        Timber.e("Failed to load monKey file");
-                        e.printStackTrace();
-                        if (monkey.exists()) {
-                            monkey.delete();
+                    RequestBuilder<PictureDrawable> requestBuilder;
+                    requestBuilder = Glide.with(getContext())
+                            .as(PictureDrawable.class)
+                            .transition(withCrossFade())
+                            .listener(new SvgSoftwareLayerSetter());
+                    for (File f: monkeys) {
+                        try {
+                            Uri svgUri = Uri.fromFile(f);
+                            binding.homeMonkey.setVisibility(View.VISIBLE);
+                            requestBuilder.load(svgUri).into(binding.homeMonkey);
+                            requestBuilder.load(svgUri).into(binding.monkeyOverlayImg);
+                            break;
+                        } catch (Exception e) {
+                            Timber.e("Failed to load monKey file");
+                            e.printStackTrace();
+                            if (f.exists()) {
+                                f.delete();
+                            }
                         }
                     }
                 });
@@ -329,8 +335,8 @@ public class HomeFragment extends BaseFragment {
         realmQuery.equalTo("address", address);
         if (realmQuery.count() > 0) {
             Contact c = (Contact) realmQuery.findFirst();
-            mContactCache.put(address, c.getName());
-            return c.getName();
+            mContactCache.put(address, c.getDisplayName());
+            return c.getDisplayName();
         }
         return null;
     }
@@ -351,13 +357,23 @@ public class HomeFragment extends BaseFragment {
 
     @Subscribe
     public void receiveContactAdded(ContactAdded contactAdded) {
+        if (mAdapter == null || getContext() == null) {
+            return;
+        }
         updateAccountHistory();
         mAdapter.notifyDataSetChanged();
         UIUtil.showToast(getString(R.string.contact_added, contactAdded.getName()), getContext());
+        // Download monKey in background, try to have it available for later
+        String url = getString(R.string.monkey_api_url, contactAdded.getAddress());
+        downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+        downloadMonkeyTask.execute(url);
     }
 
     @Subscribe
     public void receiveContactRemoved(ContactRemoved contactRemoved) {
+        if (mContactCache == null || mAdapter == null || getContext() == null) {
+            return;
+        }
         if (mContactCache.containsValue(contactRemoved.getName())) {
             mContactCache.remove(contactRemoved.getAddress());
         }
@@ -368,6 +384,10 @@ public class HomeFragment extends BaseFragment {
 
     @Subscribe
     public void receiveHistory(WalletHistoryUpdate walletHistoryUpdate) {
+        if (wallet == null || binding == null || mAdapter == null || getContext() == null) {
+            return;
+        }
+        binding.loadingAnimation.setVisibility(View.GONE);
         if (wallet.getAccountHistory().size() > 0) {
             binding.exampleCards.setVisibility(View.GONE);
         }
@@ -399,6 +419,7 @@ public class HomeFragment extends BaseFragment {
 
     @Subscribe
     public void receiveError(SocketError error) {
+        binding.loadingAnimation.setVisibility(View.GONE);
         binding.homeSwiperefresh.setRefreshing(false);
         // Retry refresh
         if (!retrying) {
@@ -416,11 +437,13 @@ public class HomeFragment extends BaseFragment {
     @Subscribe
     public void receiveTranItemClick(TransactionItemClicked tran) {
         // show details dialog
-        TranDetailsFragment dialog = TranDetailsFragment.newInstance(tran.getHash(), tran.getAccount());
-        dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                TranDetailsFragment.TAG);
+        if (getActivity() instanceof WindowControl) {
+            TranDetailsFragment dialog = TranDetailsFragment.newInstance(tran.getHash(), tran.getAccount());
+            dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
+                    TranDetailsFragment.TAG);
 
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+            ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+        }
     }
 
     private void updateAmounts() {

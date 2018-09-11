@@ -27,6 +27,30 @@
             app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/contact_delete"
+            android:layout_width="40dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_image_button"
+            android:onClick="@{handlers::onClickRemove}"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_delete" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/contact_view_monkey"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/view_contact_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/contact_view_header"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:src="@drawable/test_monkey" />
+
         <TextView
             android:id="@+id/contact_name"
             android:layout_width="@dimen/input_width"
@@ -48,7 +72,7 @@
             app:layout_constraintBottom_toTopOf="@+id/contact_address"
             app:layout_constraintEnd_toStartOf="@+id/view_contact_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
-            app:layout_constraintTop_toBottomOf="@+id/contact_view_header"
+            app:layout_constraintTop_toBottomOf="@+id/contact_view_monkey"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="\@bbedwards" />
 
@@ -69,29 +93,27 @@
             android:textColor="@color/white_60"
             android:textSize="@dimen/text_size_normal"
             android:layout_marginTop="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/view_contact_btn"
+            android:onClick="@{handlers::onClickAddress}"
             app:layout_constraintEnd_toStartOf="@+id/view_contact_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/contact_name"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
 
-        <Button
-            android:id="@+id/view_contact_btn"
-            style="@style/PrimaryButton"
+        <TextView
+            android:id="@+id/contact_address_copied"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_solid_button"
-            android:gravity="center_horizontal"
-            android:text="@string/contact_remove_btn"
-            tools:ignore="UnusedAttribute"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="45dp"
-            android:layout_marginStart="45dp"
-            android:onClick="@{handlers::onClickRemove}"
-            app:layout_constraintBottom_toTopOf="@+id/view_contact_close"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/nunitosans_bold"
+            android:text="@string/receive_copied"
+            android:textAlignment="center"
+            android:textColor="@color/green_light"
+            android:textSize="@dimen/address_text_size"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/view_contact_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"/>
+            app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/contact_address" />
 
         <Button
             android:id="@+id/view_contact_close"

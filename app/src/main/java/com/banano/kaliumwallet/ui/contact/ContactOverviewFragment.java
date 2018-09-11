@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -23,7 +24,9 @@ import com.banano.kaliumwallet.bus.ContactRemoved;
 import com.banano.kaliumwallet.bus.ContactSelected;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentContactOverviewBinding;
+import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.model.Contact;
+import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.UIUtil;
@@ -31,6 +34,7 @@ import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import org.json.JSONArray;
+import org.libsodium.jni.crypto.Hash;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,7 +43,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -62,6 +68,8 @@ public class ContactOverviewFragment extends BaseFragment {
 
     private boolean showExport = false;
     private boolean showImport = false;
+
+    private HashMap<String, Uri> monkeyUriMap;
 
     @Inject
     Realm realm;
@@ -102,23 +110,64 @@ public class ContactOverviewFragment extends BaseFragment {
         // subscribe to bus
         RxBus.get().register(this);
 
-        // Prepare contacts info
+        // Find contacts
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
+        monkeyUriMap = new HashMap<>();
         binding.contactRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new ContactOverviewSelectionAdapter(realm.copyFromRealm(contacts));
+        mAdapter = new ContactOverviewSelectionAdapter(realm.copyFromRealm(contacts), getContext(), monkeyUriMap);
         binding.contactRecyclerview.setAdapter(mAdapter);
+        // Lazy load the monKeys
+        initMonkeys();
 
         return view;
     }
 
+    private void initMonkeys() {
+        // Find contacts
+        List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
+        DownloadOrRetreiveFileTask downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+        downloadMonkeyTask.setListener((List<File> monkeys) -> {
+            if (monkeys == null || monkeys.isEmpty()) {
+                return;
+            }
+            for (File f : monkeys) {
+                String address = Address.findAddress(f.getName()).trim();
+                monkeyUriMap.put(address, Uri.fromFile(f));
+            }
+            mAdapter.updateMap(monkeyUriMap);
+            mAdapter.notifyDataSetChanged();
+        });
+        if (contacts.size() > 0) {
+            List<String> monkeyUrls = new ArrayList<>();
+            for (Contact c : contacts) {
+                monkeyUrls.add(getString(R.string.monkey_api_url, c.getAddress()));
+            }
+            downloadMonkeyTask.execute(monkeyUrls.toArray(new String[monkeyUrls.size()]));
+        }
+
+    }
+
     private void refreshContacts() {
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
+        mAdapter.updateMap(monkeyUriMap);
         mAdapter.updateList(realm.copyFromRealm(contacts));
     }
 
     @Subscribe
     public void receiveContactAdded(ContactAdded contactAdded) {
-        refreshContacts();
+        DownloadOrRetreiveFileTask downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+        downloadMonkeyTask.setListener((List<File> monkeys) -> {
+            if (monkeys == null || monkeys.isEmpty()) {
+                refreshContacts();
+                return;
+            }
+            for (File f : monkeys) {
+                String address = Address.findAddress(f.getName()).trim();
+                monkeyUriMap.put(address, Uri.fromFile(f));
+                refreshContacts();
+            }
+        });
+        downloadMonkeyTask.execute(getString(R.string.monkey_api_url, contactAdded.getAddress()));
     }
 
     @Subscribe
@@ -178,27 +227,24 @@ public class ContactOverviewFragment extends BaseFragment {
                                  Intent resultData) {
         if (requestCode == READ_RESULT_CODE && resultCode == Activity.RESULT_OK) {
             if (resultData != null) {
-                int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
-                AlertDialog alertDialog = new AlertDialog.Builder(getContext(), style)
-                        .setTitle(R.string.contact_import_warning_header)
-                        .setMessage(R.string.contact_import_warning)
-                        .setPositiveButton(R.string.contact_import_yes, (DialogInterface dialogInterface, int i) -> {
-                            realm.executeTransaction(realm -> {
-                                try (InputStream is = getContext().getContentResolver().openInputStream(resultData.getData())) {
-                                    realm.where(Contact.class).findAll().deleteAllFromRealm();
-                                    realm.createAllFromJson(Contact.class, is);
-                                    long count = realm.where(Contact.class).count();
-                                    UIUtil.showToast(getString(R.string.contact_import_success, count), getContext());
-                                } catch (Exception e) {
-                                    Timber.e(e);
-                                    UIUtil.showToast(getString(R.string.contact_import_error), getContext());
-                                }
-                            });
-                            refreshContacts();
-                        })
-                        .setNegativeButton(R.string.contact_import_no, (DialogInterface dialogInterface, int i) -> {
-                        })
-                        .show();
+                realm.executeTransaction(realm -> {
+                    try (InputStream is = getContext().getContentResolver().openInputStream(resultData.getData())) {
+                        long oldCount = realm.where(Contact.class).count();
+                        realm.createOrUpdateAllFromJson(Contact.class, is);
+                        long count = realm.where(Contact.class).count();
+                        long diff = count - oldCount;
+                        if (diff > 0) {
+                            UIUtil.showToast(getString(R.string.contact_import_success, diff), getContext());
+                        } else {
+                            UIUtil.showToast(getString(R.string.contact_import_none), getContext());
+                        }
+                    } catch (Exception e) {
+                        Timber.e(e);
+                        UIUtil.showToast(getString(R.string.contact_import_error), getContext());
+                    }
+                });
+                refreshContacts();
+                initMonkeys();
             }
         }
     }

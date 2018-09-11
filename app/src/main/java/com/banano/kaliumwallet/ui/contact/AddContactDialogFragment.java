@@ -379,11 +379,10 @@ public class AddContactDialogFragment extends BaseDialogFragment {
                 return;
             }
             realm.executeTransaction(realm -> {
-                Contact newContact = realm.createObject(Contact.class);
-                newContact.setAddress(binding.contactAddress.getText().toString());
+                Contact newContact = realm.createObject(Contact.class, binding.contactAddress.getText().toString());
                 newContact.setName(binding.contactName.getText().toString());
             });
-            RxBus.get().post(new ContactAdded(binding.contactName.getText().toString()));
+            RxBus.get().post(new ContactAdded(binding.contactName.getText().toString(), binding.contactAddress.getText().toString()));
             dismiss();
         }
 

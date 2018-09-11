@@ -49,10 +49,12 @@ public class IntroSeedFragment extends BaseFragment {
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
     private FragmentIntroSeedBinding binding;
+    private boolean nextTriggered = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        nextTriggered = false;
         // init dependency injection
         if (getActivity() instanceof ActivityWithComponent) {
             ((ActivityWithComponent) getActivity()).getActivityComponent().inject(this);
@@ -128,12 +130,12 @@ public class IntroSeedFragment extends BaseFragment {
 
     @Subscribe
     public void receiveCreatePin(CreatePin createPin) {
-        realm.beginTransaction();
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            credentials.setPin(createPin.getPin());
-        }
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Credentials credentials = realm.where(Credentials.class).findFirst();
+            if (credentials != null) {
+                credentials.setPin(createPin.getPin());
+            }
+        });
         goToHomeScreen();
     }
 
@@ -170,10 +172,10 @@ public class IntroSeedFragment extends BaseFragment {
     }
 
     private void createAndStoreCredentials(String seed) {
-        realm.beginTransaction();
-        Credentials credentials = realm.createObject(Credentials.class);
-        credentials.setSeed(seed);
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Credentials credentials = realm.createObject(Credentials.class);
+            credentials.setSeed(seed);
+        });
     }
 
     public class ClickHandlers {
@@ -195,6 +197,12 @@ public class IntroSeedFragment extends BaseFragment {
                 return;
             } else {
                 binding.introSeedInvalid.setVisibility(View.INVISIBLE);
+            }
+
+            if (!nextTriggered) {
+                nextTriggered = true;
+            } else {
+                return;
             }
 
             createAndStoreCredentials(binding.introImportSeed.getText().toString().trim());

@@ -38,6 +38,8 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
 
+    private boolean nextTriggered = false;
+
     /**
      * Create new instance of the fragment (handy pattern if any data needs to be passed to it)
      *
@@ -53,6 +55,7 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        nextTriggered = false;
         // init dependency injection
         if (getActivity() instanceof ActivityWithComponent) {
             ((ActivityWithComponent) getActivity()).getActivityComponent().inject(this);
@@ -92,12 +95,12 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
 
     @Subscribe
     public void receiveCreatePin(CreatePin pinComplete) {
-        realm.beginTransaction();
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            credentials.setPin(pinComplete.getPin());
-        }
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Credentials credentials = realm.where(Credentials.class).findFirst();
+            if (credentials != null) {
+                credentials.setPin(pinComplete.getPin());
+            }
+        });
         goToHomeScreen();
     }
 
@@ -147,6 +150,11 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
         }
 
         public void onClickYes(View v) {
+            if (!nextTriggered) {
+                nextTriggered = true;
+            } else {
+                return;
+            }
             Credentials credentials = realm.where(Credentials.class).findFirst();
             if (credentials != null) {
                 if (credentials.getPin() == null) {

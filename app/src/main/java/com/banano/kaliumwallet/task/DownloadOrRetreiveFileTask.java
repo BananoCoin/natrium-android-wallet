@@ -2,22 +2,24 @@ package com.banano.kaliumwallet.task;
 
 import android.os.AsyncTask;
 
+import com.banano.kaliumwallet.model.Address;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import timber.log.Timber;
 
-public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, File> {
+public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, List<File>> {
     private DownloadOrRetreiveFileTaskListener listener;
     private File fileDir;
-    private String fileName;
 
-    public DownloadOrRetreiveFileTask(File fileDir, String fileName) {
+    public DownloadOrRetreiveFileTask(File fileDir) {
         this.fileDir = fileDir;
-        this.fileName = fileName;
     }
 
     private File downloadFile(String sUrl) {
@@ -27,6 +29,7 @@ public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, File> {
         }
         File ret = null;
         try {
+            String fileName = Address.findAddress(sUrl).trim() + ".svg";
             File file = new File(fileDir, fileName);
             if (file.exists()) {
                 return file;
@@ -57,15 +60,22 @@ public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, File> {
     }
 
     @Override
-    protected File doInBackground(String... params) {
-        return downloadFile(params[0]);
+    protected List<File> doInBackground(String... params) {
+        List<File> ret = new ArrayList<>();
+        for (String s: params) {
+            File f = downloadFile(s);
+            if (f != null && f.exists()) {
+                ret.add(f);
+            }
+        }
+        return ret;
     }
 
     @Override
-    protected void onPostExecute(File f) {
-        super.onPostExecute(f);
+    protected void onPostExecute(List<File> result) {
+        super.onPostExecute(result);
         if (listener != null) {
-            listener.onDownloadOrRetreiveFileTaskFinished(f);
+            listener.onDownloadOrRetreiveFileTaskFinished(result);
         }
     }
 
@@ -74,6 +84,6 @@ public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, File> {
     }
 
     public interface DownloadOrRetreiveFileTaskListener {
-        void onDownloadOrRetreiveFileTaskFinished(File f);
+        void onDownloadOrRetreiveFileTaskFinished(List<File> f);
     }
 }

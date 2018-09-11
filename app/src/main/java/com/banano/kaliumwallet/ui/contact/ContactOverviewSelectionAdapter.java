@@ -1,6 +1,9 @@
 package com.banano.kaliumwallet.ui.contact;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
+import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,14 +15,35 @@ import com.banano.kaliumwallet.bus.ContactSelected;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.ViewHolderContactBinding;
 import com.banano.kaliumwallet.model.Contact;
+import com.banano.kaliumwallet.ui.common.UIUtil;
+import com.banano.kaliumwallet.util.svg.SvgSoftwareLayerSetter;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.RequestOptions;
 
+import java.util.HashMap;
 import java.util.List;
+
+import timber.log.Timber;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<ContactOverviewSelectionAdapter.ViewHolder> {
     private List<Contact> contactList;
+    private Context context;
+    private RequestBuilder<PictureDrawable> requestBuilder;
+    private HashMap<String, Uri> monkeyUriMap;
+    private int monKeyDimension;
 
-    public ContactOverviewSelectionAdapter(List<Contact> flsLst) {
-        contactList = flsLst;
+    public ContactOverviewSelectionAdapter(List<Contact> contactList, Context context, HashMap<String, Uri> monkeyUriMap) {
+        this.contactList = contactList;
+        this.context = context;
+        this.monkeyUriMap = monkeyUriMap;
+        this.requestBuilder = Glide.with(context)
+                .as(PictureDrawable.class)
+                .transition(withCrossFade())
+                .listener(new SvgSoftwareLayerSetter());
+        this.monKeyDimension = (int)UIUtil.convertDpToPixel(50, context);
     }
 
     @Override
@@ -48,7 +72,27 @@ public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<Contac
         if (position > 0) {
             holder.contactItemBinding.dividerLineTop.setVisibility(View.GONE);
         }
+        if (context == null) {
+            return;
+        }
+
+        Uri monkeyUri = monkeyUriMap.get(contact.getAddress());
+        if (monkeyUri == null) {
+            return;
+        }
+        try {
+            if (requestBuilder != null) {
+                requestBuilder.load(monkeyUri)
+                              .apply(new RequestOptions().override(monKeyDimension, monKeyDimension))
+                              .into(holder.contactItemBinding.contactOverviewMonkey);
+            }
+        } catch (Exception e) {
+            Timber.e("Failed to load monKey file");
+            e.printStackTrace();
+        }
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -60,6 +104,10 @@ public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<Contac
         this.contactList = newList;
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(new ContactSelectionDiffCallback(oldList, newList), false);
         diffResult.dispatchUpdatesTo(this);
+    }
+
+    public void updateMap(HashMap<String, Uri> newMap) {
+        this.monkeyUriMap = newMap;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

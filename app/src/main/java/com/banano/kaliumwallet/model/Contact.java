@@ -1,14 +1,25 @@
 package com.banano.kaliumwallet.model;
 
+import android.net.Uri;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
+import io.realm.annotations.Required;
 import timber.log.Timber;
 
 public class Contact extends RealmObject {
+    @Required
     private String name;
+    @PrimaryKey
+    @Required
     private String address;
+
+    @Ignore
+    private Uri monkeyUri;
 
     public Contact() {
 
@@ -20,6 +31,13 @@ public class Contact extends RealmObject {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDisplayName() {
+        if (name.length() > 20) {
+            return name.substring(0, 17) + "...";
+        }
+        return name;
     }
 
     public String getAddress() {
@@ -37,6 +55,14 @@ public class Contact extends RealmObject {
         return address.substring(frontStartIndex, frontEndIndex) +
                 "..." +
                 address.substring(backStartIndex, address.length());
+    }
+
+    public void setMonkeyUri(Uri uri) {
+        this.monkeyUri = uri;
+    }
+
+    public Uri getMonkeyUri() {
+        return this.monkeyUri;
     }
 
     @Override

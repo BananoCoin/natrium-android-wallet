@@ -1,9 +1,14 @@
 package com.banano.kaliumwallet.ui.contact;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,24 +18,36 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.banano.kaliumwallet.R;
+import com.banano.kaliumwallet.broadcastreceiver.ClipboardAlarmReceiver;
 import com.banano.kaliumwallet.bus.ContactRemoved;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentContactViewBinding;
 import com.banano.kaliumwallet.model.Contact;
+import com.banano.kaliumwallet.task.DownloadOrRetreiveFileTask;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
+import com.banano.kaliumwallet.util.svg.SvgSoftwareLayerSetter;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+
+import java.io.File;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import timber.log.Timber;
+
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class ContactViewDialogFragment extends BaseDialogFragment {
     private FragmentContactViewBinding binding;
     public static final String TAG = ContactViewDialogFragment.class.getSimpleName();
-    private boolean removeClicked = false;
+    private Handler mHandler;
+    private Runnable mRunnable;
 
     @Inject
     Realm realm;
@@ -59,7 +76,6 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // init dependency injection
-        removeClicked = false;
         if (getActivity() instanceof ActivityWithComponent) {
             ((ActivityWithComponent) getActivity()).getActivityComponent().inject(this);
         }
@@ -110,6 +126,42 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
         binding.contactName.setText(name);
         binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address, getContext()));
 
+        // Download monKey
+        String url = getString(R.string.monkey_api_url, address);
+        DownloadOrRetreiveFileTask downloadMonkeyTask = new DownloadOrRetreiveFileTask(getContext().getFilesDir());
+        downloadMonkeyTask.setListener((List<File> monkeys) -> {
+            if (monkeys == null || monkeys.isEmpty()) {
+                return;
+            }
+            RequestBuilder<PictureDrawable> requestBuilder;
+            requestBuilder = Glide.with(getContext())
+                    .as(PictureDrawable.class)
+                    .transition(withCrossFade())
+                    .listener(new SvgSoftwareLayerSetter());
+            for (File f: monkeys) {
+                try {
+                    Uri svgUri = Uri.fromFile(f);
+                    requestBuilder.load(svgUri).into(binding.contactViewMonkey);
+                    break;
+                } catch (Exception e) {
+                    Timber.e("Failed to load monKey file");
+                    e.printStackTrace();
+                    if (f.exists()) {
+                        f.delete();
+                    }
+                }
+            }
+        });
+        downloadMonkeyTask.execute(url);
+
+        // Reset address copy text
+        // Set runnable to reset seed text
+        mHandler = new Handler();
+        mRunnable = () -> {
+            binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address, getContext()));
+            binding.contactAddressCopied.setVisibility(View.INVISIBLE);
+        };
+
         return view;
     }
 
@@ -118,42 +170,53 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
         super.onDestroyView();
         // unregister from bus
         RxBus.get().unregister(this);
-    }
-
-    private void showConfirmation() {
-        removeClicked = true;
-        binding.contactViewHeader.setText(R.string.contact_remove_header);
-        binding.viewContactBtn.setText(getString(R.string.dialog_confirm).toUpperCase());
-        binding.viewContactClose.setText(getString(R.string.dialog_cancel).toUpperCase());
-    }
-
-    private void hideConfirmation() {
-        removeClicked = false;
-        binding.contactViewHeader.setText(R.string.contact_view_header);
-        binding.viewContactBtn.setText(R.string.contact_remove_btn);
-        binding.viewContactClose.setText(R.string.dialog_close);
+        // Cancel address copy callback
+        if (mHandler != null && mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
+        }
     }
 
     public class ClickHandlers {
         public void onClickClose(View v) {
-            if (!removeClicked) {
-                dismiss();
-            } else {
-                removeClicked = false;
-                hideConfirmation();
-            }
+            dismiss();
         }
 
         public void onClickRemove(View v) {
-            if (!removeClicked) {
-                showConfirmation();
-            } else {
-                realm.executeTransaction(realm -> {
-                    RealmResults<Contact> contact = realm.where(Contact.class).equalTo("name", binding.contactName.getText().toString()).findAll();
-                    contact.deleteAllFromRealm();
-                });
-                RxBus.get().post(new ContactRemoved(binding.contactName.getText().toString(), binding.contactAddress.getText().toString()));
-                dismiss();
+            int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), style);
+            builder.setTitle(getString(R.string.contact_remove_btn))
+                    .setMessage(getString(R.string.contact_remove_sure, binding.contactName.getText().toString()))
+                    .setPositiveButton(R.string.intro_new_wallet_backup_yes, (dialog, which) -> {
+                        realm.executeTransaction(realm -> {
+                            RealmResults<Contact> contact = realm.where(Contact.class).equalTo("name", binding.contactName.getText().toString()).findAll();
+                            contact.deleteAllFromRealm();
+                        });
+                        RxBus.get().post(new ContactRemoved(binding.contactName.getText().toString(), binding.contactAddress.getText().toString()));
+                        dismiss();
+                    })
+                    .setNegativeButton(R.string.intro_new_wallet_backup_no, (dialog, which) -> {
+                        // do nothing which dismisses the dialog
+                    })
+                    .show();
+        }
+
+        public void onClickAddress(View v) {
+            if (binding != null && binding.contactAddress != null) {
+                // copy seed to clipboard
+                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getContext().getSystemService(Context.CLIPBOARD_SERVICE);
+                android.content.ClipData clip = android.content.ClipData.newPlainText(ClipboardAlarmReceiver.CLIPBOARD_NAME, binding.contactAddress.getText().toString());
+                if (clipboard != null) {
+                    clipboard.setPrimaryClip(clip);
+                }
+
+                binding.contactAddress.setText(binding.contactAddress.getText().toString());
+                binding.contactAddress.setTextColor(getResources().getColor(R.color.green_light));
+                binding.contactAddressCopied.setVisibility(View.VISIBLE);
+
+                if (mHandler != null) {
+                    mHandler.removeCallbacks(mRunnable);
+                    mHandler.postDelayed(mRunnable, 1500);
+                }
             }
         }
     }
