@@ -71,6 +71,8 @@ public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<Contac
         holder.contactItemBinding.setContact(contact);
         if (position > 0) {
             holder.contactItemBinding.dividerLineTop.setVisibility(View.GONE);
+        } else {
+            holder.contactItemBinding.dividerLineTop.setVisibility(View.VISIBLE);
         }
         if (context == null) {
             return;
