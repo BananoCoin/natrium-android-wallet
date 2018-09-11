@@ -41,7 +41,7 @@
             style="@style/TextStyleHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="5dp"
             android:gravity="start"
             android:text="@string/contact_header"
             android:textAlignment="gravity"
@@ -54,8 +54,8 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/contacts_import"
-            android:layout_width="40dp"
-            android:layout_height="45dp"
+            android:layout_width="36dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="5dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/bg_image_button"
@@ -67,9 +67,9 @@
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/contacts_export"
-            android:layout_width="40dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="20dp"
+            android:layout_width="36dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="5dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/bg_image_button"
             android:onClick="@{handlers::onClickExport}"

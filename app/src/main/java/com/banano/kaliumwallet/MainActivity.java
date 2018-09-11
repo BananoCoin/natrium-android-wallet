@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             realm.executeTransaction(realm -> {
                 Contact newContact = realm.createObject(Contact.class);
                 newContact.setAddress("ban_1ka1ium4pfue3uxtntqsrib8mumxgazsjf58gidh1xeo5te3whsq8z476goo");
-                newContact.setName("KaliumDonations");
+                newContact.setName("@KaliumDonations");
             });
             sharedPreferencesUtil.setDefaultContactAdded();
         }

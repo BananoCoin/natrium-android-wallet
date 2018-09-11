@@ -298,7 +298,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
         if (!name.startsWith("@")) {
             name = "@" + name;
         }
-        if (name.isEmpty()) {
+        if (name.isEmpty() || name.length() <= 1) {
             showNameError(R.string.contact_name_missing);
             return false;
         } else {

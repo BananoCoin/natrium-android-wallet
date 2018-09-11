@@ -18,19 +18,6 @@
         android:focusable="true"
         android:focusableInTouchMode="true">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/contact_add_close"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/bg_image_button"
-            android:onClick="@{handlers::onClickClose}"
-            android:padding="10dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_close" />
-
         <TextView
             android:id="@+id/contact_add_header"
             style="@style/TextStyleHeader"

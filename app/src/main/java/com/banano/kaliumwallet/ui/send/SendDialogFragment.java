@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
@@ -74,8 +73,6 @@ public class SendDialogFragment extends BaseDialogFragment {
     private FragmentSendBinding binding;
     private Address address;
     private Activity mActivity;
-    private Handler mHandler;
-    private Runnable mRunnable;
     private ContactSelectionAdapter mAdapter;
 
     /**
@@ -127,7 +124,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         Window window = getDialog().getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
         // Shadow
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -322,26 +319,6 @@ public class SendDialogFragment extends BaseDialogFragment {
         binding.contactRecyclerview.setItemAnimator(null);
         binding.contactRecyclerview.setAdapter(mAdapter);
 
-        // Hacky thing to hide buttons when recyclerview is open.
-        // For some reason RecyclerView causes the buttons to be pushed above the keyboard when it's visible/
-        // So we have the window set to resize, and use window size change to detect keyboard open/close
-        // And hide/show the buttons based on that
-        mHandler = new Handler();
-        mRunnable = () -> {
-            binding.sendButton.setVisibility(View.VISIBLE);
-            binding.sendScanQr.setVisibility(View.VISIBLE);
-        };
-        view.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
-            int heightDiff = view.getRootView().getHeight() - view.getHeight();
-            if (heightDiff > UIUtil.convertDpToPixel(200, getContext())) {
-                binding.sendButton.setVisibility(View.GONE);
-                binding.sendScanQr.setVisibility(View.GONE);
-            } else {
-                mHandler.postDelayed(mRunnable, 100);
-                binding.sendContainer.requestFocus();
-            }
-        });
-
         return view;
     }
 
@@ -350,9 +327,6 @@ public class SendDialogFragment extends BaseDialogFragment {
         super.onDestroyView();
         // unregister from bus
         RxBus.get().unregister(this);
-        if (mHandler != null && mRunnable != null) {
-            mHandler.removeCallbacks(mRunnable);
-        }
     }
 
     @Subscribe
