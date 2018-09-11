@@ -8,10 +8,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/bg_transaction_item_normal"
-        android:paddingStart="20dp"
+        android:paddingBottom="@dimen/tx_card_padding"
         android:paddingEnd="20dp"
-        android:paddingTop="@dimen/tx_card_padding"
-        android:paddingBottom="@dimen/tx_card_padding">
+        android:paddingStart="20dp"
+        android:paddingTop="@dimen/tx_card_padding">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/transaction_type"
@@ -50,8 +50,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/example_card_lot"
-            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
-            app:layout_constraintStart_toEndOf="@+id/transaction_symbol"/>
+            app:layout_constraintStart_toEndOf="@+id/transaction_symbol"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text" />
 
         <TextView
             android:id="@+id/transaction_amount_suffix"
@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="BAN"
-            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
-            app:layout_constraintStart_toEndOf="@+id/transaction_amount"/>
+            app:layout_constraintStart_toEndOf="@+id/transaction_amount"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text" />
         <!--<TextView-->
         <!--android:id="@+id/transaction_date"-->
         <!--style="@style/TextStyleAddress"-->
@@ -76,10 +76,10 @@
         <TextView
             android:id="@+id/transaction_address"
             style="@style/TextStyleAddress"
-            android:textSize="@dimen/tx_address_text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/example_card_from"
+            android:textSize="@dimen/tx_address_text_size"
             app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />

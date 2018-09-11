@@ -80,16 +80,16 @@
             android:lineSpacingMultiplier="1.1"
             android:textColor="@color/white_90"
             android:textSize="48px"
+            app:layout_constraintBottom_toTopOf="@+id/card_label_one"
             app:layout_constraintStart_toStartOf="@+id/card_logo"
             app:layout_constraintTop_toBottomOf="@+id/card_logo"
-            app:layout_constraintBottom_toTopOf="@+id/card_label_one"
             tools:ignore="SpUsage"
             tools:text="ban_3ugkt5gexef4ffotr839bwfrfux6pp1g7k8cbtk8ocnq99yc3pfdn11cr1ft" />
 
         <TextView
             android:id="@+id/card_label_one"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="25px"
             android:fontFamily="@font/nunitosans_light"
             android:text="@string/receive_card_label_one"
@@ -101,8 +101,8 @@
 
         <TextView
             android:id="@+id/card_label_two"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="25px"
             android:fontFamily="@font/nunitosans_light"
             android:text="@string/receive_card_label_two"

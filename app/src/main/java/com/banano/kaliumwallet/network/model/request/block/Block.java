@@ -1,8 +1,7 @@
 package com.banano.kaliumwallet.network.model.request.block;
 
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.network.model.BlockTypes;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Base block

@@ -114,6 +114,20 @@
         <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
     </style>
 
+    <style name="OutlineButtonWhite">
+        <item name="android:background">@drawable/bg_outline_button_white</item>
+        <item name="android:textSize">@dimen/button_text_size</item>
+        <item name="android:textColor">@color/white_90</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+        <item name="android:paddingTop">@dimen/button_padding_top</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
+    </style>
+
     <style name="PrimaryButton">
         <item name="android:background">@drawable/bg_solid_button</item>
         <item name="android:textSize">@dimen/button_text_size</item>

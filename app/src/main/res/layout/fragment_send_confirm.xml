@@ -26,11 +26,11 @@
             android:id="@+id/send_confirm_close"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:padding="10dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:onClick="@{handlers::onClickClose}"
             android:background="@drawable/bg_image_button"
+            android:onClick="@{handlers::onClickClose}"
+            android:padding="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_close" />
@@ -39,8 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/send_confirm">
+            app:layout_constraintBottom_toTopOf="@+id/send_confirm"
+            app:layout_constraintTop_toTopOf="parent">
+
             <TextView
                 android:id="@+id/send_sending"
                 style="@style/TextStyleHeader"
@@ -50,16 +51,16 @@
 
             <TextView
                 android:id="@+id/send_amount"
-                android:fontFamily="@font/nunitosans_bold"
-                android:background="@drawable/bg_edittext"
-                android:textSize="@dimen/text_size_normal"
-                android:textColor="@color/yellow"
-                android:layout_height="wrap_content"
                 android:layout_width="@dimen/input_width"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/nunitosans_bold"
                 android:padding="10dp"
                 android:textAlignment="center"
+                android:textColor="@color/yellow"
+                android:textSize="@dimen/text_size_normal"
                 tools:text="1.23" />
 
             <TextView
@@ -73,32 +74,32 @@
             <TextView
                 android:id="@+id/send_destination"
                 style="@style/TextStyleAddressAlt"
-                android:textSize="@dimen/text_size_normal"
-                android:background="@drawable/bg_edittext"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
                 android:layout_width="@dimen/input_width"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:paddingTop="10dp"
+                android:background="@drawable/bg_edittext"
                 android:paddingBottom="10dp"
                 android:paddingLeft="35dp"
                 android:paddingRight="35dp"
+                android:paddingTop="10dp"
                 android:textAlignment="center"
+                android:textSize="@dimen/text_size_normal"
                 tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
         </LinearLayout>
 
         <Button
             android:id="@+id/send_confirm"
             style="@style/PrimaryButton"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
-            android:textAllCaps="true"
+            android:gravity="center_horizontal"
             android:onClick="@{handlers::onClickConfirm}"
-            android:text="@string/send_confirm"
+            android:text="@string/dialog_confirm"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toTopOf="@+id/send_cancel"
             app:layout_constraintEnd_toStartOf="@+id/send_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/send_guideline_vert"
@@ -107,15 +108,15 @@
         <Button
             android:id="@+id/send_cancel"
             style="@style/OutlineButton"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
-            android:textAllCaps="true"
-            android:text="@string/send_cancel"
+            android:gravity="center_horizontal"
             android:onClick="@{handlers::onClickClose}"
+            android:text="@string/dialog_cancel"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/send_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/send_guideline_vert"
@@ -135,11 +136,11 @@
             android:animateLayoutChanges="true"
             android:background="@drawable/bg_rounded_black_transparent"
             android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:elevation="5dp"
-            android:visibility="gone">
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animation_view"
@@ -147,9 +148,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:paddingTop="100dp"
-                app:lottie_rawRes="@raw/send_anim"
+                app:lottie_autoPlay="true"
                 app:lottie_loop="true"
-                app:lottie_autoPlay="true" />
+                app:lottie_rawRes="@raw/send_anim" />
 
         </RelativeLayout>
 

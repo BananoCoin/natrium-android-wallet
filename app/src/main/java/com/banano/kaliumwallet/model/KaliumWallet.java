@@ -3,20 +3,6 @@ package com.banano.kaliumwallet.model;
 import android.content.Context;
 
 import com.banano.kaliumwallet.KaliumUtil;
-import com.hwangjr.rxbus.annotation.Subscribe;
-
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import javax.inject.Inject;
-
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.bus.SendInvalidAmount;
 import com.banano.kaliumwallet.bus.WalletClear;
@@ -31,6 +17,20 @@ import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.util.ExceptionHandler;
 import com.banano.kaliumwallet.util.NumberUtil;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+import com.hwangjr.rxbus.annotation.Subscribe;
+
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import javax.inject.Inject;
+
 import io.realm.Realm;
 
 
@@ -38,33 +38,26 @@ import io.realm.Realm;
  * Banano wallet that holds transactions and current prices
  */
 public class KaliumWallet {
+    private static final int MAX_BANANO_DISPLAY_LENGTH = 10;
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
+    @Inject
+    Realm realm;
     private BigDecimal accountBalance;
     private BigDecimal localCurrencyPrice;
     private BigDecimal nanoPrice;
     private BigDecimal btcPrice;
-
     private String representativeAccount;
     private String representativeAddress;
     private String frontierBlock;
     private String openBlock;
-
     private Integer blockCount;
     private String uuid;
-
     private List<AccountHistoryResponseItem> accountHistory;
-
     // for sending
     private String sendBananoAmount;
     private String sendLocalCurrencyAmount;
     private String publicKey;
-
-    private static final int MAX_BANANO_DISPLAY_LENGTH = 10;
-
-    @Inject
-    SharedPreferencesUtil sharedPreferencesUtil;
-
-    @Inject
-    Realm realm;
 
     public KaliumWallet(Context context) {
         // init dependency injection
@@ -191,6 +184,37 @@ public class KaliumWallet {
     }
 
     /**
+     * Set Banano amount which will also set the local currency amount
+     *
+     * @param bananoAmount String Nano Amount from input
+     */
+    public void setSendBananoAmount(String bananoAmount) {
+        this.sendBananoAmount = sanitize(bananoAmount);
+        if (bananoAmount.length() > 0) {
+            if (this.sendBananoAmount.equals(".")) {
+                this.sendBananoAmount = "0.";
+            }
+            if (this.sendBananoAmount.equals("00")) {
+                this.sendBananoAmount = "0";
+            }
+
+            // keep decimal length at 10 total
+            String[] split = this.sendBananoAmount.split("\\.");
+            if (split.length > 1) {
+                String whole = split[0];
+                String decimal = split[1];
+                decimal = decimal.substring(0, Math.min(decimal.length(), MAX_BANANO_DISPLAY_LENGTH));
+                this.sendBananoAmount = whole + "." + decimal;
+            }
+
+            this.sendLocalCurrencyAmount = convertBananoToLocalCurrency(this.sendBananoAmount);
+        } else {
+            this.sendLocalCurrencyAmount = "";
+        }
+        validateSendAmount();
+    }
+
+    /**
      * Return the currency formatted local currency amount as a string
      *
      * @return Formatted Nano amount
@@ -221,38 +245,6 @@ public class KaliumWallet {
      */
     public String sanitizeNoCommas(String amount) {
         return amount.replaceAll("[^\\d.]", "");
-    }
-
-
-    /**
-     * Set Banano amount which will also set the local currency amount
-     *
-     * @param bananoAmount String Nano Amount from input
-     */
-    public void setSendBananoAmount(String bananoAmount) {
-        this.sendBananoAmount = sanitize(bananoAmount);
-        if (bananoAmount.length() > 0) {
-            if (this.sendBananoAmount.equals(".")) {
-                this.sendBananoAmount = "0.";
-            }
-            if (this.sendBananoAmount.equals("00")) {
-                this.sendBananoAmount = "0";
-            }
-
-            // keep decimal length at 10 total
-            String[] split = this.sendBananoAmount.split("\\.");
-            if (split.length > 1) {
-                String whole = split[0];
-                String decimal = split[1];
-                decimal = decimal.substring(0, Math.min(decimal.length(), MAX_BANANO_DISPLAY_LENGTH));
-                this.sendBananoAmount = whole + "." + decimal;
-            }
-
-            this.sendLocalCurrencyAmount = convertBananoToLocalCurrency(this.sendBananoAmount);
-        } else {
-            this.sendLocalCurrencyAmount = "";
-        }
-        validateSendAmount();
     }
 
     /**
@@ -315,7 +307,7 @@ public class KaliumWallet {
         BigDecimal amountBigDecimal;
         try {
             amountBigDecimal = new BigDecimal(sanitizeNoCommas(amount));
-        } catch(NumberFormatException e) {
+        } catch (NumberFormatException e) {
             return amount;
         }
 

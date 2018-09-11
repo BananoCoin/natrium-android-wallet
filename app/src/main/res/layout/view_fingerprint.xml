@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,17 +9,17 @@
         android:id="@+id/fingerprint_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:drawableStart="@drawable/ic_fingerprint_circle"
-        android:drawablePadding="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginRight="25dp"
         android:layout_marginEnd="25dp"
-        android:textSize="16sp"
-        android:textColor="@color/white_90"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_fingerprint_circle"
+        android:gravity="center_vertical"
         android:text="@string/fingerprint_text"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:textColor="@color/white_90"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

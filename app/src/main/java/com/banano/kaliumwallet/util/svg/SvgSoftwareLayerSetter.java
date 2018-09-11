@@ -3,12 +3,11 @@ package com.banano.kaliumwallet.util.svg;
 import android.graphics.drawable.PictureDrawable;
 import android.widget.ImageView;
 
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.ImageViewTarget;
 import com.bumptech.glide.request.target.Target;
-
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.GlideException;
 
 /**
  * Listener which updates the {@link ImageView} to be software rendered, because

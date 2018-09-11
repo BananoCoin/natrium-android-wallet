@@ -1,10 +1,9 @@
 package com.banano.kaliumwallet.network.model.response;
 
+import com.banano.kaliumwallet.network.model.BaseResponse;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
-import com.banano.kaliumwallet.network.model.BaseResponse;
 
 /**
  * Account history

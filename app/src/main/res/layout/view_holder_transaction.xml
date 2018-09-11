@@ -8,9 +8,6 @@
         <variable
             name="accountHistoryItem"
             type="com.banano.kaliumwallet.network.model.response.AccountHistoryResponseItem" />
-        <variable
-            name="handlers"
-            type="com.banano.kaliumwallet.ui.home.HomeFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -18,12 +15,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:background="@drawable/bg_transaction_item"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="@dimen/tx_card_padding"
         android:paddingBottom="@dimen/tx_card_padding"
-        android:tag="@{accountHistoryItem}"
-        android:onClick="@{handlers::onClickTransaction}">
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="@dimen/tx_card_padding"
+        android:tag="@{accountHistoryItem}">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/transaction_type"
@@ -62,9 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{accountHistoryItem.formattedAmount}"
-            tools:text="2323034.43"
+            app:layout_constraintStart_toEndOf="@+id/transaction_symbol"
             app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
-            app:layout_constraintStart_toEndOf="@+id/transaction_symbol"/>
+            tools:text="2323034.43" />
 
         <TextView
             android:id="@+id/transaction_amount_suffix"
@@ -73,30 +69,30 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="BAN"
-            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text"
-            app:layout_constraintStart_toEndOf="@+id/transaction_amount"/>
+            app:layout_constraintStart_toEndOf="@+id/transaction_amount"
+            app:layout_constraintTop_toBottomOf="@+id/transaction_type_text" />
         <!--<TextView-->
-            <!--android:id="@+id/transaction_date"-->
-            <!--style="@style/TextStyleAddress"-->
-            <!--android:layout_width="70dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="@{transaction.timestamp}"-->
-            <!--tools:text="1 min ago"-->
-            <!--app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"-->
-            <!--app:layout_constraintStart_toEndOf="@+id/home_transaction_guideline_vert"-->
-            <!--app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />-->
+        <!--android:id="@+id/transaction_date"-->
+        <!--style="@style/TextStyleAddress"-->
+        <!--android:layout_width="70dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@{transaction.timestamp}"-->
+        <!--tools:text="1 min ago"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/home_transaction_guideline_vert"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />-->
 
         <TextView
             android:id="@+id/transaction_address"
             style="@style/TextStyleAddress"
-            android:textSize="@dimen/tx_address_text_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{accountHistoryItem.addressShort}"
-            tools:text="3gntug … p7ijg"
+            android:text="@{accountHistoryItem.contactName != null ? accountHistoryItem.contactName : accountHistoryItem.addressShort}"
+            android:textSize="@dimen/tx_address_text_size"
             app:layout_constraintBottom_toTopOf="@+id/home_transaction_guideline_horiz"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz" />
+            app:layout_constraintTop_toTopOf="@+id/home_transaction_guideline_horiz"
+            tools:text="3gntug … p7ijg" />
 
         <android.support.constraint.Guideline
             android:id="@+id/home_transaction_guideline_vert"

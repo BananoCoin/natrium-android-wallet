@@ -29,13 +29,12 @@ import javax.inject.Inject;
 import io.realm.Realm;
 
 public class BackupSeedDialogFragment extends BaseDialogFragment {
-    private FragmentBackupSeedBinding binding;
     public static String TAG = BackupSeedDialogFragment.class.getSimpleName();
-    private Handler mHandler;
-    private Runnable mRunnable;
-
     @Inject
     Realm realm;
+    private FragmentBackupSeedBinding binding;
+    private Handler mHandler;
+    private Runnable mRunnable;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)

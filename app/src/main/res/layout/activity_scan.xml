@@ -10,8 +10,7 @@
     <FrameLayout
         android:id="@+id/scan_content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-    </FrameLayout>
+        android:layout_height="match_parent"></FrameLayout>
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/scan_toolbar"
@@ -27,8 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="@string/scan_send_instruction_label"
-        app:layout_constraintStart_toStartOf="@+id/scan_guideline_vert"
         app:layout_constraintEnd_toEndOf="@+id/scan_guideline_vert"
+        app:layout_constraintStart_toStartOf="@+id/scan_guideline_vert"
         app:layout_constraintTop_toBottomOf="@+id/scan_toolbar" />
 
     <android.support.constraint.Guideline

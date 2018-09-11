@@ -5,8 +5,8 @@ import java.util.Locale;
 /**
  * Class to define all of the available currency options
  * This is a custom currency implementation because:
- *  1. Older versions of Android do not have full currency functionality (like display name)
- *  2. We need to limit and customize some of the available currencies
+ * 1. Older versions of Android do not have full currency functionality (like display name)
+ * 2. We need to limit and customize some of the available currencies
  */
 
 public enum AvailableCurrency {

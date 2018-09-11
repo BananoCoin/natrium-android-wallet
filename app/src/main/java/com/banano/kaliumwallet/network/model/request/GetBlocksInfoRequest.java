@@ -1,9 +1,8 @@
 package com.banano.kaliumwallet.network.model.request;
 
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.network.model.Actions;
 import com.banano.kaliumwallet.network.model.BaseRequest;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Retrieve hash history
@@ -21,7 +20,7 @@ public class GetBlocksInfoRequest extends BaseRequest {
 
     public GetBlocksInfoRequest() {
         this.action = Actions.GET_BLOCKS_INFO.toString();
-        this.hashes = new String[] {""};
+        this.hashes = new String[]{""};
         this.balance = true;
     }
 

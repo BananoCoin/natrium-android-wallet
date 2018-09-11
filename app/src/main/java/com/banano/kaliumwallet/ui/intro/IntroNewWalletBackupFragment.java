@@ -7,11 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.CreatePin;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentIntroNewWalletSeedBackupBinding;
-
-import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
@@ -31,14 +30,15 @@ import io.realm.Realm;
  */
 
 public class IntroNewWalletBackupFragment extends BaseFragment {
-    FragmentIntroNewWalletSeedBackupBinding binding;
     public static String TAG = IntroNewWalletBackupFragment.class.getSimpleName();
-
+    FragmentIntroNewWalletSeedBackupBinding binding;
     @Inject
     Realm realm;
 
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
+
+    private boolean nextTriggered = false;
 
     /**
      * Create new instance of the fragment (handy pattern if any data needs to be passed to it)
@@ -55,6 +55,7 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        nextTriggered = false;
         // init dependency injection
         if (getActivity() instanceof ActivityWithComponent) {
             ((ActivityWithComponent) getActivity()).getActivityComponent().inject(this);
@@ -94,12 +95,12 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
 
     @Subscribe
     public void receiveCreatePin(CreatePin pinComplete) {
-        realm.beginTransaction();
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            credentials.setPin(pinComplete.getPin());
-        }
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Credentials credentials = realm.where(Credentials.class).findFirst();
+            if (credentials != null) {
+                credentials.setPin(pinComplete.getPin());
+            }
+        });
         goToHomeScreen();
     }
 
@@ -149,6 +150,11 @@ public class IntroNewWalletBackupFragment extends BaseFragment {
         }
 
         public void onClickYes(View v) {
+            if (!nextTriggered) {
+                nextTriggered = true;
+            } else {
+                return;
+            }
             Credentials credentials = realm.where(Credentials.class).findFirst();
             if (credentials != null) {
                 if (credentials.getPin() == null) {

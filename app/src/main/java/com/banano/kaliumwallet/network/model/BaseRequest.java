@@ -5,5 +5,5 @@ package com.banano.kaliumwallet.network.model;
  */
 
 public class BaseRequest {
-    
+
 }

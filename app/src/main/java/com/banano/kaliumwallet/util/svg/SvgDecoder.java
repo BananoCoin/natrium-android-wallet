@@ -1,5 +1,8 @@
 package com.banano.kaliumwallet.util.svg;
 
+import android.support.annotation.NonNull;
+
+import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.ResourceDecoder;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.resource.SimpleResource;
@@ -8,9 +11,6 @@ import com.caverock.androidsvg.SVGParseException;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-import android.support.annotation.NonNull;
-import com.bumptech.glide.load.Options;
 
 /**
  * Decodes an SVG internal representation from an {@link InputStream}.

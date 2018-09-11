@@ -2,6 +2,5 @@
 package com.banano.kaliumwallet.ui.home;
 
 import com.airbnb.epoxy.EpoxyDataBindingPattern;
-
 import com.banano.kaliumwallet.R;
 

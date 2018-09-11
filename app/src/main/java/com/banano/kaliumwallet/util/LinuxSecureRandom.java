@@ -14,13 +14,6 @@ import java.security.Security;
 public class LinuxSecureRandom extends SecureRandomSpi {
     private static final FileInputStream urandom;
 
-    private static class LinuxSecureRandomProvider extends Provider {
-        public LinuxSecureRandomProvider() {
-            super("LinuxSecureRandom", 1.0, "A Linux specific random number provider that uses /dev/urandom");
-            put("SecureRandom.LinuxSecureRandom", LinuxSecureRandom.class.getName());
-        }
-    }
-
     static {
         try {
             File file = new File("/dev/urandom");
@@ -71,5 +64,12 @@ public class LinuxSecureRandom extends SecureRandomSpi {
         byte[] bits = new byte[i];
         engineNextBytes(bits);
         return bits;
+    }
+
+    private static class LinuxSecureRandomProvider extends Provider {
+        public LinuxSecureRandomProvider() {
+            super("LinuxSecureRandom", 1.0, "A Linux specific random number provider that uses /dev/urandom");
+            put("SecureRandom.LinuxSecureRandom", LinuxSecureRandom.class.getName());
+        }
     }
 }

@@ -60,24 +60,20 @@ import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
  * Change Representative Dialog
  */
 public class ChangeRepDialogFragment extends BaseDialogFragment {
-    private FragmentChangeRepBinding binding;
     public static String TAG = ChangeRepDialogFragment.class.getSimpleName();
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
+    @Inject
+    Realm realm;
+    @Inject
+    AccountService accountService;
+    @Inject
+    KaliumWallet wallet;
+    private FragmentChangeRepBinding binding;
     private AlertDialog fingerprintDialog;
     private Fragment mTargetFragment;
     private Activity mActivity;
     private boolean changeRepTriggered = false;
-
-    @Inject
-    SharedPreferencesUtil sharedPreferencesUtil;
-
-    @Inject
-    Realm realm;
-
-    @Inject
-    AccountService accountService;
-
-    @Inject
-    KaliumWallet wallet;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -168,10 +164,12 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             boolean fromColorization = false;
 
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
-            public void afterTextChanged(Editable editable) {  }
+            public void afterTextChanged(Editable editable) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -185,18 +183,18 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
                             hideAddressError();
                             isColorized = true;
                             fromColorization = true;
-                            binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
                             binding.newRep.setSelection(address.getAddress().length());
                         }
                     }
                     return;
                 } else if (curText.length() > 0 && lastText.length() == 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
-                    binding.newRep.setPadding(binding.newRep.getPaddingLeft(), binding.newRep.getPaddingTop(), (int)UIUtil.convertDpToPixel(55, getContext()), binding.newRep.getPaddingBottom());
+                    binding.newRep.setPadding(binding.newRep.getPaddingLeft(), binding.newRep.getPaddingTop(), (int) UIUtil.convertDpToPixel(55, getContext()), binding.newRep.getPaddingBottom());
                     binding.newRep.setTypeface(tf);
                 } else if (curText.length() == 0 && lastText.length() > 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/nunitosans_extralight.ttf");
-                    binding.newRep.setPadding(binding.newRep.getPaddingLeft(), binding.newRep.getPaddingTop(), (int)UIUtil.convertDpToPixel(20, getContext()), binding.newRep.getPaddingBottom());
+                    binding.newRep.setPadding(binding.newRep.getPaddingLeft(), binding.newRep.getPaddingTop(), (int) UIUtil.convertDpToPixel(20, getContext()), binding.newRep.getPaddingBottom());
                     binding.newRep.setTypeface(tf);
                 }
                 if (!curText.equals(lastText)) {
@@ -206,7 +204,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
                         hideAddressError();
                         isColorized = true;
                         fromColorization = true;
-                        binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                        binding.newRep.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
                         binding.newRep.setSelection(address.getAddress().length());
                     } else {
                         if (isColorized) {
@@ -223,7 +221,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
 
         // Hide keyboard in new rep field when return is pushed
         binding.newRep.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.newRep.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        binding.newRep.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         // Remove hint when focused
         binding.newRep.setOnFocusChangeListener((View view, boolean isFocused) -> {
@@ -357,12 +355,12 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
 
     @Subscribe
     public void receiveCreatePin(CreatePin pinComplete) {
-        realm.beginTransaction();
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            credentials.setPin(pinComplete.getPin());
-        }
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Credentials credentials = realm.where(Credentials.class).findFirst();
+            if (credentials != null) {
+                credentials.setPin(pinComplete.getPin());
+            }
+        });
         executeChange(binding.newRep.getText().toString());
     }
 

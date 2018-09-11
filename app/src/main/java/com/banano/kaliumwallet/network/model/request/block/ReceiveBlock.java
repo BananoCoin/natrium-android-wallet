@@ -1,9 +1,8 @@
 package com.banano.kaliumwallet.network.model.request.block;
 
 import com.banano.kaliumwallet.KaliumUtil;
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.network.model.BlockTypes;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Subscribe to websocket server for updates regarding the specified account.

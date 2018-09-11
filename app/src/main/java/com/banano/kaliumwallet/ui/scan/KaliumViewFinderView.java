@@ -19,8 +19,6 @@ import me.dm7.barcodescanner.core.IViewFinder;
 
 public class KaliumViewFinderView extends View implements IViewFinder {
     private static final String TAG = "ViewFinderView";
-    private Rect mFramingRect;
-    private RectF mFramingRectF;
     private static final float PORTRAIT_WIDTH_RATIO = 0.75F;
     private static final float PORTRAIT_WIDTH_HEIGHT_RATIO = 0.75F;
     private static final float LANDSCAPE_HEIGHT_RATIO = 0.625F;
@@ -28,7 +26,6 @@ public class KaliumViewFinderView extends View implements IViewFinder {
     private static final int MIN_DIMENSION_DIFF = 50;
     private static final float SQUARE_DIMENSION_RATIO = 0.625F;
     private static final int[] SCANNER_ALPHA = new int[]{0, 64, 128, 192, 255, 192, 128, 64};
-    private int scannerAlpha;
     private static final int POINT_SIZE = 10;
     private static final long ANIMATION_DELAY = 80L;
     private final int mDefaultMaskColor;
@@ -40,6 +37,9 @@ public class KaliumViewFinderView extends View implements IViewFinder {
     protected Paint mBorderPaint;
     protected int mBorderLineLength;
     protected boolean mSquareViewFinder = true;
+    private Rect mFramingRect;
+    private RectF mFramingRectF;
+    private int scannerAlpha;
 
     public KaliumViewFinderView(Context context) {
         super(context);

@@ -1,10 +1,11 @@
 package com.banano.kaliumwallet.model;
 
+import com.banano.kaliumwallet.KaliumUtil;
+import com.banano.kaliumwallet.util.ExceptionHandler;
+
 import java.util.Arrays;
 import java.util.List;
 
-import com.banano.kaliumwallet.KaliumUtil;
-import com.banano.kaliumwallet.util.ExceptionHandler;
 import io.realm.RealmObject;
 
 /**
@@ -12,6 +13,7 @@ import io.realm.RealmObject;
  */
 
 public class Credentials extends RealmObject {
+    public static final List<Character> VALID_SEED_CHARACTERS = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
     private String seed;
     private String privateKey;
     private String uuid;
@@ -20,9 +22,21 @@ public class Credentials extends RealmObject {
     private String newlyGeneratedSeed;
     private Boolean hasSentToNewSeed;
 
-    public static final List<Character> VALID_SEED_CHARACTERS = Arrays.asList('a', 'b', 'c', 'd', 'e', 'f', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-
     public Credentials() {
+    }
+
+    public static boolean isValidSeed(String seed) {
+        if (seed.length() != 64) {
+            return false;
+        }
+        boolean isMatch = true;
+        for (int i = 0; i < seed.length() && isMatch; i++) {
+            char letter = seed.toLowerCase().charAt(i);
+            if (!VALID_SEED_CHARACTERS.contains(letter)) {
+                isMatch = false;
+            }
+        }
+        return isMatch;
     }
 
     public String getSeed() {
@@ -85,11 +99,11 @@ public class Credentials extends RealmObject {
         return hasSentToNewSeed == null ? false : hasSentToNewSeed;
     }
 
+    // Generated fields
+
     public void setHasSentToNewSeed(Boolean hasSentToNewSeed) {
         this.hasSentToNewSeed = hasSentToNewSeed;
     }
-
-    // Generated fields
 
     public String getPublicKey() {
         if (this.privateKey != null) {
@@ -117,20 +131,6 @@ public class Credentials extends RealmObject {
         }
     }
 
-    public static boolean isValidSeed(String seed) {
-        if (seed.length() != 64) {
-            return false;
-        }
-        boolean isMatch = true;
-        for (int i = 0; i < seed.length() && isMatch; i++) {
-            char letter = seed.toLowerCase().charAt(i);
-            if (!VALID_SEED_CHARACTERS.contains(letter)) {
-                isMatch = false;
-            }
-        }
-        return isMatch;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -143,7 +143,8 @@ public class Credentials extends RealmObject {
             return false;
         if (uuid != null ? !uuid.equals(that.uuid) : that.uuid != null) return false;
         if (pin != null ? !pin.equals(that.pin) : that.pin != null) return false;
-        if (seedIsSecure != null ? !seedIsSecure.equals(that.seedIsSecure) : that.seedIsSecure != null) return false;
+        if (seedIsSecure != null ? !seedIsSecure.equals(that.seedIsSecure) : that.seedIsSecure != null)
+            return false;
         return true;
     }
 

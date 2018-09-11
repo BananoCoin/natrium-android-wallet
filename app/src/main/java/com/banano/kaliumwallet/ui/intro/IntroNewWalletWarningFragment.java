@@ -7,11 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.CreatePin;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentIntroNewWalletWarningBinding;
-
-import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseFragment;
@@ -31,9 +30,8 @@ import io.realm.Realm;
  */
 
 public class IntroNewWalletWarningFragment extends BaseFragment {
-    FragmentIntroNewWalletWarningBinding binding;
     public static String TAG = IntroNewWalletWarningFragment.class.getSimpleName();
-
+    FragmentIntroNewWalletWarningBinding binding;
     @Inject
     Realm realm;
 
@@ -121,12 +119,12 @@ public class IntroNewWalletWarningFragment extends BaseFragment {
 
     @Subscribe
     public void receiveCreatePin(CreatePin pinComplete) {
-        realm.beginTransaction();
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            credentials.setPin(pinComplete.getPin());
-        }
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Credentials credentials = realm.where(Credentials.class).findFirst();
+            if (credentials != null) {
+                credentials.setPin(pinComplete.getPin());
+            }
+        });
         goToHomeScreen();
     }
 

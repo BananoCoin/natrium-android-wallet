@@ -22,14 +22,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
-import com.github.sumimakito.awesomeqr.AwesomeQRCode;
-
-import java.io.File;
-import java.io.FileOutputStream;
-
-import javax.inject.Inject;
-
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.broadcastreceiver.ClipboardAlarmReceiver;
 import com.banano.kaliumwallet.databinding.FragmentReceiveBinding;
@@ -37,7 +29,14 @@ import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
+import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
+import com.github.sumimakito.awesomeqr.AwesomeQRCode;
+
+import java.io.File;
+import java.io.FileOutputStream;
+
+import javax.inject.Inject;
 
 import io.realm.Realm;
 
@@ -45,18 +44,17 @@ import io.realm.Realm;
  * Receive main screen
  */
 public class ReceiveDialogFragment extends BaseDialogFragment {
-    private FragmentReceiveBinding binding;
-    public static String TAG = ReceiveDialogFragment.class.getSimpleName();
     private static final int QRCODE_SIZE = 240;
     private static final String TEMP_FILE_NAME = "bananoreceive.png";
+    public static String TAG = ReceiveDialogFragment.class.getSimpleName();
+    @Inject
+    Realm realm;
+    private FragmentReceiveBinding binding;
     private Address address;
     private String fileName;
     private Runnable mRunnable;
     private Handler mHandler;
     private boolean copyRunning = false;
-
-    @Inject
-    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -127,7 +125,8 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
             }
 
             @Override
-            public void onTap(View view) { }
+            public void onTap(View view) {
+            }
         }, SwipeDismissTouchListener.TOP_TO_BOTTOM));
 
         // colorize address text
@@ -143,14 +142,14 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
 
         // Tweak layout for shorter devices
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-        float ratio = ((float)metrics.heightPixels / (float)metrics.widthPixels);
+        float ratio = ((float) metrics.heightPixels / (float) metrics.widthPixels);
         if (ratio < 1.8) {
-            binding.receiveOuter.getLayoutParams().height = (int)UIUtil.convertDpToPixel(260, getContext());
-            binding.receiveOuter.getLayoutParams().width = (int)UIUtil.convertDpToPixel(260, getContext());
-            binding.receiveBarcode.getLayoutParams().height = (int)UIUtil.convertDpToPixel(125, getContext());
-            binding.receiveBarcode.getLayoutParams().width = (int)UIUtil.convertDpToPixel(125, getContext());
-            ViewGroup.MarginLayoutParams barcodeMargin = (ViewGroup.MarginLayoutParams)binding.receiveBarcode.getLayoutParams();
-            barcodeMargin.topMargin = (int)UIUtil.convertDpToPixel(33, getContext());
+            binding.receiveOuter.getLayoutParams().height = (int) UIUtil.convertDpToPixel(260, getContext());
+            binding.receiveOuter.getLayoutParams().width = (int) UIUtil.convertDpToPixel(260, getContext());
+            binding.receiveBarcode.getLayoutParams().height = (int) UIUtil.convertDpToPixel(125, getContext());
+            binding.receiveBarcode.getLayoutParams().width = (int) UIUtil.convertDpToPixel(125, getContext());
+            ViewGroup.MarginLayoutParams barcodeMargin = (ViewGroup.MarginLayoutParams) binding.receiveBarcode.getLayoutParams();
+            barcodeMargin.topMargin = (int) UIUtil.convertDpToPixel(33, getContext());
             binding.receiveBarcode.setLayoutParams(barcodeMargin);
         }
 
@@ -196,7 +195,7 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mHandler != null  && mRunnable != null) {
+        if (mHandler != null && mRunnable != null) {
             mHandler.removeCallbacks(mRunnable);
         }
     }

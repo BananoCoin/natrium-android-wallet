@@ -4,23 +4,15 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Layout;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.AlignmentSpan;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.Toast;
-
-import com.banano.kaliumwallet.bus.Logout;
-
-import javax.inject.Inject;
 
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.broadcastreceiver.ClipboardAlarmReceiver;
+import com.banano.kaliumwallet.bus.Logout;
 import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentIntroNewWalletBinding;
 import com.banano.kaliumwallet.model.Credentials;
@@ -30,6 +22,9 @@ import com.banano.kaliumwallet.ui.common.BaseFragment;
 import com.banano.kaliumwallet.ui.common.FragmentUtility;
 import com.banano.kaliumwallet.ui.common.WindowControl;
 import com.banano.kaliumwallet.util.ExceptionHandler;
+
+import javax.inject.Inject;
+
 import io.realm.Realm;
 
 /**
@@ -37,18 +32,16 @@ import io.realm.Realm;
  */
 
 public class IntroNewWalletFragment extends BaseFragment {
-    FragmentIntroNewWalletBinding binding;
     public static String TAG = IntroNewWalletFragment.class.getSimpleName();
+    FragmentIntroNewWalletBinding binding;
+    @Inject
+    Realm realm;
+    @Inject
+    AccountService accountService;
     private String seed;
     private Runnable mRunnable;
     private Handler mHandler;
     private boolean showAllSteps;
-
-    @Inject
-    Realm realm;
-
-    @Inject
-    AccountService accountService;
 
     /**
      * Create new instance of the fragment (handy pattern if any data needs to be passed to it)

@@ -2,15 +2,14 @@ package com.banano.kaliumwallet.util.svg;
 
 import android.graphics.Picture;
 import android.graphics.drawable.PictureDrawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
+import com.bumptech.glide.load.Options;
 import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.resource.SimpleResource;
 import com.bumptech.glide.load.resource.transcode.ResourceTranscoder;
 import com.caverock.androidsvg.SVG;
-
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.bumptech.glide.load.Options;
 
 /**
  * Convert the {@link SVG}'s internal representation to an Android-compatible one

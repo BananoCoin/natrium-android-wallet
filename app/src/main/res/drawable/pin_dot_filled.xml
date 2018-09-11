@@ -2,9 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/yellow"/>
+            <solid android:color="@color/yellow" />
             <!-- Set the same value for both width and height to get a circular shape -->
-            <size android:width="10dp" android:height="10dp"/>
+            <size
+                android:width="10dp"
+                android:height="10dp" />
         </shape>
     </item>
 </layer-list>

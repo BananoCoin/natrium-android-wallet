@@ -23,15 +23,11 @@ import com.banano.kaliumwallet.ui.common.KeyboardUtil;
  */
 public class WebViewDialogFragment extends BaseDialogFragment {
     public static final String TAG = WebViewDialogFragment.class.getSimpleName();
-
-    private String mUrl;
-    private String mTitle;
-
-    private FragmentWebviewBinding binding;
-
     private static final String ARG_URL = "argUrl";
     private static final String ARG_TITLE = "argTitle";
-
+    private String mUrl;
+    private String mTitle;
+    private FragmentWebviewBinding binding;
     private final WebChromeClient mWebChromeClient = new WebChromeClient() {
         public void onProgressChanged(WebView view, int progress) {
             if (progress < 100 && binding.dialogAppBarProgress.getVisibility() == ProgressBar.GONE) {
@@ -95,7 +91,8 @@ public class WebViewDialogFragment extends BaseDialogFragment {
             binding.dialogAppBarProgress.setIndeterminate(true);
         }
 
-        binding.webviewWebview.setWebViewClient(new WebViewClient() {});
+        binding.webviewWebview.setWebViewClient(new WebViewClient() {
+        });
         binding.webviewWebview.setWebChromeClient(mWebChromeClient);
         binding.webviewWebview.setInitialScale(1);
         binding.webviewWebview.getSettings().setDomStorageEnabled(true);

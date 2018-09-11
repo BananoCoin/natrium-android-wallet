@@ -1,11 +1,14 @@
 package com.banano.kaliumwallet;
 
 import android.support.test.runner.AndroidJUnit4;
+
 import com.banano.kaliumwallet.network.model.request.block.OpenBlock;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
 import timber.log.Timber;
 
 import static org.junit.Assert.assertEquals;
