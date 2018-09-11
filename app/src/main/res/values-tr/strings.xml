@@ -123,6 +123,38 @@
     <string name="send_fingerprint_description">%s Banano göndermek için parmak izi onayla</string>
     <string name="send_pin_description">%s Banano gönder?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Kişi Ekle</string>
+    <string name="contact_added">%s kişilere eklendi!</string>
+    <string name="contact_invalid_name">Geçersiz isim</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Kişi Ekle:</string>
+    <string name="contact_add_button">Kişi Ekle</string>
+    <string name="contact_name_hint">Bir İsim Girin @</string>
+    <string name="contact_name_missing">Bu kişiye bir isim verin</string>
+    <string name="contact_name_exists">Bu kişi zaten mevcut</string>
+    <string name="contact_address_hint">Bir Adres Girin</string>
+    <string name="contact_address_exists">Bu adrese sahip bir kişi zaten mevcut</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Kişiler</string>
+    <string name="contact_settings_item">Kişiler</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Kişiler:</string>
+    <string name="contact_remove_header">Sil:</string>
+    <string name="contact_remove_btn">Kişiyi Sil</string>
+    <string name="contact_remove_sure">%s? kişisini silmek istediğine emin misin?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s kişilerinden silindi!</string>
+    <string name="contact_export_none">Dışa aktarılabilecek bir kişi bulunamadı</string>
+    <string name="contact_export_error">Kişileri dışa aktarmada sorun oluştu</string>
+    <string name="contact_import_error">Kişileri içe aktarmada sorun oluştu</string>
+    <string name="contact_import_success">%d kişi içe aktarıldı</string>
+    <string name="contact_import_none">İçe aktarılacak bir kişi bulunamadı</string>
+    <string name="contact_import_warning_header">Uyarı</string>
+    <string name="contact_import_permission_error">Lütfen Kalium\'a cihaza yazma izni ver.</string>
+    <string name="contact_export_permission_error">Lütfen Kalium\'a cihazdan okuma izni ver.</string>
+    <string name="contact_export_success">Kişiler şuraya kaydedildi: %s</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Banano Adresi\'nin \n QR Kodu\'nu tarayın</string>
 </resources>

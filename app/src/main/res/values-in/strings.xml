@@ -120,6 +120,19 @@
     <string name="send_fingerprint_description">Konfirmasi sidik jari untuk mengirim %s Banano</string>
     <string name="send_pin_description">Kirim %s Banano?</string>
 
+    <string name="contact_remove_sure">Anda yakib akan menghapus %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s kontak berhasil dihapus!</string>
+    <string name="contact_export_none">Tidak ada kontak yg bisa di ekspor</string>
+    <string name="contact_export_error">Gagal mengekspor kontak</string>
+    <string name="contact_import_error">Gagal mengimpor kontak</string>
+    <string name="contact_import_success">Berhasil mengimpor %d kontak</string>
+    <string name="contact_import_none">Tidak menemukan untuk impor</string>
+    <string name="contact_import_warning_header">Perhatian</string>
+    <string name="contact_import_permission_error">Mohon Ijinkan Kalium untuk membaca data ponsel.</string>
+    <string name="contact_export_permission_error">Mohon Ijinkan Kalium untuk menulis data ponsel.</string>
+    <string name="contact_export_success">Kontak tersimpan pada %s</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Pindai QR code\n alamat Banano</string>
 </resources>

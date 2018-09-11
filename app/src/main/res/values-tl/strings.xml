@@ -122,6 +122,38 @@
     <string name="send_fingerprint_description">Kumpirmahin ang fingerprint para magpadala ng %s Banano</string>
     <string name="send_pin_description">Magpadala ng %s Banano?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Idagdag sa kontak</string>
+    <string name="contact_added">%s ay nadagdag sa mga kontak!</string>
+    <string name="contact_invalid_name">Hindi tugma sa kontak</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Idagdag sa kontak:</string>
+    <string name="contact_add_button">Idagdag sa kontak</string>
+    <string name="contact_name_hint">Ilagay ang pangalan @</string>
+    <string name="contact_name_missing">Pumili ng pangalan para sa kontak na ito</string>
+    <string name="contact_name_exists">Mayroon nang kapareho</string>
+    <string name="contact_address_hint">Ilagay ang address</string>
+    <string name="contact_address_exists">Ang ibang kontak ay mayroon nang ganitong address</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Mga kontak</string>
+    <string name="contact_settings_item">Mga kontak</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Kontak:</string>
+    <string name="contact_remove_header">Alisin:</string>
+    <string name="contact_remove_btn">Alisin ang kontak</string>
+    <string name="contact_remove_sure">Sigurado ka ba gusto mong tanggalin ang %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s ay natanggal sa mga kontak!</string>
+    <string name="contact_export_none">Walang kontak na ma-export</string>
+    <string name="contact_export_error">Hindi ma-export ang mga kontak</string>
+    <string name="contact_import_error">Hindi ma-import ang mga kontak</string>
+    <string name="contact_import_success">Na-import na ang %d kontak</string>
+    <string name="contact_import_none">Walang kontak na ma-import</string>
+    <string name="contact_import_warning_header">Babala</string>
+    <string name="contact_import_permission_error">Mangyaring payagan ang Kalium para bumasa galing sa device storage.</string>
+    <string name="contact_export_permission_error">Mangyaring payagan ang Kalium para magsulat sa device storage.</string>
+    <string name="contact_export_success">Ang mga kontak ay nai-save sa %s</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">I-scan ang Banano \naddress QR code</string>
 </resources>

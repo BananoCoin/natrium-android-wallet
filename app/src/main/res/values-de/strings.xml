@@ -120,6 +120,26 @@
     <string name="send_fingerprint_description">Scanne Fingerabdruck, um %s Bananos zu senden</string>
     <string name="send_pin_description">%s Bananos senden?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Neuer Kontakt</string>
+    <string name="contact_added">%s zu Kontakten hinzugefügt!</string>
+    <string name="contact_invalid_name">Ungültiger Kontaktname</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Neuer Kontakt:</string>
+    <string name="contact_add_button">Neuer Kontakt</string>
+    <string name="contact_name_hint">Namen eingeben @</string>
+    <string name="contact_name_missing">Wähle einen Namen für den Kontakt</string>
+    <string name="contact_name_exists">Kontakt bereits vorhanden</string>
+    <string name="contact_address_hint">Adresse eingeben</string>
+    <string name="contact_address_exists">Ein Kontakt mit dieser Adresse existiert bereits</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Kontakte</string>
+    <string name="contact_settings_item">Adressbuch</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Kontakt:</string>
+    <string name="contact_remove_header">Löschen:</string>
+    <string name="contact_remove_btn">Kontakt löschen</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scanne einen\nBanano-Address-QR-Code</string>
 </resources>

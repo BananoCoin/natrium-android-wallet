@@ -120,6 +120,19 @@
     <string name="send_fingerprint_description">Bekräfta fingeravtryck för att skicka %s Banano</string>
     <string name="send_pin_description">Skicka %s Banano?</string>
 
+    <string name="contact_remove_sure">Är du säker på att du vill radera %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s har raderats från dina kontakter!</string>
+    <string name="contact_export_none">Det finns inga kontakter att exportera</string>
+    <string name="contact_export_error">Gick ej att exportera kontakter</string>
+    <string name="contact_import_error">Gick ej att importera kontakter</string>
+    <string name="contact_import_success">Lyckad import av %d kontakter</string>
+    <string name="contact_import_none">Hittade inga kontakter att importera</string>
+    <string name="contact_import_warning_header">Varning</string>
+    <string name="contact_import_permission_error">Vänligen ge Kalium tillåtelse till att läsa från enheten.</string>
+    <string name="contact_export_permission_error">Vänligen ge Kalium tillåtelse till att skriva på enheten.</string>
+    <string name="contact_export_success">Kontakter sparade till %s</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Skanna en Banano\nadress QR-kod</string>
 </resources>

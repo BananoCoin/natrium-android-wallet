@@ -122,6 +122,38 @@
     <string name="send_fingerprint_description">Confirme su huella dactilar para enviar %s Banano.</string>
     <string name="send_pin_description">¿Enviar %s Banano?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Añadir Contacto</string>
+    <string name="contact_added">%s ha sido añadido</string>
+    <string name="contact_invalid_name">Nombre no válido</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Añadir Contacto:</string>
+    <string name="contact_add_button">Añadir Contacto</string>
+    <string name="contact_name_hint">Nombre @</string>
+    <string name="contact_name_missing">Elija un nombre para este Contacto</string>
+    <string name="contact_name_exists">El Contacto ya existe</string>
+    <string name="contact_address_hint">Billetera</string>
+    <string name="contact_address_exists">Un Contacto ya tiene esa billetera</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Contactos</string>
+    <string name="contact_settings_item">Contactos</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Contacto:</string>
+    <string name="contact_remove_header">Eliminar:</string>
+    <string name="contact_remove_btn">Eliminar Contacto</string>
+    <string name="contact_remove_sure">¿Está seguro de querer eliminar a %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s ha sido eliminado de Contactos.</string>
+    <string name="contact_export_none">No hay Contactos para exportar.</string>
+    <string name="contact_export_error">Error al exportar Contactos</string>
+    <string name="contact_import_error">Error al importar Contactos</string>
+    <string name="contact_import_success">Contactos %d importados con éxito</string>
+    <string name="contact_import_none">No hay Contactos para importar</string>
+    <string name="contact_import_warning_header">Cuidado</string>
+    <string name="contact_import_permission_error">Por favor, conceda permisos a Kalium para leer el almacenamiento del dispositivo.</string>
+    <string name="contact_export_permission_error">Por favor, conceda permisos a Kalium para escribir en el almacenamiento del dispositivo.</string>
+    <string name="contact_export_success">Contactos guardados en %s</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Escanear un código QR\naddress de una billetera de Banano.</string>
 </resources>
