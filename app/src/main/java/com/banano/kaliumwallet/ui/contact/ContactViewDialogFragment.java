@@ -10,6 +10,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -186,9 +189,16 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
         public void onClickRemove(View v) {
             int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), style);
-            builder.setTitle(getString(R.string.contact_remove_btn))
+            SpannableString title = new SpannableString(getString(R.string.contact_remove_btn));
+            title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, title.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            SpannableString positive = new SpannableString(getString(R.string.intro_new_wallet_backup_yes));
+            positive.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, positive.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            SpannableString negative = new SpannableString(getString(R.string.intro_new_wallet_backup_no));
+            negative.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negative.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            builder.setTitle(title)
                     .setMessage(getString(R.string.contact_remove_sure, binding.contactName.getText().toString()))
-                    .setPositiveButton(R.string.intro_new_wallet_backup_yes, (dialog, which) -> {
+                    .setPositiveButton(positive, (dialog, which) -> {
                         realm.executeTransaction(realm -> {
                             RealmResults<Contact> contact = realm.where(Contact.class).equalTo("name", binding.contactName.getText().toString()).findAll();
                             contact.deleteAllFromRealm();
@@ -196,7 +206,7 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
                         RxBus.get().post(new ContactRemoved(binding.contactName.getText().toString(), binding.contactAddress.getText().toString()));
                         dismiss();
                     })
-                    .setNegativeButton(R.string.intro_new_wallet_backup_no, (dialog, which) -> {
+                    .setNegativeButton(negative, (dialog, which) -> {
                         // do nothing which dismisses the dialog
                     })
                     .show();
