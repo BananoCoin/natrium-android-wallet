@@ -139,6 +139,18 @@
     <string name="contact_view_header">Kontakt:</string>
     <string name="contact_remove_header">Löschen:</string>
     <string name="contact_remove_btn">Kontakt löschen</string>
+    <string name="contact_remove_sure">Willst du %s wirklich löschen?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s wurde aus den Kontakten gelöscht!</string>
+    <string name="contact_export_none">Keine Kontakte zum Exportieren gefunden</string>
+    <string name="contact_export_error">Export fehlgeschlagen</string>
+    <string name="contact_import_error">Import fehlgeschlagen</string>
+    <string name="contact_import_success">%d Kontakte wurden importiert</string>
+    <string name="contact_import_none">Keine Kontakte zum Importieren gefunden</string>
+    <string name="contact_import_warning_header">Warnung</string>
+    <string name="contact_import_permission_error">Bitte erteile Kalium Lesezugriff.</string>
+    <string name="contact_export_permission_error">Bitte erteile Kalium Schreibzugriff.</string>
+    <string name="contact_export_success">Kontakte gespeichert in %s</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scanne einen\nBanano-Address-QR-Code</string>
