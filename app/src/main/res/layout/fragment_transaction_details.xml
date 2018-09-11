@@ -15,17 +15,16 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="@{handlers::onClickClose}"
-        >
+        android:onClick="@{handlers::onClickClose}">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:background="@drawable/bg_modal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tran_details_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/tran_details_guideline_vert"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintStart_toStartOf="@+id/tran_details_guideline_vert">
 
             <RelativeLayout
                 android:id="@+id/copy_btn_container"
@@ -34,45 +33,56 @@
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginStart="45dp"
-                android:layout_marginTop="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/receive_guideline_vert"
-                app:layout_constraintStart_toStartOf="@+id/receive_guideline_vert">
+                android:layout_marginTop="30dp">
 
                 <Button
                     android:id="@+id/tran_details_copy"
                     style="@style/PrimaryButton"
-                    android:background="@drawable/bg_solid_button_normal"
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_solid_button_normal"
+                    android:gravity="center_horizontal"
                     android:text="@string/receive_copy_cta"
                     tools:ignore="UnusedAttribute" />
-
 
                 <Button
                     android:id="@+id/tran_details_copy_overlay"
                     style="@style/PrimaryButton"
-                    android:background="@drawable/bg_transparent_button"
-                    android:gravity="center_horizontal"
-                    android:textColor="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_transparent_button"
+                    android:gravity="center_horizontal"
                     android:onClick="@{handlers::onClickCopy}"
                     android:text="N/A"
+                    android:textColor="@android:color/transparent"
                     tools:ignore="UnusedAttribute" />
+
+                <android.support.v7.widget.AppCompatImageButton
+                    android:id="@+id/add_contact_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:background="@android:color/transparent"
+                    android:elevation="5dp"
+                    android:onClick="@{handlers::onClickAddContact}"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    app:srcCompat="@drawable/ic_contact_add" />
 
             </RelativeLayout>
 
             <Button
                 android:id="@+id/tran_details_view"
                 style="@style/OutlineButton"
-                android:gravity="center_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:layout_marginEnd="45dp"
                 android:layout_marginStart="45dp"
+                android:gravity="center_horizontal"
                 android:onClick="@{handlers::onClickDetails}"
                 android:text="@string/transaction_details"
                 tools:ignore="UnusedAttribute" />

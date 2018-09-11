@@ -1,11 +1,10 @@
 package com.banano.kaliumwallet.network.model.request.block;
 
 import com.banano.kaliumwallet.KaliumUtil;
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.network.model.BlockTypes;
 import com.banano.kaliumwallet.util.NumberUtil;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Send BlockItem

@@ -45,27 +45,27 @@
         <Button
             android:id="@+id/intro_welcome_button_new_wallet"
             style="@style/PrimaryButton"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:text="@string/intro_welcome_new_wallet"
-            android:paddingStart="20dp"
+            android:gravity="center"
             android:onClick="@{handlers::onClickNewWallet}"
+            android:paddingStart="20dp"
+            android:text="@string/intro_welcome_new_wallet"
             app:layout_constraintBottom_toTopOf="@+id/intro_welcome_button_have_wallet"
             app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert"/>
+            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert" />
 
         <Button
             android:id="@+id/intro_welcome_button_have_wallet"
             style="@style/OutlineButton"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/intro_welcome_have_wallet"
-            android:onClick="@{handlers::onClickHaveWallet}"
             android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:onClick="@{handlers::onClickHaveWallet}"
             android:paddingStart="20dp"
+            android:text="@string/intro_welcome_have_wallet"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert" />

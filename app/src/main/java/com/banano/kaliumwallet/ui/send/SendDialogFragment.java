@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.InputType;
@@ -21,11 +22,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Toast;
 
 import com.banano.kaliumwallet.R;
+import com.banano.kaliumwallet.bus.ContactSelected;
+import com.banano.kaliumwallet.bus.RxBus;
 import com.banano.kaliumwallet.databinding.FragmentSendBinding;
 import com.banano.kaliumwallet.model.Address;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -35,16 +38,21 @@ import com.banano.kaliumwallet.ui.common.DigitsInputFilter;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
 import com.banano.kaliumwallet.ui.common.WindowControl;
+import com.banano.kaliumwallet.ui.contact.ContactSelectionAdapter;
 import com.banano.kaliumwallet.ui.scan.ScanActivity;
 import com.banano.kaliumwallet.util.NumberUtil;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.math.BigInteger;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
 
+import io.realm.Case;
 import io.realm.Realm;
+import io.realm.RealmQuery;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
@@ -53,30 +61,28 @@ import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
  * Send main screen
  */
 public class SendDialogFragment extends BaseDialogFragment {
-    private FragmentSendBinding binding;
     public static String TAG = SendDialogFragment.class.getSimpleName();
-    private Address address;
-    private Activity mActivity;
-
     @Inject
     KaliumWallet wallet;
-
     @Inject
     AccountService accountService;
-
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
-
     @Inject
     Realm realm;
+    private FragmentSendBinding binding;
+    private Address address;
+    private Activity mActivity;
+    private ContactSelectionAdapter mAdapter;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
      *
      * @return SendDialogFragment instance
      */
-    public static SendDialogFragment newInstance() {
+    public static SendDialogFragment newInstance(String contactName) {
         Bundle args = new Bundle();
+        args.putString("contact_name", contactName);
         SendDialogFragment fragment = new SendDialogFragment();
         fragment.setArguments(args);
         return fragment;
@@ -109,6 +115,9 @@ public class SendDialogFragment extends BaseDialogFragment {
         view = binding.getRoot();
         binding.setHandlers(new ClickHandlers());
 
+        // subscribe to bus
+        RxBus.get().register(this);
+
         // Set balance hint
         binding.sendBalance.setText(getString(R.string.send_balance, wallet.getAccountBalanceBanano()));
 
@@ -116,6 +125,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         Window window = getDialog().getWindow();
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, UIUtil.getDialogHeight(false, getContext()));
         window.setGravity(Gravity.BOTTOM);
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
         // Shadow
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -156,18 +166,41 @@ public class SendDialogFragment extends BaseDialogFragment {
         // Set color on destination  when valid
         binding.sendAddress.addTextChangedListener(new TextWatcher() {
             String lastText = "";
+            boolean toContact = false;
             boolean isColorized = false;
             boolean fromColorization = false;
 
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) { }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
             @Override
-            public void afterTextChanged(Editable editable) {  }
+            public void afterTextChanged(Editable editable) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = binding.sendAddress.getText().toString().trim();
+                if (curText.startsWith("@")) {
+                    if (toContact) {
+                        toContact = false;
+                        updateContactSearch();
+                        binding.sendAddress.clearFocus();
+                        return;
+                    }
+                    binding.contactRecyclerview.setVisibility(View.VISIBLE);
+                    binding.sendAddress.setGravity(Gravity.START);
+                    binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext_bottom_round));
+                    updateContactSearch();
+                    return;
+                } else {
+                    if (!fromColorization) {
+                        binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
+                    }
+                    binding.contactRecyclerview.setVisibility(View.GONE);
+                    binding.sendAddress.setGravity(Gravity.CENTER);
+                    binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
+                }
                 if (curText.equals(lastText)) {
                     if (fromColorization) {
                         fromColorization = false;
@@ -177,18 +210,18 @@ public class SendDialogFragment extends BaseDialogFragment {
                             hideAddressError();
                             isColorized = true;
                             fromColorization = true;
-                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
+                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
                             binding.sendAddress.setSelection(address.getAddress().length());
                         }
                     }
                     return;
                 } else if (curText.length() > 0 && lastText.length() == 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/overpass_mono_light.ttf");
-                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(55, getContext()), binding.sendAddress.getPaddingBottom());
+                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int) UIUtil.convertDpToPixel(55, getContext()), binding.sendAddress.getPaddingBottom());
                     binding.sendAddress.setTypeface(tf);
                 } else if (curText.length() == 0 && lastText.length() > 0) {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/nunitosans_extralight.ttf");
-                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int)UIUtil.convertDpToPixel(20, getContext()), binding.sendAddress.getPaddingBottom());
+                    binding.sendAddress.setPadding(binding.sendAddress.getPaddingLeft(), binding.sendAddress.getPaddingTop(), (int) UIUtil.convertDpToPixel(20, getContext()), binding.sendAddress.getPaddingBottom());
                     binding.sendAddress.setTypeface(tf);
                 }
                 if (!curText.equals(lastText)) {
@@ -196,10 +229,17 @@ public class SendDialogFragment extends BaseDialogFragment {
                     Address address = new Address(curText);
                     if (address.isValidAddress()) {
                         hideAddressError();
-                        isColorized = true;
-                        fromColorization = true;
-                        binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(),  getContext()));
-                        binding.sendAddress.setSelection(address.getAddress().length());
+                        Contact c = realm.where(Contact.class).equalTo("address", address.getAddress()).findFirst();
+                        if (c != null) {
+                            lastText = c.getName();
+                            toContact = true;
+                            binding.sendAddress.setText(c.getName());
+                        } else {
+                            isColorized = true;
+                            fromColorization = true;
+                            binding.sendAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address.getAddress(), getContext()));
+                            binding.sendAddress.setSelection(address.getAddress().length());
+                        }
                     } else {
                         if (isColorized) {
                             fromColorization = false;
@@ -242,7 +282,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         // Hide keyboard in amount field when return is pushed
         binding.sendAddress.setImeOptions(EditorInfo.IME_ACTION_DONE);
-        binding.sendAddress.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        binding.sendAddress.setRawInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         // Remove hint when focused
         binding.sendAmount.setOnFocusChangeListener((View view, boolean isFocused) -> {
@@ -255,12 +295,81 @@ public class SendDialogFragment extends BaseDialogFragment {
         binding.sendAddress.setOnFocusChangeListener((View view, boolean isFocused) -> {
             if (isFocused) {
                 binding.sendAddress.setHint("");
+                if (binding.sendAddress.getText().toString().startsWith("@")) {
+                    binding.sendAddress.setGravity(Gravity.START);
+                }
             } else {
+                binding.sendAddress.setGravity(Gravity.CENTER);
+                binding.contactRecyclerview.setVisibility(View.GONE);
+                binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
                 binding.sendAddress.setHint(R.string.send_address_hint);
+                if (binding.sendAddress.getText().toString().startsWith("@")) {
+                    RealmQuery realmQuery = realm.where(Contact.class);
+                    realmQuery.equalTo("name", binding.sendAddress.getText().toString());
+                    if (realmQuery.count() == 0) {
+                        binding.sendAddress.setText("");
+                    }
+                }
             }
         });
 
+        // Prepare contacts info
+        List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
+        binding.contactRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        mAdapter = new ContactSelectionAdapter(contacts);
+        binding.contactRecyclerview.setItemAnimator(null);
+        binding.contactRecyclerview.setAdapter(mAdapter);
+
+        // Prefill address if applicable
+        String contactName = getArguments().getString("contact_name", null);
+        if (contactName != null) {
+            binding.sendAddress.requestFocus();
+            binding.sendAddress.setText(contactName);
+            binding.sendAddress.clearFocus();
+        }
+
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // unregister from bus
+        RxBus.get().unregister(this);
+    }
+
+    @Subscribe
+    public void receiveContactSelected(ContactSelected contactSelected) {
+        binding.sendAddress.setText(contactSelected.getName());
+        hideKeyboard(binding.sendAddress);
+        binding.sendContainer.requestFocus();
+    }
+
+    private void updateContactSearch() {
+        String searchTerm = binding.sendAddress.getText().toString();
+        if (!searchTerm.startsWith("@")) {
+            return;
+        }
+        searchTerm = searchTerm.substring(1, searchTerm.length());
+        List<Contact> contacts = realm.where(Contact.class).contains("name", searchTerm, Case.INSENSITIVE).findAll().sort("name");
+        mAdapter.updateList(contacts);
+        // Colorize name if a valid contact
+        if (contacts.size() > 0) {
+            String name = binding.sendAddress.getText().toString().trim();
+            boolean foundMatch = false;
+            for (Contact c : contacts) {
+                if (c.getName().equals(name)) {
+                    binding.sendAddress.setTextColor(getResources().getColor(R.color.yellow));
+                    foundMatch = true;
+                    break;
+                }
+            }
+            if (!foundMatch) {
+                binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
+            }
+        } else {
+            binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
+        }
     }
 
     private void showAddressError(int str_id) {
@@ -273,12 +382,22 @@ public class SendDialogFragment extends BaseDialogFragment {
     }
 
     private boolean validateAddress() {
+        String address = binding.sendAddress.getText().toString().trim();
+        if (address.startsWith("@")) {
+            Contact c = realm.where(Contact.class).equalTo("name", address).findFirst();
+            if (c != null) {
+                address = c.getAddress();
+            } else {
+                showAddressError(R.string.contact_invalid_name);
+                return false;
+            }
+        }
         // check for valid address
-        if (binding.sendAddress.getText().toString().trim().isEmpty()) {
+        if (address.isEmpty()) {
             showAddressError(R.string.send_enter_address);
             return false;
         }
-        Address destination = new Address(binding.sendAddress.getText().toString());
+        Address destination = new Address(address);
         if (!destination.isValidAddress()) {
             showAddressError(R.string.send_invalid_address);
             return false;
@@ -356,10 +475,7 @@ public class SendDialogFragment extends BaseDialogFragment {
                 showSendCompleteDialog();
                 dismiss();
             } else if (resultCode == SEND_FAILED) {
-                Toast.makeText(getContext(),
-                        getString(R.string.send_generic_error),
-                        Toast.LENGTH_SHORT)
-                        .show();
+                UIUtil.showToast(getString(R.string.send_generic_error), getContext());
             } else if (resultCode == SEND_FAILED_AMOUNT) {
                 wallet.setSendBananoAmount(wallet.getUsableAccountBalanceBanano().toString());
                 binding.setWallet(wallet);
@@ -385,6 +501,13 @@ public class SendDialogFragment extends BaseDialogFragment {
                 }
             }
         }
+    }
+
+    /**
+     * Execute all pending transactions
+     */
+    private void executePendingTransactions() {
+        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
     }
 
     public class ClickHandlers {
@@ -417,12 +540,5 @@ public class SendDialogFragment extends BaseDialogFragment {
                 binding.sendAddress.setText(address.getAddress());
             }
         }
-    }
-
-    /**
-     * Execute all pending transactions
-     */
-    private void executePendingTransactions() {
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
     }
 }

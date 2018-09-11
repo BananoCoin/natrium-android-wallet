@@ -1,8 +1,8 @@
 package com.banano.kaliumwallet.network.model;
 
-import java.util.Calendar;
-
 import com.banano.kaliumwallet.network.AccountService;
+
+import java.util.Calendar;
 
 /**
  * Request object for queue

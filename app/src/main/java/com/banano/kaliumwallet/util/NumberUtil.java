@@ -47,7 +47,7 @@ public class NumberUtil {
         try {
             BigDecimal raw = new BigDecimal(amount);
             return raw.multiply(new BigDecimal(banDivider.toString())).toBigInteger();
-        } catch(Exception e) {
+        } catch (Exception e) {
             ExceptionHandler.handle(e);
         }
         return new BigInteger("0");
@@ -77,6 +77,6 @@ public class NumberUtil {
     }
 
     public static String getRawFromHex(String hex) {
-        return new BigInteger(hex,16).toString(10);
+        return new BigInteger(hex, 16).toString(10);
     }
 }

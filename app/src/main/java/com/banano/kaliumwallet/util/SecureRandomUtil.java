@@ -5,6 +5,7 @@ import java.security.SecureRandom;
 public final class SecureRandomUtil {
 
     private static final SecureRandom SECURE_RANDOM;
+    private static int isAndroid = -1;
 
     static {
         if (isAndroidRuntime()) {
@@ -13,11 +14,12 @@ public final class SecureRandomUtil {
         SECURE_RANDOM = new SecureRandom();
     }
 
+    private SecureRandomUtil() {
+    }
+
     public static SecureRandom secureRandom() {
         return SECURE_RANDOM;
     }
-
-    private static int isAndroid = -1;
 
     static boolean isAndroidRuntime() {
         if (isAndroid == -1) {
@@ -25,9 +27,6 @@ public final class SecureRandomUtil {
             isAndroid = (runtime != null && runtime.equals("Android Runtime")) ? 1 : 0;
         }
         return isAndroid == 1;
-    }
-
-    private SecureRandomUtil() {
     }
 
 }

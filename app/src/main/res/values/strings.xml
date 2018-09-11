@@ -3,8 +3,13 @@
 
     <string name="version_display" translatable="false">Kalium v%1$s</string>
 
+    <!-- Generic -->
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_close">Close</string>
+    <string name="dialog_confirm">Confirm</string>
+
     <!-- API -->
-    <string name="monkey_api_url" translatable="false">http://bananomonkeys.herokuapp.com/image?address=%s</string>
+    <string name="monkey_api_url" translatable="false">https://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Welcome to Kalium. To proceed, you may create a new wallet or import an existing one.</string>
     <string name="intro_welcome_new_wallet">New Wallet</string>
@@ -116,9 +121,6 @@
     <string name="send_sending">Sending</string>
     <string name="send_to">To:</string>
     <string name="sent_to">Sent To:</string>
-    <string name="send_confirm">Confirm</string>
-    <string name="send_cancel">Cancel</string>
-    <string name="send_close">Close</string>
     <string name="send_alert_dialog_ok">OK</string>
     <string name="send_alert_dialog_title">Invalid Input</string>
     <string name="send_invalid_address">Address entered was invalid</string>
@@ -130,6 +132,38 @@
     <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>
     <string name="send_fingerprint_description">Confirm fingerprint to send %s Banano</string>
     <string name="send_pin_description">Send %s Banano?</string>
+
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Add Contact</string>
+    <string name="contact_added">%s has been added to contacts!</string>
+    <string name="contact_invalid_name">Invalid Contact Name</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Add Contact:</string>
+    <string name="contact_add_button">Add Contact</string>
+    <string name="contact_name_hint">Enter a Name @</string>
+    <string name="contact_name_missing">Choose a Name for this Contact</string>
+    <string name="contact_name_exists">Contact Already Exists</string>
+    <string name="contact_address_hint">Enter an Address</string>
+    <string name="contact_address_exists">A Contact Already has that Address</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Contacts</string>
+    <string name="contact_settings_item">Contacts</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Contact:</string>
+    <string name="contact_remove_header">Remove:</string>
+    <string name="contact_remove_btn">Remove Contact</string>
+    <string name="contact_remove_sure">Are you sure you want to delete %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s has been removed from contacts!</string>
+    <string name="contact_export_none">There are no contacts to export</string>
+    <string name="contact_export_error">Failed to export contacts</string>
+    <string name="contact_import_error">Failed to import contacts</string>
+    <string name="contact_import_success">Successfully imported %d contacts</string>
+    <string name="contact_import_none">Found no contacts to import</string>
+    <string name="contact_import_warning_header">Warning</string>
+    <string name="contact_import_permission_error">Please allow Kalium permission to read from device storage.</string>
+    <string name="contact_export_permission_error">Please allow Kalium permission to write to device storage.</string>
+    <string name="contact_export_success">Contacts saved to %s</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan a Banano \naddress QR code</string>

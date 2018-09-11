@@ -9,9 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.andrognito.pinlockview.PinLockListener;
-
-import javax.inject.Inject;
-
 import com.banano.kaliumwallet.R;
 import com.banano.kaliumwallet.bus.PinChange;
 import com.banano.kaliumwallet.bus.PinComplete;
@@ -20,6 +17,9 @@ import com.banano.kaliumwallet.databinding.FragmentPinBinding;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
+
+import javax.inject.Inject;
+
 import io.realm.Realm;
 import timber.log.Timber;
 
@@ -27,17 +27,16 @@ import timber.log.Timber;
  * Settings main screen
  */
 public class PinDialogFragment extends BaseDialogFragment {
-    private FragmentPinBinding binding;
-    public static String TAG = PinDialogFragment.class.getSimpleName();
     private static final int PIN_LENGTH = 4;
     private static final String SUBTITLE_KEY = "PinDialogSubtitleKey";
-
+    public static String TAG = PinDialogFragment.class.getSimpleName();
+    @Inject
+    Realm realm;
+    private FragmentPinBinding binding;
     private String subtitle;
-
-
     private PinLockListener pinLockListener = new PinLockListener() {
         @Override
-            public void onComplete(String pin) {
+        public void onComplete(String pin) {
             Timber.d("Pin complete: %s", pin);
 
             Credentials credentials = realm.where(Credentials.class).findFirst();
@@ -62,9 +61,6 @@ public class PinDialogFragment extends BaseDialogFragment {
             RxBus.get().post(new PinChange(pinLength, intermediatePin));
         }
     };
-
-    @Inject
-    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)

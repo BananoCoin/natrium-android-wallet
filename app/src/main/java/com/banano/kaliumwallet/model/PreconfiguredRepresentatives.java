@@ -1,12 +1,8 @@
 package com.banano.kaliumwallet.model;
 
-import com.banano.kaliumwallet.util.SharedPreferencesUtil;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-
-import javax.inject.Inject;
 
 import timber.log.Timber;
 

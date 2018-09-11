@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 
 import io.realm.DynamicRealm;
 import io.realm.RealmMigration;
-import io.realm.RealmObjectSchema;
 import io.realm.RealmSchema;
 
 /**
@@ -17,14 +16,13 @@ public class Migration implements RealmMigration {
     public void migrate(@NonNull DynamicRealm realm, long oldVersion, long newVersion) {
         RealmSchema schema = realm.getSchema();
 
-        /*
+        // Add Contact class
         if (oldVersion == 1) {
-            RealmObjectSchema credentialsSchema = schema.get("Credentials");
-            if (credentialsSchema != null) {
-                credentialsSchema.addField("uuid", String.class);
-            }
+            schema.create("Contact")
+                    .addField("name", String.class)
+                    .addField("address", String.class);
             oldVersion++;
-        }*/
+        }
     }
 
     @Override

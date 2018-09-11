@@ -2,6 +2,8 @@ package com.banano.kaliumwallet.model;
 
 import android.net.Uri;
 
+import com.banano.kaliumwallet.KaliumUtil;
+
 import org.libsodium.jni.NaCl;
 import org.libsodium.jni.Sodium;
 
@@ -9,8 +11,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import com.banano.kaliumwallet.KaliumUtil;
 
 /**
  * Address class
@@ -111,7 +111,7 @@ public class Address implements Serializable {
      * @param address
      * @return
      */
-    private String findAddress(String address) {
+    public static final String findAddress(String address) {
         Pattern p = Pattern.compile("(ban)(_)(1|3)[13456789abcdefghijkmnopqrstuwxyz]{59}");
         Matcher matcher = p.matcher(address);
         if (matcher.find()) {

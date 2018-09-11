@@ -29,6 +29,7 @@ import com.banano.kaliumwallet.bus.SendInvalidAmount;
 import com.banano.kaliumwallet.databinding.FragmentSendConfirmBinding;
 import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.model.AuthMethod;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
@@ -55,24 +56,20 @@ import io.realm.Realm;
  * Send confirm screen
  */
 public class SendConfirmDialogFragment extends BaseDialogFragment {
-    private FragmentSendConfirmBinding binding;
     public static String TAG = SendConfirmDialogFragment.class.getSimpleName();
+    @Inject
+    KaliumWallet wallet;
+    @Inject
+    AccountService accountService;
+    @Inject
+    SharedPreferencesUtil sharedPreferencesUtil;
+    @Inject
+    Realm realm;
+    private FragmentSendConfirmBinding binding;
     private Address address;
     private AlertDialog fingerprintDialog;
     private Activity mActivity;
     private Fragment mTargetFragment;
-
-    @Inject
-    KaliumWallet wallet;
-
-    @Inject
-    AccountService accountService;
-
-    @Inject
-    SharedPreferencesUtil sharedPreferencesUtil;
-
-    @Inject
-    Realm realm;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -105,13 +102,27 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         }
 
         String destination = getArguments().getString("destination");
-        String amount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat( getArguments().getString("amount")));
+        String amount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(getArguments().getString("amount")));
 
         // subscribe to bus
         RxBus.get().register(this);
 
         // get address
-        address = new Address(destination);
+        Contact contact = null;
+        if (destination.startsWith("@")) {
+            contact = realm.where(Contact.class).equalTo("name", destination).findFirst();
+            if (contact == null) {
+                if (mTargetFragment != null) {
+                    mTargetFragment.onActivityResult(getTargetRequestCode(), SEND_FAILED, mActivity.getIntent());
+                }
+                dismiss();
+            }
+        }
+        if (contact != null) {
+            address = new Address(contact.getAddress());
+        } else {
+            address = new Address(destination);
+        }
 
         // Set send amount
         wallet.setSendBananoAmount(amount);
@@ -133,7 +144,12 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
                 binding.sendDestination != null &&
                 address != null &&
                 address.getAddress() != null) {
-            binding.sendDestination.setText(UIUtil.getColorizedSpannableBright(address.getAddress(), getContext()));
+            if (contact != null) {
+                String prependString = contact.getName() + "\n";
+                binding.sendDestination.setText(UIUtil.getColorizedSpannableBrightPrepend(prependString, address.getAddress(), getContext()));
+            } else {
+                binding.sendDestination.setText(UIUtil.getColorizedSpannableBright(address.getAddress(), getContext()));
+            }
         }
 
         binding.sendAmount.setText(String.format("%s BAN", amount));
@@ -246,6 +262,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
 
     /**
      * Pin entered correctly
+     *
      * @param pinComplete PinComplete object
      */
     @Subscribe
@@ -255,12 +272,12 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
 
     @Subscribe
     public void receiveCreatePin(CreatePin pinComplete) {
-        realm.beginTransaction();
-        Credentials credentials = realm.where(Credentials.class).findFirst();
-        if (credentials != null) {
-            credentials.setPin(pinComplete.getPin());
-        }
-        realm.commitTransaction();
+        realm.executeTransaction(realm -> {
+            Credentials credentials = realm.where(Credentials.class).findFirst();
+            if (credentials != null) {
+                credentials.setPin(pinComplete.getPin());
+            }
+        });
         executeSend();
     }
 

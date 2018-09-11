@@ -17,9 +17,9 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/bg_modal"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:background="@drawable/bg_modal">
+        android:focusableInTouchMode="true">
 
         <TextView
             android:id="@+id/backup_seed_header"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:text="@string/intro_new_wallet_seed_header"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -37,9 +37,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:gravity="left"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
-            android:gravity="left"
             android:text="@string/intro_new_wallet_seed"
             app:layout_constraintEnd_toStartOf="@+id/backup_seed_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/backup_seed_guideline_vert"
@@ -48,51 +48,51 @@
 
         <TextView
             android:id="@+id/backup_seed_seed"
-            android:background="@drawable/bg_edittext"
-            android:textColor="@color/yellow"
             style="@style/TextStyleAddressAlt"
             android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:onClick="@{handlers::onClickSeed}"
+            android:background="@drawable/bg_edittext"
             android:gravity="center"
-            android:paddingTop="10dp"
+            android:onClick="@{handlers::onClickSeed}"
             android:paddingBottom="10dp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
+            android:paddingTop="10dp"
             android:text="@{seed}"
-            tools:text="CA31BAB2EE24A76C1F172F87C724D704C8B69415123190F80340D3F86D3F96EB"
+            android:textColor="@color/yellow"
             app:layout_constraintEnd_toStartOf="@+id/backup_seed_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/backup_seed_guideline_vert"
-            app:layout_constraintTop_toBottomOf="@+id/backup_seed_info" />
+            app:layout_constraintTop_toBottomOf="@+id/backup_seed_info"
+            tools:text="CA31BAB2EE24A76C1F172F87C724D704C8B69415123190F80340D3F86D3F96EB" />
 
         <TextView
             android:id="@+id/backup_seed_copied"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="@dimen/address_text_size"
-            android:textColor="@color/green_light"
             android:fontFamily="@font/nunitosans_bold"
-            android:textAlignment="center"
-            android:visibility="invisible"
             android:text="@string/intro_new_wallet_seed_copied"
-            app:layout_constraintTop_toBottomOf="@+id/backup_seed_seed"
+            android:textAlignment="center"
+            android:textColor="@color/green_light"
+            android:textSize="@dimen/address_text_size"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/backup_seed_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/backup_seed_guideline_vert" />
+            app:layout_constraintStart_toStartOf="@+id/backup_seed_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/backup_seed_seed" />
 
         <Button
             android:id="@+id/cancel_button"
             style="@style/OutlineButton"
-            android:textAllCaps="true"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
+            android:gravity="center_horizontal"
             android:onClick="@{handlers::onClickClose}"
-            android:text="@string/send_close"
+            android:text="@string/dialog_close"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/backup_seed_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/backup_seed_guideline_vert"

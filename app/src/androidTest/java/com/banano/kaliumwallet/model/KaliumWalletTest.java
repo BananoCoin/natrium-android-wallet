@@ -5,6 +5,12 @@ import android.support.test.annotation.UiThreadTest;
 import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
 
+import com.banano.kaliumwallet.KaliumApplication;
+import com.banano.kaliumwallet.di.activity.ActivityModule;
+import com.banano.kaliumwallet.di.activity.DaggerTestActivityComponent;
+import com.banano.kaliumwallet.di.activity.TestActivityComponent;
+import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,22 +20,14 @@ import java.math.BigDecimal;
 
 import javax.inject.Inject;
 
-import com.banano.kaliumwallet.KaliumApplication;
-import com.banano.kaliumwallet.di.activity.ActivityModule;
-import com.banano.kaliumwallet.di.activity.DaggerTestActivityComponent;
-import com.banano.kaliumwallet.di.activity.TestActivityComponent;
-import com.banano.kaliumwallet.util.SharedPreferencesUtil;
-
 
 @RunWith(AndroidJUnit4.class)
 public class KaliumWalletTest {
-    private TestActivityComponent testActivityComponent;
-
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
-
     @Inject
     KaliumWallet kaliumWallet;
+    private TestActivityComponent testActivityComponent;
 
     public KaliumWalletTest() {
     }

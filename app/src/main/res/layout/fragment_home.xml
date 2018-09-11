@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
         <!-- Click Listeners -->
         <variable
@@ -11,6 +12,7 @@
         <variable
             name="wallet"
             type="com.banano.kaliumwallet.model.KaliumWallet" />
+
         <variable
             name="localCurrency"
             type="com.banano.kaliumwallet.model.AvailableCurrency" />
@@ -24,8 +26,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            android:orientation="vertical">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -36,63 +38,63 @@
                     android:id="@+id/home_top_card"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/top_card_height"
-                    android:background="@drawable/bg_home_top_card"
                     android:layout_margin="10dp"
+                    android:background="@drawable/bg_home_top_card"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/settings_button"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:padding="5dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
                         android:layout_marginEnd="12dp"
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
-                        android:onClickListener="@{handlers::onClickSettings}"
                         android:background="@drawable/bg_image_button"
+                        android:onClickListener="@{handlers::onClickSettings}"
+                        android:padding="5dp"
                         app:srcCompat="@drawable/ic_settings" />
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/home_monkey"
                         android:layout_width="@dimen/monkey_width"
                         android:layout_height="@dimen/monkey_height"
-                        android:visibility="gone"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/bg_image_button"
-                        android:onClickListener="@{handlers::onClickMonkey}" />
+                        android:onClickListener="@{handlers::onClickMonkey}"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/amount_local_currency_title"
                         style="@style/TextStyleSubcurrency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="-3dp"
-                        android:layout_centerInParent="true"
                         android:layout_above="@id/amount_banano_title"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="-3dp"
                         android:text="@{wallet.accountBalanceLocalCurrency}"
                         tools:text="18.000001" />
 
                     <LinearLayout
                         android:id="@+id/btc_price"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="-3dp"
-                        android:layout_centerInParent="true"
                         android:layout_below="@id/amount_banano_title"
-                        android:orientation="horizontal">
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="-3dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/amount_btc_symbol"
                             style="@style/TextStyleSubcurrency"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:fontFamily="@font/btc"
                             android:layout_marginEnd="2dp"
-                            android:text="BTC"/>
+                            android:fontFamily="@font/btc"
+                            android:text="BTC" />
 
                         <TextView
                             android:id="@+id/amount_btc_title"
@@ -106,13 +108,13 @@
 
                     <LinearLayout
                         android:id="@+id/nano_price"
-                        android:visibility="gone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="-3dp"
-                        android:layout_centerInParent="true"
                         android:layout_below="@id/amount_banano_title"
-                        android:orientation="horizontal">
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="-3dp"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <android.support.v7.widget.AppCompatImageView
                             android:id="@+id/amount_nano_symbol"
@@ -120,7 +122,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="15sp"
                             android:layout_marginEnd="2dp"
-                            app:srcCompat="@drawable/ic_currency_nano"/>
+                            app:srcCompat="@drawable/ic_currency_nano" />
 
                         <TextView
                             android:id="@+id/amount_nano_title"
@@ -135,10 +137,10 @@
                         android:id="@+id/amount_banano_symbol"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
-                        android:paddingBottom="13dp"
+                        android:layout_centerInParent="true"
                         android:layout_marginStart="2dp"
                         android:layout_toStartOf="@id/amount_banano_title"
-                        android:layout_centerInParent="true"
+                        android:paddingBottom="13dp"
                         app:srcCompat="@drawable/ic_currency_banano_yellow" />
 
                     <TextView
@@ -146,53 +148,54 @@
                         style="@style/TextStyleBananoBalance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="3dp"
+                        android:layout_centerInParent="true"
                         android:clickable="true"
                         android:focusable="true"
                         android:onClick="@{handlers::onClickPrice}"
-                        android:layout_centerInParent="true"
+                        android:paddingBottom="3dp"
                         android:text="@{wallet.accountBalanceBanano}"
                         tools:text="18,024.12" />
                 </RelativeLayout>
 
                 <TextView
-                    android:textColor="@color/white_60"
-                    android:fontFamily="@font/nunitosans_light"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
-                    android:textAllCaps="true"
-                    android:text="@string/transaction_header"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/nunitosans_light"
                     android:paddingLeft="20dp"
-                    app:layout_constraintTop_toBottomOf="@id/home_top_card"
-                    app:layout_constraintBottom_toTopOf="@id/home_swiperefresh"/>
+                    android:text="@string/transaction_header"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white_60"
+                    app:layout_constraintBottom_toTopOf="@id/home_swiperefresh"
+                    app:layout_constraintTop_toBottomOf="@id/home_top_card" />
 
                 <android.support.v4.widget.NestedScrollView
                     android:id="@+id/example_cards"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="80dp"
-                    android:layout_marginTop="@dimen/tx_history_top_margin"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="@dimen/tx_history_top_margin"
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <include
                             android:id="@+id/intro_text"
-                            layout="@layout/welcome_account_item_intro"/>
+                            layout="@layout/welcome_account_item_intro" />
 
                         <include
                             android:id="@+id/sent_example"
-                            layout="@layout/welcome_account_item_send"/>
+                            layout="@layout/welcome_account_item_send" />
 
                         <include
                             android:id="@+id/received_example"
-                            layout="@layout/welcome_account_item_receive"/>
+                            layout="@layout/welcome_account_item_receive" />
                     </LinearLayout>
 
                 </android.support.v4.widget.NestedScrollView>
@@ -203,16 +206,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="80dp"
-                    android:layout_marginTop="@dimen/tx_history_top_margin"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp">
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="@dimen/tx_history_top_margin">
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/home_recyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:requiresFadingEdge="vertical"
-                        android:theme="@style/AppThemeYellow"/>
+                        android:theme="@style/AppThemeYellow" />
                 </android.support.v4.widget.SwipeRefreshLayout>
 
 
@@ -237,7 +240,7 @@
                         android:background="@android:color/transparent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintVertical_chainStyle="packed"/>
+                        app:layout_constraintVertical_chainStyle="packed" />
 
                 </LinearLayout>
 
@@ -245,10 +248,10 @@
                     android:id="@+id/home_receive_button"
                     style="@style/PrimaryButton"
                     android:layout_marginBottom="20dp"
-                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginRight="10dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginStart="20dp"
                     android:onClick="@{handlers::onClickReceive}"
                     android:text="@string/home_receive_cta"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -264,9 +267,9 @@
                     style="@style/PrimaryButton"
                     android:layout_marginBottom="20dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginRight="20dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginStart="10dp"
                     android:onClick="@{handlers::onClickSend}"
                     android:text="@string/home_send_cta"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -275,6 +278,19 @@
                     app:layout_constraintHorizontal_weight="0.5"
                     app:layout_constraintStart_toEndOf="@+id/home_receive_button"
                     app:layout_constraintVertical_chainStyle="spread" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/loading_animation"
+                    android:layout_width="185dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="60dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/bananojump"
+                    app:layout_constraintStart_toStartOf="@+id/home_guideline_vert"
+                    app:layout_constraintEnd_toEndOf="@+id/home_guideline_vert"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <android.support.constraint.Guideline
                     android:id="@+id/home_guideline_vert"
@@ -290,12 +306,12 @@
                     android:animateLayoutChanges="true"
                     android:background="@color/black_70"
                     android:clickable="true"
+                    android:elevation="5dp"
                     android:focusable="true"
                     android:onClickListener="@{handlers::onClickMonkeyFrame}"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:visibility="gone"
-                    android:elevation="5dp">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <android.support.v7.widget.AppCompatImageView
@@ -315,10 +331,11 @@
             android:layout_height="match_parent"
             android:layout_gravity="left|start">
 
-            <fragment android:name="com.banano.kaliumwallet.ui.settings.SettingsFragment"
-                android:layout_weight="1"
+            <FrameLayout
+                android:id="@+id/settings_frag_container"
                 android:layout_width="0dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
         </LinearLayout>
 
     </android.support.v4.widget.DrawerLayout>

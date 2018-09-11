@@ -1,10 +1,11 @@
 package com.banano.kaliumwallet.di.application;
 
 
-import javax.inject.Named;
-
 import com.banano.kaliumwallet.di.persistence.PersistenceModule;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+
+import javax.inject.Named;
+
 import dagger.Component;
 import io.realm.Realm;
 

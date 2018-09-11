@@ -10,15 +10,6 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.banano.kaliumwallet.model.AvailableLanguage;
-import com.banano.kaliumwallet.model.KaliumWallet;
-import com.hwangjr.rxbus.annotation.Subscribe;
-
-import java.util.Locale;
-import java.util.UUID;
-
-import javax.inject.Inject;
-
 import com.banano.kaliumwallet.bus.Logout;
 import com.banano.kaliumwallet.bus.OpenWebView;
 import com.banano.kaliumwallet.bus.RxBus;
@@ -27,7 +18,10 @@ import com.banano.kaliumwallet.di.activity.ActivityComponent;
 import com.banano.kaliumwallet.di.activity.ActivityModule;
 import com.banano.kaliumwallet.di.activity.DaggerActivityComponent;
 import com.banano.kaliumwallet.di.application.ApplicationComponent;
+import com.banano.kaliumwallet.model.AvailableLanguage;
+import com.banano.kaliumwallet.model.Contact;
 import com.banano.kaliumwallet.model.Credentials;
+import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
 import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.FragmentUtility;
@@ -37,24 +31,27 @@ import com.banano.kaliumwallet.ui.intro.IntroNewWalletFragment;
 import com.banano.kaliumwallet.ui.intro.IntroWelcomeFragment;
 import com.banano.kaliumwallet.ui.webview.WebViewDialogFragment;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
+import com.hwangjr.rxbus.annotation.Subscribe;
+
+import java.util.Locale;
+import java.util.UUID;
+
+import javax.inject.Inject;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class MainActivity extends AppCompatActivity implements WindowControl, ActivityWithComponent {
-    private FragmentUtility mFragmentUtility;
     protected ActivityComponent mActivityComponent;
-
     @Inject
     Realm realm;
-
     @Inject
     AccountService accountService;
-
     @Inject
     KaliumWallet nanoWallet;
-
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
+    private FragmentUtility mFragmentUtility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +88,14 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             config.locale = locale;
             getBaseContext().getResources().updateConfiguration(config,
                     getBaseContext().getResources().getDisplayMetrics());
+        }
+
+        if (!sharedPreferencesUtil.isDefaultContactAdded()) {
+            realm.executeTransaction(realm -> {
+                Contact newContact = realm.createObject(Contact.class, "ban_1ka1ium4pfue3uxtntqsrib8mumxgazsjf58gidh1xeo5te3whsq8z476goo");
+                newContact.setName("@KaliumDonations");
+            });
+            sharedPreferencesUtil.setDefaultContactAdded();
         }
 
         initUi();
@@ -214,7 +219,6 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     public FragmentUtility getFragmentUtility() {
         return mFragmentUtility;
     }
-
 
 
     /**

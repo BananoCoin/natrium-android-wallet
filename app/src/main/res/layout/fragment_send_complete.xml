@@ -27,70 +27,71 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/sent_close">
+            app:layout_constraintBottom_toTopOf="@+id/sent_close"
+            app:layout_constraintTop_toTopOf="parent">
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/send_check"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginBottom="25dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="25dp"
                 app:srcCompat="@drawable/ic_greencheck" />
 
             <TextView
                 android:id="@+id/sent_amount"
-                android:fontFamily="@font/nunitosans_bold"
-                android:background="@drawable/bg_edittext"
-                android:textSize="@dimen/text_size_normal"
-                android:textColor="@color/green_light"
-                android:layout_height="wrap_content"
                 android:layout_width="@dimen/input_width"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="-10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_marginTop="-10dp"
+                android:background="@drawable/bg_edittext"
+                android:fontFamily="@font/nunitosans_bold"
                 android:padding="10dp"
                 android:textAlignment="center"
+                android:textColor="@color/green_light"
+                android:textSize="@dimen/text_size_normal"
                 tools:text="1.23" />
 
             <TextView
                 android:id="@+id/sent_to"
                 style="@style/TextStyleHeader"
-                android:textColor="@color/green_light"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/sent_to" />
+                android:text="@string/sent_to"
+                android:textColor="@color/green_light" />
 
             <TextView
                 android:id="@+id/sent_destination"
                 style="@style/TextStyleAddressAlt"
-                android:textSize="@dimen/text_size_normal"
-                android:background="@drawable/bg_edittext"
-                android:layout_height="wrap_content"
                 android:layout_width="@dimen/input_width"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:paddingTop="10dp"
+                android:background="@drawable/bg_edittext"
                 android:paddingBottom="10dp"
                 android:paddingLeft="35dp"
                 android:paddingRight="35dp"
+                android:paddingTop="10dp"
                 android:textAlignment="center"
-                tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg"/>
+                android:textColor="@color/green_light"
+                android:textSize="@dimen/text_size_normal"
+                tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
         </LinearLayout>
 
         <Button
             android:id="@+id/sent_close"
             style="@style/OutlineButtonGreen"
-            android:gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="45dp"
             android:layout_marginStart="45dp"
-            android:textAllCaps="true"
-            android:text="@string/send_close"
+            android:gravity="center_horizontal"
             android:onClick="@{handlers::onClickClose}"
+            android:text="@string/dialog_close"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/send_guideling_vert"
             app:layout_constraintStart_toStartOf="@+id/send_guideling_vert"

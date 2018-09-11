@@ -35,7 +35,6 @@ import com.banano.kaliumwallet.util.ExceptionHandler;
  */
 
 public class BaseDialogFragment extends DialogFragment {
-    private static final int ZXING_CAMERA_PERMISSION = 1;
     protected static final int SCAN_RESULT = 2;
     protected static final int SEND_COMPLETE = 3;
     protected static final int SEND_FAILED = 4;
@@ -45,10 +44,34 @@ public class BaseDialogFragment extends DialogFragment {
     protected static final int CHANGE_FAILED = 8;
     protected static final int CHANGE_COMPLETE = 9;
     protected static final int CHANGE_RESULT = 10;
-
+    private static final int ZXING_CAMERA_PERMISSION = 1;
+    protected View view;
     private String scanActivityTitle;
 
-    protected View view;
+    /**
+     * Animate appearance of a view
+     *
+     * @param view         View to animate
+     * @param toVisibility Visibility at the end of animation
+     * @param toAlpha      Alpha at the end of animation
+     * @param duration     Animation duration in ms
+     */
+    public static void animateView(final View view, final int toVisibility, float toAlpha, int duration) {
+        boolean show = toVisibility == View.VISIBLE;
+        if (show) {
+            view.setAlpha(0);
+        }
+        view.setVisibility(View.VISIBLE);
+        view.animate()
+                .setDuration(duration)
+                .alpha(show ? toAlpha : 0)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        view.setVisibility(toVisibility);
+                    }
+                });
+    }
 
     @Override
     public void show(FragmentManager manager, String tag) {
@@ -176,7 +199,8 @@ public class BaseDialogFragment extends DialogFragment {
 
     /**
      * Create a link from the text on the view
-     * @param v TextView
+     *
+     * @param v    TextView
      * @param text id of text to add to the field
      */
     protected void createLink(TextView v, int text) {
@@ -190,31 +214,7 @@ public class BaseDialogFragment extends DialogFragment {
     }
 
     public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-    /**
-     * Animate appearance of a view
-     * @param view         View to animate
-     * @param toVisibility Visibility at the end of animation
-     * @param toAlpha      Alpha at the end of animation
-     * @param duration     Animation duration in ms
-     */
-    public static void animateView(final View view, final int toVisibility, float toAlpha, int duration) {
-        boolean show = toVisibility == View.VISIBLE;
-        if (show) {
-            view.setAlpha(0);
-        }
-        view.setVisibility(View.VISIBLE);
-        view.animate()
-                .setDuration(duration)
-                .alpha(show ? toAlpha : 0)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        view.setVisibility(toVisibility);
-                    }
-                });
     }
 }

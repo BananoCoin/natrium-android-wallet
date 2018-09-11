@@ -3,11 +3,10 @@ package com.banano.kaliumwallet.network.model.response;
 import android.text.Spannable;
 import android.text.SpannableString;
 
-import com.google.gson.annotations.SerializedName;
-
 import com.banano.kaliumwallet.model.Address;
 import com.banano.kaliumwallet.network.model.BlockTypes;
 import com.banano.kaliumwallet.util.NumberUtil;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Account History Item
@@ -32,6 +31,8 @@ public class AccountHistoryResponseItem {
     @SerializedName("hash")
     private String hash;
 
+    private String contactName;
+
     public AccountHistoryResponseItem() {
     }
 
@@ -54,24 +55,24 @@ public class AccountHistoryResponseItem {
         return account;
     }
 
-    public Spannable getAddressShort() {
-        return new SpannableString(new Address(account).getShortString());
-    }
-
     public void setAccount(String account) {
         this.account = account;
+    }
+
+    public Spannable getAddressShort() {
+        return new SpannableString(new Address(account).getShortString());
     }
 
     public String getAmount() {
         return amount;
     }
 
-    public String getFormattedAmount() {
-        return NumberUtil.getRawAsUsableString(amount);
-    }
-
     public void setAmount(String amount) {
         this.amount = amount;
+    }
+
+    public String getFormattedAmount() {
+        return NumberUtil.getRawAsUsableString(amount);
     }
 
     public String getHash() {
@@ -84,5 +85,13 @@ public class AccountHistoryResponseItem {
 
     public boolean isSend() {
         return this.type.equals(BlockTypes.SEND.toString());
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 }

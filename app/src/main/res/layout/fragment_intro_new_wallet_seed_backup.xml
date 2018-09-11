@@ -21,12 +21,12 @@
             android:id="@+id/intro_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:padding="5dp"
             android:layout_marginTop="30dp"
             android:onClick="@{handlers::onClickBack}"
-            app:srcCompat="@drawable/ic_back"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:srcCompat="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/intro_new_wallet_header"
@@ -60,30 +60,30 @@
         <Button
             android:id="@+id/intro_backup_yes"
             style="@style/PrimaryButton"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:textAllCaps="true"
-            android:text="@string/intro_new_wallet_backup_yes"
+            android:gravity="center"
             android:onClick="@{handlers::onClickYes}"
+            android:text="@string/intro_new_wallet_backup_yes"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toTopOf="@+id/intro_backup_no"
             app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"/>
+            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_backup_guideline_vert" />
 
         <Button
             android:id="@+id/intro_backup_no"
             style="@style/OutlineButton"
-            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/intro_new_wallet_backup_no"
-            android:onClick="@{handlers::onClickNo}"
-            android:textAllCaps="true"
             android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:onClick="@{handlers::onClickNo}"
+            android:text="@string/intro_new_wallet_backup_no"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_backup_guideline_vert"/>
+            app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_backup_guideline_vert" />
 
         <android.support.constraint.Guideline
             android:id="@+id/intro_new_wallet_backup_guideline_vert"

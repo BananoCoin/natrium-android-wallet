@@ -14,10 +14,10 @@
         android:id="@+id/intro_import_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gray_dark"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:background="@color/gray_dark"
         android:paddingLeft="30dp"
         android:paddingRight="30dp">
 
@@ -25,12 +25,12 @@
             android:id="@+id/intro_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:padding="5dp"
             android:layout_marginTop="30dp"
             android:onClick="@{handlers::onClickBack}"
-            app:srcCompat="@drawable/ic_back"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:srcCompat="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/intro_seed_header"
@@ -50,8 +50,8 @@
         <TextView
             android:id="@+id/intro_seed_info"
             style="@style/TextStyleParagraph"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:gravity="left"
@@ -72,32 +72,31 @@
 
             <EditText
                 android:id="@+id/intro_import_seed"
-                android:background="@drawable/bg_edittext"
-                android:textColor="@color/white_60"
                 style="@style/TextStyleAddressAlt"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/text_size_normal"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_edittext"
                 android:gravity="center"
                 android:maxLines="3"
-                android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:paddingStart="10dp"
                 android:paddingEnd="55dp"
-                tools:text="CA31BAB2EE24A76C1F172F87C724D704C8B69415123190F80340D3F86D3F96EB"/>
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:textColor="@color/white_60"
+                android:textSize="@dimen/text_size_normal"
+                tools:text="CA31BAB2EE24A76C1F172F87C724D704C8B69415123190F80340D3F86D3F96EB" />
 
             <android.support.v7.widget.AppCompatImageButton
                 android:id="@+id/send_address_paste"
-                android:fontFamily="@font/nunitosans_extralight"
                 android:layout_width="@dimen/send_paste_button"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                app:srcCompat="@drawable/ic_paste"
-                android:onClick="@{handlers::onClickPaste}"
+                android:layout_marginEnd="10dp"
                 android:background="@android:color/transparent"
-                />
+                android:fontFamily="@font/nunitosans_extralight"
+                android:onClick="@{handlers::onClickPaste}"
+                app:srcCompat="@drawable/ic_paste" />
 
         </RelativeLayout>
 
@@ -106,27 +105,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="16sp"
-            android:textColor="@color/yellow"
             android:fontFamily="@font/nunitosans_bold"
-            android:textAlignment="center"
-            android:visibility="invisible"
             android:text="@string/intro_seed_invalid"
-            app:layout_constraintTop_toBottomOf="@+id/intro_seed_container"
+            android:textAlignment="center"
+            android:textColor="@color/yellow"
+            android:textSize="16sp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/intro_seed_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_seed_guideline_vert" />
+            app:layout_constraintStart_toStartOf="@+id/intro_seed_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/intro_seed_container" />
 
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/intro_new_wallet_next"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:padding="5dp"
             android:layout_marginBottom="30dp"
             android:onClick="@{handlers::onClickNext}"
-            app:srcCompat="@drawable/ic_forward_icon"
+            android:padding="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_forward_icon" />
 
         <android.support.constraint.Guideline
             android:id="@+id/intro_seed_guideline_vert"

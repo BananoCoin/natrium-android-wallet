@@ -8,7 +8,9 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.banano.kaliumwallet.R;
 
@@ -20,6 +22,10 @@ public class UIUtil {
     public static final double SMALL_DEVICE_DIALOG_HEIGHT = 0.88;
     public static final double LARGE_DEVICE_DIALOG_HEIGHT = 0.85;
     public static final double LARGE_DEVICE_DIALOG_HEIGHT_SMALLER = 0.83;
+
+    /** TODO
+     * All these colorize methods could be cleaned up quite a bit
+     */
 
     /**
      * Colorize a string in the following manner:
@@ -53,7 +59,7 @@ public class UIUtil {
             return;
         }
         if (s.length() > 58) {
-            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.white_90)),  11, 58, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.white_90)), 11, 58, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
     }
 
@@ -77,6 +83,19 @@ public class UIUtil {
         }
     }
 
+    public static void colorizeSpannableBright(String prependString, Spannable s, Context context) {
+        if (context == null) {
+            return;
+        }
+        int offset = prependString.length();
+        if (s.length() > 0) {
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 0, s.length() > 10 ? 11 + offset : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (s.length() > 58) {
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 58 + offset, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+    }
+
     /**
      * Colorize a string in the following manner:
      * First 11 characters are yellow transparent
@@ -92,16 +111,31 @@ public class UIUtil {
         if (s.length() > 0) {
             s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.green_light)), 0, s.length() > 10 ? 11 : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (s.length() > 58) {
-                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.white_90)),  11, 58, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.white_90)), 11, 58, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.green_light)), 58, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }
     }
 
+    public static void colorizeSpannableGreen(String prependString, Spannable s, Context context) {
+        if (context == null) {
+            return;
+        }
+        int offset = prependString.length();
+        if (s.length() > 0) {
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.green_light)), 0, s.length() > 10 ? 11 + offset : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            if (s.length() > 58) {
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.white_90)), 11 + offset, 58 + offset, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.green_light)), 58 + offset, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+    }
+
+
     /**
      * Replace occurences of BANANO with yellow text
      *
-     * @param s     Spannable
+     * @param s       Spannable
      * @param context Context
      */
     public static Spannable colorizeBanano(String s, Context context) {
@@ -114,7 +148,7 @@ public class UIUtil {
         if (indexStart < 0) {
             return sp;
         }
-        sp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), indexStart, indexStart+indexEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), indexStart, indexStart + indexEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return sp;
     }
 
@@ -148,6 +182,12 @@ public class UIUtil {
         return sp;
     }
 
+    public static Spannable getColorizedSpannableBrightPrepend(String prependString, String s, Context context) {
+        Spannable sp = new SpannableString(prependString + s);
+        colorizeSpannableBright(prependString, sp, context);
+        return sp;
+    }
+
     /**
      * Colorize a string in the following manner:
      * First 11 characters are green
@@ -163,6 +203,13 @@ public class UIUtil {
         colorizeSpannableGreen(sp, context);
         return sp;
     }
+
+    public static Spannable getColorizedSpannableGreenPrepend(String prependString, String s, Context context) {
+        Spannable sp = new SpannableString(prependString + s);
+        colorizeSpannableGreen(prependString, sp, context);
+        return sp;
+    }
+
 
     /**
      * Colorize a string in the following manner:
@@ -211,7 +258,7 @@ public class UIUtil {
      * Get what dialog height should be based on device size
      *
      * @param shortDialog Whether or not to return smaller dialog height
-     * @param context Context to get device display metrics
+     * @param context     Context to get device display metrics
      * @return Height in pixels
      */
     public static int getDialogHeight(boolean shortDialog, Context context) {
@@ -227,6 +274,17 @@ public class UIUtil {
         } else if (height > 700) {
             heightPercent = UIUtil.LARGE_DEVICE_DIALOG_HEIGHT;
         }
-        return (int)(metrics.heightPixels * heightPercent);
+        return (int) (metrics.heightPixels * heightPercent);
+    }
+
+    /**
+     * Show a toast
+     */
+    public static void showToast(String content, Context context) {
+        Toast t = Toast.makeText(context,
+                content,
+                Toast.LENGTH_SHORT);
+        t.setGravity(Gravity.BOTTOM, 0, (int) UIUtil.convertDpToPixel(100, context));
+        t.show();
     }
 }

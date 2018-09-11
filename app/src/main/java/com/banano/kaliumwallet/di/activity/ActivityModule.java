@@ -2,11 +2,6 @@ package com.banano.kaliumwallet.di.activity;
 
 import android.content.Context;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-
 import com.banano.kaliumwallet.model.KaliumWallet;
 import com.banano.kaliumwallet.network.AccountService;
 import com.banano.kaliumwallet.network.model.Actions;
@@ -23,6 +18,11 @@ import com.banano.kaliumwallet.network.model.response.SubscribeResponse;
 import com.banano.kaliumwallet.network.model.response.TransactionResponse;
 import com.banano.kaliumwallet.network.model.response.WarningResponse;
 import com.banano.kaliumwallet.network.model.response.WorkResponse;
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
 import dagger.Module;
 import dagger.Provides;
 import io.gsonfire.GsonFireBuilder;
