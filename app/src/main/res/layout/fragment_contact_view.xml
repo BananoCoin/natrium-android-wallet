@@ -116,6 +116,22 @@
             app:layout_constraintTop_toBottomOf="@+id/contact_address" />
 
         <Button
+            android:id="@+id/view_contact_send"
+            style="@style/PrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:gravity="center_horizontal"
+            android:onClick="@{handlers::onClickSend}"
+            android:text="@string/home_send_cta"
+            app:layout_constraintBottom_toTopOf="@+id/view_contact_close"
+            app:layout_constraintEnd_toStartOf="@+id/view_contact_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <Button
             android:id="@+id/view_contact_close"
             style="@style/OutlineButton"
             android:layout_width="match_parent"

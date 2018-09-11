@@ -28,6 +28,8 @@ import com.banano.kaliumwallet.ui.common.ActivityWithComponent;
 import com.banano.kaliumwallet.ui.common.BaseDialogFragment;
 import com.banano.kaliumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.kaliumwallet.ui.common.UIUtil;
+import com.banano.kaliumwallet.ui.common.WindowControl;
+import com.banano.kaliumwallet.ui.send.SendDialogFragment;
 import com.banano.kaliumwallet.util.svg.SvgSoftwareLayerSetter;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
@@ -217,6 +219,18 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
                     mHandler.removeCallbacks(mRunnable);
                     mHandler.postDelayed(mRunnable, 1500);
                 }
+            }
+        }
+
+        public void onClickSend(View view) {
+            if (getActivity() instanceof WindowControl) {
+                // show send dialog
+                SendDialogFragment dialog = SendDialogFragment.newInstance(binding.contactName.getText().toString());
+                dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
+                        SendDialogFragment.TAG);
+
+                ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+                dismiss();
             }
         }
     }

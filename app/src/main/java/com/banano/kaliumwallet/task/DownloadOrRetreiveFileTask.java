@@ -28,6 +28,7 @@ public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, List<Fil
             return null;
         }
         File ret = null;
+        HttpURLConnection urlConnection = null;
         try {
             String fileName = Address.findAddress(sUrl).trim() + ".svg";
             File file = new File(fileDir, fileName);
@@ -36,7 +37,7 @@ public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, List<Fil
             }
             Timber.d("Downloading image %s", sUrl);
             URL imgUrl = new URL(sUrl);
-            HttpURLConnection urlConnection = (HttpURLConnection) imgUrl.openConnection();
+            urlConnection = (HttpURLConnection) imgUrl.openConnection();
 
             Timber.d("Response Code %d", urlConnection.getResponseCode());
 
@@ -55,6 +56,10 @@ public class DownloadOrRetreiveFileTask extends AsyncTask<String, Void, List<Fil
         } catch (Exception e) {
             Timber.e("Failed to download image from %s", sUrl);
             e.printStackTrace();
+        } finally {
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
         }
         return ret;
     }

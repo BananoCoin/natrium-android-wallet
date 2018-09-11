@@ -80,8 +80,9 @@ public class SendDialogFragment extends BaseDialogFragment {
      *
      * @return SendDialogFragment instance
      */
-    public static SendDialogFragment newInstance() {
+    public static SendDialogFragment newInstance(String contactName) {
         Bundle args = new Bundle();
+        args.putString("contact_name", contactName);
         SendDialogFragment fragment = new SendDialogFragment();
         fragment.setArguments(args);
         return fragment;
@@ -318,6 +319,14 @@ public class SendDialogFragment extends BaseDialogFragment {
         mAdapter = new ContactSelectionAdapter(contacts);
         binding.contactRecyclerview.setItemAnimator(null);
         binding.contactRecyclerview.setAdapter(mAdapter);
+
+        // Prefill address if applicable
+        String contactName = getArguments().getString("contact_name", null);
+        if (contactName != null) {
+            binding.sendAddress.requestFocus();
+            binding.sendAddress.setText(contactName);
+            binding.sendAddress.clearFocus();
+        }
 
         return view;
     }

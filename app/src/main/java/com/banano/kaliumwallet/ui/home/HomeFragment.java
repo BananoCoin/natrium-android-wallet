@@ -495,7 +495,7 @@ public class HomeFragment extends BaseFragment {
         public void onClickSend(View view) {
             if (getActivity() instanceof WindowControl) {
                 // show send dialog
-                SendDialogFragment dialog = SendDialogFragment.newInstance();
+                SendDialogFragment dialog = SendDialogFragment.newInstance(null);
                 dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
                         SendDialogFragment.TAG);
 
