@@ -108,4 +108,35 @@
     <string name="send_fingerprint_description">Confirmați amprenta pentru a trimite %s Banano</string>
     <string name="send_pin_description">Trimite %s Banano</string>
     <string name="scan_send_instruction_label">Scanează o adresă de Banano de tip cod QR</string>
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Adaugă contact</string>
+    <string name="contact_added">%s a fost adăugat la contacte!</string>
+    <string name="contact_invalid_name">Nume invalid</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Adaugă contact:</string>
+    <string name="contact_add_button">Adaugă contactul</string>
+    <string name="contact_name_hint">Introdu un nume @</string>
+    <string name="contact_name_missing">Alege un nume pentru acest contact</string>
+    <string name="contact_name_exists">Contact deja existent</string>
+    <string name="contact_address_hint">Introdu o adresă</string>
+    <string name="contact_address_exists">Adresa este folosită de un alt contact</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Contacte</string>
+    <string name="contact_settings_item">Contacte</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Contact:</string>
+    <string name="contact_remove_header">Ștergere:</string>
+    <string name="contact_remove_btn">Șterge contactul</string>
+    <string name="contact_remove_sure">Dorești să elimini contactul %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s a fost șters din lista contactelor!</string>
+    <string name="contact_export_none">Nu există contacte pentru exportare</string>
+    <string name="contact_export_error">Exportarea contactelor a eșuat </string>
+    <string name="contact_import_error">Importarea contactelor a eșuat</string>
+    <string name="contact_import_success">Am importat %d contacte</string>
+    <string name="contact_import_none"> Nu am gasit contacte pentru importare</string>
+    <string name="contact_import_warning_header">Atenție</string>
+    <string name="contact_import_permission_error">Va rugăm să acordați permisiunea de a utiliza spațiul de stocare.</string>
+    <string name="contact_export_permission_error">Va rugăm să acordați permisiunea de a utiliza spațiul de stocare.</string>
+    <string name="contact_export_success">Contacte salvate in %s</string>
 </resources>

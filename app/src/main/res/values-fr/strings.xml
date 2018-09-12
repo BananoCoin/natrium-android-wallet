@@ -120,6 +120,37 @@
     <string name="send_no_frontier">Compte frontière introuvable (Le compte n’est peut-être pas établi)</string>
     <string name="send_fingerprint_description">Confirmer l’empreinte digitale afin d’envoyer des Bananos</string>
     <string name="send_pin_description">Envoyer les Bananos?</string>
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Ajouter un contact</string>
+    <string name="contact_added">%s a été ajouté aux contacts!</string>
+    <string name="contact_invalid_name">Nom du contact erroné</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Ajouter contact:</string>
+    <string name="contact_add_button">Ajouter contact</string>
+    <string name="contact_name_hint">Saisir un nom @</string>
+    <string name="contact_name_missing">Choisir un nom pour ce contact</string>
+    <string name="contact_name_exists">Ce contact existe déjà</string>
+    <string name="contact_address_hint">Saisir une adresse</string>
+    <string name="contact_address_exists">Un contact détient déjà cette adresse</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Contacts</string>
+    <string name="contact_settings_item">Contacts</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Contact:</string>
+    <string name="contact_remove_header">Supprimer:</string>
+    <string name="contact_remove_btn">Supprimer le contact</string>
+    <string name="contact_remove_sure">Êtes vous sûr de vouloir supprimer %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s a été supprimé de vos contacts!</string>
+    <string name="contact_export_none">Il n’y a pas de contacts à exporter</string>
+    <string name="contact_export_error">L’export des contacts a échoué</string>
+    <string name="contact_import_error">L’import des contacts a échoué</string>
+    <string name="contact_import_success">Import de %d contacts réussi</string>
+    <string name="contact_import_none">Aucun contact à importer</string>
+    <string name="contact_import_warning_header">Attention</string>
+    <string name="contact_import_permission_error">Veuillez s.v.p. autoriser Kalium à déterminer l’espace de stockage de l’appareil.</string>
+    <string name="contact_export_permission_error">Veuillez s.v.p. autoriser Kalium à occuper de l’espace de stockage sur l’appareil.</string>
+    <string name="contact_export_success">Contacts sauvergardés vers %s</string>
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scanner le code QR d’une adresse Banano</string>
 </resources>

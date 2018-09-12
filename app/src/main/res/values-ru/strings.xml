@@ -42,7 +42,7 @@
     <string name="example_card_to">К случайной обезьяне</string>
     <string name="example_card_from">От случайной обезьяны</string>
 
-    /    <!-- Settings Screen -->
+    <!-- Settings Screen -->
     <string name="settings_title">Настройки</string>
     <string name="settings_local_currency">Сменить Валюту</string>
     <string name="settings_change_language">Язык</string>
@@ -121,6 +121,38 @@
     <string name="send_no_frontier">Не удалось найти границу аккаунта (учётная запись  не может быть открыта)</string>
     <string name="send_fingerprint_description">Подтвердите отпечаток пальца, чтобы послать %s Banano</string>
     <string name="send_pin_description">Отправить %s Banano</string>
+
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Добавить Контакт</string>
+    <string name="contact_added">%s добавлен в контакты!</string>
+    <string name="contact_invalid_name">Недопустимое имя</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Добавить Контакт:</string>
+    <string name="contact_add_button">Добавить Контакт</string>
+    <string name="contact_name_hint">Введите имя @</string>
+    <string name="contact_name_missing">Выберите имя для контакта</string>
+    <string name="contact_name_exists">Контакт уже существует</string>
+    <string name="contact_address_hint">Введите адрес</string>
+    <string name="contact_address_exists">Адрес уже существует</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Контакты</string>
+    <string name="contact_settings_item">Адресная книга</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Контакт:</string>
+    <string name="contact_remove_header">Удалить:</string>
+    <string name="contact_remove_btn">Удалить Контакт</string>
+    <string name="contact_remove_sure">Вы уверены,что хотите удалить %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s удален из контактов! </string>
+    <string name="contact_export_none">Нет контактов для экспорта</string>
+    <string name="contact_export_error">Не удалось экспортировать</string>
+    <string name="contact_import_error">Не удалось импортировать</string>
+    <string name="contact_import_success">Успешно импортированы %d</string>
+    <string name="contact_import_none">Нет контактов для импорта</string>
+    <string name="contact_import_warning_header">Предупреждение</string>
+    <string name="contact_import_permission_error">Разрешите Kalium чтение устройства</string>
+    <string name="contact_export_permission_error">Разрешите Kalium записывать на устройство</string>
+    <string name="contact_export_success">Контакты сохранены в %s</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Сканировать  QR-код Banano/адрес.</string>

@@ -100,11 +100,11 @@
     <string name="send_title">נשלח מ:</string>
     <string name="send_address_hint">הכנס כתובת</string>
     <string name="send_amount_hint">הכנס כמות</string>
-    <string name="send_max">מקסימום</string>
+    <string name="send_max">מקס</string>
     <string name="send_send_cta">שלח</string>
     <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">נשלח</string>
-    <string name="send_scan_qr">סרו\' ברקוד</string>
+    <string name="send_scan_qr">סרוק ברקוד</string>
     <string name="send_sending">נשלח</string>
     <string name="send_to">מ:</string>
     <string name="sent_to">נשלח ל:</string>
@@ -122,6 +122,38 @@
     <string name="send_no_frontier">חשבון לא נמצא (סביר שהוא לא נפתח)</string>
     <string name="send_fingerprint_description">אשר טביעת אצבע בכדי לשלוח באנאנו</string>
     <string name="send_pin_description">שלח %s באנאנו?</string>
+
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">הוסף איש קשר</string>
+    <string name="contact_added">  !נוסף לאנשי הקשר %s </string>
+    <string name="contact_invalid_name">שם איש קשר לא תקין</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">הוסף איש קשר</string>
+    <string name="contact_add_button">הוסף איש קשר</string>
+    <string name="contact_name_hint">הכנס שם @</string>
+    <string name="contact_name_missing">בחר שם לאיש קשר זה</string>
+    <string name="contact_name_exists">איש קשר כבר קיים</string>
+    <string name="contact_address_hint">הכנס כתובת</string>
+    <string name="contact_address_exists">הכתובת כבר שייכת לאיש קשר קיים</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">אנשי קשר</string>
+    <string name="contact_settings_item">אנשי קשר</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">איש קשר:</string>
+    <string name="contact_remove_header">הסר:</string>
+    <string name="contact_remove_btn">הסר איש קשר</string>
+    <string name="contact_remove_sure">האם אתה בטוח שאתה רוצה למחוק את %?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">% הוסר מאנשי הקשר!</string>
+    <string name="contact_export_none">לא קיימים אנשי קשר לייצא</string>
+    <string name="contact_export_error">ייצוא איש קשר נכשל</string>
+    <string name="contact_import_error">ייבוא איש קשר נכשל</string>
+    <string name="contact_import_success">יבוא אנשי הקשר של %d עבר בהצלחה</string>
+    <string name="contact_import_none">לא נמצאו אנשי קשר לייבוא</string>
+    <string name="contact_import_warning_header">אזהרה</string>
+    <string name="contact_import_permission_error">בבקשה תאפשר לקאליום לקרוא מזיכרון .המכשיר</string>
+    <string name="contact_export_permission_error">בבקשה תאפשר לקאליום לכתוב לזיכרון המכשיר.</string>
+    <string name="contact_export_success">אנשי הקשר נשמרו ל%s</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">סרוק כתובת ברקוד \n של באנאנו</string>

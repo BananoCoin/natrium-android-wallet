@@ -119,6 +119,25 @@
     <string name="send_no_frontier">Account niet gevonden (dit kan betekenen dat je account niet geopend is)</string>
     <string name="send_fingerprint_description">Bevestig vingerafdruk om Banano te versturen.</string>
     <string name="send_pin_description">Verstuur %s Banano?</string>
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Contact toevoegen</string>
+    <string name="contact_added">%s is toegevoegd aan Contacten!</string>
+    <string name="contact_invalid_name">Ongeldige Gebruikersnaam</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Voeg Contact toe:</string>
+    <string name="contact_add_button">Voeg toe</string>
+    <string name="contact_name_hint">Typ naam: @</string>
+    <string name="contact_name_missing">Geef dit Contact een naam</string>
+    <string name="contact_name_exists">Contact bestaat al</string>
+    <string name="contact_address_hint">Voeg adres toe</string>
+    <string name="contact_address_exists">Er bestaat al een Contact met dit adres</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Contacten</string>
+    <string name="contact_settings_item">Contacten</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Contact:</string>
+    <string name="contact_remove_header">Verwijder:</string>
+    <string name="contact_remove_btn">Verwijder Contact</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan een Banano \nadres QR code</string>
