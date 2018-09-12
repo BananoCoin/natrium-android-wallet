@@ -100,11 +100,11 @@
     <string name="send_title">נשלח מ:</string>
     <string name="send_address_hint">הכנס כתובת</string>
     <string name="send_amount_hint">הכנס כמות</string>
-    <string name="send_max">מקסימום</string>
+    <string name="send_max">מקס</string>
     <string name="send_send_cta">שלח</string>
     <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">נשלח</string>
-    <string name="send_scan_qr">סרו\' ברקוד</string>
+    <string name="send_scan_qr">סרוק ברקוד</string>
     <string name="send_sending">נשלח</string>
     <string name="send_to">מ:</string>
     <string name="sent_to">נשלח ל:</string>
