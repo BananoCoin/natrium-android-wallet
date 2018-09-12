@@ -3,8 +3,10 @@ package com.banano.kaliumwallet.ui.common;
 import android.content.Context;
 import android.content.res.Resources;
 import android.support.v4.content.ContextCompat;
+import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.style.AlignmentSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -281,8 +283,12 @@ public class UIUtil {
      * Show a toast
      */
     public static void showToast(String content, Context context) {
+        Spannable centeredText = new SpannableString(content);
+        centeredText.setSpan(new AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER),
+                0, content.length() - 1,
+                Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         Toast t = Toast.makeText(context,
-                content,
+                centeredText,
                 Toast.LENGTH_SHORT);
         t.setGravity(Gravity.BOTTOM, 0, (int) UIUtil.convertDpToPixel(100, context));
         t.show();
