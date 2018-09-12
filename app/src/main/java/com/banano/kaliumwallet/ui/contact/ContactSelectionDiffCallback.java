@@ -29,12 +29,22 @@ public class ContactSelectionDiffCallback extends DiffUtil.Callback {
 
     @Override
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldItems.get(oldItemPosition).getName().equals(newItems.get(newItemPosition).getName());
+        return oldItems.get(oldItemPosition).getAddress().equals(newItems.get(newItemPosition).getAddress());
     }
 
     @Override
     public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
-        return oldItems.get(oldItemPosition).getAddress().equals(newItems.get(newItemPosition).getAddress());
+        Contact oldItem = oldItems.get(oldItemPosition);
+        Contact newItem = newItems.get(newItemPosition);
+        String oldItemMonkeyPath = oldItem.getMonkeyPath();
+        String newItemMonkeyPath = newItem.getMonkeyPath();
+        if (oldItemMonkeyPath == null) {
+            oldItemMonkeyPath = "";
+        }
+        if (newItemMonkeyPath == null) {
+            newItemMonkeyPath = "";
+        }
+        return (newItemMonkeyPath.equals(oldItemMonkeyPath) && newItem.getName().equals(oldItem.getName()));
     }
 
     @Nullable

@@ -21,7 +21,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.util.HashMap;
+import java.io.File;
 import java.util.List;
 
 import timber.log.Timber;
@@ -32,13 +32,11 @@ public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<Contac
     private List<Contact> contactList;
     private Context context;
     private RequestBuilder<PictureDrawable> requestBuilder;
-    private HashMap<String, Uri> monkeyUriMap;
     private int monKeyDimension;
 
-    public ContactOverviewSelectionAdapter(List<Contact> contactList, Context context, HashMap<String, Uri> monkeyUriMap) {
+    public ContactOverviewSelectionAdapter(List<Contact> contactList, Context context) {
         this.contactList = contactList;
         this.context = context;
-        this.monkeyUriMap = monkeyUriMap;
         this.requestBuilder = Glide.with(context)
                 .as(PictureDrawable.class)
                 .transition(withCrossFade())
@@ -78,19 +76,23 @@ public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<Contac
             return;
         }
 
-        Uri monkeyUri = monkeyUriMap.get(contact.getAddress());
-        if (monkeyUri == null) {
-            return;
-        }
-        try {
-            if (requestBuilder != null) {
-                requestBuilder.load(monkeyUri)
-                              .apply(new RequestOptions().override(monKeyDimension, monKeyDimension))
-                              .into(holder.contactItemBinding.contactOverviewMonkey);
+        if (contact.getMonkeyPath() != null) {
+            File f = new File(contact.getMonkeyPath());
+            if (!f.exists()) {
+                return;
             }
-        } catch (Exception e) {
-            Timber.e("Failed to load monKey file");
-            e.printStackTrace();
+            Uri monkeyUri  = Uri.fromFile(f);
+            try {
+                if (requestBuilder != null) {
+                    requestBuilder.load(monkeyUri)
+                            .apply(new RequestOptions().override(monKeyDimension, monKeyDimension))
+                            .into(holder.contactItemBinding.contactOverviewMonkey);
+                }
+            } catch (Exception e) {
+                Timber.e("Failed to load monKey file");
+                e.printStackTrace();
+                contact.setMonkeyPath(null);
+            }
         }
     }
 
@@ -108,8 +110,8 @@ public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<Contac
         diffResult.dispatchUpdatesTo(this);
     }
 
-    public void updateMap(HashMap<String, Uri> newMap) {
-        this.monkeyUriMap = newMap;
+    public List<Contact> getContactList() {
+        return contactList;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -54,6 +54,8 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
     private Handler mHandler;
     private Runnable mRunnable;
 
+    private DownloadOrRetrieveFileTask downloadMonkeyTask;
+
     @Inject
     Realm realm;
 
@@ -131,23 +133,28 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
         binding.contactName.setText(name);
         binding.contactAddress.setText(UIUtil.getColorizedSpannableBrightWhite(address, getContext()));
 
-        // Download monKey
-        String url = getString(R.string.monkey_api_url, address);
-        DownloadOrRetrieveFileTask downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
-        downloadMonkeyTask.setListener((List<File> monkeys) -> {
-            if (monkeys == null || monkeys.isEmpty()) {
-                return;
-            }
-            RequestBuilder<PictureDrawable> requestBuilder;
-            requestBuilder = Glide.with(getContext())
-                    .as(PictureDrawable.class)
-                    .transition(withCrossFade())
-                    .listener(new SvgSoftwareLayerSetter());
-            for (File f: monkeys) {
+        // Get contact
+        Contact c = realm.where(Contact.class).equalTo("address", address).findFirst();
+        if (c == null) {
+            return view;
+        }
+
+        // See if contact already stores contact file
+        // see if it's a valid file, and load it into imageview
+        // otherwise, try to download it
+        RequestBuilder<PictureDrawable> requestBuilder;
+        requestBuilder = Glide.with(getContext())
+                .as(PictureDrawable.class)
+                .transition(withCrossFade())
+                .listener(new SvgSoftwareLayerSetter());
+        boolean alreadyHaveMonkey = false;
+        if (c.getMonkeyPath() != null) {
+            File f = new File(c.getMonkeyPath());
+            if (f.exists()) {
+                Uri monkeyUri = Uri.fromFile(f);
                 try {
-                    Uri svgUri = Uri.fromFile(f);
-                    requestBuilder.load(svgUri).into(binding.contactViewMonkey);
-                    break;
+                    requestBuilder.load(monkeyUri).into(binding.contactViewMonkey);
+                    alreadyHaveMonkey = true;
                 } catch (Exception e) {
                     Timber.e("Failed to load monKey file");
                     e.printStackTrace();
@@ -156,8 +163,30 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
                     }
                 }
             }
-        });
-        downloadMonkeyTask.execute(url);
+        }
+        if (!alreadyHaveMonkey) {
+            String url = getString(R.string.monkey_api_url, address);
+            downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
+            downloadMonkeyTask.setListener((List<File> monkeys) -> {
+                if (monkeys == null || monkeys.isEmpty()) {
+                    return;
+                }
+                for (File f : monkeys) {
+                    try {
+                        Uri svgUri = Uri.fromFile(f);
+                        requestBuilder.load(svgUri).into(binding.contactViewMonkey);
+                        break;
+                    } catch (Exception e) {
+                        Timber.e("Failed to load monKey file");
+                        e.printStackTrace();
+                        if (f.exists()) {
+                            f.delete();
+                        }
+                    }
+                }
+            });
+            downloadMonkeyTask.execute(url);
+        }
 
         // Reset address copy text
         // Set runnable to reset seed text
@@ -178,6 +207,10 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
         // Cancel address copy callback
         if (mHandler != null && mRunnable != null) {
             mHandler.removeCallbacks(mRunnable);
+        }
+        // Clear leaks
+        if (downloadMonkeyTask != null) {
+            downloadMonkeyTask.setListener(null);
         }
     }
 

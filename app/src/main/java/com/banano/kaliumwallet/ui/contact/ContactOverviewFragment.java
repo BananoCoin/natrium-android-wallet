@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -41,7 +40,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -65,7 +63,7 @@ public class ContactOverviewFragment extends BaseFragment {
     private boolean showExport = false;
     private boolean showImport = false;
 
-    private HashMap<String, Uri> monkeyUriMap;
+    private DownloadOrRetrieveFileTask downloadMonkeyTask;
 
     @Inject
     Realm realm;
@@ -108,11 +106,10 @@ public class ContactOverviewFragment extends BaseFragment {
 
         // Find contacts
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
-        monkeyUriMap = new HashMap<>();
         binding.contactRecyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
-        mAdapter = new ContactOverviewSelectionAdapter(realm.copyFromRealm(contacts), getContext(), monkeyUriMap);
+        mAdapter = new ContactOverviewSelectionAdapter(realm.copyFromRealm(contacts), getContext());
         binding.contactRecyclerview.setAdapter(mAdapter);
-        // Lazy load the monKeys
+        // Download any monKeys that we don't have yet
         initMonkeys();
 
         return view;
@@ -120,50 +117,55 @@ public class ContactOverviewFragment extends BaseFragment {
 
     private void initMonkeys() {
         // Find contacts
-        List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
-        DownloadOrRetrieveFileTask downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
+        List<Contact> contacts = mAdapter.getContactList();
+        if (contacts.size() == 0) {
+            return;
+        }
+        // Get list of monkey URLs that need downloaded here
+        List<String> monkeyUrls = new ArrayList<>();
+        for (Contact c: contacts) {
+            if (c.getMonkeyPath() == null) {
+                monkeyUrls.add(getString(R.string.monkey_api_url, c.getAddress()));
+            }
+        }
+        if (monkeyUrls.isEmpty()) {
+            return; // Nothing to download
+        }
+        // Download monKeys and notify adapter of change
+        downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
         downloadMonkeyTask.setListener((List<File> monkeys) -> {
             if (monkeys == null || monkeys.isEmpty()) {
                 return;
             }
-            for (File f : monkeys) {
-                String address = Address.findAddress(f.getName()).trim();
-                monkeyUriMap.put(address, Uri.fromFile(f));
+            int updatedCount = 0;
+            for (File f: monkeys) {
+                if (f.exists()) {
+                    String address = Address.findAddress(f.getAbsolutePath());
+                    if (address != null && !address.isEmpty()) {
+                        realm.executeTransaction(realm -> {
+                            Contact c = realm.where(Contact.class).equalTo("address", address).findFirst();
+                            c.setMonkeyPath(f.getAbsolutePath());
+                        });
+                        updatedCount++;
+                    }
+                }
             }
-            mAdapter.updateMap(monkeyUriMap);
-            mAdapter.notifyDataSetChanged();
+            if (updatedCount > 0) {
+                refreshContacts();
+            }
         });
-        if (contacts.size() > 0) {
-            List<String> monkeyUrls = new ArrayList<>();
-            for (Contact c : contacts) {
-                monkeyUrls.add(getString(R.string.monkey_api_url, c.getAddress()));
-            }
-            downloadMonkeyTask.execute(monkeyUrls.toArray(new String[monkeyUrls.size()]));
-        }
-
+        downloadMonkeyTask.execute(monkeyUrls.toArray(new String[monkeyUrls.size()]));
     }
 
     private void refreshContacts() {
         List<Contact> contacts = realm.where(Contact.class).findAll().sort("name");
-        mAdapter.updateMap(monkeyUriMap);
         mAdapter.updateList(realm.copyFromRealm(contacts));
     }
 
     @Subscribe
     public void receiveContactAdded(ContactAdded contactAdded) {
-        DownloadOrRetrieveFileTask downloadMonkeyTask = new DownloadOrRetrieveFileTask(getContext().getFilesDir());
-        downloadMonkeyTask.setListener((List<File> monkeys) -> {
-            if (monkeys == null || monkeys.isEmpty()) {
-                refreshContacts();
-                return;
-            }
-            for (File f : monkeys) {
-                String address = Address.findAddress(f.getName()).trim();
-                monkeyUriMap.put(address, Uri.fromFile(f));
-                refreshContacts();
-            }
-        });
-        downloadMonkeyTask.execute(getString(R.string.monkey_api_url, contactAdded.getAddress()));
+        refreshContacts();
+        initMonkeys();
     }
 
     @Subscribe
@@ -174,10 +176,12 @@ public class ContactOverviewFragment extends BaseFragment {
     @Subscribe
     public void receiveContactSelected(ContactSelected contactSelected) {
         // show send dialog
-        ContactViewDialogFragment dialog = ContactViewDialogFragment.newInstance(contactSelected.getName(), contactSelected.getAddress());
-        dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
-                ContactViewDialogFragment.TAG);
-        ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+        if (getActivity() instanceof WindowControl) {
+            ContactViewDialogFragment dialog = ContactViewDialogFragment.newInstance(contactSelected.getName(), contactSelected.getAddress());
+            dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
+                    ContactViewDialogFragment.TAG);
+            ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+        }
     }
 
     @Override
@@ -185,6 +189,10 @@ public class ContactOverviewFragment extends BaseFragment {
         super.onDestroyView();
         // unregister from bus
         RxBus.get().unregister(this);
+        // Avoid leaks
+        if (downloadMonkeyTask != null) {
+            downloadMonkeyTask.setListener(null);
+        }
     }
 
     @Override

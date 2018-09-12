@@ -3,6 +3,7 @@ package com.banano.kaliumwallet.db;
 import android.support.annotation.NonNull;
 
 import io.realm.DynamicRealm;
+import io.realm.FieldAttribute;
 import io.realm.RealmMigration;
 import io.realm.RealmSchema;
 
@@ -19,8 +20,9 @@ public class Migration implements RealmMigration {
         // Add Contact class
         if (oldVersion == 1) {
             schema.create("Contact")
-                    .addField("name", String.class)
-                    .addField("address", String.class);
+                    .addField("name", String.class, FieldAttribute.REQUIRED)
+                    .addField("address", String.class, new FieldAttribute[]{FieldAttribute.REQUIRED, FieldAttribute.PRIMARY_KEY})
+                    .addField("monkeyPath", String.class);
             oldVersion++;
         }
     }

@@ -18,8 +18,7 @@ public class Contact extends RealmObject {
     @Required
     private String address;
 
-    @Ignore
-    private Uri monkeyUri;
+    private String monkeyPath;
 
     public Contact() {
 
@@ -57,12 +56,12 @@ public class Contact extends RealmObject {
                 address.substring(backStartIndex, address.length());
     }
 
-    public void setMonkeyUri(Uri uri) {
-        this.monkeyUri = uri;
+    public String getMonkeyPath() {
+        return monkeyPath;
     }
 
-    public Uri getMonkeyUri() {
-        return this.monkeyUri;
+    public void setMonkeyPath(String monkeyPath) {
+        this.monkeyPath = monkeyPath;
     }
 
     @Override
@@ -75,6 +74,8 @@ public class Contact extends RealmObject {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null)
             return false;
+        if (monkeyPath != null ? !monkeyPath.equals(that.monkeyPath) : that.monkeyPath != null)
+            return false;
         return true;
     }
 
@@ -82,6 +83,7 @@ public class Contact extends RealmObject {
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (monkeyPath != null ? monkeyPath.hashCode() : 0);
         return result;
     }
 
@@ -89,7 +91,8 @@ public class Contact extends RealmObject {
     public String toString() {
         return "Contact{" +
                 "name='" + name + '\'' +
-                ", address='" + address +
+                ", address='" + address + '\'' +
+                ", monkeyPath='" + monkeyPath +
                 '}';
     }
 
