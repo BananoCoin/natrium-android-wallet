@@ -122,6 +122,38 @@
     <string name="send_fingerprint_description">Xác nhận vân tay để gửi %s Banano</string>
     <string name="send_pin_description">Gửi %s Banano?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Thêm liên hệ</string>
+    <string name="contact_added">%s Đã thêm vào danh bạ!</string>
+    <string name="contact_invalid_name">Tên liên hệ không phù hợp</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Thêm liên hệ:</string>
+    <string name="contact_add_button">Thêm liên hệ</string>
+    <string name="contact_name_hint">Nhập tên @</string>
+    <string name="contact_name_missing">Chọn tên cho liên hệ này</string>
+    <string name="contact_name_exists">Địa chỉ liên hệ đã tồn tại</string>
+    <string name="contact_address_hint">Nhập một địa chỉ</string>
+    <string name="contact_address_exists">Địa chỉ này đã thuộc về một liên hệ hiện có</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Danh bạ</string>
+    <string name="contact_settings_item">Danh bạ</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Liên hệ:</string>
+    <string name="contact_remove_header">Xóa:</string>
+    <string name="contact_remove_btn">Xóa liên hệ</string>
+    <string name="contact_remove_sure">Bạn có chắc là muốn xóa %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s Đã bị xóa khỏi danh sách liên hệ của bạn!</string>
+    <string name="contact_export_none">Không có liên hệ nào để xuất ra</string>
+    <string name="contact_export_error">Xuất liên hệ không thành công</string>
+    <string name="contact_import_error">Nhập liên hệ không thành công</string>
+    <string name="contact_import_success">Đã được nhập thành công %d liên hệ</string>
+    <string name="contact_import_none">Không có liên hệ nào để nhập</string>
+    <string name="contact_import_warning_header">Chú ý</string>
+    <string name="contact_import_permission_error">Vui lòng cho phép Kalium đọc bộ nhớ của thiết bị</string>
+    <string name="contact_export_permission_error">Vui lòng cho phép Kalium ghi vào bộ nhớ của thiết bị.</string>
+    <string name="contact_export_success">Danh bạ đã được lưu vào %s</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Quét 1 Banano \nđịa chỉ mã QR</string>
 </resources>

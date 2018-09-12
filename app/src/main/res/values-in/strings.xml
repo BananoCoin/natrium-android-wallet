@@ -120,6 +120,25 @@
     <string name="send_fingerprint_description">Konfirmasi sidik jari untuk mengirim %s Banano</string>
     <string name="send_pin_description">Kirim %s Banano?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Tambah Kontak</string>
+    <string name="contact_added">%s ditambahkan ke kontak!</string>
+    <string name="contact_invalid_name">Kontak Tidak Valid</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Tambah Kontak:</string>
+    <string name="contact_add_button">Tambah Kontak</string>
+    <string name="contact_name_hint">Masukkan Nama @</string>
+    <string name="contact_name_missing">Pilih Nama Untuk Kontak</string>
+    <string name="contact_name_exists">Kontak Sudah Ada</string>
+    <string name="contact_address_hint">Masukkan Alamat</string>
+    <string name="contact_address_exists">Kontak sudah ada</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Kontak</string>
+    <string name="contact_settings_item">Kontak</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Kontak:</string>
+    <string name="contact_remove_header">Hapus:</string>
+    <string name="contact_remove_btn">Hapus Kontak</string>
     <string name="contact_remove_sure">Anda yakib akan menghapus %s?</string>
     <!-- Export/Import -->
     <string name="contact_removed">%s kontak berhasil dihapus!</string>
