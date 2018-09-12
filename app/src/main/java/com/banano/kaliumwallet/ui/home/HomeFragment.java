@@ -407,6 +407,7 @@ public class HomeFragment extends BaseFragment {
         updateAmounts();
         if (wallet.getOpenBlock() == null) {
             binding.introText.exampleIntroText.setText(UIUtil.colorizeBanano(binding.introText.exampleIntroText.getText().toString(), getContext()));
+            binding.loadingAnimation.setVisibility(View.GONE);
             binding.exampleCards.setVisibility(View.VISIBLE);
         }
     }
