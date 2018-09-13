@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name" translatable="false">Kalium</string>
+    <string name="app_name" translatable="false">Natrium</string>
 
-    <string name="version_display" translatable="false">Kalium v%1$s</string>
+    <string name="version_display" translatable="false">Natrium v%1$s</string>
 
     <!-- Generic -->
     <string name="dialog_cancel">Cancel</string>
@@ -11,7 +11,7 @@
     <!-- API -->
     <string name="monkey_api_url" translatable="false">https://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Welcome to Kalium. To proceed, you may create a new wallet or import an existing one.</string>
+    <string name="intro_welcome_title">Welcome to Natrium. To proceed, you may create a new wallet or import an existing one.</string>
     <string name="intro_welcome_new_wallet">New Wallet</string>
     <string name="intro_welcome_have_wallet">Import Wallet</string>
     <!-- Intro New Wallet Screens -->
@@ -41,18 +41,18 @@
     <!-- Home Screen -->
     <string name="home_send_cta">Send</string>
     <string name="home_receive_cta">Receive</string>
-    <string name="home_explore_url" translatable="false">https://creeper.banano.cc/explorer/block/%s</string>
+    <string name="home_explore_url" translatable="false">https://nanocrawler.cc/explorer/block/%s</string>
     <string name="error_message">There was a problem connecting. Please try again.</string>
     <string name="transaction_header">Transactions</string>
     <string name="history_sent">Sent</string>
     <string name="history_received">Received</string>
     <string name="transaction_details">View Details</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Welcome to Kalium. Once you receive BANANO, transactions will show up like this:</string>
+    <string name="example_card_intro">Welcome to Natrium. Once you receive NANO, transactions will show up like this:</string>
     <string name="example_card_little">A little</string>
     <string name="example_card_lot">A lot of</string>
-    <string name="example_card_to">to a random monkey</string>
-    <string name="example_card_from">from a random monkey</string>
+    <string name="example_card_to">to a random person</string>
+    <string name="example_card_from">from a random person</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
@@ -61,10 +61,10 @@
     <string name="settings_default_language_string">System Default</string>
     <string name="settings_backup_seed">Backup Seed</string>
     <string name="settings_change_rep">Change Representative</string>
-    <string name="settings_share">Share Kalium</string>
+    <string name="settings_share">Share Natrium</string>
     <string name="settings_logout">Logout</string>
     <string name="settings_logout_alert_title">WARNING</string>
-    <string name="settings_logout_alert_message">Logging out will remove your seed and all Kalium-related data from this device. If your seed is not backed up, you will never be able to access your funds again.</string>
+    <string name="settings_logout_alert_message">Logging out will remove your seed and all Natriun-related data from this device. If your seed is not backed up, you will never be able to access your funds again.</string>
     <string name="settings_logout_alert_confirm_cta">Delete seed and logout</string>
     <string name="settings_logout_alert_cancel_cta">Cancel</string>
     <string name="settings_logout_warning_title">Are you sure?</string>
@@ -93,7 +93,7 @@
     <string name="change_representative_pin">Enter pin to change representative</string>
     <!-- Share -->
     <string name="share_title">Share via...</string>
-    <string name="share_extra">Check out Kalium! Banano\'s official Android Wallet!</string>
+    <string name="share_extra">Check out Natrium! The best NANO Mobile Wallet!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Backup Wallet Seed</string>
     <string name="settings_fingerprint_title">Confirm fingerprint to backup wallet seed.</string>
@@ -104,9 +104,9 @@
     <string name="receive_copy_cta">Copy Address</string>
     <string name="receive_copied">Address Copied</string>
     <string name="receive_share_title">Share via…</string>
-    <string name="receive_card_label_one" translatable="false">$BAN</string>
-    <string name="receive_card_label_two" translatable="false">BANANO.CO.IN</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_label_one" translatable="false">$NANO</string>
+    <string name="receive_card_label_two" translatable="false">NANO.ORG</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Code</string>
 
     <!-- Send Screens -->
@@ -115,7 +115,7 @@
     <string name="send_amount_hint">Enter Amount</string>
     <string name="send_max">Max</string>
     <string name="send_send_cta">Send</string>
-    <string name="send_balance">(%s BAN)</string>
+    <string name="send_balance">(%s NANO)</string>
     <string name="send_sent">Sent</string>
     <string name="send_scan_qr">Scan QR Code</string>
     <string name="send_sending">Sending</string>
@@ -130,8 +130,8 @@
     <string name="send_amount_error">Amount entered was invalid</string>
     <string name="send_generic_error">An error occurred. Try again later.</string>
     <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>
-    <string name="send_fingerprint_description">Confirm fingerprint to send %s Banano</string>
-    <string name="send_pin_description">Send %s Banano?</string>
+    <string name="send_fingerprint_description">Confirm fingerprint to send %s Nano</string>
+    <string name="send_pin_description">Send %s Nano?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Add Contact</string>
@@ -161,10 +161,10 @@
     <string name="contact_import_success">Successfully imported %d contacts</string>
     <string name="contact_import_none">Found no contacts to import</string>
     <string name="contact_import_warning_header">Warning</string>
-    <string name="contact_import_permission_error">Please allow Kalium permission to read from device storage.</string>
-    <string name="contact_export_permission_error">Please allow Kalium permission to write to device storage.</string>
+    <string name="contact_import_permission_error">Please allow Natrium permission to read from device storage.</string>
+    <string name="contact_export_permission_error">Please allow Natrium permission to write to device storage.</string>
     <string name="contact_export_success">Contacts saved to %s</string>
 
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Scan a Banano \naddress QR code</string>
+    <string name="scan_send_instruction_label">Scan a Nano \naddress QR code</string>
 </resources>

@@ -6,7 +6,7 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.kaliumwallet.ui.intro.IntroWelcomeFragment.ClickHandlers" />
+            type="com.banano.natriumwallet.ui.intro.IntroWelcomeFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout

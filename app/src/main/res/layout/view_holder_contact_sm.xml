@@ -7,7 +7,7 @@
         <!-- Data -->
         <variable
             name="contact"
-            type="com.banano.kaliumwallet.model.Contact" />
+            type="com.banano.natriumwallet.model.Contact" />
     </data>
 
     <android.support.constraint.ConstraintLayout

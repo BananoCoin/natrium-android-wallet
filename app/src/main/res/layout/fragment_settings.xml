@@ -13,7 +13,7 @@
 
         <variable
             name="handlers"
-            type="com.banano.kaliumwallet.ui.settings.SettingsFragment.ClickHandlers" />
+            type="com.banano.natriumwallet.ui.settings.SettingsFragment.ClickHandlers" />
     </data>
 
     <RelativeLayout

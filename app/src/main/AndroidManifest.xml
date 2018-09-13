@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.banano.kaliumwallet">
+    package="com.banano.natriumwallet">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -17,7 +17,7 @@
         android:required="false" />
 
     <application
-        android:name="com.banano.kaliumwallet.KaliumApplication"
+        android:name="com.banano.natriumwallet.KaliumApplication"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -28,7 +28,7 @@
         android:hardwareAccelerated="true"
         tools:replace="android:allowBackup">
         <activity
-            android:name="com.banano.kaliumwallet.MainActivity"
+            android:name="com.banano.natriumwallet.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -38,19 +38,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.banano.kaliumwallet.ui.scan.ScanActivity"
+            android:name="com.banano.natriumwallet.ui.scan.ScanActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppOverlayTheme" />
 
-        <receiver android:name="com.banano.kaliumwallet.broadcastreceiver.ClipboardAlarmReceiver">
+        <receiver android:name="com.banano.natriumwallet.broadcastreceiver.ClipboardAlarmReceiver">
             <intent-filter>
-                <action android:name="com.banano.kaliumwallet.alarm" />
+                <action android:name="com.banano.natriumwallet.alarm" />
             </intent-filter>
         </receiver>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="com.banano.kaliumwallet.fileprovider"
+            android:authorities="com.banano.natriumwallet.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

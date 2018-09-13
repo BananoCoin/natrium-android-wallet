@@ -7,7 +7,7 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.kaliumwallet.ui.home.TranDetailsFragment.ClickHandlers" />
+            type="com.banano.natriumwallet.ui.home.TranDetailsFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout

@@ -7,7 +7,7 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.kaliumwallet.ui.contact.ContactViewDialogFragment.ClickHandlers" />
+            type="com.banano.natriumwallet.ui.contact.ContactViewDialogFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -40,22 +40,12 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_delete" />
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/contact_view_monkey"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="7dp"
-            app:layout_constraintEnd_toStartOf="@+id/view_contact_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
-            app:layout_constraintTop_toBottomOf="@+id/contact_view_header"
-            app:layout_constraintVertical_chainStyle="packed" />
-
         <TextView
             android:id="@+id/contact_name"
             android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginTop="80dp"
             android:background="@drawable/bg_edittext"
             android:fontFamily="@font/nunitosans_extralight"
             android:gravity="center_horizontal"
@@ -72,7 +62,7 @@
             app:layout_constraintBottom_toTopOf="@+id/contact_address"
             app:layout_constraintEnd_toStartOf="@+id/view_contact_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/view_contact_guideline_vert"
-            app:layout_constraintTop_toBottomOf="@+id/contact_view_monkey"
+            app:layout_constraintTop_toBottomOf="@+id/contact_view_header"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="\@bbedwards" />
 

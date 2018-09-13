@@ -7,7 +7,7 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.kaliumwallet.ui.intro.IntroNewWalletFragment.ClickHandlers" />
+            type="com.banano.natriumwallet.ui.intro.IntroNewWalletFragment.ClickHandlers" />
         <!-- Data -->
         <variable
             name="seed"

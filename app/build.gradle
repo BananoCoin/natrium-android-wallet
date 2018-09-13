@@ -8,11 +8,11 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.banano.kaliumwallet"
+        applicationId "com.banano.natriumwallet"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 21
-        versionName "0.9.11"
+        versionCode 30
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -22,7 +22,7 @@ android {
         // Enabling multidex support.
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-        buildConfigField "String", "CONNECTION_URL", "\"wss://kaba.banano.cc:443\""
+        buildConfigField "String", "CONNECTION_URL", "\"wss://light.nano.org:443\""
     }
     buildTypes {
         debug {

@@ -7,15 +7,15 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.kaliumwallet.ui.home.HomeFragment.ClickHandlers" />
+            type="com.banano.natriumwallet.ui.home.HomeFragment.ClickHandlers" />
         <!-- Data -->
         <variable
             name="wallet"
-            type="com.banano.kaliumwallet.model.KaliumWallet" />
+            type="com.banano.natriumwallet.model.KaliumWallet" />
 
         <variable
             name="localCurrency"
-            type="com.banano.kaliumwallet.model.AvailableCurrency" />
+            type="com.banano.natriumwallet.model.AvailableCurrency" />
     </data>
 
     <android.support.v4.widget.DrawerLayout
@@ -56,16 +56,6 @@
                         android:padding="5dp"
                         app:srcCompat="@drawable/ic_settings" />
 
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/home_monkey"
-                        android:layout_width="@dimen/monkey_width"
-                        android:layout_height="@dimen/monkey_height"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:background="@drawable/bg_image_button"
-                        android:onClickListener="@{handlers::onClickMonkey}"
-                        android:visibility="gone" />
-
                     <TextView
                         android:id="@+id/amount_local_currency_title"
                         style="@style/TextStyleSubcurrency"
@@ -102,34 +92,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@{wallet.accountBalanceBtc}"
-                            tools:text="18.000001" />
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/nano_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/amount_banano_title"
-                        android:layout_centerInParent="true"
-                        android:layout_marginTop="-3dp"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
-
-                        <android.support.v7.widget.AppCompatImageView
-                            android:id="@+id/amount_nano_symbol"
-                            style="@style/TextStyleSubcurrency"
-                            android:layout_width="wrap_content"
-                            android:layout_height="15sp"
-                            android:layout_marginEnd="2dp"
-                            app:srcCompat="@drawable/ic_currency_nano" />
-
-                        <TextView
-                            android:id="@+id/amount_nano_title"
-                            style="@style/TextStyleSubcurrency"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@{wallet.accountBalanceNano}"
                             tools:text="18.000001" />
                     </LinearLayout>
 
@@ -298,29 +260,6 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.5" />
-
-                <FrameLayout
-                    android:id="@+id/monkey_overlay"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:animateLayoutChanges="true"
-                    android:background="@color/black_70"
-                    android:clickable="true"
-                    android:elevation="5dp"
-                    android:focusable="true"
-                    android:onClickListener="@{handlers::onClickMonkeyFrame}"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/monkey_overlay_img"
-                        android:layout_width="350dp"
-                        android:layout_height="350dp"
-                        android:layout_gravity="center" />
-
-                </FrameLayout>
 
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>

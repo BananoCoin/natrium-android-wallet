@@ -9,7 +9,7 @@
 
         <variable
             name="wallet"
-            type="com.banano.kaliumwallet.model.KaliumWallet" />
+            type="com.banano.natriumwallet.model.KaliumWallet" />
 
         <variable
             name="showAmount"
@@ -18,7 +18,7 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.kaliumwallet.ui.send.SendDialogFragment.ClickHandlers" />
+            type="com.banano.natriumwallet.ui.send.SendDialogFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout
