@@ -26,14 +26,14 @@ public class NumberUtil {
     }
 
     /**
-     * Go from 32-bit raw BANANO to user readable String with up to 2 decimal places
+     * Go from 32-bit raw BANANO to user readable String with up to 6 decimal places
      *
      * @param raw 100000000000000000000000000000
      * @return String 1
      */
     public static String getRawAsUsableString(String raw) {
         NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
-        numberFormat.setMaximumFractionDigits(2);
+        numberFormat.setMaximumFractionDigits(6);
         return numberFormat.format(getRawAsUsableAmount(raw));
     }
 

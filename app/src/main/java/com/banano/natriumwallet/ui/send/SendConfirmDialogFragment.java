@@ -102,7 +102,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         }
 
         String destination = getArguments().getString("destination");
-        String amount = String.format(Locale.ENGLISH, "%.2f", Float.parseFloat(getArguments().getString("amount")));
+        String amount = String.format(Locale.ENGLISH, "%.6f", Float.parseFloat(getArguments().getString("amount")));
 
         // subscribe to bus
         RxBus.get().register(this);
@@ -152,7 +152,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
             }
         }
 
-        binding.sendAmount.setText(String.format("%s BAN", amount));
+        binding.sendAmount.setText(String.format("%s NANO", amount));
 
         return view;
     }

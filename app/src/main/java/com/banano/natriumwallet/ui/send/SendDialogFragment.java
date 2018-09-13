@@ -254,7 +254,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         });
 
         // Amount validation
-        binding.sendAmount.setFilters(new InputFilter[]{new DigitsInputFilter(Integer.MAX_VALUE, 2, Integer.MAX_VALUE)});
+        binding.sendAmount.setFilters(new InputFilter[]{new DigitsInputFilter(Integer.MAX_VALUE, 6, Integer.MAX_VALUE)});
         binding.sendAmount.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -529,7 +529,9 @@ public class SendDialogFragment extends BaseDialogFragment {
         }
 
         public void onClickMax(View view) {
-            binding.sendAmount.setText(String.format(Locale.ENGLISH, "%.2f", wallet.getUsableAccountBalanceBanano().floatValue()));
+            String amount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
+            amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
+            binding.sendAmount.setText(amount);
         }
 
         public void onClickPaste(View view) {

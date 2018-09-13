@@ -126,7 +126,7 @@ public class SendCompleteDialogFragment extends BaseDialogFragment {
             }
         }
 
-        binding.sentAmount.setText(String.format("%s BAN", amount));
+        binding.sentAmount.setText(String.format("%s NANO", amount));
 
         return view;
     }
