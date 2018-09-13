@@ -123,12 +123,12 @@
     <string name="send_pin_description">Magpadala ng %s Banano?</string>
 
     <!-- Address Book/Contacts -->
-    <string name="contact_add">Idagdag sa kontak</string>
+    <string name="contact_add">Mag-add ng kontak</string>
     <string name="contact_added">%s ay nadagdag sa mga kontak!</string>
     <string name="contact_invalid_name">Hindi tugma sa kontak</string>
     <!-- Add Contact Dialog -->
-    <string name="contact_add_header">Idagdag sa kontak:</string>
-    <string name="contact_add_button">Idagdag sa kontak</string>
+    <string name="contact_add_header">Mag-add ng kontak:</string>
+    <string name="contact_add_button">Mag-add ng kontak</string>
     <string name="contact_name_hint">Ilagay ang pangalan @</string>
     <string name="contact_name_missing">Pumili ng pangalan para sa kontak na ito</string>
     <string name="contact_name_exists">Mayroon nang kapareho</string>
