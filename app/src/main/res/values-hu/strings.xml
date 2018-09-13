@@ -122,6 +122,38 @@
     <string name="send_fingerprint_description">Erősítsd meg az ujjlenyomatoddal, hogy szeretnél %s Bananot küldeni.</string>
     <string name="send_pin_description">%s Banano küldése?</string>
 
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Új Kontakt</string>
+    <string name="contact_added">%s hozzá lett adva a kontaktokhoz!</string>
+    <string name="contact_invalid_name">Helytelen kontakt név</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Új Kontakt:</string>
+    <string name="contact_add_button">Kontakt Hozzáadása</string>
+    <string name="contact_name_hint">Írj be egy nevet @</string>
+    <string name="contact_name_missing">Válassz egy nevet ennek a kontaktnak</string>
+    <string name="contact_name_exists">Ez a kontakt már létezik!</string>
+    <string name="contact_address_hint">Írj be egy címet</string>
+    <string name="contact_address_exists">Ezzel a címmel már van egy kontaktod!</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Kontaktok</string>
+    <string name="contact_settings_item">Kontaktok</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Kontakt:</string>
+    <string name="contact_remove_header">Törlés:</string>
+    <string name="contact_remove_btn">Kontakt Törlése</string>
+    <string name="contact_remove_sure">Biztos, hogy törölni szeretnéd %s-t?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">Törölted %s-t a kontaktjaid közül!</string>
+    <string name="contact_export_none">Nincsenek exportálható kontaktok</string>
+    <string name="contact_export_error">Sikertelen kontakt exportálás</string>
+    <string name="contact_import_error">Sikertelen kontakt importálás</string>
+    <string name="contact_import_success">Sikeresen importáltál %d kontaktot</string>
+    <string name="contact_import_none">Nincsenek importálható kontaktok</string>
+    <string name="contact_import_warning_header">Figyelem</string>
+    <string name="contact_import_permission_error">Engedélyezd a Kaliumnak a hozzáférést az eszköz tárhelyéhez.</string>
+    <string name="contact_export_permission_error">Engedélyezd a Kaliumnak a hozzáférést az eszköz tárhelyére való írásra.</string>
+    <string name="contact_export_success">Kontaktok elmentve: %s</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Olvass be QR kóddal egy Banano \ncímet</string>
 </resources>
