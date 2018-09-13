@@ -33,6 +33,10 @@ import com.banano.kaliumwallet.ui.webview.WebViewDialogFragment;
 import com.banano.kaliumwallet.util.SharedPreferencesUtil;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -40,6 +44,7 @@ import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements WindowControl, ActivityWithComponent {
     protected ActivityComponent mActivityComponent;
@@ -94,11 +99,43 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             realm.executeTransaction(realm -> {
                 Contact newContact = realm.createObject(Contact.class, "ban_1ka1ium4pfue3uxtntqsrib8mumxgazsjf58gidh1xeo5te3whsq8z476goo");
                 newContact.setName("@KaliumDonations");
+                try {
+                    File heisenberg = moveHeisenbergFromAssets();
+                    if (heisenberg != null && heisenberg.exists()) {
+                        newContact.setMonkeyPath(heisenberg.getAbsolutePath());
+                    }
+                } catch (IOException e) {
+                    Timber.e(e);
+                }
             });
             sharedPreferencesUtil.setDefaultContactAdded();
         }
 
         initUi();
+    }
+
+    private File moveHeisenbergFromAssets() throws IOException {
+        File heisenberg = new File(getFilesDir(), "ban_1ka1ium4pfue3uxtntqsrib8mumxgazsjf58gidh1xeo5te3whsq8z476goo.svg");
+        try {
+            InputStream inputStream = getAssets().open("heisenberg.svg");
+            try {
+                FileOutputStream outputStream = new FileOutputStream(heisenberg);
+                try {
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = inputStream.read(buf)) > 0) {
+                        outputStream.write(buf, 0, len);
+                    }
+                } finally {
+                    outputStream.close();
+                }
+            } finally {
+                inputStream.close();
+            }
+        } catch (IOException e) {
+            throw new IOException("Could not open heisenbergsvg", e);
+        }
+        return heisenberg;
     }
 
     @Override
