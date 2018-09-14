@@ -366,7 +366,7 @@ public class SettingsFragment extends BaseFragment {
         builder.setMessage(getString(R.string.settings_fingerprint_title));
         builder.setView(view);
         SpannableString negativeText = new SpannableString(getString(android.R.string.cancel));
-        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         builder.setNegativeButton(negativeText, (dialog, which) -> Reprint.cancelAuthentication());
 
         fingerprintDialog = builder.create();
@@ -452,18 +452,18 @@ public class SettingsFragment extends BaseFragment {
                 // show the logout are-you-sure dialog
                 AlertDialog.Builder builder;
                 SpannableString title = new SpannableString(getString(R.string.settings_logout_alert_title));
-                title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, title.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, title.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                 SpannableString positive = new SpannableString(getString(R.string.settings_logout_alert_confirm_cta));
-                positive.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, positive.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                positive.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, positive.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 SpannableString negative = new SpannableString(getString(R.string.settings_logout_alert_cancel_cta));
-                negative.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negative.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                negative.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, negative.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                 // Sub dialog
                 SpannableString warningTitle = new SpannableString(getString(R.string.settings_logout_warning_title));
-                warningTitle.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, warningTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                warningTitle.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, warningTitle.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 SpannableString yes = new SpannableString(getString(R.string.settings_logout_warning_confirm));
-                yes.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, yes.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                yes.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, yes.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                 int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
                 builder = new AlertDialog.Builder(getContext(), style);

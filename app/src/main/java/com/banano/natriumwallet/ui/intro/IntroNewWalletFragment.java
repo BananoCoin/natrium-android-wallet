@@ -106,7 +106,7 @@ public class IntroNewWalletFragment extends BaseFragment {
         // Set runnable to reset seed text
         mHandler = new Handler();
         mRunnable = () -> {
-            binding.introNewWalletSeed.setTextColor(getResources().getColor(R.color.yellow));
+            binding.introNewWalletSeed.setTextColor(getResources().getColor(R.color.ltblue));
             binding.newWalletSeedCopied.setVisibility(View.INVISIBLE);
         };
 

@@ -116,7 +116,7 @@ public class BackupSeedDialogFragment extends BaseDialogFragment {
         // Set runnable to reset seed text
         mHandler = new Handler();
         mRunnable = () -> {
-            binding.backupSeedSeed.setTextColor(getResources().getColor(R.color.yellow));
+            binding.backupSeedSeed.setTextColor(getResources().getColor(R.color.ltblue));
             binding.backupSeedCopied.setVisibility(View.INVISIBLE);
         };
 

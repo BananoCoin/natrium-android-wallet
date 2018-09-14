@@ -5,8 +5,6 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.PictureDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -32,18 +30,11 @@ import com.banano.natriumwallet.ui.common.SwipeDismissTouchListener;
 import com.banano.natriumwallet.ui.common.UIUtil;
 import com.banano.natriumwallet.ui.common.WindowControl;
 import com.banano.natriumwallet.ui.send.SendDialogFragment;
-import com.banano.natriumwallet.util.svg.SvgSoftwareLayerSetter;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-
-import java.io.File;
-import java.util.List;
 
 import javax.inject.Inject;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
-import timber.log.Timber;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
@@ -167,12 +158,12 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
             int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), style);
             SpannableString title = new SpannableString(getString(R.string.contact_remove_btn));
-            title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, title.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, title.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
             SpannableString positive = new SpannableString(getString(R.string.intro_new_wallet_backup_yes));
-            positive.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, positive.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            positive.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, positive.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             SpannableString negative = new SpannableString(getString(R.string.intro_new_wallet_backup_no));
-            negative.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negative.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            negative.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, negative.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             builder.setTitle(title)
                     .setMessage(getString(R.string.contact_remove_sure, binding.contactName.getText().toString()))
                     .setPositiveButton(positive, (dialog, which) -> {

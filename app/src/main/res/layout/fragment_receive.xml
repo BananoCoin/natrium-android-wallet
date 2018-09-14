@@ -65,8 +65,8 @@
 
                 <FrameLayout
                     android:id="@+id/receive_outer"
-                    android:layout_width="330dp"
-                    android:layout_height="331dp"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
@@ -75,11 +75,17 @@
                     <ImageView
                         android:id="@+id/receive_barcode"
                         android:layout_width="match_parent"
-                        android:layout_height="160dp"
+                        android:layout_height="175dp"
                         android:layout_gravity="center"
-                        android:layout_marginTop="42dp"
                         android:contentDescription="@string/receive_qrcode_description" />
                 </FrameLayout>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/qr_mark"
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    app:srcCompat="@drawable/qr_mark"
+                    android:layout_centerInParent="true" />
             </RelativeLayout>
         </FrameLayout>
 

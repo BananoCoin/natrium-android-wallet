@@ -279,6 +279,7 @@ public class AddContactDialogFragment extends BaseDialogFragment {
         realmQuery.equalTo("address", address.getAddress());
         if (realmQuery.count() > 0) {
             showAddressError(R.string.contact_address_exists);
+            return false;
         }
         hideAddressError();
         return true;

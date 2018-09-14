@@ -31,8 +31,8 @@ public class UIUtil {
 
     /**
      * Colorize a string in the following manner:
-     * First 11 characters are yellow transparent
-     * Last 6 characters are yellow transparent
+     * First 11 characters are blue transparent
+     * Last 6 characters are blue transparent
      *
      * @param s       Spannable
      * @param context Context
@@ -42,9 +42,9 @@ public class UIUtil {
             return;
         }
         if (s.length() > 0) {
-            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow_dark_transparent)), 0, s.length() > 10 ? 11 : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.ltblue_dark_transparent)), 0, s.length() > 10 ? 11 : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (s.length() > 58) {
-                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow_dark_transparent)), 58, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.ltblue_dark_transparent)), 58, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }
     }
@@ -67,8 +67,8 @@ public class UIUtil {
 
     /**
      * Colorize a string in the following manner:
-     * First 11 characters are yellow transparent
-     * Last 6 characters are yellow transparent
+     * First 11 characters are blue transparent
+     * Last 6 characters are blue transparent
      *
      * @param s       Spannable
      * @param context Context
@@ -78,9 +78,9 @@ public class UIUtil {
             return;
         }
         if (s.length() > 0) {
-            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 0, s.length() > 10 ? 11 : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.ltblue)), 0, s.length() > 10 ? 11 : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (s.length() > 58) {
-                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 58, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.ltblue)), 58, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }
     }
@@ -91,17 +91,17 @@ public class UIUtil {
         }
         int offset = prependString.length();
         if (s.length() > 0) {
-            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 0, s.length() > 10 ? 11 + offset : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.ltblue)), 0, s.length() > 10 ? 11 + offset : s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             if (s.length() > 58) {
-                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), 58 + offset, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                s.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.ltblue)), 58 + offset, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
         }
     }
 
     /**
      * Colorize a string in the following manner:
-     * First 11 characters are yellow transparent
-     * Last 6 characters are yellow transparent
+     * First 11 characters are blue transparent
+     * Last 6 characters are blue transparent
      *
      * @param s       Spannable
      * @param context Context
@@ -135,29 +135,29 @@ public class UIUtil {
 
 
     /**
-     * Replace occurences of BANANO with yellow text
+     * Replace occurences of NANO with blue text
      *
      * @param s       Spannable
      * @param context Context
      */
-    public static Spannable colorizeBanano(String s, Context context) {
+    public static Spannable colorizeNano(String s, Context context) {
         Spannable sp = new SpannableString(s);
-        if (context == null || !s.toUpperCase().contains("BANANO")) {
+        if (context == null || !s.toUpperCase().contains("NANO")) {
             return sp;
         }
-        int indexStart = s.toUpperCase().indexOf("BANANO");
-        int indexEnd = 6;
+        int indexStart = s.toUpperCase().indexOf("NANO");
+        int indexEnd = 4;
         if (indexStart < 0) {
             return sp;
         }
-        sp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.yellow)), indexStart, indexStart + indexEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        sp.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.ltblue)), indexStart, indexStart + indexEnd, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         return sp;
     }
 
     /**
      * Colorize a string in the following manner:
-     * First 11 characters are yellow
-     * Last 6 characters are yellow
+     * First 11 characters are blue
+     * Last 6 characters are blue
      *
      * @param s       String
      * @param context Context
@@ -171,8 +171,8 @@ public class UIUtil {
 
     /**
      * Colorize a string in the following manner:
-     * First 11 characters are yellow
-     * Last 6 characters are yellow
+     * First 11 characters are blue
+     * Last 6 characters are blue
      *
      * @param s       String
      * @param context Context
@@ -194,7 +194,7 @@ public class UIUtil {
      * Colorize a string in the following manner:
      * First 11 characters are green
      * Middle characters are white
-     * Last 6 characters are yellow
+     * Last 6 characters are blue
      *
      * @param s       String
      * @param context Context
@@ -215,9 +215,9 @@ public class UIUtil {
 
     /**
      * Colorize a string in the following manner:
-     * First 11 characters are yellow
+     * First 11 characters are blue
      * Middle characters are white
-     * Last 6 characters are yellow
+     * Last 6 characters are blue
      *
      * @param s       String
      * @param context Context

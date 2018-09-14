@@ -161,7 +161,7 @@
             android:fontFamily="@font/nunitosans_regular"
             android:text="@string/change_representative_invalid"
             android:textAlignment="center"
-            android:textColor="@color/yellow"
+            android:textColor="@color/ltblue"
             android:textSize="12sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/change_rep_guideline_vert"

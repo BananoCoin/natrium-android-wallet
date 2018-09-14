@@ -59,7 +59,7 @@
                 android:fontFamily="@font/nunitosans_bold"
                 android:padding="10dp"
                 android:textAlignment="center"
-                android:textColor="@color/yellow"
+                android:textColor="@color/ltblue"
                 android:textSize="@dimen/text_size_normal"
                 tools:text="1.23" />
 

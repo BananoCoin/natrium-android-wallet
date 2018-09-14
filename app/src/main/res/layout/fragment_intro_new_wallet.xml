@@ -75,7 +75,7 @@
             android:paddingRight="30dp"
             android:paddingTop="10dp"
             android:text="@{seed}"
-            android:textColor="@color/yellow"
+            android:textColor="@color/ltblue"
             app:layout_constraintEnd_toStartOf="@+id/intro_new_wallet_guideline_vert"
             app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/intro_new_wallet_info"

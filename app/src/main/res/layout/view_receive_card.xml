@@ -37,39 +37,29 @@
                     <ImageView
                         android:id="@+id/card_barcode_img"
                         android:layout_width="match_parent"
-                        android:layout_height="240px"
+                        android:layout_height="290px"
                         android:layout_gravity="center"
-                        android:layout_marginTop="63px"
                         android:contentDescription="@string/receive_qrcode_description" />
+                    
                 </LinearLayout>
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="114px"
+                    android:layout_height="114px"
+                    app:srcCompat="@drawable/qr_mark"
+                    android:layout_centerInParent="true" />
             </RelativeLayout>
         </FrameLayout>
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/card_logo"
-            android:layout_width="100px"
-            android:layout_height="50px"
-            android:layout_marginLeft="60px"
-            android:layout_marginStart="60px"
+            android:layout_width="480px"
+            android:layout_height="64px"
+            android:layout_marginStart="80px"
             android:layout_marginTop="25px"
             android:contentDescription="@string/app_name"
             app:layout_constraintStart_toEndOf="@+id/card_barcode"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_logo" />
-
-        <TextView
-            android:id="@+id/card_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10px"
-            android:fontFamily="@font/nunitosans_extralight"
-            android:text="@string/receive_card_title"
-            android:textAllCaps="true"
-            android:textColor="@color/yellow"
-            android:textSize="65px"
-            app:layout_constraintStart_toEndOf="@+id/card_logo"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="SpUsage,UnusedAttribute" />
+            app:srcCompat="@drawable/ic_nanologo" />
 
         <TextView
             android:id="@+id/card_address"
@@ -93,8 +83,8 @@
             android:layout_marginBottom="25px"
             android:fontFamily="@font/nunitosans_light"
             android:text="@string/receive_card_label_one"
-            android:textColor="@color/yellow"
-            android:textSize="40px"
+            android:textColor="@color/ltblue"
+            android:textSize="50px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/card_address"
             tools:ignore="SpUsage" />
@@ -106,8 +96,8 @@
             android:layout_marginBottom="25px"
             android:fontFamily="@font/nunitosans_light"
             android:text="@string/receive_card_label_two"
-            android:textColor="@color/yellow"
-            android:textSize="40px"
+            android:textColor="@color/ltblue"
+            android:textSize="50px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/card_address"
             tools:ignore="SpUsage" />

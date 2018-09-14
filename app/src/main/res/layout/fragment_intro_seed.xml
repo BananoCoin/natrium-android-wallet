@@ -108,7 +108,7 @@
             android:fontFamily="@font/nunitosans_bold"
             android:text="@string/intro_seed_invalid"
             android:textAlignment="center"
-            android:textColor="@color/yellow"
+            android:textColor="@color/ltblue"
             android:textSize="16sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/intro_seed_guideline_vert"

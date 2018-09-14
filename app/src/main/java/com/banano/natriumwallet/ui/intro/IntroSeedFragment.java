@@ -109,7 +109,7 @@ public class IntroSeedFragment extends BaseFragment {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 String curText = charSequence.toString().trim();
                 if (isValidSeed(curText)) {
-                    binding.introImportSeed.setTextColor(getResources().getColor(R.color.yellow));
+                    binding.introImportSeed.setTextColor(getResources().getColor(R.color.ltblue));
                 } else {
                     binding.introImportSeed.setTextColor(getResources().getColor(R.color.white_60));
                 }

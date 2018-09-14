@@ -110,7 +110,7 @@
                 android:paddingStart="10dp"
                 android:paddingTop="10dp"
                 android:singleLine="true"
-                android:textColor="@color/yellow"
+                android:textColor="@color/ltblue"
                 android:textColorHint="@color/white_60"
                 android:textSize="@dimen/text_size_normal"
                 tools:text="1.23" />
@@ -129,7 +129,7 @@
                 android:onClick="@{handlers::onClickMax}"
                 android:text="@string/send_max"
                 android:textAllCaps="true"
-                android:textColor="@color/yellow"
+                android:textColor="@color/ltblue"
                 android:textSize="@dimen/text_size_max_button" />
 
         </RelativeLayout>
@@ -141,7 +141,7 @@
             android:layout_marginBottom="2dp"
             android:fontFamily="@font/nunitosans_regular"
             android:textAlignment="center"
-            android:textColor="@color/yellow"
+            android:textColor="@color/ltblue"
             android:textSize="12sp"
             android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/send_address_container"
@@ -222,7 +222,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/nunitosans_regular"
             android:textAlignment="center"
-            android:textColor="@color/yellow"
+            android:textColor="@color/ltblue"
             android:textSize="12sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/send_guideling_vert"

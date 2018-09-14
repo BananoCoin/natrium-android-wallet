@@ -259,7 +259,7 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
         builder.setMessage(getString(R.string.change_representative_fingerprint));
         builder.setView(view);
         SpannableString negativeText = new SpannableString(getString(android.R.string.cancel));
-        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         builder.setNegativeButton(negativeText, (dialog, which) -> Reprint.cancelAuthentication());
 
         fingerprintDialog = builder.create();
@@ -375,9 +375,9 @@ public class ChangeRepDialogFragment extends BaseDialogFragment {
             AlertDialog.Builder builder;
             // Styles
             SpannableString title = new SpannableString(getString(R.string.change_representative_info_header));
-            title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, title.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            title.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, title.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             SpannableString close = new SpannableString(getString(R.string.change_representative_dialog_close));
-            close.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, close.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            close.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, close.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
 
             builder = new AlertDialog.Builder(getContext(), style);

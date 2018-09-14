@@ -188,7 +188,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
                 !wallet.getSendBananoAmountFormatted().isEmpty() ? wallet.getSendBananoAmountFormatted() : "0"));
         builder.setView(view);
         SpannableString negativeText = new SpannableString(getString(android.R.string.cancel));
-        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.yellow)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         builder.setNegativeButton(negativeText, (dialog, which) -> Reprint.cancelAuthentication());
 
         fingerprintDialog = builder.create();

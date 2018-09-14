@@ -359,7 +359,7 @@ public class SendDialogFragment extends BaseDialogFragment {
             boolean foundMatch = false;
             for (Contact c : contacts) {
                 if (c.getName().equals(name)) {
-                    binding.sendAddress.setTextColor(getResources().getColor(R.color.yellow));
+                    binding.sendAddress.setTextColor(getResources().getColor(R.color.ltblue));
                     foundMatch = true;
                     break;
                 }
