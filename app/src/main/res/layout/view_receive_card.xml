@@ -27,8 +27,8 @@
 
                 <LinearLayout
                     android:id="@+id/receive_card_qr_bg"
-                    android:layout_width="500px"
-                    android:layout_height="500px"
+                    android:layout_width="482px"
+                    android:layout_height="482px"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"

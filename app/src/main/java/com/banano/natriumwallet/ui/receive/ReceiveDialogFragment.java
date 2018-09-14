@@ -144,8 +144,8 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         float ratio = ((float) metrics.heightPixels / (float) metrics.widthPixels);
         if (ratio < 1.8) {
-            binding.receiveOuter.getLayoutParams().height = (int) UIUtil.convertDpToPixel(260, getContext());
-            binding.receiveOuter.getLayoutParams().width = (int) UIUtil.convertDpToPixel(260, getContext());
+            binding.receiveOuter.getLayoutParams().height = (int) UIUtil.convertDpToPixel(250, getContext());
+            binding.receiveOuter.getLayoutParams().width = (int) UIUtil.convertDpToPixel(250, getContext());
             binding.receiveBarcode.getLayoutParams().height = (int) UIUtil.convertDpToPixel(152, getContext());
             binding.receiveBarcode.getLayoutParams().width = (int) UIUtil.convertDpToPixel(152, getContext());
             binding.qrMark.getLayoutParams().width = (int) UIUtil.convertDpToPixel(58, getContext());
