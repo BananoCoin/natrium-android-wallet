@@ -67,7 +67,7 @@
                     android:elevation="5dp"
                     android:onClick="@{handlers::onClickAddContact}"
                     android:paddingBottom="10dp"
-                    android:paddingLeft="5dp"
+                    android:paddingLeft="10dp"
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
                     app:srcCompat="@drawable/ic_contact_add" />
