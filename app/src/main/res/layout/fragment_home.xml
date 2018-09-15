@@ -248,7 +248,7 @@
                     android:layout_marginTop="60dp"
                     app:lottie_autoPlay="true"
                     app:lottie_loop="true"
-                    app:lottie_rawRes="@raw/bananojump"
+                    app:lottie_rawRes="@raw/natrium"
                     app:layout_constraintStart_toStartOf="@+id/home_guideline_vert"
                     app:layout_constraintEnd_toEndOf="@+id/home_guideline_vert"
                     app:layout_constraintTop_toTopOf="parent"
