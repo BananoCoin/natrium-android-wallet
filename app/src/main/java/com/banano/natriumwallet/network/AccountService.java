@@ -592,7 +592,7 @@ public class AccountService {
      */
     public void requestSubscribe() {
         if (address != null && address.getAddress() != null) {
-            requestQueue.add(new RequestItem<>(new SubscribeRequest(address.getAddress(), getLocalCurrency(), wallet.getUuid())));
+            requestQueue.add(new RequestItem<>(new SubscribeRequest(address.getAddress(), getLocalCurrency(), wallet.getUuid(), sharedPreferencesUtil.getFcmToken())));
             processQueue();
         }
     }

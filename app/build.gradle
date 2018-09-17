@@ -49,8 +49,10 @@ dependencies {
     final ANDROID_SVG_VERSION = '1.3'
     final AWESOME_QRCODE_VERSION = '1.0.6'
     final EPOXY_VERSION = '2.12.0'
+    final FCM_VER = '16.0.3'
+    final FCM_MSG_VER = '17.3.1'
     final CONSTRAINT_LAYOUT_VERSION = '1.1.3'
-    final DAGGER_VERSION = '2.14.1'
+    final DAGGER_VERSION = '2.17'
     final ESPRESSO_VERSION = '3.0.1'
     final FINGERPRINT_VERSION = '3.2.1'
     final GLIDE_VERSION = '4.8.0'
@@ -86,6 +88,10 @@ dependencies {
     implementation "com.airbnb.android:epoxy:$EPOXY_VERSION"
     implementation "com.airbnb.android:epoxy-databinding:$EPOXY_VERSION"
     annotationProcessor "com.airbnb.android:epoxy-processor:$EPOXY_VERSION"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-core:$FCM_VER"
+    implementation "com.google.firebase:firebase-messaging:$FCM_MSG_VER"
 
     // RX
     implementation "io.reactivex.rxjava2:rxjava:$RX_JAVA_2"
@@ -155,3 +161,4 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.8.9'
 }
 
+apply plugin: 'com.google.gms.google-services'

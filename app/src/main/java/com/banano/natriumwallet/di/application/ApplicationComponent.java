@@ -1,11 +1,14 @@
 package com.banano.natriumwallet.di.application;
 
 
+import com.banano.natriumwallet.KaliumApplication;
+import com.banano.natriumwallet.KaliumMessagingService;
 import com.banano.natriumwallet.di.persistence.PersistenceModule;
 import com.banano.natriumwallet.util.SharedPreferencesUtil;
 
 import javax.inject.Named;
 
+import dagger.BindsInstance;
 import dagger.Component;
 import io.realm.Realm;
 
@@ -21,4 +24,6 @@ public interface ApplicationComponent {
     // encryption key
     @Named("encryption_key")
     byte[] providesEncryptionKey();
+
+    void inject(KaliumMessagingService kaliumMessagingService);
 }

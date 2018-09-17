@@ -17,7 +17,6 @@ import timber.log.Timber;
 /**
  * Any custom application logic can go here
  */
-
 public class KaliumApplication extends MultiDexApplication {
     private ApplicationComponent mApplicationComponent;
 

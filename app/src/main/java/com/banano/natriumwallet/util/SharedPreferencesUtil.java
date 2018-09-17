@@ -27,6 +27,7 @@ public class SharedPreferencesUtil {
     private static final String AUTH_METHOD = "auth_method";
     private static final String PRICE_CONVERSION = "price_conversion";
     private static final String DEFAULT_CONTACT_ADDED = "default_contact_added";
+    private static final String FCM_TOKEN = "fcm_token";
 
     private final SharedPreferences mPrefs;
 
@@ -141,6 +142,14 @@ public class SharedPreferencesUtil {
 
     public void setPriceConversion(PriceConversion conversion) {
         set(PRICE_CONVERSION, conversion.toString());
+    }
+
+    public String getFcmToken() {
+        return get(FCM_TOKEN, null);
+    }
+
+    public void setFcmToken(String fcmToken) {
+        set(FCM_TOKEN, fcmToken);
     }
 
     public boolean isDefaultContactAdded() {
