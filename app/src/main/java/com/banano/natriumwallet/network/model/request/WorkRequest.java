@@ -15,9 +15,6 @@ public class WorkRequest extends BaseRequest {
     @SerializedName("hash")
     private String hash;
 
-    @SerializedName("use_peers")
-    private boolean usePeers;
-
     public WorkRequest() {
         this.action = Actions.WORK.toString();
     }
