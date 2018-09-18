@@ -1,5 +1,6 @@
 package com.banano.natriumwallet;
 
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
         super.onCreate(savedInstanceState);
         appInForeground = true;
 
+        clearNotificationPrefCache();
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         // build the activity component
@@ -110,6 +113,13 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
         initUi();
     }
 
+    private void clearNotificationPrefCache() {
+        SharedPreferences sharedPreferences = getSharedPreferences("NotificationData", 0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -124,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     protected void onResume() {
         super.onResume();
         appInForeground = true;
+        clearNotificationPrefCache();
         // start websocket on resume
         if (accountService != null && realm != null && !realm.isClosed() && realm.where(Credentials.class).findFirst() != null) {
             accountService.open();

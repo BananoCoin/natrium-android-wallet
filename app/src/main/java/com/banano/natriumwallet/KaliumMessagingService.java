@@ -15,7 +15,6 @@ import android.os.Build;
 import android.service.notification.StatusBarNotification;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.util.Log;
 
 import com.banano.natriumwallet.broadcastreceiver.CancelNotificationReceiver;
 import com.banano.natriumwallet.model.Credentials;

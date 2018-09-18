@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 public class CancelNotificationReceiver extends BroadcastReceiver {
-
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("NotificationData", 0);
