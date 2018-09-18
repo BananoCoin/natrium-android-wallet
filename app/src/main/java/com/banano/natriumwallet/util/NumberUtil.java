@@ -15,7 +15,7 @@ public class NumberUtil {
     public static final BigInteger banDivider = baseOfDivider.pow(30);
 
     /**
-     * Go from 32-bit raw BANANO to user readable big decimal
+     * Go from 32-bit raw NANO to user readable big decimal
      *
      * @param raw 100000000000000000000000000000
      * @return BigDecimal value 1.000000000000000000000000000000
@@ -26,7 +26,7 @@ public class NumberUtil {
     }
 
     /**
-     * Go from 32-bit raw BANANO to user readable String with up to 6 decimal places
+     * Go from 32-bit raw NANO to user readable String with up to 6 decimal places
      *
      * @param raw 100000000000000000000000000000
      * @return String 1
@@ -38,7 +38,7 @@ public class NumberUtil {
     }
 
     /**
-     * Go from readable BANANO String to a raw BigDecimal
+     * Go from readable NANO String to a raw BigDecimal
      *
      * @param amount 1
      * @return BigInteger 100000000000000000000000000000

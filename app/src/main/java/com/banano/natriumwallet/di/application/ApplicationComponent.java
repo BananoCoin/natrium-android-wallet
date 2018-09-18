@@ -25,5 +25,5 @@ public interface ApplicationComponent {
     @Named("encryption_key")
     byte[] providesEncryptionKey();
 
-    void inject(KaliumMessagingService kaliumMessagingService);
+    //void inject(KaliumMessagingService kaliumMessagingService);
 }

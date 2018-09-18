@@ -32,6 +32,7 @@ import com.banano.natriumwallet.model.AuthMethod;
 import com.banano.natriumwallet.model.AvailableCurrency;
 import com.banano.natriumwallet.model.AvailableLanguage;
 import com.banano.natriumwallet.model.Credentials;
+import com.banano.natriumwallet.model.NotificationOption;
 import com.banano.natriumwallet.model.StringWithTag;
 import com.banano.natriumwallet.network.AccountService;
 import com.banano.natriumwallet.ui.common.ActivityWithComponent;
@@ -235,6 +236,42 @@ public class SettingsFragment extends BaseFragment {
             binding.icFingerprint.setVisibility(View.GONE);
         }
 
+        // Setup push notification setting
+        // Setup spinner
+        List<StringWithTag> notificationOptions = new ArrayList<>();
+        notificationOptions.add(new StringWithTag(getString(R.string.generic_on), NotificationOption.ON));
+        notificationOptions.add(new StringWithTag(getString(R.string.generic_off), NotificationOption.OFF));
+        ArrayAdapter<StringWithTag> notifAdapter = new ArrayAdapter<>(getContext(),
+                R.layout.view_spinner_item,
+                notificationOptions
+        );
+        notifAdapter.setDropDownViewResource(R.layout.view_spinner_dropdown_item);
+        binding.settingsNotificationSpinner.setVisibility(View.VISIBLE);
+        binding.settingsNotificationSpinner.setAdapter(notifAdapter);
+        binding.settingsNotificationSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                StringWithTag swt = (StringWithTag) adapterView.getItemAtPosition(i);
+                NotificationOption key = (NotificationOption) swt.tag;
+                if (key != null) {
+                    sharedPreferencesUtil.setNotificationSetting(key);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        int i = 0;
+        for (StringWithTag notificationOption : notificationOptions) {
+            if (notificationOption.tag.equals(sharedPreferencesUtil.getNotificationSetting())) {
+                binding.settingsNotificationSpinner.setSelection(i);
+                break;
+            }
+            i++;
+        }
+
         return view;
     }
 
@@ -397,6 +434,10 @@ public class SettingsFragment extends BaseFragment {
 
         public void onClickLanguage(View view) {
             binding.settingsLanguageSpinner.performClick();
+        }
+
+        public void onClickNotification(View view) {
+            binding.settingsNotificationSpinner.performClick();
         }
 
         public void onClickChange(View view) {

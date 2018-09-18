@@ -229,6 +229,56 @@
                     android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/settings_auth_container" />
 
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/ic_notification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_notification_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settings_notification_container"
+                    app:srcCompat="@drawable/ic_notification" />
+
+                <LinearLayout
+                    android:id="@+id/settings_notification_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settings_item_height"
+                    android:background="@drawable/bg_settings_item"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{handlers::onClickNotification}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
+                    android:paddingTop="9dp"
+                    app:layout_constraintStart_toEndOf="@+id/ic_fingerprint"
+                    app:layout_constraintTop_toBottomOf="@+id/settings_auth_bottom">
+
+                    <TextView
+                        android:id="@+id/settings_notification_text"
+                        style="@style/TextStyleNormalPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/notifications_settings"
+                        android:textColor="@color/white_90" />
+
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/settings_notification_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:gravity="center_vertical"
+                        android:theme="@style/SpinnerTheme" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/settings_notification_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white_10"
+                    app:layout_constraintTop_toBottomOf="@+id/settings_notification_container" />
+
                 <TextView
                     android:id="@+id/manage_category_text"
                     style="@style/TextStyleLightPrimary"
@@ -242,7 +292,7 @@
                     android:textStyle=""
                     app:layout_constraintBottom_toTopOf="@+id/top_line"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_auth_bottom" />
+                    app:layout_constraintTop_toBottomOf="@+id/settings_notification_bottom" />
 
                 <View
                     android:id="@+id/top_line"

@@ -165,6 +165,13 @@
     <string name="contact_export_permission_error">Please allow Natrium permission to write to device storage.</string>
     <string name="contact_export_success">Contacts saved to %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Push Notifications</string>
+    <string name="generic_on">On</string>
+    <string name="generic_off">Off</string>
+    <string name="notification_title">Received %s NANO</string>
+    <string name="notification_body">Open Natrium to pocket this transaction.</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan a Nano \naddress QR code</string>
 </resources>

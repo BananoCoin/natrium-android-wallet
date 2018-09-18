@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import com.banano.natriumwallet.model.AuthMethod;
 import com.banano.natriumwallet.model.AvailableCurrency;
 import com.banano.natriumwallet.model.AvailableLanguage;
+import com.banano.natriumwallet.model.NotificationOption;
 import com.banano.natriumwallet.model.PreconfiguredRepresentatives;
 import com.banano.natriumwallet.model.PriceConversion;
 import com.github.ajalt.reprint.core.Reprint;
@@ -28,6 +29,7 @@ public class SharedPreferencesUtil {
     private static final String PRICE_CONVERSION = "price_conversion";
     private static final String DEFAULT_CONTACT_ADDED = "default_contact_added";
     private static final String FCM_TOKEN = "fcm_token";
+    private static final String PUSH_NOTIFICATIONS = "push_notifications";
 
     private final SharedPreferences mPrefs;
 
@@ -122,6 +124,14 @@ public class SharedPreferencesUtil {
 
     public void setCustomRepresentative(String representative) {
         set(CHANGED_REPRESENTATIVE, representative);
+    }
+
+    public NotificationOption getNotificationSetting() {
+        return NotificationOption.valueOf(get(PUSH_NOTIFICATIONS, NotificationOption.ON.toString()));
+    }
+
+    public void setNotificationSetting(NotificationOption option) {
+        set(PUSH_NOTIFICATIONS, option.toString());
     }
 
     public AuthMethod getAuthMethod() {

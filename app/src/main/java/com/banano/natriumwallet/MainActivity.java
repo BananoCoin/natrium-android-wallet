@@ -48,6 +48,9 @@ import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements WindowControl, ActivityWithComponent {
     protected ActivityComponent mActivityComponent;
+
+    public static boolean appInForeground = false;
+
     @Inject
     Realm realm;
     @Inject
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        appInForeground = true;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -105,10 +109,11 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
 
         initUi();
     }
-    @Override
 
+    @Override
     protected void onPause() {
         super.onPause();
+        appInForeground = false;
         // stop websocket on pause
         if (accountService != null) {
             accountService.close();
@@ -118,6 +123,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     @Override
     protected void onResume() {
         super.onResume();
+        appInForeground = true;
         // start websocket on resume
         if (accountService != null && realm != null && !realm.isClosed() && realm.where(Credentials.class).findFirst() != null) {
             accountService.open();
