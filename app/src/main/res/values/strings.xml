@@ -170,7 +170,8 @@
     <string name="generic_on">On</string>
     <string name="generic_off">Off</string>
     <string name="notification_title">Received %s NANO</string>
-    <string name="notification_body">Open Natrium to pocket this transaction.</string>
+    <string name="notification_body">Open Natrium to view this transaction.</string>
+    <string name="notificaiton_header_suplement">Tap to open</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan a Nano \naddress QR code</string>
