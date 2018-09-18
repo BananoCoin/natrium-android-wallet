@@ -13,7 +13,7 @@ import timber.log.Timber;
 public class PreconfiguredRepresentatives {
 
     private static List<String> representatives = Arrays.asList(
-            "xrb_3o7uzba8b9e1wqu5ziwpruteyrs3scyqr761x7ke6w1xctohxfh5du75qgaj"
+            "xrb_1natrium1o3z5519ifou7xii8crpxpk8y65qmkih8e8bpsjri651oza8imdd"
     );
 
     public static String getRepresentative() {
