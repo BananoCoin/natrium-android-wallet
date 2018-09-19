@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -27,14 +28,19 @@ import com.banano.natriumwallet.ui.common.ActivityWithComponent;
 import com.banano.natriumwallet.ui.common.BaseFragment;
 import com.banano.natriumwallet.ui.common.UIUtil;
 import com.banano.natriumwallet.ui.common.WindowControl;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -181,8 +187,31 @@ public class ContactOverviewFragment extends BaseFragment {
             if (resultData != null) {
                 realm.executeTransaction(realm -> {
                     try (InputStream is = getContext().getContentResolver().openInputStream(resultData.getData())) {
+                        // Do some validation on the json, we'll just remove invalid objects
+                        JsonElement element = new JsonParser().parse(new InputStreamReader(is));
+                        JSONArray inputJson = new JSONArray(element.getAsJsonArray().toString());
+                        JSONArray validJson = new JSONArray();
+                        for (int i = 0; i < inputJson.length(); i++) {
+                            JSONObject jObj = inputJson.getJSONObject(i);
+                            // Calling a get on name, which will raise an exception if it doesn't exist
+                            try {
+                                String name = jObj.getString("name");
+                                if (name == null || name.isEmpty()) {
+                                    continue;
+                                } else if (!name.startsWith("@")) {
+                                    name = "@" + name;
+                                    jObj.put("name", name);
+                                }
+                            } catch (JSONException je) {
+                                continue;
+                            }
+                            String address = Address.findAddress(jObj.getString("address"));
+                            if (address != null && !address.isEmpty()) {
+                                validJson.put(jObj);
+                            }
+                        }
                         long oldCount = realm.where(Contact.class).count();
-                        realm.createOrUpdateAllFromJson(Contact.class, is);
+                        realm.createOrUpdateAllFromJson(Contact.class, validJson);
                         long count = realm.where(Contact.class).count();
                         long diff = count - oldCount;
                         if (diff > 0) {

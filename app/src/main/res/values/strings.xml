@@ -166,7 +166,7 @@
     <string name="contact_export_success">Contacts saved to %s</string>
 
     <!-- Push Notifications -->
-    <string name="notifications_settings">Push Notifications</string>
+    <string name="notifications_settings">Notifications</string>
     <string name="generic_on">On</string>
     <string name="generic_off">Off</string>
     <string name="notification_title">Received %s NANO</string>

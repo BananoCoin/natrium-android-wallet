@@ -15,33 +15,17 @@ import com.banano.natriumwallet.bus.ContactSelected;
 import com.banano.natriumwallet.bus.RxBus;
 import com.banano.natriumwallet.databinding.ViewHolderContactBinding;
 import com.banano.natriumwallet.model.Contact;
-import com.banano.natriumwallet.ui.common.UIUtil;
-import com.banano.natriumwallet.util.svg.SvgSoftwareLayerSetter;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.request.RequestOptions;
 
-import java.io.File;
 import java.util.List;
 
-import timber.log.Timber;
-
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class ContactOverviewSelectionAdapter extends RecyclerView.Adapter<ContactOverviewSelectionAdapter.ViewHolder> {
     private List<Contact> contactList;
     private Context context;
-    private RequestBuilder<PictureDrawable> requestBuilder;
-    private int monKeyDimension;
 
     public ContactOverviewSelectionAdapter(List<Contact> contactList, Context context) {
         this.contactList = contactList;
         this.context = context;
-        this.requestBuilder = Glide.with(context)
-                .as(PictureDrawable.class)
-                .transition(withCrossFade())
-                .listener(new SvgSoftwareLayerSetter());
-        this.monKeyDimension = (int)UIUtil.convertDpToPixel(50, context);
     }
 
     @Override

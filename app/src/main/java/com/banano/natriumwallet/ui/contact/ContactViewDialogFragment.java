@@ -36,8 +36,6 @@ import javax.inject.Inject;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
-
 public class ContactViewDialogFragment extends BaseDialogFragment {
     private FragmentContactViewBinding binding;
     public static final String TAG = ContactViewDialogFragment.class.getSimpleName();
