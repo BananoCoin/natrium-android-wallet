@@ -276,7 +276,7 @@ public class SendDialogFragment extends BaseDialogFragment {
                 }
                 wallet.setSendBananoAmount(charSequence.toString().trim());
                 binding.setWallet(wallet);
-                validateAmount();
+                hideAmountError();
             }
         });
 
