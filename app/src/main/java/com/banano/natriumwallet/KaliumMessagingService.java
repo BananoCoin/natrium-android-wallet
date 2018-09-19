@@ -128,9 +128,9 @@ public class KaliumMessagingService extends FirebaseMessagingService {
         PendingIntent onCancelNotificationReceiverPendingIntent = PendingIntent.getBroadcast(this.getApplicationContext(), 0,
                 onCancelNotificationReceiver, 0);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        StatusBarNotification[] notifications = manager.getActiveNotifications();
-        for (int i = 0; i < notifications.length; i++) {
-            if (notifications[i].getPackageName().equals(getApplicationContext().getPackageName())) {
+        String notificationTitle = getString(R.string.notification_title, NumberUtil.getRawAsUsableString(amount));
+        for (StatusBarNotification sNotification : manager.getActiveNotifications()) {
+            if (sNotification.getPackageName().equals(getApplicationContext().getPackageName())) {
                 Intent startNotificationActivity = new Intent(this, MainActivity.class);
                 startNotificationActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, startNotificationActivity,
@@ -138,10 +138,10 @@ public class KaliumMessagingService extends FirebaseMessagingService {
                 Notification notification = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_status_bar)
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
-                        .setContentTitle(getString(R.string.notification_title, NumberUtil.getRawAsUsableString(amount)))
+                        .setContentTitle(notificationTitle)
                         .setContentText(getString(R.string.notification_body))
                         .setAutoCancel(true)
-                        .setStyle(getStyleForNotification(getString(R.string.notification_body)))
+                        .setStyle(getStyleForNotification(notificationTitle))
                         .setGroupSummary(true)
                         .setGroup(TAG)
                         .setContentIntent(pendingIntent)
@@ -149,7 +149,7 @@ public class KaliumMessagingService extends FirebaseMessagingService {
                         .build();
                 SharedPreferences sharedPreferences = getSharedPreferences("NotificationData", 0);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(String.valueOf(new Random(NOTIFICATION_ID)), getString(R.string.notification_body));
+                editor.putString(String.valueOf(new Random(NOTIFICATION_ID)), notificationTitle);
                 editor.apply();
                 notificationManager.notify(NOTIFICATION_ID, notification);
                 return;
@@ -161,7 +161,7 @@ public class KaliumMessagingService extends FirebaseMessagingService {
                 PendingIntent.FLAG_ONE_SHOT);
         Notification notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_status_bar)
-                .setContentTitle(getString(R.string.notification_title, NumberUtil.getRawAsUsableString(amount)))
+                .setContentTitle(notificationTitle)
                 .setContentText(getString(R.string.notification_body))
                 .setAutoCancel(true)
                 .setGroup(TAG)
@@ -170,7 +170,7 @@ public class KaliumMessagingService extends FirebaseMessagingService {
                 .build();
         SharedPreferences sharedPreferences = getSharedPreferences("NotificationData", 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(String.valueOf(new Random(NOTIFICATION_ID)), getString(R.string.notification_body));
+        editor.putString(String.valueOf(new Random(NOTIFICATION_ID)), notificationTitle);
         editor.apply();
         notificationManager.notify(NOTIFICATION_ID, notificationBuilder);
     }

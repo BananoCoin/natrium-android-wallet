@@ -5,7 +5,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/card_layout"
-        android:layout_width="1230px"
+        android:layout_width="1174px"
         android:layout_height="609px"
         android:background="@drawable/bg_share_card"
         android:padding="10dp"
@@ -16,7 +16,7 @@
             android:id="@+id/card_barcode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50px"
+            android:layout_marginStart="30px"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -80,7 +80,7 @@
             android:id="@+id/card_label_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25px"
+            android:layout_marginBottom="30px"
             android:fontFamily="@font/nunitosans_light"
             android:text="@string/receive_card_label_one"
             android:textColor="@color/ltblue"
@@ -93,7 +93,7 @@
             android:id="@+id/card_label_two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25px"
+            android:layout_marginBottom="30px"
             android:fontFamily="@font/nunitosans_light"
             android:text="@string/receive_card_label_two"
             android:textColor="@color/ltblue"
