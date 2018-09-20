@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Välkommen till Kalium. För att fortsätta, behöver du skapa en ny plånbok eller importera en befintlig.</string>
+    <string name="intro_welcome_title">Välkommen till Natrium. För att fortsätta, behöver du skapa en ny plånbok eller importera en befintlig.</string>
     <string name="intro_welcome_new_wallet">Ny plånbok</string>
     <string name="intro_welcome_have_wallet">Importera plånbok</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Mottagit</string>
     <string name="transaction_details">Visa detaljer</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Välkommen till Kalium. Så snart du tar emot BANANO, visas transaktionerna på detta vis:</string>
+    <string name="example_card_intro">Välkommen till Natrium. Så snart du tar emot NANO, visas transaktionerna på detta vis:</string>
     <string name="example_card_little">Lite</string>
     <string name="example_card_lot">Många</string>
     <string name="example_card_to">Till någon apa</string>
@@ -49,7 +49,7 @@
     <string name="settings_default_language_string">Systemfel</string>
     <string name="settings_backup_seed">Säkerhetskopiera seed</string>
     <string name="settings_change_rep">Byt representant</string>
-    <string name="settings_share">Dela Kalium</string>
+    <string name="settings_share">Dela Natrium</string>
     <string name="settings_logout">Logga ut</string>
     <string name="settings_logout_alert_title">Varning</string>
     <string name="settings_logout_alert_message">Vid utloggning raderas din seed och all kaliumrelaterad data från denna enhet. Om du inte har säkerhetskopierat din seed, kommer du aldrig att kunna komma åt dina resurser igen.</string>
@@ -79,7 +79,7 @@
     <string name="change_representative_error">Det gick ej att ändra representant. Försök igen senare.</string>
     <!-- Share -->
     <string name="share_title">Dela via...</string>
-    <string name="share_extra">Kolla in Kalium! Bananos officiella Androidplånbok!</string>
+    <string name="share_extra">Kolla in Natrium! Nanos officiella Androidplånbok!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Säkerhetskopiera plånboks-seed</string>
     <string name="settings_fingerprint_title">Bekräfta fingeravtryck för att säkerhetskopiera plånboks-seed.</string>
@@ -90,7 +90,7 @@
     <string name="receive_copy_cta">Kopiera adress</string>
     <string name="receive_copied">Adress kopierad</string>
     <string name="receive_share_title">Dela via…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR-kod</string>
 
     <!-- Send Screens -->
@@ -99,7 +99,6 @@
     <string name="send_amount_hint">Ange belopp</string>
     <string name="send_max">Max</string>
     <string name="send_send_cta">Skicka</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Skickat</string>
     <string name="send_scan_qr">Skanna QR-kod</string>
     <string name="send_sending">Skickar</string>
@@ -117,8 +116,8 @@
     <string name="send_amount_error">Det angivna beloppet var ogiltigt</string>
     <string name="send_generic_error">Ett fel har uppstått. Försök igen senare.</string>
     <string name="send_no_frontier">Gick inte att hitta frontier (kontot kanske inte är öppnat än)</string>
-    <string name="send_fingerprint_description">Bekräfta fingeravtryck för att skicka %s Banano</string>
-    <string name="send_pin_description">Skicka %s Banano?</string>
+    <string name="send_fingerprint_description">Bekräfta fingeravtryck för att skicka %s Nano</string>
+    <string name="send_pin_description">Skicka %s Nano?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Lägg till kontakt</string>
@@ -148,10 +147,18 @@
     <string name="contact_import_success">Lyckad import av %d kontakter</string>
     <string name="contact_import_none">Hittade inga kontakter att importera</string>
     <string name="contact_import_warning_header">Varning</string>
-    <string name="contact_import_permission_error">Vänligen ge Kalium tillåtelse till att läsa från enheten.</string>
-    <string name="contact_export_permission_error">Vänligen ge Kalium tillåtelse till att skriva på enheten.</string>
+    <string name="contact_import_permission_error">Vänligen ge Natrium tillåtelse till att läsa från enheten.</string>
+    <string name="contact_export_permission_error">Vänligen ge Natrium tillåtelse till att skriva på enheten.</string>
     <string name="contact_export_success">Kontakter sparade till %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Aviseringar</string>
+    <string name="generic_on">På</string>
+    <string name="generic_off">Av</string>
+    <string name="notification_title">Mottog %s NANO</string>
+    <string name="notification_body">Öppna Natrium för att visa transaktion.</string>
+    <string name="notificaiton_header_suplement">Tryck för att öppna</string>
+
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Skanna en Banano\nadress QR-kod</string>
+    <string name="scan_send_instruction_label">Skanna en Nano\nadress QR-kod</string>
 </resources>

@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Kalium\'a hoşgeldiniz. Devam etmek için yeni bir cüzdan oluşturabilir veya var olanı içe aktarabilirsiniz.</string>
+    <string name="intro_welcome_title">Natrium\'a hoşgeldiniz. Devam etmek için yeni bir cüzdan oluşturabilir veya var olanı içe aktarabilirsiniz.</string>
     <string name="intro_welcome_new_wallet">Yeni Cüzdan</string>
     <string name="intro_welcome_have_wallet">İçe Aktar</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Alındı</string>
     <string name="transaction_details">Ayrıntılar</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Kalium’a hoşgeldin. Hesabına BANANO geldiğinde işlemlerin şu şekilde görünecek:</string>
+    <string name="example_card_intro">Natrium’a hoşgeldin. Hesabına NANO geldiğinde işlemlerin şu şekilde görünecek:</string>
     <string name="example_card_little">Birazcık</string>
     <string name="example_card_lot">Bir sürü</string>
     <string name="example_card_to">rastgele bir maymuna</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">Sistem Dili</string>
     <string name="settings_backup_seed">Seed\'i Yedekle</string>
     <string name="settings_change_rep">Temsilci Değiştir</string>
-    <string name="settings_share">Kalium\'u Paylaş</string>
+    <string name="settings_share">Natrium\'u Paylaş</string>
     <string name="settings_logout">Çıkış</string>
     <string name="settings_logout_alert_title">UYARI</string>
-    <string name="settings_logout_alert_message">Çıkış yaptığınızda seed\'iniz ve Kalium\'la ilgili bütün verileriniz bu cihazdan silinecektir. Seed\'inizi yedeklemediyseniz paranıza bir daha asla ulaşamazsınız.</string>
+    <string name="settings_logout_alert_message">Çıkış yaptığınızda seed\'iniz ve Natrium\'la ilgili bütün verileriniz bu cihazdan silinecektir. Seed\'inizi yedeklemediyseniz paranıza bir daha asla ulaşamazsınız.</string>
     <string name="settings_logout_alert_confirm_cta">Seed\'i sil ve çıkış yap</string>
     <string name="settings_logout_alert_cancel_cta">İptal</string>
     <string name="settings_logout_warning_title">Emin misiniz?</string>
@@ -82,7 +82,7 @@
 
     <!-- Share -->
     <string name="share_title">Şununla paylaş...</string>
-    <string name="share_extra">Banano\'nun resmi Android Cüzdanı Kalium\'u denesene!</string>
+    <string name="share_extra">Nano\'nun resmi Android Cüzdanı Natrium\'u denesene!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Cüzdan Seed\'ini Yedekle</string>
     <string name="settings_fingerprint_title">Seed\'i yedeklemek için parmak izini onaylayın.</string>
@@ -93,7 +93,7 @@
     <string name="receive_copy_cta">Adresi Kopyala</string>
     <string name="receive_copied">Kopyalandı</string>
     <string name="receive_share_title">Şununla paylaş…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Kodu</string>
 
     <!-- Send Screens -->
@@ -102,7 +102,6 @@
     <string name="send_amount_hint">Miktar Gir</string>
     <string name="send_max">Tümü</string>
     <string name="send_send_cta">Gönder</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Gönderildi</string>
     <string name="send_scan_qr">QR Kodu Tara</string>
     <string name="send_sending">Miktar:</string>
@@ -120,8 +119,8 @@
     <string name="send_amount_error">Geçersiz bir miktar girdiniz</string>
     <string name="send_generic_error">Bir hata oluştu. Daha sonra tekrar deneyin.</string>
     <string name="send_no_frontier">Couldn\'t find account frontier (account may not be open)</string>
-    <string name="send_fingerprint_description">%s Banano göndermek için parmak izi onayla</string>
-    <string name="send_pin_description">%s Banano gönder?</string>
+    <string name="send_fingerprint_description">%s Nano göndermek için parmak izi onayla</string>
+    <string name="send_pin_description">%s Nano gönder?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Kişi Ekle</string>
@@ -151,10 +150,17 @@
     <string name="contact_import_success">%d kişi içe aktarıldı</string>
     <string name="contact_import_none">İçe aktarılacak bir kişi bulunamadı</string>
     <string name="contact_import_warning_header">Uyarı</string>
-    <string name="contact_import_permission_error">Lütfen Kalium\'a cihaza yazma izni ver.</string>
-    <string name="contact_export_permission_error">Lütfen Kalium\'a cihazdan okuma izni ver.</string>
+    <string name="contact_import_permission_error">Lütfen Natrium\'a cihaza yazma izni ver.</string>
+    <string name="contact_export_permission_error">Lütfen Natrium\'a cihazdan okuma izni ver.</string>
     <string name="contact_export_success">Rehber şuraya kaydedildi: %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Bildirimler</string>
+    <string name="generic_on">Açık</string>
+    <string name="generic_off">Kapalı</string>
+    <string name="notification_title">%s NANO Alındı</string>
+    <string name="notification_body">Bu transferi görmek için Natrium’u aç.</string>
+    <string name="notificaiton_header_suplement">Açmak için dokun</string>
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Banano Adresi\'nin \n QR Kodu\'nu tarayın</string>
+    <string name="scan_send_instruction_label">Nano Adresi\'nin \n QR Kodu\'nu tarayın</string>
 </resources>

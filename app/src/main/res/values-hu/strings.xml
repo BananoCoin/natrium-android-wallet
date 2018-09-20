@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Üdvözöllek a Kaliumban! Hozz létre egy új tárcát, vagy importálj egy létezőt.</string>
+    <string name="intro_welcome_title">Üdvözöllek a Natriumban! Hozz létre egy új tárcát, vagy importálj egy létezőt.</string>
     <string name="intro_welcome_new_wallet">Új Tárca</string>
     <string name="intro_welcome_have_wallet">Tárca Importálása</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Fogadott</string>
     <string name="transaction_details">Részletek Mutatása</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Üdvözöllek a Kaliumban! Így fogod látni a tranzakcióid, amikor kapsz BANANO-t.</string>
+    <string name="example_card_intro">Üdvözöllek a Natriumban! Így fogod látni a tranzakcióid, amikor kapsz NANO-t.</string>
     <string name="example_card_little">Egy kevés</string>
     <string name="example_card_lot">Rengeteg</string>
     <string name="example_card_to">Egy random majomnak</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">Rendszer alapértelmezett</string>
     <string name="settings_backup_seed">Seed Másolása</string>
     <string name="settings_change_rep">Képviselő Megváltoztatása</string>
-    <string name="settings_share">Oszd meg a Kaliumot</string>
+    <string name="settings_share">Oszd meg a Natriumot</string>
     <string name="settings_logout">Kijelentkezés</string>
     <string name="settings_logout_alert_title">FIGYELEM</string>
-    <string name="settings_logout_alert_message">Ha kijelentkezel, elvész a beírt seeded, és minden Kaliumhoz kapcsolódó adatod az eszközről. Ha nem őrizted meg a seeded, nem fogsz tudni hozzáférni a tőkédhez.</string>
+    <string name="settings_logout_alert_message">Ha kijelentkezel, elvész a beírt seeded, és minden Natriumhoz kapcsolódó adatod az eszközről. Ha nem őrizted meg a seeded, nem fogsz tudni hozzáférni a tőkédhez.</string>
     <string name="settings_logout_alert_confirm_cta">Seed törlése és kijelentkezés</string>
     <string name="settings_logout_alert_cancel_cta">Mégse</string>
     <string name="settings_logout_warning_title">Biztos, hogy kijelentkezel?</string>
@@ -81,7 +81,7 @@
     <string name="change_representative_pin">Írd be a PIN-kódod, hogy megváltoztasd a Képviselőd</string>
     <!-- Share -->
     <string name="share_title">Megosztás ezzel...</string>
-    <string name="share_extra">Próbáld ki a Kaliumot, a Banano hivatalos Androidos tárcáját!</string>
+    <string name="share_extra">Próbáld ki a Natriumot, a Nano hivatalos Androidos tárcáját!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Seed Mentése</string>
     <string name="settings_fingerprint_title">Erősítsd meg az ujjlenyomatoddal, hogy szeretnéd elmenteni a seeded.</string>
@@ -92,7 +92,7 @@
     <string name="receive_copy_cta">Cím Másolása</string>
     <string name="receive_copied">Cím Másolva</string>
     <string name="receive_share_title">Megosztás ezzel…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Kód</string>
 
     <!-- Send Screens -->
@@ -101,7 +101,6 @@
     <string name="send_amount_hint">Küldött Mennyiség</string>
     <string name="send_max">Max</string>
     <string name="send_send_cta">Küldés</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Elküldve</string>
     <string name="send_scan_qr">Olvasd be a QR Kódot</string>
     <string name="send_sending">Küldés folyamatban</string>
@@ -119,8 +118,8 @@
     <string name="send_amount_error">Helytelen beírt mennyiség</string>
     <string name="send_generic_error">Hiba történt. Próbálkozz később.</string>
     <string name="send_no_frontier">Felhasználó nem található. (Felhasználó lehet nincs bejelentkezve.)</string>
-    <string name="send_fingerprint_description">Erősítsd meg az ujjlenyomatoddal, hogy szeretnél %s Bananot küldeni.</string>
-    <string name="send_pin_description">%s Banano küldése?</string>
+    <string name="send_fingerprint_description">Erősítsd meg az ujjlenyomatoddal, hogy szeretnél %s Nanot küldeni.</string>
+    <string name="send_pin_description">%s Nano küldése?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Új Kontakt</string>
@@ -150,10 +149,17 @@
     <string name="contact_import_success">Sikeresen importáltál %d kontaktot</string>
     <string name="contact_import_none">Nincsenek importálható kontaktok</string>
     <string name="contact_import_warning_header">Figyelem</string>
-    <string name="contact_import_permission_error">Engedélyezd a Kaliumnak a hozzáférést az eszköz tárhelyéhez.</string>
-    <string name="contact_export_permission_error">Engedélyezd a Kaliumnak a hozzáférést az eszköz tárhelyére való írásra.</string>
+    <string name="contact_import_permission_error">Engedélyezd a Natriumnak a hozzáférést az eszköz tárhelyéhez.</string>
+    <string name="contact_export_permission_error">Engedélyezd a Natriumnak a hozzáférést az eszköz tárhelyére való írásra.</string>
     <string name="contact_export_success">Kontaktok elmentve: %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Értesítések</string>
+    <string name="generic_on">Be</string>
+    <string name="generic_off">Ki</string>
+    <string name="notification_title">Kaptál %s NANO-t</string>
+    <string name="notification_body">Nyisd meg a Natriumot, hogy megnézhesd a tranzakciót.</string>
+    <string name="notificaiton_header_suplement">Koppints a megnyitáshoz</string>
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Olvass be QR kóddal egy Banano \ncímet</string>
+    <string name="scan_send_instruction_label">Olvass be QR kóddal egy Nano \ncímet</string>
 </resources>

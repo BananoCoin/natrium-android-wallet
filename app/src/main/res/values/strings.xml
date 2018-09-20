@@ -115,7 +115,7 @@
     <string name="send_amount_hint">Enter Amount</string>
     <string name="send_max">Max</string>
     <string name="send_send_cta">Send</string>
-    <string name="send_balance">(%s NANO)</string>
+    <string name="send_balance" translatable="false">(%s NANO)</string>
     <string name="send_sent">Sent</string>
     <string name="send_scan_qr">Scan QR Code</string>
     <string name="send_sending">Sending</string>

@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Bienvenido a Kalium. Para continuar, cree una billetera nueva o importe una ya existente.</string>
+    <string name="intro_welcome_title">Bienvenido a Natrium. Para continuar, cree una billetera nueva o importe una ya existente.</string>
     <string name="intro_welcome_new_wallet">Nueva billetera</string>
     <string name="intro_welcome_have_wallet">Importar billetera</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Recibidos</string>
     <string name="transaction_details">Ver detalles</string>
     <!-- Se muestra cuando no hay transacciones -->
-    <string name="example_card_intro">Bienvenido a Kalium. Una vez que envíe o reciba BANANO, las transacciones se verán así:</string>
+    <string name="example_card_intro">Bienvenido a Natrium. Una vez que envíe o reciba NANO, las transacciones se verán así:</string>
     <string name="example_card_little">Algunos</string>
     <string name="example_card_lot">Muchos</string>
     <string name="example_card_to">a un mono</string>
@@ -49,10 +49,10 @@
     <string name="settings_change_language">Idioma</string>
     <string name="settings_default_language_string">Sistema por defecto</string>
     <string name="settings_change_rep">Cambiar representante</string>
-    <string name="settings_share">Compartir Kalium</string>
+    <string name="settings_share">Compartir Natrium</string>
     <string name="settings_logout">Cerrar sesión</string>
     <string name="settings_logout_alert_title">AVISO</string>
-    <string name="settings_logout_alert_message">Cerrar sesión eliminará su semilla, y todos los datos relativos a Kalium serán borrados de este dispositivo. Si no ha almacenado una copia de su semilla, nunca será capaz de volver a acceder a sus fondos.</string>
+    <string name="settings_logout_alert_message">Cerrar sesión eliminará su semilla, y todos los datos relativos a Natrium serán borrados de este dispositivo. Si no ha almacenado una copia de su semilla, nunca será capaz de volver a acceder a sus fondos.</string>
     <string name="settings_logout_alert_confirm_cta">Eliminar semilla y cerrar sesión</string>
     <string name="settings_logout_alert_cancel_cta">Cancelar</string>
     <string name="settings_logout_warning_title">¿Está seguro?</string>
@@ -81,7 +81,7 @@
     <string name="change_representative_pin">Introduce el pin para cambiar la cuenta representativa</string>
     <!-- Share -->
     <string name="share_title">Compartir vía...</string>
-    <string name="share_extra">¡Eche un vistazo a Kalium, la billetera oficial de Banano para Android!</string>
+    <string name="share_extra">¡Eche un vistazo a Natrium, la billetera oficial de Nano para Android!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Ver semilla</string>
     <string name="settings_fingerprint_title">Confirme con huella dactilar para hacer una copia de seguridad de su semilla.</string>
@@ -92,7 +92,7 @@
     <string name="receive_copy_cta">Copiar billetera</string>
     <string name="receive_copied">Billetera copiada</string>
     <string name="receive_share_title">Compartir vía…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">Código QR</string>
 
     <!-- Send Screens -->
@@ -101,7 +101,6 @@
     <string name="send_amount_hint">Introducir cantidad</string>
     <string name="send_max">Máximo</string>
     <string name="send_send_cta">Enviar</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Enviado</string>
     <string name="send_scan_qr">Escanear código QR</string>
     <string name="send_sending">Enviando</string>
@@ -119,8 +118,8 @@
     <string name="send_enter_address">Por favor ingrese un destino</string>
     <string name="send_enter_amount">Por favor ingrese un monto</string>
     <string name="send_no_frontier">Ha ocurrido un error. Es posible que la billetera aún no haya sido abierta.</string>
-    <string name="send_fingerprint_description">Confirme su huella dactilar para enviar %s Banano.</string>
-    <string name="send_pin_description">¿Enviar %s Banano?</string>
+    <string name="send_fingerprint_description">Confirme su huella dactilar para enviar %s Nano.</string>
+    <string name="send_pin_description">¿Enviar %s Nano?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Añadir Contacto</string>
@@ -150,10 +149,18 @@
     <string name="contact_import_success">Contactos %d importados con éxito</string>
     <string name="contact_import_none">No hay Contactos para importar</string>
     <string name="contact_import_warning_header">Cuidado</string>
-    <string name="contact_import_permission_error">Por favor, conceda permisos a Kalium para leer el almacenamiento del dispositivo.</string>
-    <string name="contact_export_permission_error">Por favor, conceda permisos a Kalium para escribir en el almacenamiento del dispositivo.</string>
+    <string name="contact_import_permission_error">Por favor, conceda permisos a Natrium para leer el almacenamiento del dispositivo.</string>
+    <string name="contact_export_permission_error">Por favor, conceda permisos a Natrium para escribir en el almacenamiento del dispositivo.</string>
     <string name="contact_export_success">Contactos guardados en %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Notificaciones</string>
+    <string name="generic_on">Activadas</string>
+    <string name="generic_off">Desactivadas</string>
+    <string name="notification_title">%s NANO recibidos</string>
+    <string name="notification_body">Abra Natrium para ver esta transacción.</string>
+    <string name="notificaiton_header_suplement">Pulse para abrir</string>
+
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Escanear un código QR\naddress de una billetera de Banano.</string>
+    <string name="scan_send_instruction_label">Escanear un código QR\naddress de una billetera de Nano.</string>
 </resources>

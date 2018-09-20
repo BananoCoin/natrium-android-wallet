@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Bienvenue dans Kalium. Avant de continuer, veuillez créer un nouveau portefeuille ou en importer un déjà établi.</string>
+    <string name="intro_welcome_title">Bienvenue dans Natrium. Avant de continuer, veuillez créer un nouveau portefeuille ou en importer un déjà établi.</string>
     <string name="intro_welcome_new_wallet">Nouveau</string>
     <string name="intro_welcome_have_wallet">Importer</string>
     <!-- Intro New Wallet Screens -->
@@ -35,7 +35,7 @@
     <string name="history_received">Reçu</string>
     <string name="transaction_details">Détails</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Bienvenue sur Kalium. Lorsque vous recevrez des BANANO, les transactions apparaîtront içi.</string>
+    <string name="example_card_intro">Bienvenue sur Natrium. Lorsque vous recevrez des NANO, les transactions apparaîtront içi.</string>
     <string name="example_card_little">Un peu de</string>
     <string name="example_card_lot">Beaucoup de</string>
     <string name="example_card_to">à un monKey aléatoire</string>
@@ -47,10 +47,10 @@
     <string name="settings_default_language_string">Par défaut (système)</string>
     <string name="settings_backup_seed">Sauvegarder la clé privée</string>
     <string name="settings_change_rep">Changer le représentant</string>
-    <string name="settings_share">Partager Kalium</string>
+    <string name="settings_share">Partager Natrium</string>
     <string name="settings_logout">Déconnexion</string>
     <string name="settings_logout_alert_title">AVERTISSEMENT</string>
-    <string name="settings_logout_alert_message">Le processus de déconnexion effacera votre clé privée ainsi que toutes autres données liées à Kalium de votre appareil. Si vous n’avez pas sauvegardé votre clé privée, vous perdrez l’accès à vos fonds de façon permanente.</string>
+    <string name="settings_logout_alert_message">Le processus de déconnexion effacera votre clé privée ainsi que toutes autres données liées à Natrium de votre appareil. Si vous n’avez pas sauvegardé votre clé privée, vous perdrez l’accès à vos fonds de façon permanente.</string>
     <string name="settings_logout_alert_confirm_cta">Effacer la clé privée et se déconnecter</string>
     <string name="settings_logout_alert_cancel_cta">Annuler</string>
     <string name="settings_logout_warning_title">Êtes vous sûr?</string>
@@ -80,7 +80,7 @@
 
     <!-- Share -->
     <string name="share_title">Partager via...</string>
-    <string name="share_extra">Essayez Kalium! Le portefeuille officiel de Banano sur Android!</string>
+    <string name="share_extra">Essayez Natrium! Le portefeuille officiel de Nano sur Android!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Sauvegarder la clé privée de votre portefeuille</string>
     <string name="settings_fingerprint_title">Confirmer l’empreinte digitale pour sauvegarder la clé privée.</string>
@@ -90,9 +90,7 @@
     <string name="receive_copy_cta">Copier l’adresse</string>
     <string name="receive_copied">Adresse copiée</string>
     <string name="receive_share_title">Partager via…</string>
-    <string name="receive_card_label_one">$BAN</string>
-    <string name="receive_card_label_two">BANANO.CO.IN</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">Code QR</string>
     <!-- Send Screens -->
     <string name="send_title">Envoyer depuis:</string>
@@ -100,7 +98,6 @@
     <string name="send_amount_hint">Saisir le montant</string>
     <string name="send_max">Max</string>
     <string name="send_send_cta">Envoyer</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Envoyé</string>
     <string name="send_scan_qr">Scanner le Code QR</string>
     <string name="send_sending">Envoi en cours</string>
@@ -118,8 +115,8 @@
     <string name="send_amount_error">Le montant saisi n’est pas valide</string>
     <string name="send_generic_error">Une erreur est survenue. Veuillez réessayer plus tard.</string>
     <string name="send_no_frontier">Compte frontière introuvable (Le compte n’est peut-être pas établi)</string>
-    <string name="send_fingerprint_description">Confirmer l’empreinte digitale afin d’envoyer des Bananos</string>
-    <string name="send_pin_description">Envoyer les Bananos?</string>
+    <string name="send_fingerprint_description">Confirmer l’empreinte digitale afin d’envoyer des Nanos</string>
+    <string name="send_pin_description">Envoyer les Nanos?</string>
     <!-- Address Book/Contacts -->
     <string name="contact_add">Ajouter un contact</string>
     <string name="contact_added">%s a été ajouté aux contacts!</string>
@@ -148,9 +145,18 @@
     <string name="contact_import_success">Import de %d contacts réussi</string>
     <string name="contact_import_none">Aucun contact à importer</string>
     <string name="contact_import_warning_header">Attention</string>
-    <string name="contact_import_permission_error">Veuillez s.v.p. autoriser Kalium à déterminer l’espace de stockage de l’appareil.</string>
-    <string name="contact_export_permission_error">Veuillez s.v.p. autoriser Kalium à occuper de l’espace de stockage sur l’appareil.</string>
+    <string name="contact_import_permission_error">Veuillez s.v.p. autoriser Natrium à déterminer l’espace de stockage de l’appareil.</string>
+    <string name="contact_export_permission_error">Veuillez s.v.p. autoriser Natrium à occuper de l’espace de stockage sur l’appareil.</string>
     <string name="contact_export_success">Contacts sauvergardés vers %s</string>
+
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Notifications</string>
+    <string name="generic_on">Ouvert</string>
+    <string name="generic_off">Fermé</string>
+    <string name="notification_title">%s NANO reçus</string>
+    <string name="notification_body">Ouvrir Natrium pour voir cette transaction.</string>
+    <string name="notificaiton_header_suplement">Appuyez pour ouvrir</string>
+
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Scanner le code QR d’une adresse Banano</string>
+    <string name="scan_send_instruction_label">Scanner le code QR d’une adresse Nano</string>
 </resources>

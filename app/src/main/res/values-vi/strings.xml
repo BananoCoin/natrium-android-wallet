@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Chào mừng đến với Kalium. Để tiếp tục, bạn có thể tạo một ví mới hoặc nhập một ví hiện có.</string>
+    <string name="intro_welcome_title">Chào mừng đến với Natrium. Để tiếp tục, bạn có thể tạo một ví mới hoặc nhập một ví hiện có.</string>
     <string name="intro_welcome_new_wallet">Tạo ví mới</string>
     <string name="intro_welcome_have_wallet">Nhập ví hiện có</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Đã nhận</string>
     <string name="transaction_details">Xem chi tiết</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Chào mừng tới Kalium. Khi bạn nhận được BANANO, giao dịch sẽ được hiển thị như sau:</string>
+    <string name="example_card_intro">Chào mừng tới Natrium. Khi bạn nhận được NANO, giao dịch sẽ được hiển thị như sau:</string>
     <string name="example_card_little">Một vài</string>
     <string name="example_card_lot">Rất nhiều</string>
     <string name="example_card_to">Tới một con Khỉ</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">Mặc định hệ thống</string>
     <string name="settings_backup_seed">Sao lưu hạt giống(SEED)</string>
     <string name="settings_change_rep">Thay đổi đại diện</string>
-    <string name="settings_share">Chia sẻ Kalium</string>
+    <string name="settings_share">Chia sẻ Natrium</string>
     <string name="settings_logout">Đăng xuất</string>
     <string name="settings_logout_alert_title">CẢNH BÁO!</string>
-    <string name="settings_logout_alert_message">Đăng xuất sẽ xóa hạt giống(seed) của bạn và tất cả dữ liệu liên quan đến Kalium khỏi thiết bị này. Nếu hạt giống của bạn không được sao lưu, bạn sẽ không bao giờ có thể truy cập lại vào tiền của mình.</string>
+    <string name="settings_logout_alert_message">Đăng xuất sẽ xóa hạt giống(seed) của bạn và tất cả dữ liệu liên quan đến Natrium khỏi thiết bị này. Nếu hạt giống của bạn không được sao lưu, bạn sẽ không bao giờ có thể truy cập lại vào tiền của mình.</string>
     <string name="settings_logout_alert_confirm_cta">Xóa hạt giống và đăng xuất</string>
     <string name="settings_logout_alert_cancel_cta">Hủy</string>
     <string name="settings_logout_warning_title">Bạn có chắc không?</string>
@@ -81,7 +81,7 @@
     <string name="change_representative_pin">Nhập mã PIN để thay đổi đại diện</string>
     <!-- Share -->
     <string name="share_title">Chia sẻ qua...</string>
-    <string name="share_extra">Hãy xem Kalium! Ví Android chính thức của Banano.</string>
+    <string name="share_extra">Hãy xem Natrium! Ví Android chính thức của Nano.</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Sao lưu hạt giống ví</string>
     <string name="settings_fingerprint_title">Xác nhận vân tay để sao lưu ví.</string>
@@ -92,7 +92,7 @@
     <string name="receive_copy_cta">Sao chép địa chỉ</string>
     <string name="receive_copied">Đã sao chép địa chỉ</string>
     <string name="receive_share_title">Chia sẻ qua…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">Mã QR</string>
 
     <!-- Send Screens -->
@@ -101,7 +101,6 @@
     <string name="send_amount_hint">Nhập số tiền</string>
     <string name="send_max">Tối đa</string>
     <string name="send_send_cta">GỬI</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Đã gửi</string>
     <string name="send_scan_qr">Quét mã QR</string>
     <string name="send_sending">Đang gửi</string>
@@ -119,8 +118,8 @@
     <string name="send_amount_error">Số tiền đã nhập không hợp lệ</string>
     <string name="send_generic_error">Đã xảy ra lỗi. Thử lại sau.</string>
     <string name="send_no_frontier">Không thể tìm thấy  tài khoản (tài khoản có thể không được mở)</string>
-    <string name="send_fingerprint_description">Xác nhận vân tay để gửi %s Banano</string>
-    <string name="send_pin_description">Gửi %s Banano?</string>
+    <string name="send_fingerprint_description">Xác nhận vân tay để gửi %s Nano</string>
+    <string name="send_pin_description">Gửi %s Nano?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Thêm liên hệ</string>
@@ -150,10 +149,18 @@
     <string name="contact_import_success">Đã được nhập thành công %d liên hệ</string>
     <string name="contact_import_none">Không có liên hệ nào để nhập</string>
     <string name="contact_import_warning_header">Chú ý</string>
-    <string name="contact_import_permission_error">Vui lòng cho phép Kalium đọc bộ nhớ của thiết bị</string>
-    <string name="contact_export_permission_error">Vui lòng cho phép Kalium ghi vào bộ nhớ của thiết bị.</string>
+    <string name="contact_import_permission_error">Vui lòng cho phép Natrium đọc bộ nhớ của thiết bị</string>
+    <string name="contact_export_permission_error">Vui lòng cho phép Natrium ghi vào bộ nhớ của thiết bị.</string>
     <string name="contact_export_success">Danh bạ đã được lưu vào %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Thông báo</string>
+    <string name="generic_on">Bật</string>
+    <string name="generic_off">Tắt</string>
+    <string name="notification_title">Đã nhận được %s NANO</string>
+    <string name="notification_body">Mở Natrium để xem giao dịch này.</string>
+    <string name="notificaiton_header_suplement">Chạm vào để mở</string>
+
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Quét 1 Banano \nđịa chỉ mã QR</string>
+    <string name="scan_send_instruction_label">Quét 1 Nano \nđịa chỉ mã QR</string>
 </resources>

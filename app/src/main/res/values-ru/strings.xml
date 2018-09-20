@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Добро пожаловать в Kalium. Чтобы продолжить, можно создать новый кошелек или импортировать уже существующий.</string>
+    <string name="intro_welcome_title">Добро пожаловать в Natrium. Чтобы продолжить, можно создать новый кошелек или импортировать уже существующий.</string>
     <string name="intro_welcome_new_wallet">Новый кошелёк</string>
     <string name="intro_welcome_have_wallet">Импортировать</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Получено</string>
     <string name="transaction_details">Посмотреть Детали</string>
     <!--Отображается при отсутствии транзакций  -->
-    <string name="example_card_intro">Добро пожаловать в Kalium.Когда вы получите или отправите BANANO,это будет отображено ниже.</string>
+    <string name="example_card_intro">Добро пожаловать в Natrium.Когда вы получите или отправите NANO,это будет отображено ниже.</string>
     <string name="example_card_little">Немного</string>
     <string name="example_card_lot">Много</string>
     <string name="example_card_to">К случайной обезьяне</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">По умолчанию</string>
     <string name="settings_backup_seed">Резервное копирование Seed</string>
     <string name="settings_change_rep">Сменить представителя</string>
-    <string name="settings_share">Поделиться Kalium</string>
+    <string name="settings_share">Поделиться Natrium</string>
     <string name="settings_logout">Выход</string>
     <string name="settings_logout_alert_title">ПРЕДУПРЕЖДЕНИЕ</string>
-    <string name="settings_logout_alert_message">Выход из системы приведёт к удалению Seed и всех связанных с Kalium данных с этого устройства.Если ваш Seed не будет скопирован,вы больше никогда не сможете получить доступ к своим средствам.</string>
+    <string name="settings_logout_alert_message">Выход из системы приведёт к удалению Seed и всех связанных с Natrium данных с этого устройства.Если ваш Seed не будет скопирован,вы больше никогда не сможете получить доступ к своим средствам.</string>
     <string name="settings_logout_alert_confirm_cta">Удаление Seed и выход из системы.</string>
     <string name="settings_logout_alert_cancel_cta">Отмена</string>
     <string name="settings_logout_warning_title">Вы уверены?</string>
@@ -81,7 +81,7 @@
     <string name="change_representative_pin">Введите PIN-код для смены представителя</string>
     <!-- Share -->
     <string name="share_title">Поделиться через..</string>
-    <string name="share_extra">Оцените Kalium! Официальный Android кошелёк Banano!</string>
+    <string name="share_extra">Оцените Natrium! Официальный Android кошелёк Nano!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Резервное копирование Seed кошелька.</string>
     <string name="settings_fingerprint_title">Подтвердите отпечаток пальца для резервного копирования Seed</string>
@@ -92,7 +92,7 @@
     <string name="receive_copy_cta">Копировать адрес</string>
     <string name="receive_copied">Адрес скопирован</string>
     <string name="receive_share_title">Отправить через…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Код</string>
 
     <!-- Send Screens -->
@@ -101,7 +101,6 @@
     <string name="send_amount_hint">Введите Сумму</string>
     <string name="send_max">Max</string>
     <string name="send_send_cta">Отправить</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Отправлено</string>
     <string name="send_scan_qr">Сканировать QR-код</string>
     <string name="send_sending">Отправить</string>
@@ -119,8 +118,8 @@
     <string name="send_amount_error">Введённая сумма неверна</string>
     <string name="send_generic_error">Произошла ошибка. Повторите попытку позже</string>
     <string name="send_no_frontier">Не удалось найти границу аккаунта (учётная запись  не может быть открыта)</string>
-    <string name="send_fingerprint_description">Подтвердите отпечаток пальца, чтобы послать %s Banano</string>
-    <string name="send_pin_description">Отправить %s Banano</string>
+    <string name="send_fingerprint_description">Подтвердите отпечаток пальца, чтобы послать %s Nano</string>
+    <string name="send_pin_description">Отправить %s Nano</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Добавить Контакт</string>
@@ -150,10 +149,17 @@
     <string name="contact_import_success">Успешно импортированы %d</string>
     <string name="contact_import_none">Нет контактов для импорта</string>
     <string name="contact_import_warning_header">Предупреждение</string>
-    <string name="contact_import_permission_error">Разрешите Kalium чтение устройства</string>
-    <string name="contact_export_permission_error">Разрешите Kalium записывать на устройство</string>
+    <string name="contact_import_permission_error">Разрешите Natrium чтение устройства</string>
+    <string name="contact_export_permission_error">Разрешите Natrium записывать на устройство</string>
     <string name="contact_export_success">Контакты сохранены в %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Уведомления</string>
+    <string name="generic_on">Вкл.</string>
+    <string name="generic_off">Выкл.</string>
+    <string name="notification_title">Полученно %s NANO</string>
+    <string name="notification_body">Откройте Natrium для просмотра транзакции.</string>
+    <string name="notificaiton_header_suplement">Нажмите чтобы открыть</string>
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Сканировать  QR-код Banano/адрес.</string>
+    <string name="scan_send_instruction_label">Сканировать  QR-код Nano/адрес.</string>
 </resources>

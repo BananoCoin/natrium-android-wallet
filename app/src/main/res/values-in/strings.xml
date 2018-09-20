@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Selamat datang di Kalium. Untuk melanjutkan, anda bisa membuat dompet baru atau mengimpor dompet lama anda.</string>
+    <string name="intro_welcome_title">Selamat datang di Natrium. Untuk melanjutkan, anda bisa membuat dompet baru atau mengimpor dompet lama anda.</string>
     <string name="intro_welcome_new_wallet">Buat Dompet</string>
     <string name="intro_welcome_have_wallet">Impor Dompet</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Diterima</string>
     <string name="transaction_details">Lihat Rincian</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Hai, Saat anda mengirim dan menerima BANANO, akan terlihat seperti ini:</string>
+    <string name="example_card_intro">Hai, Saat anda mengirim dan menerima NANO, akan terlihat seperti ini:</string>
     <string name="example_card_little">Sedikit</string>
     <string name="example_card_lot"> Banyak</string>
     <string name="example_card_to">ke monkey lain</string>
@@ -49,7 +49,7 @@
     <string name="settings_default_language_string">Default Sistem</string>
     <string name="settings_backup_seed">Simpan Benih</string>
     <string name="settings_change_rep">Ubah Perwakilan</string>
-    <string name="settings_share">Bagikan Kalium</string>
+    <string name="settings_share">Bagikan Natrium</string>
     <string name="settings_logout">Keluar</string>
     <string name="settings_logout_alert_title">PERINGATAN</string>
     <string name="settings_logout_alert_message">Keluar akan menghapus benih anda dan semua data terkait kalium dari perangkat ini. Jika benih anda belum disimpan, Anda tidak akan pernah bisa mengakses dana anda lagi.</string>
@@ -81,7 +81,7 @@
     <string name="change_representative_pin">Masukkan pin untuk mengubah perwakilan</string>
     <!-- Share -->
     <string name="share_title">Bagikan lewat...</string>
-    <string name="share_extra">Ayo Cek Kalium! Banano\'s official Android Wallet!</string>
+    <string name="share_extra">Ayo Cek Natrium! Nano\'s official Android Wallet!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Simpan Benih Dompet</string>
     <string name="settings_fingerprint_title">Konfirmasi sidik jari untuk menyimpan benih.</string>
@@ -92,7 +92,7 @@
     <string name="receive_copy_cta">Salin Alamat</string>
     <string name="receive_copied">Alamat berhasil disalin.</string>
     <string name="receive_share_title">Bagikan lewat…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Code</string>
 
     <!-- Send Screens -->
@@ -101,7 +101,6 @@
     <string name="send_amount_hint">Masukkan Jumlah</string>
     <string name="send_max">Maksimum</string>
     <string name="send_send_cta">Kirim</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Terkirim</string>
     <string name="send_scan_qr">Pindai QR Code</string>
     <string name="send_sending">Mengirim</string>
@@ -117,8 +116,8 @@
     <string name="send_amount_error">Jumlah yang dimasukkan tidak valid</string>
     <string name="send_generic_error">Terjadi kesalahan. Coba lagi nanti.</string>
     <string name="send_no_frontier">Tidak dapat menemukan batas akun (akun mungkin tidak terbuka).</string>
-    <string name="send_fingerprint_description">Konfirmasi sidik jari untuk mengirim %s Banano</string>
-    <string name="send_pin_description">Kirim %s Banano?</string>
+    <string name="send_fingerprint_description">Konfirmasi sidik jari untuk mengirim %s Nano</string>
+    <string name="send_pin_description">Kirim %s Nano?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Tambah Kontak</string>
@@ -148,10 +147,18 @@
     <string name="contact_import_success">Berhasil mengimpor %d kontak</string>
     <string name="contact_import_none">Tidak menemukan untuk impor</string>
     <string name="contact_import_warning_header">Perhatian</string>
-    <string name="contact_import_permission_error">Mohon Ijinkan Kalium untuk membaca data ponsel.</string>
-    <string name="contact_export_permission_error">Mohon Ijinkan Kalium untuk menulis data ponsel.</string>
+    <string name="contact_import_permission_error">Mohon Ijinkan Natrium untuk membaca data ponsel.</string>
+    <string name="contact_export_permission_error">Mohon Ijinkan Natrium untuk menulis data ponsel.</string>
     <string name="contact_export_success">Kontak tersimpan pada %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Notifikasi</string>
+    <string name="generic_on">Hidup</string>
+    <string name="generic_off">Mati</string>
+    <string name="notification_title">Menerima %s NANO</string>
+    <string name="notification_body">Buka Natrium untuk melihat transaksi.</string>
+    <string name="notificaiton_header_suplement">Tekan untuk membuka</string>
+
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Pindai QR code\n alamat Banano</string>
+    <string name="scan_send_instruction_label">Pindai QR code\n alamat Nano</string>
 </resources>

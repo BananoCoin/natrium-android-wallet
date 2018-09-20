@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Maligayang pagdating sa Kalium. Para magpatuloy, gumawa ng bagong wallet o gamitin ang dating wallet.</string>
+    <string name="intro_welcome_title">Maligayang pagdating sa Natrium. Para magpatuloy, gumawa ng bagong wallet o gamitin ang dating wallet.</string>
     <string name="intro_welcome_new_wallet">Bagong Wallet</string>
     <string name="intro_welcome_have_wallet">Dating Wallet</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Natanggap</string>
     <string name="transaction_details">Tingnan ang detalye</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Maligayang pagdating sa Kalium. Ganito ang makikita mong transaksyon pag nakatanggap ka ng BANANO:</string>
+    <string name="example_card_intro">Maligayang pagdating sa Natrium. Ganito ang makikita mong transaksyon pag nakatanggap ka ng NANO:</string>
     <string name="example_card_little">Kakaunting</string>
     <string name="example_card_lot">Maraming</string>
     <string name="example_card_to">para sa iba</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">Default na System</string>
     <string name="settings_backup_seed">I-back up ang Seed</string>
     <string name="settings_change_rep">Palitan ang Representative</string>
-    <string name="settings_share">I-share ang Kalium</string>
+    <string name="settings_share">I-share ang Natrium</string>
     <string name="settings_logout">Logout</string>
     <string name="settings_logout_alert_title">BABALA</string>
-    <string name="settings_logout_alert_message">Mabubura ang iyong seed at lahat ng Kalium-related na data sa aparato na ito kapag ikaw ay nag-logout. Kapag wala kang back up ng iyong seed, hindi mo na ulit ma-aaccess ang iyong pondo.</string>
+    <string name="settings_logout_alert_message">Mabubura ang iyong seed at lahat ng Natrium-related na data sa aparato na ito kapag ikaw ay nag-logout. Kapag wala kang back up ng iyong seed, hindi mo na ulit ma-aaccess ang iyong pondo.</string>
     <string name="settings_logout_alert_confirm_cta">Burahin ang seed at mag-logout</string>
     <string name="settings_logout_alert_cancel_cta">Kanselahin</string>
     <string name="settings_logout_warning_title">Sigurado ka ba?</string>
@@ -81,7 +81,7 @@
     <string name="change_representative_pin">Ilagay ang pin para palitan ang representative</string>
     <!-- Share -->
     <string name="share_title">I-share sa pamamagitan ng...</string>
-    <string name="share_extra">Tingnan ang Kalium! Ang opisyal na Android Wallet ng Banano!</string>
+    <string name="share_extra">Tingnan ang Natrium! Ang opisyal na Android Wallet ng Nano!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">I-back up ang Wallet Seed</string>
     <string name="settings_fingerprint_title">Kumpirmahin ang fingerprint para i-back up ang wallet seed.</string>
@@ -92,7 +92,7 @@
     <string name="receive_copy_cta">Kopyahin ang Address</string>
     <string name="receive_copied">Ang Address ay nakopya</string>
     <string name="receive_share_title">I-share sa pamamagitan ng...</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Code</string>
 
     <!-- Send Screens -->
@@ -101,7 +101,6 @@
     <string name="send_amount_hint">Ilagay ang Amount</string>
     <string name="send_max">Lahat</string>
     <string name="send_send_cta">Ipadala</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Naipadala</string>
     <string name="send_scan_qr">I-scan ang QR Code</string>
     <string name="send_sending">Pinapadala</string>
@@ -119,8 +118,8 @@
     <string name="send_amount_error">Hindi wasto ang nilagay na halaga</string>
     <string name="send_generic_error">Nagkaroon ng error. Subukan ulit mamaya.</string>
     <string name="send_no_frontier">Hindi mahanap ang hangganan ng account (maaaring hindi pa nabuksan ang account)</string>
-    <string name="send_fingerprint_description">Kumpirmahin ang fingerprint para magpadala ng %s Banano</string>
-    <string name="send_pin_description">Magpadala ng %s Banano?</string>
+    <string name="send_fingerprint_description">Kumpirmahin ang fingerprint para magpadala ng %s Nano</string>
+    <string name="send_pin_description">Magpadala ng %s Nano?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Mag-add ng kontak</string>
@@ -150,10 +149,18 @@
     <string name="contact_import_success">Na-import na ang %d kontak</string>
     <string name="contact_import_none">Walang kontak na ma-import</string>
     <string name="contact_import_warning_header">Babala</string>
-    <string name="contact_import_permission_error">Mangyaring payagan ang Kalium para bumasa galing sa device storage.</string>
-    <string name="contact_export_permission_error">Mangyaring payagan ang Kalium para magsulat sa device storage.</string>
+    <string name="contact_import_permission_error">Mangyaring payagan ang Natrium para bumasa galing sa device storage.</string>
+    <string name="contact_export_permission_error">Mangyaring payagan ang Natrium para magsulat sa device storage.</string>
     <string name="contact_export_success">Ang mga kontak ay nai-save sa %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Abiso</string>
+    <string name="generic_on">On</string>
+    <string name="generic_off">Off</string>
+    <string name="notification_title">Nakatanggap ng %s NANO</string>
+    <string name="notification_body">Buksan ang Natrium para tingnan ito.</string>
+    <string name="notificaiton_header_suplement">Tapikin para mabuksan</string>
+
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">I-scan ang Banano \naddress QR code</string>
+    <string name="scan_send_instruction_label">I-scan ang Nano \naddress QR code</string>
 </resources>

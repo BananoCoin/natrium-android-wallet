@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">Bem-vindo a Kalium. Para continuar, você pode criar uma nova carteira ou importar uma existente.</string>
+    <string name="intro_welcome_title">Bem-vindo a Natrium. Para continuar, você pode criar uma nova carteira ou importar uma existente.</string>
     <string name="intro_welcome_new_wallet">Nova Carteira</string>
     <string name="intro_welcome_have_wallet">Importar Carteira</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">Recebido</string>
     <string name="transaction_details">Ver detalhes</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">Bem-vindo a Kalium. Quando você receber BANANO, as transações aparecerão assim:</string>
+    <string name="example_card_intro">Bem-vindo a Natrium. Quando você receber NANO, as transações aparecerão assim:</string>
     <string name="example_card_little">Algumas</string>
     <string name="example_card_lot">Várias</string>
     <string name="example_card_to">Para algum macaco</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">Sistema padrão</string>
     <string name="settings_backup_seed">Backup da Seed</string>
     <string name="settings_change_rep">Mudar Representante</string>
-    <string name="settings_share">Compartilhar Kalium</string>
+    <string name="settings_share">Compartilhar Natrium</string>
     <string name="settings_logout">Sair</string>
     <string name="settings_logout_alert_title">ATENÇÃO</string>
-    <string name="settings_logout_alert_message">Ao sair, sua seed e todos os dados relacionados a Kalium serão removidos deste dispositivo. Se a sua seed não tiver backup, você nunca poderá acessar seus fundos novamente.</string>
+    <string name="settings_logout_alert_message">Ao sair, sua seed e todos os dados relacionados a Natrium serão removidos deste dispositivo. Se a sua seed não tiver backup, você nunca poderá acessar seus fundos novamente.</string>
     <string name="settings_logout_alert_confirm_cta">Excluir a seed e sair</string>
     <string name="settings_logout_alert_cancel_cta">Cancelar</string>
     <string name="settings_logout_warning_title">Você tem certeza?</string>
@@ -76,7 +76,7 @@
     <string name="change_representative_pin">Insira o pin para alterar o representante</string>
     <!-- Share -->
     <string name="share_title">Compartilhar via...</string>
-    <string name="share_extra">Confira Kalium! Carteira Banano oficial para Android!</string>
+    <string name="share_extra">Confira Natrium! Carteira Nano oficial para Android!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">Backup da seed da carteira</string>
     <string name="settings_fingerprint_title">Confirme a impressão digital para fazer o backup da seed da carteira.</string>
@@ -87,7 +87,7 @@
     <string name="receive_copy_cta">Copiar Endereço</string>
     <string name="receive_copied">Endereço Copiado</string>
     <string name="receive_share_title">Compartilhar via…</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Code</string>
 
     <!-- Send Screens -->
@@ -96,7 +96,6 @@
     <string name="send_amount_hint">Digite o valor</string>
     <string name="send_max">Max</string>
     <string name="send_send_cta">Enviar</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">Enviado</string>
     <string name="send_scan_qr">Escanear QR Code</string>
     <string name="send_sending">Enviando</string>
@@ -114,8 +113,8 @@
     <string name="send_amount_error">O valor inserido era inválido</string>
     <string name="send_generic_error">Um erro ocorreu. Tente mais tarde.</string>
     <string name="send_no_frontier">Não foi possível encontrar a conta (a conta pode não ter sido aberta)</string>
-    <string name="send_fingerprint_description">Confirme a impressão digital para enviar %s Banano</string>
-    <string name="send_pin_description">Enviar %s Banano?</string>
+    <string name="send_fingerprint_description">Confirme a impressão digital para enviar %s Nano</string>
+    <string name="send_pin_description">Enviar %s Nano?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">Adicionar Contato</string>
@@ -145,10 +144,17 @@
     <string name="contact_import_success">Importado com sucesso %d contatos</string>
     <string name="contact_import_none">Não há contatos para importar</string>
     <string name="contact_import_warning_header">Atenção</string>
-    <string name="contact_import_permission_error">Por favor, permita que Kalium leia os arquivos do dispositivo.</string>
-    <string name="contact_export_permission_error">Por favor, permita que Kalium edite os arquivos do dispositivo.</string>
+    <string name="contact_import_permission_error">Por favor, permita que Natrium leia os arquivos do dispositivo.</string>
+    <string name="contact_export_permission_error">Por favor, permita que Natrium edite os arquivos do dispositivo.</string>
     <string name="contact_export_success">Contatos salvos em %s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Notificações</string>
+    <string name="generic_on">Ativar</string>
+    <string name="generic_off">Desativar</string>
+    <string name="notification_title">Recebido %s NANO</string>
+    <string name="notification_body">Abra a Natrium para ver esta transação.</string>
+    <string name="notificaiton_header_suplement">Toque para abrir</string>
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">Escaneie o código QR \nde um endereço Banano</string>
+    <string name="scan_send_instruction_label">Escaneie o código QR \nde um endereço Nano</string>
 </resources>

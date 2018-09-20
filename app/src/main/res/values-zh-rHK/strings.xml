@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">歡迎來到Kalium。下一步，您可以創建新錢包或導入現有錢包</string>
+    <string name="intro_welcome_title">歡迎來到Natrium。下一步，您可以創建新錢包或導入現有錢包</string>
     <string name="intro_welcome_new_wallet">創建新錢包</string>
     <string name="intro_welcome_have_wallet">導入現有錢包</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">收到</string>
     <string name="transaction_details">查看詳情</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">歡迎來到Kalium。當您收到或發送BANANO時，它將如下所示.</string>
+    <string name="example_card_intro">歡迎來到Natrium。當您收到或發送NANO時，它將如下所示.</string>
     <string name="example_card_little">一點</string>
     <string name="example_card_lot">很多</string>
     <string name="example_card_to">給一隻未知的猴子</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">系統默認</string>
     <string name="settings_backup_seed">備份種子</string>
     <string name="settings_change_rep">變更代理人</string>
-    <string name="settings_share">分享Kalium</string>
+    <string name="settings_share">分享Natrium</string>
     <string name="settings_logout">登出</string>
     <string name="settings_logout_alert_title">警告</string>
-    <string name="settings_logout_alert_message">註銷將從此設備中刪除您的種子和所有與Kalium相關的數據。如果您的種子沒有備份，您將永遠無法再次訪問您的帳戶</string>
+    <string name="settings_logout_alert_message">註銷將從此設備中刪除您的種子和所有與Natrium相關的數據。如果您的種子沒有備份，您將永遠無法再次訪問您的帳戶</string>
     <string name="settings_logout_alert_confirm_cta">刪除種子並登出</string>
     <string name="settings_logout_alert_cancel_cta">取消</string>
     <string name="settings_logout_warning_title">你確定？</string>
@@ -79,7 +79,7 @@
     <string name="change_representative_error">無法更改指定代表。稍後再試。</string>
     <!-- Share -->
     <string name="share_title">通過...分享</string>
-    <string name="share_extra">看看Kalium！ Banano的官方Android錢包！</string>
+    <string name="share_extra">看看Natrium！ Nano的官方Android錢包！</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">備用錢包種子</string>
     <string name="settings_fingerprint_title">確認指紋，備份錢包種子。</string>
@@ -90,7 +90,7 @@
     <string name="receive_copy_cta">複製地址</string>
     <string name="receive_copied">地址已復制</string>
     <string name="receive_share_title">通過...分享</string>
-    <string name="receive_card_title">Banano</string>
+    <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">二維碼</string>
 
     <!-- Send Screens -->
@@ -99,7 +99,6 @@
     <string name="send_amount_hint">輸入金額</string>
     <string name="send_max">最大</string>
     <string name="send_send_cta">發送</string>
-    <string name="send_balance">(%s BAN)</string>
     <string name="send_sent">發送</string>
     <string name="send_scan_qr">掃描二維碼</string>
     <string name="send_sending">發出</string>
@@ -117,9 +116,40 @@
     <string name="send_amount_error">輸入的金額無效</string>
     <string name="send_generic_error">發生錯誤。稍後再試。</string>
     <string name="send_no_frontier">找不到帳號邊框（帳號可能無法打開）</string>
-    <string name="send_fingerprint_description">確認指紋發送 %s Banano</string>
-    <string name="send_pin_description">發送 %s Banano?</string>
+    <string name="send_fingerprint_description">確認指紋發送 %s Nano</string>
+    <string name="send_pin_description">發送 %s Nano?</string>
+
+    <string name="contact_add">添加联络人</string>
+    <string name="contact_added">%s 已被添加到联络人！</string>
+    <string name="contact_invalid_name">联络人姓名无效</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">添加联络人：</string>
+    <string name="contact_add_button">添加联络人</string>
+    <string name="contact_name_hint">输入姓名@</string>
+    <string name="contact_name_missing">选择此联络人的姓名</string>
+    <string name="contact_name_exists">联络人已存在</string>
+    <string name="contact_address_hint">输入地址</string>
+    <string name="contact_address_exists">联络人已经有了该地址</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">联络人名单</string>
+    <string name="contact_settings_item">联络人名单</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">联络人:</string>
+    <string name="contact_remove_header">删除：</string>
+    <string name="contact_remove_btn">删除联络人</string>
+    <string name="contact_remove_sure">您确定要删除％s吗？</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">％S已从联络人名单中删除！</string>
+    <string name="contact_export_none">没有要导出的联络人</string>
+    <string name="contact_export_error">无法导出联络人</string>
+    <string name="contact_import_error">无法导入联络人</string>
+    <string name="contact_import_success">已成功导入％d个联络人</string>
+    <string name="contact_import_none">找不到要导入的联络人</string>
+    <string name="contact_import_warning_header">警告</string>
+    <string name="contact_import_permission_error">请准许Natrium从这个装置储存中读取.</string>
+    <string name="contact_export_permission_error">请准许Natrium写入这个装置储存.</string>
+    <string name="contact_export_success">联络人名单已保存到％S</string>
 
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">掃描Banano二維碼地址</string>
+    <string name="scan_send_instruction_label">掃描Nano二維碼地址</string>
 </resources>
