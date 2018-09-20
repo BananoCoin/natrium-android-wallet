@@ -1,6 +1,6 @@
 <resources>
     <!-- Intro Welcome Screen -->
-    <string name="intro_welcome_title">	ברוך הבא לקאליום. בכדי להמשיך, אתה רשאי לייצר ארנק חדש או לייבא אחד קיים.</string>
+    <string name="intro_welcome_title">	ברוך הבא לנאטריום. בכדי להמשיך, אתה רשאי לייצר ארנק חדש או לייבא אחד קיים.</string>
     <string name="intro_welcome_new_wallet">ארנק חדש</string>
     <string name="intro_welcome_have_wallet">ייבא ארנק</string>
     <!-- Intro New Wallet Screens -->
@@ -36,7 +36,7 @@
     <string name="history_received">התקבל</string>
     <string name="transaction_details">ראה פרטים</string>
     <!-- Shown when there are no transactions -->
-    <string name="example_card_intro">ברוך הבא לקאליום. ברגע שתקבל באנאנו, הטרנסקציות יופיעו כך:</string>
+    <string name="example_card_intro">ברוך הבא לנאטריום. ברגע שתקבל נאנו, הטרנסקציות יופיעו כך:</string>
     <string name="example_card_little">קצת</string>
     <string name="example_card_lot">הרבה</string>
     <string name="example_card_to">לקוף רנדומלי</string>
@@ -49,10 +49,10 @@
     <string name="settings_default_language_string">בְּרִירַת מֶחדָל</string>
     <string name="settings_backup_seed">גבה סיד</string>
     <string name="settings_change_rep">שנה נציג</string>
-    <string name="settings_share">שתף את קאליום</string>
+    <string name="settings_share">שתף את נאטריום</string>
     <string name="settings_logout">התנתק</string>
     <string name="settings_logout_alert_title">אזהרה</string>
-    <string name="settings_logout_alert_message">.התנתקות תוביל להסרת הסיד וכל המידע הקשור לקאליום מהמכשיר. אם הסיד שלך אינו מגובה, אתה לעולם לא תוכל לקבל גישה לכספים שלך יותר.</string>
+    <string name="settings_logout_alert_message">.התנתקות תוביל להסרת הסיד וכל המידע הקשור לנאטריום מהמכשיר. אם הסיד שלך אינו מגובה, אתה לעולם לא תוכל לקבל גישה לכספים שלך יותר.</string>
     <string name="settings_logout_alert_confirm_cta">מחק סיד והתנתק</string>
     <string name="settings_logout_alert_cancel_cta">ביטול</string>
     <string name="settings_logout_warning_title">אתה בטוח?</string>
@@ -82,7 +82,7 @@
 
     <!-- Share -->
     <string name="share_title">שתף בעזר...</string>
-    <string name="share_extra">בוא לנסות את קאליום. הארנק הרשמי של באנאנו!</string>
+    <string name="share_extra">בוא לנסות את נאטריום. הארנק הרשמי של נאנו!</string>
     <!-- Backup Seed -->
     <string name="settings_show_seed">גבה סיד</string>
     <string name="settings_fingerprint_title">אשר טביעות אצבע בכדי לגבות סיד.</string>
@@ -93,7 +93,7 @@
     <string name="receive_copy_cta">העתק כתובת</string>
     <string name="receive_copied">כתובת הועתקה</string>
     <string name="receive_share_title">שתף בעזרת....</string>
-    <string name="receive_card_title">באנאנו</string>
+    <string name="receive_card_title">נאנו</string>
     <string name="receive_qrcode_description">ברקוד</string>
 
     <!-- Send Screens -->
@@ -102,7 +102,7 @@
     <string name="send_amount_hint">הכנס כמות</string>
     <string name="send_max">מקס</string>
     <string name="send_send_cta">שלח</string>
-    <string name="send_balance">(%s BAN)</string>
+    <string name="send_balance">(%s NANO)</string>
     <string name="send_sent">נשלח</string>
     <string name="send_scan_qr">סרוק ברקוד</string>
     <string name="send_sending">נשלח</string>
@@ -120,8 +120,8 @@
     <string name="send_amount_error">הכמות שהוכנסה אינה תקינה</string>
     <string name="send_generic_error">קרתה תקלה. נסה שוב מאוחר יותר</string>
     <string name="send_no_frontier">חשבון לא נמצא (סביר שהוא לא נפתח)</string>
-    <string name="send_fingerprint_description">אשר טביעת אצבע בכדי לשלוח באנאנו</string>
-    <string name="send_pin_description">שלח %s באנאנו?</string>
+    <string name="send_fingerprint_description">אשר טביעת אצבע בכדי לשלוח נאנו</string>
+    <string name="send_pin_description">שלח %s נאנו?</string>
 
     <!-- Address Book/Contacts -->
     <string name="contact_add">הוסף איש קשר</string>
@@ -151,10 +151,18 @@
     <string name="contact_import_success">יבוא אנשי הקשר של %d עבר בהצלחה</string>
     <string name="contact_import_none">לא נמצאו אנשי קשר לייבוא</string>
     <string name="contact_import_warning_header">אזהרה</string>
-    <string name="contact_import_permission_error">בבקשה תאפשר לקאליום לקרוא מזיכרון .המכשיר</string>
-    <string name="contact_export_permission_error">בבקשה תאפשר לקאליום לכתוב לזיכרון המכשיר.</string>
+    <string name="contact_import_permission_error">בבקשה תאפשר לנאטריום לקרוא מזיכרון .המכשיר</string>
+    <string name="contact_export_permission_error">בבקשה תאפשר לנאטריום לכתוב לזיכרון המכשיר.</string>
     <string name="contact_export_success">אנשי הקשר נשמרו ל%s</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">התראות</string>
+    <string name="generic_on">פועל</string>
+    <string name="generic_off">כבוי</string>
+    <string name="notification_title">%s נאנו התקבלו</string>
+    <string name="notification_body">פתח את נאטריום בשביל לצפות בטרנסקציה.</string>
+    <string name="notificaiton_header_suplement">לחץ בשביל לפתוח</string>
+
     <!-- Scan Screen -->
-    <string name="scan_send_instruction_label">סרוק כתובת ברקוד \n של באנאנו</string>
+    <string name="scan_send_instruction_label">סרוק כתובת ברקוד \n של נאנו</string>
 </resources>
