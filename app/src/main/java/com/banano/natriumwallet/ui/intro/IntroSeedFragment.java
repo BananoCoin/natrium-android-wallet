@@ -3,6 +3,7 @@ package com.banano.natriumwallet.ui.intro;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -26,6 +27,7 @@ import com.banano.natriumwallet.ui.common.FragmentUtility;
 import com.banano.natriumwallet.ui.common.KeyboardUtil;
 import com.banano.natriumwallet.ui.common.WindowControl;
 import com.banano.natriumwallet.ui.home.HomeFragment;
+import com.banano.natriumwallet.ui.pin.CreatePinDialogFragment;
 import com.banano.natriumwallet.util.ExceptionHandler;
 import com.banano.natriumwallet.util.SharedPreferencesUtil;
 import com.hwangjr.rxbus.annotation.Subscribe;
@@ -49,12 +51,10 @@ public class IntroSeedFragment extends BaseFragment {
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
     private FragmentIntroSeedBinding binding;
-    private boolean nextTriggered = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        nextTriggered = false;
         // init dependency injection
         if (getActivity() instanceof ActivityWithComponent) {
             ((ActivityWithComponent) getActivity()).getActivityComponent().inject(this);
@@ -199,9 +199,9 @@ public class IntroSeedFragment extends BaseFragment {
                 binding.introSeedInvalid.setVisibility(View.INVISIBLE);
             }
 
-            if (!nextTriggered) {
-                nextTriggered = true;
-            } else {
+            // Don't do anything if pin screen is visible
+            Fragment createPinFragment = ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().findFragmentByTag(CreatePinDialogFragment.TAG);
+            if (createPinFragment != null) {
                 return;
             }
 

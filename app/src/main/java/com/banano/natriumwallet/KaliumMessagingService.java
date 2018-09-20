@@ -8,6 +8,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -17,6 +18,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 
 import com.banano.natriumwallet.broadcastreceiver.CancelNotificationReceiver;
+import com.banano.natriumwallet.model.AvailableLanguage;
 import com.banano.natriumwallet.model.Credentials;
 import com.banano.natriumwallet.model.NotificationOption;
 import com.banano.natriumwallet.util.NumberUtil;
@@ -25,6 +27,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
@@ -40,6 +43,14 @@ public class KaliumMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil(this);
+        if (sharedPreferencesUtil.getLanguage() != AvailableLanguage.DEFAULT) {
+            Locale locale = new Locale(sharedPreferencesUtil.getLanguage().getLocaleString());
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config,
+                    getBaseContext().getResources().getDisplayMetrics());
+        }
         if (remoteMessage.getData() != null && !MainActivity.appInForeground && sharedPreferencesUtil.getNotificationSetting() != NotificationOption.OFF) {
             if (Build.VERSION.SDK_INT >=  Build.VERSION_CODES.M) {
                 sendNotification(remoteMessage);
