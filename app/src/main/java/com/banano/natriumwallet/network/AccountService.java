@@ -71,7 +71,7 @@ import timber.log.Timber;
  */
 
 public class AccountService {
-    public static final int TIMEOUT_MILLISECONDS = 10000;
+    public static final int TIMEOUT_MILLISECONDS = 5000;
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
     @Inject
@@ -118,12 +118,7 @@ public class AccountService {
      */
     private void initWebSocket() {
         // create websocket
-        OkHttpClient client = new OkHttpClient.Builder()
-                .writeTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS)
-                .readTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS)
-                .connectTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS)
-                .pingInterval(5000, TimeUnit.MILLISECONDS)
-                .build();
+        OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
                 .url(BuildConfig.CONNECTION_URL)
