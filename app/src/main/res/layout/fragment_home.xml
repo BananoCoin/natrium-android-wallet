@@ -100,10 +100,10 @@
                         android:layout_width="23dp"
                         android:layout_height="23dp"
                         android:layout_centerInParent="true"
-                        android:layout_marginStart="2dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_toStartOf="@id/amount_banano_title"
                         android:paddingBottom="13dp"
-                        app:srcCompat="@drawable/ic_currency_banano_yellow" />
+                        app:srcCompat="@drawable/ic_currency_nano" />
 
                     <TextView
                         android:id="@+id/amount_banano_title"

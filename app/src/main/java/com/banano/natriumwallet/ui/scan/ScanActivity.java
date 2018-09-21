@@ -3,10 +3,12 @@ package com.banano.natriumwallet.ui.scan;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.banano.natriumwallet.R;
+import com.banano.natriumwallet.model.Address;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.core.IViewFinder;
@@ -17,6 +19,9 @@ public class ScanActivity extends BaseScannerActivity implements ZXingScannerVie
     public static final String QR_CODE_RESULT = "QRCodeResult";
     public static final String EXTRA_TITLE = "ScanActivityTitle";
     private ZXingScannerView mScannerView;
+    private Runnable mRunnable;
+    private Handler mHandler;
+    private TextView mInstructionsText;
 
     @Override
     public void onCreate(Bundle state) {
@@ -31,15 +36,31 @@ public class ScanActivity extends BaseScannerActivity implements ZXingScannerVie
                 return new KaliumViewFinderView(context);
             }
         };
+        mScannerView.setAutoFocus(true);
         contentFrame.addView(mScannerView);
 
         // get title
         String title = getIntent().getStringExtra(EXTRA_TITLE);
         if (title != null) {
-            TextView instructions = findViewById(R.id.scan_instruction_label);
-            if (instructions != null) {
-                instructions.setText(title);
+            mInstructionsText = findViewById(R.id.scan_instruction_label);
+            if (mInstructionsText != null) {
+                mInstructionsText.setText(title);
             }
+        }
+
+        mHandler = new Handler();
+        mRunnable = () -> {
+            if (mInstructionsText != null) {
+                mInstructionsText.setText(title);
+            }
+        };
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mHandler != null && mRunnable != null) {
+            mHandler.removeCallbacks(mRunnable);
         }
     }
 
@@ -58,11 +79,24 @@ public class ScanActivity extends BaseScannerActivity implements ZXingScannerVie
 
     @Override
     public void handleResult(Result rawResult) {
-        Bundle conData = new Bundle();
-        conData.putString(QR_CODE_RESULT, rawResult.getText());
-        Intent intent = new Intent();
-        intent.putExtras(conData);
-        setResult(RESULT_OK, intent);
-        finish();
+        String address = Address.findAddress(rawResult.getText());
+        if (address != null && !address.isEmpty()) {
+            Bundle conData = new Bundle();
+            conData.putString(QR_CODE_RESULT, rawResult.getText());
+            Intent intent = new Intent();
+            intent.putExtras(conData);
+            setResult(RESULT_OK, intent);
+            finish();
+        } else {
+            mScannerView.resumeCameraPreview(this);
+            mScannerView.setAutoFocus(true);
+            if (mInstructionsText != null) {
+                mInstructionsText.setText(getString(R.string.send_invalid_address));
+                if (mHandler != null) {
+                    mHandler.removeCallbacks(mRunnable);
+                    mHandler.postDelayed(mRunnable, 800);
+                }
+            }
+        }
     }
 }

@@ -1,14 +1,13 @@
-# Kalium Android Wallet
+# Natrium Android Wallet
 
-## What is Kalium?
+## What is Natrium?
 
-Kalium is an android wallet for the Banano cryptocurrency. It is based on the fine nano-android-wallet produced by [Nano Wallet Company](https://nanowalletcompany.com/).
+Natrium is an android wallet for the NANO cryptocurrency. It is the nano-counterpart to the [Kalium BANANO Wallet](https://github.com/BananoCoin/kalium-android-wallet), which itself is based on the fine nano-android-wallet produced by [Nano Wallet Company](https://nanowalletcompany.com/).
 
 | Link | Description |
 | :----- | :------ |
-[banano.co.in](https://banano.co.in) | Banano Homepage
+[nano.org](https://nano.org) | NANO Homepage
 [@bananocoin](https://twitter.com/bananocoin) | Follow Banano on Twitter to stay up to date
-[banano.how](https://banano.how) | Getting started with Banano and more Information
 
 ## Setup
 
@@ -21,7 +20,7 @@ Kalium is an android wallet for the Banano cryptocurrency. It is based on the fi
 
 ### Contributing
 
-All Kalium Wallet development happens on GitHub. Contributions are always welcome.
+All Natrium Wallet development happens on GitHub. Contributions are always welcome.
 
 To Contribute:
 
@@ -31,8 +30,8 @@ To Contribute:
 
 ### Have a question?
 
-If you need any help, please visit our [GitHub Issues](https://github.com/BananoCoin/kalium-android-wallet/issues) or the [Banano discord](https://chat.banano.co.in). Feel free to file an issue if you do not manage to find any solution.
+If you need any help, please visit our [GitHub Issues](https://github.com/BananoCoin/natrium-android-wallet/issues) or the [Banano discord](https://chat.banano.co.in). Feel free to file an issue if you do not manage to find any solution.
 
 ### License
 
-Kalium Wallet is released under the [BSD-2 License](https://github.com/BananoCoin/kalium-android-wallet/blob/master/LICENSE)
+Natrium Wallet is released under the [BSD-2 License](https://github.com/BananoCoin/natrium-android-wallet/blob/master/LICENSE)
