@@ -150,6 +150,14 @@
     <string name="contact_export_permission_error">请准许Natrium写入这个装置储存.</string>
     <string name="contact_export_success">联络人名单已保存到％S</string>
 
+    <!-- Push Notifications -->
+    <string name="notifications_settings">通知</string>
+    <string name="generic_on">開啟</string>
+    <string name="generic_off">關閉</string>
+    <string name="notification_title">收到 %s NANO</string>
+    <string name="notification_body">打開Natrium查看此交易.</string>
+    <string name="notificaiton_header_suplement">點擊打開</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">掃描Nano二維碼地址</string>
 </resources>
