@@ -51,8 +51,8 @@
     <string name="example_card_intro">Welcome to Natrium. Once you receive NANO, transactions will show up like this:</string>
     <string name="example_card_little">A little</string>
     <string name="example_card_lot">A lot of</string>
-    <string name="example_card_to">to a random person</string>
-    <string name="example_card_from">from a random person</string>
+    <string name="example_card_to">to someone</string>
+    <string name="example_card_from">from someone</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Settings</string>
