@@ -39,8 +39,8 @@
     <string name="example_card_intro">Natrium’a hoşgeldin. Hesabına NANO geldiğinde işlemlerin şu şekilde görünecek:</string>
     <string name="example_card_little">Birazcık</string>
     <string name="example_card_lot">Bir sürü</string>
-    <string name="example_card_to">rastgele bir maymuna</string>
-    <string name="example_card_from">rastgele bir maymundan</string>
+    <string name="example_card_to">birine</string>
+    <string name="example_card_from">birinden</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Ayarlar</string>
