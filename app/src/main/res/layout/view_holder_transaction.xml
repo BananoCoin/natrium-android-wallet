@@ -7,7 +7,7 @@
         <!-- Data -->
         <variable
             name="accountHistoryItem"
-            type="com.banano.natriumwallet.network.model.response.AccountHistoryResponseItem" />
+            type="co.banano.natriumwallet.network.model.response.AccountHistoryResponseItem" />
     </data>
 
     <android.support.constraint.ConstraintLayout

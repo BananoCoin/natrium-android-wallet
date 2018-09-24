@@ -7,15 +7,15 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.natriumwallet.ui.home.HomeFragment.ClickHandlers" />
+            type="co.banano.natriumwallet.ui.home.HomeFragment.ClickHandlers" />
         <!-- Data -->
         <variable
             name="wallet"
-            type="com.banano.natriumwallet.model.KaliumWallet" />
+            type="co.banano.natriumwallet.model.KaliumWallet" />
 
         <variable
             name="localCurrency"
-            type="com.banano.natriumwallet.model.AvailableCurrency" />
+            type="co.banano.natriumwallet.model.AvailableCurrency" />
     </data>
 
     <android.support.v4.widget.DrawerLayout

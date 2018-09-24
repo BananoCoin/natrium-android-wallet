@@ -141,8 +141,8 @@
     <string name="notifications_settings">Notificaties</string>
     <string name="generic_on">Aan</string>
     <string name="generic_off">Uit</string>
-    <string name="notification_title">%s NANO onvtangen</string>
-    <string name="notification_body">Open Natrium om deze transactie te openen.</string>
+    <string name="notification_title">%s NANO ontvangen</string>
+    <string name="notification_body">Open Natrium om de transactie te zien.</string>
     <string name="notificaiton_header_suplement">Tik om te openen</string>
 
     <!-- Scan Screen -->

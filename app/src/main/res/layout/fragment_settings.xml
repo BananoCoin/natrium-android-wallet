@@ -13,7 +13,7 @@
 
         <variable
             name="handlers"
-            type="com.banano.natriumwallet.ui.settings.SettingsFragment.ClickHandlers" />
+            type="co.banano.natriumwallet.ui.settings.SettingsFragment.ClickHandlers" />
     </data>
 
     <RelativeLayout

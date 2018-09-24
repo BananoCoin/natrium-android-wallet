@@ -13,7 +13,7 @@
 
         <variable
             name="handlers"
-            type="com.banano.natriumwallet.ui.contact.ContactOverviewFragment.ClickHandlers" />
+            type="co.banano.natriumwallet.ui.contact.ContactOverviewFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout

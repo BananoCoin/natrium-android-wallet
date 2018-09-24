@@ -157,8 +157,8 @@
     <string name="notifications_settings">Уведомления</string>
     <string name="generic_on">Вкл.</string>
     <string name="generic_off">Выкл.</string>
-    <string name="notification_title">Полученно %s NANO</string>
-    <string name="notification_body">Откройте Natrium для просмотра транзакции.</string>
+    <string name="notification_title">Получено %s NANO</string>
+    <string name="notification_body">Откройте Natrium для просмотра.</string>
     <string name="notificaiton_header_suplement">Нажмите чтобы открыть</string>
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Сканировать  QR-код Nano/адрес.</string>
