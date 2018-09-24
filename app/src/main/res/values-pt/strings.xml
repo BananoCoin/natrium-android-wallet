@@ -4,7 +4,7 @@
     <string name="intro_welcome_new_wallet">Nova Carteira</string>
     <string name="intro_welcome_have_wallet">Importar Carteira</string>
     <!-- Intro New Wallet Screens -->
-    <string name="intro_new_wallet_seed">Abaixo está a seed da sua carteira. É crucial que você faça o backup de sua seed e nunca a armazene simplesmente como texto ou como captura de tela.</string>
+    <string name="intro_new_wallet_seed">Abaixo está a seed da sua carteira. É crucial que você faça o backup de sua seed e nunca a armazene apenas como texto ou captura de tela.</string>
     <string name="intro_new_wallet_seed_copied">Seed copiada para a área de transferência.\n É possível colar por 2 minutos.</string>
     <string name="intro_new_wallet_seed_header">Seed</string>
     <string name="intro_new_wallet_seed_backup_header">Faça backup de sua seed</string>
@@ -39,8 +39,8 @@
     <string name="example_card_intro">Bem-vindo a Natrium. Quando você receber NANO, as transações aparecerão assim:</string>
     <string name="example_card_little">Algumas</string>
     <string name="example_card_lot">Várias</string>
-    <string name="example_card_to">Para algum macaco</string>
-    <string name="example_card_from">De algum macaco</string>
+    <string name="example_card_to">Enviada para</string>
+    <string name="example_card_from">Recebida de</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Configurações</string>
@@ -63,7 +63,7 @@
     <string name="change_representative_header">Mudar\nRepresentante</string>
     <string name="change_representative_header_short">Mudar</string>
     <string name="change_representative_info_header">O que é um representante?</string>
-    <string name="change_representative_info">Um representante é uma conta que vota em consenso na rede. O poder de voto é considerado pelo saldo, você pode delegar seu saldo para aumentar o peso de voto de um representante de sua confiança. Seu representante não tem poder de gasto sobre seus fundos. Você deve escolher um representante que tenha pouco tempo de inatividade e seja confiável.</string>
+    <string name="change_representative_info">Um representante é uma conta que vota pelo consenso na rede. O poder de voto é considerado pelo saldo, você pode delegar seu saldo para aumentar o peso de voto de um representante de sua confiança. Seu representante não tem poder de gasto sobre seus fundos. Você deve escolher um representante que tenha pouco tempo de inatividade e seja confiável.</string>
     <string name="change_representative_dialog_close">Fechar</string>
     <string name="change_representative_change">Mudar</string>
     <string name="change_representative_cancel">Cancelar</string>
