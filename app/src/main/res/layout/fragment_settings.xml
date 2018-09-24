@@ -40,7 +40,7 @@
             android:id="@+id/settings_scrollview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/settings_app_name"
+            android:layout_above="@+id/info_container"
             android:layout_below="@+id/settings_header"
             android:scrollbars="none"
             android:theme="@style/AppThemeYellow">
@@ -524,16 +524,44 @@
             </android.support.constraint.ConstraintLayout>
         </android.support.v4.widget.NestedScrollView>
 
-        <TextView
-            android:id="@+id/settings_app_name"
-            style="@style/TextStyleLightPrimary"
+        <RelativeLayout
+            android:id="@+id/info_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:gravity="center"
-            android:text="@{version}"
-            android:textColor="@color/white_20"
-            tools:text="Kalium v0.0.1" />
+            android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/settings_app_name"
+                style="@style/TextStyleLightPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{version}"
+                android:textColor="@color/white_20"
+                android:layout_toStartOf="@id/settings_name_divider"
+                tools:text="Kalium v0.0.1" />
+            <TextView
+                android:id="@+id/settings_name_divider"
+                style="@style/TextStyleLightPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="|"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white_20"
+                android:layout_centerInParent="true" />
+            <TextView
+                android:id="@+id/settings_privacy"
+                style="@style/TextStyleLightPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_privacy_policy"
+                android:textColor="@color/white_20"
+                android:layout_toEndOf="@id/settings_name_divider"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{handlers::onClickPrivacy}"
+                tools:text="Privacy Policy" />
+        </RelativeLayout>
+
     </RelativeLayout>
 </layout>

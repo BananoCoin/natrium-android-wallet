@@ -8,4 +8,6 @@ public interface WindowControl {
     FragmentUtility getFragmentUtility();
 
     void setStatusBarColor(int color);
+
+    void setNavigationBarColor(int color);
 }

@@ -39,8 +39,8 @@
     <string name="example_card_intro">Добро пожаловать в Natrium.Когда вы получите или отправите NANO,это будет отображено ниже.</string>
     <string name="example_card_little">Немного</string>
     <string name="example_card_lot">Много</string>
-    <string name="example_card_to">К случайной обезьяне</string>
-    <string name="example_card_from">От случайной обезьяны</string>
+    <string name="example_card_to">кому-то</string>
+    <string name="example_card_from">от кого-то</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Настройки</string>

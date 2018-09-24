@@ -39,8 +39,8 @@
     <string name="example_card_intro">Bienvenido a Natrium. Una vez que envíe o reciba NANO, las transacciones se verán así:</string>
     <string name="example_card_little">Algunos</string>
     <string name="example_card_lot">Muchos</string>
-    <string name="example_card_to">a un mono</string>
-    <string name="example_card_from">de un mono</string>
+    <string name="example_card_to">a alguien</string>
+    <string name="example_card_from">de alguien</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Configuración</string>

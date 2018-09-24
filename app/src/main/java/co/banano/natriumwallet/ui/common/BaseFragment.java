@@ -57,7 +57,7 @@ public class BaseFragment extends Fragment {
     }
 
     /**
-     * Set status bar color to gray
+     * Set status bar bar color to gray
      */
     protected void setStatusBarGray() {
         setStatusBarColor(R.color.gray);
@@ -73,6 +73,19 @@ public class BaseFragment extends Fragment {
     private void setStatusBarColor(int color) {
         if (getActivity() instanceof WindowControl) {
             ((WindowControl) getActivity()).setStatusBarColor(color);
+        }
+    }
+
+    /**
+     * Set the navigation bar color
+     */
+    protected void setNavigationBarColor() {
+        setNavigationBarColor(R.color.gray);
+    }
+
+    private void setNavigationBarColor(int color) {
+        if (getActivity() instanceof  WindowControl && android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ((WindowControl) getActivity()).setNavigationBarColor(color);
         }
     }
 

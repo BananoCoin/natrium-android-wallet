@@ -41,6 +41,7 @@ import co.banano.natriumwallet.ui.common.FragmentUtility;
 import co.banano.natriumwallet.ui.common.UIUtil;
 import co.banano.natriumwallet.ui.common.WindowControl;
 import co.banano.natriumwallet.ui.contact.ContactOverviewFragment;
+import co.banano.natriumwallet.ui.webview.WebViewDialogFragment;
 import co.banano.natriumwallet.util.LocaleUtil;
 import co.banano.natriumwallet.util.SharedPreferencesUtil;
 import com.github.ajalt.reprint.core.AuthenticationFailureReason;
@@ -540,6 +541,17 @@ public class SettingsFragment extends BaseFragment {
                         R.anim.slide_out_right);
                 ContactOverviewFragment fragment = ContactOverviewFragment.newInstance();
                 ft.replace(R.id.settings_frag_container, fragment, ContactOverviewFragment.TAG).addToBackStack(null).commit();
+                ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+            }
+        }
+
+        public void onClickPrivacy(View view) {
+            if (getActivity() instanceof WindowControl) {
+                // show webview dialog
+                WebViewDialogFragment dialog = WebViewDialogFragment.newInstance(getString(R.string.privacy_policy_url), "");
+                dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
+                        WebViewDialogFragment.TAG);
+
                 ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
             }
         }

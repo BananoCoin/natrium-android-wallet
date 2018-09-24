@@ -39,8 +39,8 @@
     <string name="example_card_intro">歡迎來到Natrium。當您收到或發送NANO時，它將如下所示.</string>
     <string name="example_card_little">一點</string>
     <string name="example_card_lot">很多</string>
-    <string name="example_card_to">給一隻未知的猴子</string>
-    <string name="example_card_from">從一隻未知的猴子</string>
+    <string name="example_card_to">給某人</string>
+    <string name="example_card_from">從別人</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">設置</string>

@@ -118,6 +118,19 @@ public class BaseDialogFragment extends DialogFragment {
     }
 
     /**
+     * Set the navigation bar color
+     */
+    protected void setNavigationBarColor() {
+        setNavigationBarColor(R.color.gray);
+    }
+
+    private void setNavigationBarColor(int color) {
+        if (getActivity() instanceof  WindowControl && android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            ((WindowControl) getActivity()).setNavigationBarColor(color);
+        }
+    }
+
+    /**
      * Set alarm for 2 minutes to clear the clipboard
      */
     protected void setClearClipboardAlarm() {

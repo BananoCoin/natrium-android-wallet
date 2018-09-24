@@ -258,6 +258,21 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
         }
     }
 
+    /**
+     * Set the navigation bar to a particular color
+     *
+     * @param color color resource id
+     */
+    @Override
+    public void setNavigationBarColor(int color) {
+        // we can only set it 5.x and above
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.setNavigationBarColor(ContextCompat.getColor(this, color));
+        }
+    }
+
+
     @Override
     public ActivityComponent getActivityComponent() {
         if (mActivityComponent == null) {

@@ -39,8 +39,8 @@
     <string name="example_card_intro">Välkommen till Natrium. Så snart du tar emot NANO, visas transaktionerna på detta vis:</string>
     <string name="example_card_little">Lite</string>
     <string name="example_card_lot">Många</string>
-    <string name="example_card_to">Till någon apa</string>
-    <string name="example_card_from">Från någon apa</string>
+    <string name="example_card_to">till någon</string>
+    <string name="example_card_from">från någon</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Inställningar</string>
