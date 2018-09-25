@@ -72,6 +72,7 @@ import timber.log.Timber;
 
 public class AccountService {
     public static final int TIMEOUT_MILLISECONDS = 8000;
+    public static final int REQUEST_EXPIRE_MILLISECONDS = 20000;
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
     @Inject

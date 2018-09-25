@@ -78,10 +78,11 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
      *
      * @return SendConfirmDialogFragment instance
      */
-    public static SendConfirmDialogFragment newInstance(String destination, String amount) {
+    public static SendConfirmDialogFragment newInstance(String destination, String amount, boolean localCurrency) {
         Bundle args = new Bundle();
         args.putString("destination", destination);
         args.putString("amount", amount);
+        args.putBoolean("useLocalCurrency", localCurrency);
         SendConfirmDialogFragment fragment = new SendConfirmDialogFragment();
         fragment.setArguments(args);
         return fragment;
@@ -106,6 +107,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
 
         String destination = getArguments().getString("destination");
         String amount = String.format(Locale.ENGLISH, "%.6f", Float.parseFloat(getArguments().getString("amount")));
+        boolean useLocalCurrency = getArguments().getBoolean("useLocalCurrency", false);
 
         // subscribe to bus
         RxBus.get().register(this);
@@ -128,7 +130,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         }
 
         // Set send amount
-        wallet.setSendBananoAmount(amount);
+        wallet.setSendNanoAmount(amount);
 
         // inflate the view
         binding = DataBindingUtil.inflate(
@@ -155,8 +157,11 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
             }
         }
 
-        binding.sendAmount.setText(String.format("%s NANO", amount));
-
+        if (!useLocalCurrency) {
+            binding.sendAmount.setText(String.format("%s NANO", amount));
+        } else {
+            binding.sendAmount.setText(String.format("%s NANO (%s)", amount, wallet.getLocalCurrencyAmount()));
+        }
         return view;
     }
 
@@ -188,7 +193,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), style);
         builder.setMessage(getString(R.string.send_fingerprint_description,
-                !wallet.getSendBananoAmountFormatted().isEmpty() ? wallet.getSendBananoAmountFormatted() : "0"));
+                !wallet.getSendNanoAmountFormatted().isEmpty() ? wallet.getSendNanoAmountFormatted() : "0"));
         builder.setView(view);
         SpannableString negativeText = new SpannableString(getString(android.R.string.cancel));
         negativeText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.ltblue)), 0, negativeText.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -216,7 +221,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
     private void executeSend() {
         retryCount++;
         showLoadingOverlay();
-        BigInteger sendAmount = NumberUtil.getAmountAsRawBigInteger(wallet.getSendBananoAmount());
+        BigInteger sendAmount = NumberUtil.getAmountAsRawBigInteger(wallet.getSendNanoAmount());
 
         accountService.requestSend(wallet.getFrontierBlock(), address, sendAmount);
     }
@@ -335,7 +340,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
                             }
                         });
             } else if (credentials != null && credentials.getPin() != null) {
-                showPinScreen(getString(R.string.send_pin_description, wallet.getSendBananoAmount()));
+                showPinScreen(getString(R.string.send_pin_description, wallet.getSendNanoAmount()));
             } else if (credentials != null && credentials.getPin() == null) {
                 showCreatePinScreen();
             }

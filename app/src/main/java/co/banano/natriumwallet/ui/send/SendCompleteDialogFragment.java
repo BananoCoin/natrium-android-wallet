@@ -16,6 +16,7 @@ import co.banano.natriumwallet.R;
 import co.banano.natriumwallet.databinding.FragmentSendCompleteBinding;
 import co.banano.natriumwallet.model.Address;
 import co.banano.natriumwallet.model.Contact;
+import co.banano.natriumwallet.model.KaliumWallet;
 import co.banano.natriumwallet.ui.common.ActivityWithComponent;
 import co.banano.natriumwallet.ui.common.BaseDialogFragment;
 import co.banano.natriumwallet.ui.common.SwipeDismissTouchListener;
@@ -32,6 +33,8 @@ public class SendCompleteDialogFragment extends BaseDialogFragment {
     public static String TAG = SendCompleteDialogFragment.class.getSimpleName();
     @Inject
     Realm realm;
+    @Inject
+    KaliumWallet wallet;
     private FragmentSendCompleteBinding binding;
 
     /**
@@ -39,10 +42,11 @@ public class SendCompleteDialogFragment extends BaseDialogFragment {
      *
      * @return SendConfirmDialogFragment instance
      */
-    public static SendCompleteDialogFragment newInstance(String destination, String amount) {
+    public static SendCompleteDialogFragment newInstance(String destination, String amount, boolean localCurrency) {
         Bundle args = new Bundle();
         args.putString("destination", destination);
         args.putString("amount", amount);
+        args.putBoolean("useLocalCurrency", localCurrency);
         SendCompleteDialogFragment fragment = new SendCompleteDialogFragment();
         fragment.setArguments(args);
         return fragment;
@@ -64,6 +68,7 @@ public class SendCompleteDialogFragment extends BaseDialogFragment {
 
         String destination = getArguments().getString("destination");
         String amount = getArguments().getString("amount");
+        boolean useLocalCurrency = getArguments().getBoolean("useLocalCurrency", false);
 
         // inflate the view
         binding = DataBindingUtil.inflate(
@@ -126,7 +131,11 @@ public class SendCompleteDialogFragment extends BaseDialogFragment {
             }
         }
 
-        binding.sentAmount.setText(String.format("%s NANO", amount));
+        if (!useLocalCurrency) {
+            binding.sentAmount.setText(String.format("%s NANO", amount));
+        } else {
+            binding.sentAmount.setText(String.format("%s NANO (%s)", amount, wallet.getLocalCurrencyAmount()));
+        }
 
         return view;
     }

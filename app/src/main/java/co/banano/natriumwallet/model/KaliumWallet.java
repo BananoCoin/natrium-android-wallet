@@ -38,7 +38,7 @@ import io.realm.Realm;
  * Banano wallet that holds transactions and current prices
  */
 public class KaliumWallet {
-    private static final int MAX_BANANO_DISPLAY_LENGTH = 10;
+    private static final int MAX_NANO_DISPLAY_LENGTH = 6;
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
     @Inject
@@ -54,7 +54,7 @@ public class KaliumWallet {
     private String uuid;
     private List<AccountHistoryResponseItem> accountHistory;
     // for sending
-    private String sendBananoAmount;
+    private String sendNanoAmount;
     private String sendLocalCurrencyAmount;
     private String publicKey;
 
@@ -165,7 +165,7 @@ public class KaliumWallet {
     }
 
     public void clearSendAmounts() {
-        sendBananoAmount = "";
+        sendNanoAmount = "";
         sendLocalCurrencyAmount = "";
     }
 
@@ -174,8 +174,8 @@ public class KaliumWallet {
      *
      * @return String
      */
-    public String getSendBananoAmount() {
-        return sendBananoAmount;
+    public String getSendNanoAmount() {
+        return sendNanoAmount;
     }
 
     /**
@@ -183,26 +183,26 @@ public class KaliumWallet {
      *
      * @param bananoAmount String Nano Amount from input
      */
-    public void setSendBananoAmount(String bananoAmount) {
-        this.sendBananoAmount = sanitize(bananoAmount);
+    public void setSendNanoAmount(String bananoAmount) {
+        this.sendNanoAmount = sanitize(bananoAmount);
         if (bananoAmount.length() > 0) {
-            if (this.sendBananoAmount.equals(".")) {
-                this.sendBananoAmount = "0.";
+            if (this.sendNanoAmount.equals(".")) {
+                this.sendNanoAmount = "0.";
             }
-            if (this.sendBananoAmount.equals("00")) {
-                this.sendBananoAmount = "0";
+            if (this.sendNanoAmount.equals("00")) {
+                this.sendNanoAmount = "0";
             }
 
             // keep decimal length at 10 total
-            String[] split = this.sendBananoAmount.split("\\.");
+            String[] split = this.sendNanoAmount.split("\\.");
             if (split.length > 1) {
                 String whole = split[0];
                 String decimal = split[1];
-                decimal = decimal.substring(0, Math.min(decimal.length(), MAX_BANANO_DISPLAY_LENGTH));
-                this.sendBananoAmount = whole + "." + decimal;
+                decimal = decimal.substring(0, Math.min(decimal.length(), MAX_NANO_DISPLAY_LENGTH));
+                this.sendNanoAmount = whole + "." + decimal;
             }
 
-            this.sendLocalCurrencyAmount = convertBananoToLocalCurrency(this.sendBananoAmount);
+            this.sendLocalCurrencyAmount = convertBananoToLocalCurrency(this.sendNanoAmount);
         } else {
             this.sendLocalCurrencyAmount = "";
         }
@@ -210,13 +210,72 @@ public class KaliumWallet {
     }
 
     /**
+     * Set the local currency amount and also update the nano amount to match
+     *
+     * @param localCurrencyAmount String of local currency amount from input
+     */
+    public void setLocalCurrencyAmount(String localCurrencyAmount) {
+        this.sendLocalCurrencyAmount = sanitize(localCurrencyAmount);
+        if (localCurrencyAmount.length() > 0) {
+            if (localCurrencyAmount.equals(".")) {
+                this.sendLocalCurrencyAmount = "0.";
+            }
+
+            // keep decimal length at 10 total
+            String regex = getDecimalSeparator().equals(".") ? "\\." : ",";
+            String[] split = this.sendLocalCurrencyAmount.split(regex);
+            if (split.length > 1) {
+                String whole = split[0];
+                String decimal = split[1];
+                decimal = decimal.substring(0, Math.min(decimal.length(), 2));
+                this.sendLocalCurrencyAmount = whole + getDecimalSeparator() + decimal;
+            }
+
+            this.sendNanoAmount = convertLocalCurrencyToNano(this.sendLocalCurrencyAmount);
+        } else {
+            this.sendNanoAmount = "";
+        }
+        validateSendAmount();
+    }
+
+    /**
+     * Convert a local currency string to a Nano string
+     *
+     * @param amount Local currency amount from input
+     * @return String of Nano converted amount
+     */
+    private String convertLocalCurrencyToNano(String amount) {
+        BigDecimal amountBigDecimal;
+        try {
+            amountBigDecimal = new BigDecimal(sanitizeNoCommas(amount));
+        } catch(NumberFormatException e) {
+            return amount;
+        }
+
+        if (amount.length() == 0 || amountBigDecimal.compareTo(new BigDecimal(0)) == 0) {
+            return amount;
+        } else {
+            try {
+                DecimalFormat df = (DecimalFormat) NumberFormat.getInstance(getLocalCurrency().getLocale());
+                df.setParseBigDecimal(true);
+                BigDecimal bd = (BigDecimal) df.parseObject(sanitize(amount));
+                return localCurrencyPrice != null ? bd
+                        .divide(localCurrencyPrice, 10, BigDecimal.ROUND_HALF_UP).toString() : "0.0";
+            } catch (ParseException e) {
+                ExceptionHandler.handle(e);
+            }
+            return "";
+        }
+    }
+
+    /**
      * Return the currency formatted local currency amount as a string
      *
      * @return Formatted Nano amount
      */
-    public String getSendBananoAmountFormatted() {
-        if (sendBananoAmount.length() > 0) {
-            return bananoFormat(sendBananoAmount);
+    public String getSendNanoAmountFormatted() {
+        if (sendNanoAmount.length() > 0) {
+            return nanoFormat(sendNanoAmount);
         } else {
             return "";
         }
@@ -298,7 +357,7 @@ public class KaliumWallet {
     /**
      * Convert local currency to properly formatted string for the currency
      */
-    private String bananoFormat(String amount) {
+    private String nanoFormat(String amount) {
         BigDecimal amountBigDecimal;
         try {
             amountBigDecimal = new BigDecimal(sanitizeNoCommas(amount));
@@ -316,7 +375,7 @@ public class KaliumWallet {
                 // keep decimal length at 10 total
                 whole = split[0];
                 decimal = split[1];
-                decimal = decimal.substring(0, Math.min(decimal.length(), MAX_BANANO_DISPLAY_LENGTH));
+                decimal = decimal.substring(0, Math.min(decimal.length(), MAX_NANO_DISPLAY_LENGTH));
 
                 // add commas to the whole amount
                 if (whole.length() > 0) {
@@ -340,7 +399,7 @@ public class KaliumWallet {
 
     private void validateSendAmount() {
         try {
-            if (new BigDecimal(sanitizeNoCommas(sendBananoAmount))
+            if (new BigDecimal(sanitizeNoCommas(sendNanoAmount))
                     .compareTo(new BigDecimal(sanitizeNoCommas(NumberUtil.getRawAsLongerUsableString(accountBalance.toString())))) > 0) {
                 RxBus.get().post(new SendInvalidAmount());
             }
@@ -382,7 +441,7 @@ public class KaliumWallet {
         accountHistory = new ArrayList<>();
 
         // for sending
-        sendBananoAmount = "";
+        sendNanoAmount = "";
         sendLocalCurrencyAmount = "";
     }
 

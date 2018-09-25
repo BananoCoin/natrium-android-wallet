@@ -45,6 +45,7 @@ import co.banano.natriumwallet.util.SharedPreferencesUtil;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.math.BigInteger;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
@@ -74,6 +75,7 @@ public class SendDialogFragment extends BaseDialogFragment {
     private Address address;
     private Activity mActivity;
     private ContactSelectionAdapter mAdapter;
+    private boolean useLocalCurrency = false;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -98,6 +100,7 @@ public class SendDialogFragment extends BaseDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // init dependency injection
+        useLocalCurrency = false;
         mActivity = getActivity();
         if (mActivity instanceof ActivityWithComponent) {
             ((ActivityWithComponent) mActivity).getActivityComponent().inject(this);
@@ -274,8 +277,24 @@ public class SendDialogFragment extends BaseDialogFragment {
                     Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/nunitosans_extralight.ttf");
                     binding.sendAmount.setTypeface(tf);
                 }
-                wallet.setSendBananoAmount(charSequence.toString().trim());
-                binding.setWallet(wallet);
+                if (!useLocalCurrency) {
+                    wallet.setSendNanoAmount(charSequence.toString().trim());
+                    binding.setWallet(wallet);
+                } else if (charSequence.length() > 0) {
+                    binding.sendAmount.removeTextChangedListener(this);
+                    String replaceable = String.format("[%s,.\\s]", NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol());
+                    String cleanString = charSequence.toString().replaceAll(replaceable, "");
+
+                    double parsed = Double.parseDouble(cleanString);
+                    String formatted = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).format((parsed/100));
+
+                    binding.sendAmount.setText(formatted);
+                    binding.sendAmount.setSelection(formatted.length());
+
+                    wallet.setLocalCurrencyAmount(Double.toString(parsed/100));
+
+                    binding.sendAmount.addTextChangedListener(this);
+                }
                 hideAmountError();
             }
         });
@@ -416,9 +435,9 @@ public class SendDialogFragment extends BaseDialogFragment {
     }
 
     private boolean validateAmount() {
-        BigInteger sendAmount = NumberUtil.getAmountAsRawBigInteger(wallet.getSendBananoAmount());
+        BigInteger sendAmount = NumberUtil.getAmountAsRawBigInteger(wallet.getSendNanoAmount());
         // check that amount being sent is less than or equal to account balance
-        if (wallet.getSendBananoAmount().isEmpty()) {
+        if (wallet.getSendNanoAmount().isEmpty()) {
             showAmountError(R.string.send_enter_amount);
             return false;
         } else if (sendAmount.compareTo(new BigInteger("0")) <= -1 || sendAmount.compareTo(new BigInteger("0")) == 0) {
@@ -453,7 +472,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
     private void showSendCompleteDialog() {
         // show complete dialog
-        SendCompleteDialogFragment dialog = SendCompleteDialogFragment.newInstance(binding.sendAddress.getText().toString(), binding.sendAmount.getText().toString());
+        SendCompleteDialogFragment dialog = SendCompleteDialogFragment.newInstance(binding.sendAddress.getText().toString(), wallet.getSendNanoAmount(), useLocalCurrency);
         dialog.show(((WindowControl) mActivity).getFragmentUtility().getFragmentManager(),
                 SendCompleteDialogFragment.TAG);
         executePendingTransactions();
@@ -461,7 +480,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
     private void showSendConfirmDialog() {
         // show send dialog
-        SendConfirmDialogFragment dialog = SendConfirmDialogFragment.newInstance(binding.sendAddress.getText().toString(), binding.sendAmount.getText().toString());
+        SendConfirmDialogFragment dialog = SendConfirmDialogFragment.newInstance(binding.sendAddress.getText().toString(), wallet.getSendNanoAmount(), useLocalCurrency);
         dialog.setTargetFragment(this, SEND_RESULT);
         dialog.show(((WindowControl) mActivity).getFragmentUtility().getFragmentManager(),
                 SendConfirmDialogFragment.TAG);
@@ -477,7 +496,7 @@ public class SendDialogFragment extends BaseDialogFragment {
             } else if (resultCode == SEND_FAILED) {
                 UIUtil.showToast(getString(R.string.send_generic_error), getContext());
             } else if (resultCode == SEND_FAILED_AMOUNT) {
-                wallet.setSendBananoAmount(wallet.getUsableAccountBalanceBanano().toString());
+                wallet.setSendNanoAmount(wallet.getUsableAccountBalanceBanano().toString());
                 binding.setWallet(wallet);
                 showAmountError(R.string.send_amount_error);
             }
@@ -495,11 +514,26 @@ public class SendDialogFragment extends BaseDialogFragment {
                     }
 
                     if (address.getAmount() != null) {
-                        wallet.setSendBananoAmount(address.getAmount());
+                        wallet.setSendNanoAmount(address.getAmount());
                         binding.setWallet(wallet);
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * Handle switching to local currency
+     */
+    private void switchCurrency() {
+        if (useLocalCurrency) {
+            useLocalCurrency = false;
+            binding.sendAmount.setText(wallet.getSendNanoAmountFormatted());
+            binding.sendBalance.setText(getString(R.string.send_balance, wallet.getAccountBalanceBanano()));
+        } else {
+            useLocalCurrency = true;
+            binding.sendAmount.setText(wallet.getSendLocalCurrencyAmountFormatted());
+            binding.sendBalance.setText(String.format("(%s)", wallet.getAccountBalanceLocalCurrency()));
         }
     }
 
@@ -529,9 +563,13 @@ public class SendDialogFragment extends BaseDialogFragment {
         }
 
         public void onClickMax(View view) {
-            String amount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
-            amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
-            binding.sendAmount.setText(amount);
+            if (!useLocalCurrency) {
+                String amount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
+                amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
+                binding.sendAmount.setText(amount);
+            } else {
+                binding.sendAmount.setText(wallet.getAccountBalanceLocalCurrency());
+            }
         }
 
         public void onClickPaste(View view) {
@@ -541,6 +579,10 @@ public class SendDialogFragment extends BaseDialogFragment {
                 Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
                 binding.sendAddress.setText(address.getAddress());
             }
+        }
+
+        public void onClickCurrencyChange(View view) {
+            switchCurrency();
         }
     }
 }

@@ -54,8 +54,8 @@ public class KaliumWalletTest {
             // set each potential currency
             sharedPreferencesUtil.setLocalCurrency(currency);
             kaliumWallet.setAccountBalance(new BigDecimal("123414233000000000000000000000000000000"));
-            kaliumWallet.setSendBananoAmount(kaliumWallet.getAccountBalanceBanano());
-            Log.d("KaliumWalletTest", currency.getLocale().toString() + " " + kaliumWallet.getSendBananoAmountFormatted() + " " + kaliumWallet.getSendLocalCurrencyAmountFormatted());
+            kaliumWallet.setSendNanoAmount(kaliumWallet.getAccountBalanceBanano());
+            Log.d("KaliumWalletTest", currency.getLocale().toString() + " " + kaliumWallet.getSendNanoAmountFormatted() + " " + kaliumWallet.getSendLocalCurrencyAmountFormatted());
         }
     }
 
