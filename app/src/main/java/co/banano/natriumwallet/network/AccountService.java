@@ -44,26 +44,23 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.internal.LinkedTreeMap;
 
+import org.java_websocket.client.WebSocketClient;
+import org.java_websocket.handshake.ServerHandshake;
+
 import java.math.BigInteger;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
-import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import io.realm.Realm;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.WebSocket;
-import okhttp3.WebSocketListener;
 import timber.log.Timber;
 
 /**
@@ -72,7 +69,6 @@ import timber.log.Timber;
 
 public class AccountService {
     public static final int TIMEOUT_MILLISECONDS = 8000;
-    public static final int REQUEST_EXPIRE_MILLISECONDS = 20000;
     @Inject
     SharedPreferencesUtil sharedPreferencesUtil;
     @Inject
@@ -84,11 +80,14 @@ public class AccountService {
     @Inject
     @Named("encryption_key")
     byte[] encryption_key;
-    private WebSocket websocket;
-    private boolean connected = false;
+    private WebSocketClient websocket;
     private LinkedList<RequestItem> requestQueue = new LinkedList<>();
     private String private_key;
     private Address address;
+
+    // Map previous hash to the block request
+    private HashMap<String, StateBlock> previousPendingMap = new HashMap<>();
+    private HashMap<String, StateBlock> pendingResponseBlockMap = new HashMap<>();
 
     public AccountService(Context context) {
         // init dependency injection
@@ -104,97 +103,75 @@ public class AccountService {
     public void open() {
         wallet.setBlockCount(-1);
 
-        // initialize the web socket
-        if (!connected) {
-            initWebSocket();
-        }
-
         private_key = getPrivateKey();
         address = getAddress();
         wallet.setPublicKey(getPublicKey());
+
+        // initialize the web socket
+        if (wsDisconnected()) {
+            initWebSocket();
+        } else {
+            requestUpdate();
+        }
     }
 
     /**
      * Initialize websocket and event listeners
      */
     private void initWebSocket() {
+        if (websocket != null && websocket.isOpen()) {
+            processQueue();
+            return;
+        }
         // create websocket
-        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
-        clientBuilder.readTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
-        clientBuilder.writeTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
-        clientBuilder.pingInterval(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
-        clientBuilder.connectTimeout(TIMEOUT_MILLISECONDS, TimeUnit.MILLISECONDS);
-        clientBuilder.retryOnConnectionFailure(true);
-        OkHttpClient client = clientBuilder.build();
-
-        Request request = new Request.Builder()
-                .url(BuildConfig.CONNECTION_URL)
-                .addHeader("X-Client-Version", Integer.toString(BuildConfig.VERSION_CODE))
-                .build();
-
-        WebSocketListener listener = new WebSocketListener() {
+        URI wssUri;
+        try {
+            wssUri = new URI(BuildConfig.CONNECTION_URL);
+        } catch (URISyntaxException use) {
+            Timber.e(use);
+            return;
+        }
+        Map<String, String> httpHeaders = new HashMap<>();
+        httpHeaders.put("X-Client-Version", Integer.toString(BuildConfig.VERSION_CODE));
+        websocket = new WebSocketClient(wssUri, httpHeaders) {
             @Override
-            public void onOpen(WebSocket webSocket, Response response) {
-                super.onOpen(webSocket, response);
-                if (response.code() == 101) {
-                    Timber.d("OPENED");
-                    connected = true;
-                    requestUpdate();
-                }
+            public void onOpen(ServerHandshake handshakedata) {
+                Timber.d("OPENED");
+                requestUpdate();
             }
 
             @Override
-            public void onMessage(WebSocket webSocket, String text) {
-                super.onMessage(webSocket, text);
-                Timber.d("RECEIVED %s", text);
-                handleMessage(text);
+            public void onMessage(String message) {
+                Timber.d("RECEIVED %s", message);
+                handleMessage(message);
             }
 
             @Override
-            public void onClosing(WebSocket webSocket, int code, String reason) {
-                super.onClosing(webSocket, code, reason);
-                Timber.d("CLOSING");
-            }
-
-            @Override
-            public void onClosed(WebSocket webSocket, int code, String reason) {
-                super.onClosed(webSocket, code, reason);
-                connected = false;
+            public void onClose(int code, String reason, boolean remote) {
                 switch (code) {
                     case 1000: // CLOSE_NORMAL
                         Timber.d("CLOSED");
                         break;
                     default: // Abnormal closure
-                        checkState();
                         break;
                 }
             }
 
             @Override
-            public void onFailure(WebSocket webSocket, Throwable t, @Nullable Response response) {
-                super.onFailure(webSocket, t, response);
-                ExceptionHandler.handle(t);
-                if (connected && (t instanceof SocketTimeoutException ||
-                        t instanceof UnknownHostException)) {
+            public void onError(Exception ex) {
+                ExceptionHandler.handle(ex);
+                if (wsDisconnected()) {
+                    post(new SocketError(ex));
                     close();
-                    checkState();
-                }
-                if (!connected) {
-                    post(new SocketError(t));
                     if (requestQueue != null) {
                         requestQueue.clear();
                     }
+                    checkState();
                 }
             }
         };
-
-        // create websocket with listeners
-        websocket = client.newWebSocket(request, listener);
-
-        // trigger shutdown of the dispatcher's executor so this process can exit cleanly.
-        client.dispatcher().executorService().shutdown();
-
-        processQueue();
+        websocket.setConnectionLostTimeout(5);
+        websocket.connect();
     }
 
     /**
@@ -228,7 +205,8 @@ public class AccountService {
             }
         } else if (event != null && event instanceof ProcessResponse) {
             handleProcessResponse((ProcessResponse) event);
-        } else if (event != null && event instanceof BlocksInfoResponse) {
+        } else if (event != null &&
+                event instanceof BlocksInfoResponse) {
             handleBlocksInfoResponse((BlocksInfoResponse) event);
         } else {
             // update block count on subscribe request
@@ -297,7 +275,6 @@ public class AccountService {
         if (blocks.size() != 1) {
             ExceptionHandler.handle(new Exception("unexpected amount of blocks in blocks_info response"));
             requestQueue.poll();
-            requestQueue.poll();
             return;
         }
         String hash = blocks.keySet().iterator().next();
@@ -314,13 +291,11 @@ public class AccountService {
             if (!blockInfo.getBalance().equals(block.getBalance())) {
                 ExceptionHandler.handle(new Exception("balance in state block doesn't match balance in block info"));
                 requestQueue.poll();
-                requestQueue.poll();
                 return;
             }
             if (!hash.equals(calculatedHash)) {
                 ExceptionHandler.handle(new Exception("balance in state block doesn't match balance in block info"));
                 ExceptionHandler.handle(new Exception("state block hash doesn't match hash from block info"));
-                requestQueue.poll();
                 requestQueue.poll();
                 return;
             }
@@ -332,12 +307,10 @@ public class AccountService {
             if (!blockInfo.getBalance().equals(NumberUtil.getRawFromHex(block.getBalance()))) {
                 ExceptionHandler.handle(new Exception("balance in send block doesn't match balance in block info"));
                 requestQueue.poll();
-                requestQueue.poll();
                 return;
             }
             if (!hash.equals(calculatedHash)) {
                 ExceptionHandler.handle(new Exception("send block hash doesn't match hash from block info"));
-                requestQueue.poll();
                 requestQueue.poll();
                 return;
             }
@@ -345,7 +318,6 @@ public class AccountService {
             String calculatedHash = KaliumUtil.computeReceiveHash(block.getPrevious(), block.getSource());
             if (!hash.equals(calculatedHash)) {
                 ExceptionHandler.handle(new Exception("receive block hash doesn't match hash from block info"));
-                requestQueue.poll();
                 requestQueue.poll();
                 return;
             }
@@ -357,7 +329,6 @@ public class AccountService {
             if (!hash.equals(calculatedHash)) {
                 ExceptionHandler.handle(new Exception("open block hash doesn't match hash from block info"));
                 requestQueue.poll();
-                requestQueue.poll();
                 return;
             }
         } else if (block.getType().equals(BlockTypes.CHANGE.toString())) {
@@ -367,36 +338,38 @@ public class AccountService {
             if (!hash.equals(calculatedHash)) {
                 ExceptionHandler.handle(new Exception("change block hash doesn't match hash from block info"));
                 requestQueue.poll();
-                requestQueue.poll();
                 return;
             }
         } else {
             ExceptionHandler.handle(new Exception("unexpected block type " + block.getType()));
             requestQueue.poll();
-            requestQueue.poll();
             return;
         }
 
         requestQueue.poll();
-        RequestItem nextRequest = requestQueue.peek();
-        if (nextRequest != null && nextRequest.getRequest() instanceof StateBlock) {
+        StateBlock nextBlock = previousPendingMap.get(hash);
+        if (nextBlock != null) {
             if (block.getRepresentative() != null) {
-                ((StateBlock) nextRequest.getRequest()).setRepresentative(block.getRepresentative());
+                nextBlock.setRepresentative(block.getRepresentative());
             }
-            ((StateBlock) nextRequest.getRequest()).setPrevious(hash);
-            if (((StateBlock) nextRequest.getRequest()).getInternal_block_type() == BlockTypes.SEND) {
-                ((StateBlock) nextRequest.getRequest()).setBalance(
+            nextBlock.setPrevious(hash);
+            if (nextBlock.getInternal_block_type() == BlockTypes.SEND) {
+                nextBlock.setBalance(
                         new BigInteger(blockInfo.getBalance())
-                                .subtract(new BigInteger(((StateBlock) nextRequest.getRequest()).getSendAmount()))
+                                .subtract(new BigInteger(nextBlock.getSendAmount()))
                                 .toString()
                 );
             } else {
-                ((StateBlock) nextRequest.getRequest()).setBalance(
+                nextBlock.setBalance(
                         new BigInteger(blockInfo.getBalance())
-                                .add(new BigInteger(((StateBlock) nextRequest.getRequest()).getSendAmount()))
+                                .add(new BigInteger(nextBlock.getSendAmount()))
                                 .toString()
                 );
             }
+            previousPendingMap.remove(hash);
+            ProcessRequest prq = new ProcessRequest(gson.toJson(nextBlock), true);
+            pendingResponseBlockMap.put(nextBlock.getPrevious(), nextBlock);
+            requestQueue.add(new RequestItem<>(prq));
         }
 
         processQueue();
@@ -447,6 +420,16 @@ public class AccountService {
             // see what type of request sent this response
             RequestItem requestItem = requestQueue.peek();
             if (requestItem != null) {
+                StateBlock blockRequest = null;
+                if (requestItem.getRequest() instanceof ProcessRequest) {
+                    blockRequest = gson.fromJson(((ProcessRequest) requestItem.getRequest()).getBlock(), StateBlock.class);
+                    if (blockRequest != null) {
+                        StateBlock previous = pendingResponseBlockMap.get(blockRequest.getPrevious());
+                        if (previous != null) {
+                            requestItem.setRequest(previous);
+                        }
+                    }
+                }
                 if (requestItem.getRequest() instanceof Block) {
                     if (requestItem.getRequest() instanceof OpenBlock ||
                             (requestItem.getRequest() instanceof StateBlock &&
@@ -537,38 +520,17 @@ public class AccountService {
      */
     private void processQueue() {
         if (requestQueue != null && requestQueue.size() > 0) {
+            if (wsDisconnected()) {
+                requestQueue.clear();
+                return;
+            }
             RequestItem requestItem = requestQueue.peek();
             if (requestItem != null && !requestItem.isProcessing()) {
                 // process item
                 requestItem.setProcessing(true);
 
-                if (requestItem.getRequest() instanceof Block) {
-                    // escape the block to match https://github.com/clemahieu/raiblocks/wiki/RPC-protocol#process-block
-                    String block = gson.toJson(requestItem.getRequest());
-
-                    checkState();
-                    Timber.d("SEND: %s", gson.toJson(new ProcessRequest(block)));
-
-                    if (((Block) requestItem.getRequest()).getWork() == null) {
-                        ExceptionHandler.handle(new Exception("Work request failed."));
-                        requestQueue.clear();
-                        post(new SocketError(new Throwable()));
-                    } else if ((requestItem.getRequest() instanceof StateBlock) &&
-                            (((Block) requestItem.getRequest()).getInternal_block_type() == BlockTypes.SEND ||
-                                    ((Block) requestItem.getRequest()).getInternal_block_type() == BlockTypes.RECEIVE ||
-                                    ((Block) requestItem.getRequest()).getInternal_block_type() == BlockTypes.CHANGE) &&
-                            ((StateBlock) requestItem.getRequest()).getBalance() == null) {
-                        ExceptionHandler.handle(new Exception("Head block request failed."));
-                        requestQueue.clear();
-                        post(new SocketError(new Throwable()));
-                    } else {
-                        websocket.send(gson.toJson(new ProcessRequest(block)));
-                    }
-                } else {
-                    checkState();
-                    Timber.d("SEND: %s", gson.toJson(requestItem.getRequest()));
-                    websocket.send(gson.toJson(requestItem.getRequest()));
-                }
+                Timber.d("SEND: %s", gson.toJson(requestItem.getRequest()));
+                wsSend(gson.toJson(requestItem.getRequest()));
             } else if (requestItem != null && (requestItem.isProcessing() && System.currentTimeMillis() > requestItem.getExpireTime())) {
                 // expired request on the queue so remove and go to the next
                 requestQueue.poll();
@@ -627,21 +589,24 @@ public class AccountService {
      * @param balance  Remaining balance after a send
      */
     private void requestOpen(String previous, String source, BigInteger balance) {
-        // create a work block
-        requestQueue.add(new RequestItem<>(new WorkRequest(wallet.getPublicKey())));
-
         // If user has set a custom representative, use it
         String representative = sharedPreferencesUtil.hasCustomRepresentative() ? sharedPreferencesUtil.getCustomRepresentative() : PreconfiguredRepresentatives.getRepresentative();
 
-        // create a state block for open
-        requestQueue.add(new RequestItem<>(new StateBlock(
+        // Create open block
+        StateBlock openBlock = new StateBlock(
                 BlockTypes.OPEN,
                 private_key,
                 previous,
                 representative,
                 balance.toString(),
                 source
-        )));
+        );
+        pendingResponseBlockMap.put(previous, openBlock);
+
+        // Create process request
+        ProcessRequest prq = new ProcessRequest(gson.toJson(openBlock), true);
+        requestQueue.add(new RequestItem<>(prq));
+
         processQueue();
     }
 
@@ -653,21 +618,19 @@ public class AccountService {
      * @param balance  Remaining balance after a send
      */
     private void requestReceive(String previous, String source, BigInteger balance) {
-        // create a work block
-        requestQueue.add(new RequestItem<>(new WorkRequest(previous)));
-
-        // create a get_block request
-        requestQueue.add(new RequestItem<>(new GetBlocksInfoRequest(new String[]{previous})));
-
-        // create a state block for receiving
-        requestQueue.add(new RequestItem<>(new StateBlock(
+        StateBlock receiveBlock = new StateBlock(
                 BlockTypes.RECEIVE,
                 private_key,
                 previous,
                 wallet.getRepresentative(),
                 balance.toString(),
                 source
-        )));
+        );
+        previousPendingMap.put(previous, receiveBlock);
+
+        // Request block info for previous
+        requestQueue.add(new RequestItem<>(new GetBlocksInfoRequest(new String[]{previous})));
+
         processQueue();
     }
 
@@ -676,27 +639,22 @@ public class AccountService {
      *
      * @param previous    Previous hash
      * @param destination Destination
-     * @param balance     Remaining balance after a send
+     * @param amount     Amount to send in RAW
      */
-    public void requestSend(String previous, Address destination, BigInteger balance) {
-        // Clear anything in queue
-        requestQueue.clear();
+    public void requestSend(String previous, Address destination, BigInteger amount) {
 
-        // create a work block
-        requestQueue.add(new RequestItem<>(new WorkRequest(previous)));
-
-        // create a get_block request
-        requestQueue.add(new RequestItem<>(new GetBlocksInfoRequest(new String[]{previous})));
-
-        // create a state block for sending
-        requestQueue.add(new RequestItem<>(new StateBlock(
+        StateBlock sendBlock = new StateBlock(
                 BlockTypes.SEND,
                 private_key,
                 previous,
                 wallet.getRepresentative(),
-                balance.toString(),
+                amount.toString(),
                 destination.getAddress()
-        )));
+        );
+        previousPendingMap.put(previous, sendBlock);
+
+        // Request block info for previous
+        requestQueue.add(new RequestItem<>(new GetBlocksInfoRequest(new String[]{previous})));
 
         processQueue();
     }
@@ -709,17 +667,20 @@ public class AccountService {
      * @param representative Representative
      */
     public void requestChange(String previous, BigInteger balance, String representative) {
-        // create a work block
-        requestQueue.add(new RequestItem<>(new WorkRequest(previous)));
-
-        requestQueue.add(new RequestItem<>(new StateBlock(
+        // Create change block
+        StateBlock changeBlock = new StateBlock(
                 BlockTypes.CHANGE,
                 private_key,
                 previous,
                 representative,
                 balance.toString(),
                 "0000000000000000000000000000000000000000000000000000000000000000"
-        )));
+        );
+        pendingResponseBlockMap.put(previous, changeBlock);
+
+        // Create process request
+        ProcessRequest prq = new ProcessRequest(gson.toJson(changeBlock), true);
+        requestQueue.add(new RequestItem<>(prq));
 
         processQueue();
     }
@@ -879,21 +840,30 @@ public class AccountService {
      * Close the web socket
      */
     public void close() {
-        if (!connected) {
+        if (wsDisconnected()) {
             return;
         }
         try {
             websocket.close(1000, "Closed");
-            connected = false;
-        } catch (IllegalStateException e) {
-            connected = false;
+        } catch (Exception e) {
             ExceptionHandler.handle(e);
         }
     }
 
+    private boolean wsDisconnected() {
+        return websocket == null || websocket.isClosing() || websocket.isClosed() || !websocket.isOpen();
+    }
+
     private void checkState() {
-        if (!connected) {
+        if (wsDisconnected()) {
             initWebSocket();
+        }
+    }
+
+    private void wsSend(String message) {
+        checkState();
+        if (websocket.isOpen()) {
+            websocket.send(message);
         }
     }
 }

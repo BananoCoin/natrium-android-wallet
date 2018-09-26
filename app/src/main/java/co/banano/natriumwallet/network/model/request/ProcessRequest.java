@@ -16,13 +16,17 @@ public class ProcessRequest extends BaseRequest {
     @SerializedName("block")
     private String block;
 
+    @SerializedName("do_work")
+    private boolean doWork;
+
     public ProcessRequest() {
         this.action = Actions.PROCESS.toString();
     }
 
-    public ProcessRequest(String block) {
+    public ProcessRequest(String block, boolean doWork) {
         this.action = Actions.PROCESS.toString();
         this.block = block;
+        this.doWork = doWork;
     }
 
     public String getAction() {
@@ -41,11 +45,20 @@ public class ProcessRequest extends BaseRequest {
         this.block = block;
     }
 
+    public void setDoWork(boolean doWork) {
+        this.doWork = doWork;
+    }
+
+    public boolean getDoWork() {
+        return doWork;
+    }
+
     @Override
     public String toString() {
         return "ProcessRequest{" +
                 "action='" + action + '\'' +
                 ", block='" + block + '\'' +
+                ", doWork='" + doWork + '\'' +
                 '}';
     }
 }

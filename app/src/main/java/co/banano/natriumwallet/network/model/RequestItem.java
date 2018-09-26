@@ -18,7 +18,7 @@ public class RequestItem<T> {
 
         // set expire time to now plus timeout
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MILLISECOND, AccountService.REQUEST_EXPIRE_MILLISECONDS);
+        calendar.add(Calendar.MILLISECOND, AccountService.TIMEOUT_MILLISECONDS);
         this.expireTime = calendar.getTime().getTime();
     }
 
