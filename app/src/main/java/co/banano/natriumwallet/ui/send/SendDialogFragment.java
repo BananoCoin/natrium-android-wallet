@@ -76,6 +76,8 @@ public class SendDialogFragment extends BaseDialogFragment {
     private Activity mActivity;
     private ContactSelectionAdapter mAdapter;
     private boolean useLocalCurrency = false;
+    private String lastNanoAmount;
+    private String lastLocalCurrencyAmount;
 
     /**
      * Create new instance of the dialog fragment (handy pattern if any data needs to be passed to it)
@@ -282,16 +284,18 @@ public class SendDialogFragment extends BaseDialogFragment {
                     binding.setWallet(wallet);
                 } else if (charSequence.length() > 0) {
                     binding.sendAmount.removeTextChangedListener(this);
-                    String replaceable = String.format("[%s,.\\s]", NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol());
-                    String cleanString = charSequence.toString().replaceAll(replaceable, "");
+                    String original = charSequence.toString();
+                    String symbol = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol();
 
-                    double parsed = Double.parseDouble(cleanString);
-                    String formatted = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).format((parsed/100));
+                    if (!original.startsWith(symbol) && !original.endsWith(symbol)) {
+                        binding.sendAmount.setText(symbol + original);
+                        binding.sendAmount.setSelection((symbol + original).length());
+                    }
 
-                    binding.sendAmount.setText(formatted);
-                    binding.sendAmount.setSelection(formatted.length());
-
-                    wallet.setLocalCurrencyAmount(Double.toString(parsed/100));
+                    try {
+                        double amount = Double.parseDouble(original.replace(symbol, ""));
+                        wallet.setLocalCurrencyAmount(Double.toString(amount));
+                    } catch (NumberFormatException nfe) { }
 
                     binding.sendAmount.addTextChangedListener(this);
                 }
@@ -443,10 +447,19 @@ public class SendDialogFragment extends BaseDialogFragment {
         } else if (sendAmount.compareTo(new BigInteger("0")) <= -1 || sendAmount.compareTo(new BigInteger("0")) == 0) {
             showAmountError(R.string.send_amount_error);
             return false;
-        }
-        if (sendAmount.compareTo(wallet.getAccountBalanceBananoRaw().toBigInteger()) > 0) {
+        } else if (sendAmount.compareTo(wallet.getAccountBalanceBananoRaw().toBigInteger()) > 0) {
             showAmountError(R.string.send_insufficient_balance);
             return false;
+        } else if (useLocalCurrency) {
+            try {
+                String symbol = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol();
+                String amount = binding.sendAmount.getText().toString();
+                double amountParsed = Double.parseDouble(amount.replace(symbol, ""));
+                wallet.setLocalCurrencyAmount(Double.toString(amountParsed));
+            } catch (NumberFormatException nfe) {
+                showAmountError(R.string.send_amount_error);
+                return false;
+            }
         }
 
         // check that we have a frontier block
@@ -526,15 +539,35 @@ public class SendDialogFragment extends BaseDialogFragment {
      * Handle switching to local currency
      */
     private void switchCurrency() {
+        // Keep a cache of previous amounts because, it's kinda nice to see approx what nano is worth
+        // this way you can tap button and tap back and not end up with X.9993451 NANO
         if (useLocalCurrency) {
+            // Switch back to NANO
+            if (lastLocalCurrencyAmount != null && lastNanoAmount != null && wallet.getLocalCurrencyAmount().equals(lastLocalCurrencyAmount)) {
+                lastLocalCurrencyAmount = wallet.getLocalCurrencyAmount();
+                wallet.setSendNanoAmount(lastNanoAmount);
+            } else {
+                lastLocalCurrencyAmount = wallet.getLocalCurrencyAmount();
+            }
             useLocalCurrency = false;
             binding.sendAmount.setText(wallet.getSendNanoAmountFormatted());
+            lastNanoAmount = wallet.getSendNanoAmount();
             binding.sendBalance.setText(getString(R.string.send_balance, wallet.getAccountBalanceBanano()));
         } else {
+            // Switch to local currency
+            if (lastNanoAmount != null && lastLocalCurrencyAmount != null && wallet.getSendNanoAmount().equals(lastNanoAmount)) {
+                String symbol = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol();
+                lastNanoAmount = wallet.getSendNanoAmount();
+                wallet.setLocalCurrencyAmount(lastLocalCurrencyAmount.replace(symbol, ""));
+            } else {
+                lastNanoAmount = wallet.getSendNanoAmount();
+            }
             useLocalCurrency = true;
-            binding.sendAmount.setText(wallet.getSendLocalCurrencyAmountFormatted());
+            binding.sendAmount.setText(wallet.getLocalCurrencyAmount());
+            lastLocalCurrencyAmount = wallet.getLocalCurrencyAmount();
             binding.sendBalance.setText(String.format("(%s)", wallet.getAccountBalanceLocalCurrency()));
         }
+        binding.sendAmount.setSelection(binding.sendAmount.getText().length());
     }
 
     /**
