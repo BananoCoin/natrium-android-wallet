@@ -1,7 +1,7 @@
 <resources>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Willkommen bei Natrium. Um fortzufahren, benötigst du ein Wallet. Erstelle bitte ein neues Wallet oder importiere ein bereits existierendes Wallet.</string>
-    <string name="intro_welcome_new_wallet">Neues Wallet</string>
+    <string name="intro_welcome_new_wallet">Neue Wallet</string>
     <string name="intro_welcome_have_wallet">Wallet importieren</string>
     <!-- Intro New Wallet Screens -->
     <string name="intro_new_wallet_seed">Unten siehst du deinen Seed.\nEs ist extrem wichtig, dass du ein Backup deines Seeds erstellst.\nSichere deinen Seed niemals als Klartext oder mit einem Screenshot.</string>

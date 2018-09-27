@@ -39,8 +39,8 @@
     <string name="example_card_intro">Hai, Saat anda mengirim dan menerima NANO, akan terlihat seperti ini:</string>
     <string name="example_card_little">Sedikit</string>
     <string name="example_card_lot"> Banyak</string>
-    <string name="example_card_to">ke monkey lain</string>
-    <string name="example_card_from">dari monkey lain</string>
+    <string name="example_card_to">untuk seseorang</string>
+    <string name="example_card_from">dari seseorang</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Pengaturan</string>

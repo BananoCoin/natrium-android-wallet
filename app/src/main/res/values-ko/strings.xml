@@ -1,0 +1,169 @@
+<resources>
+
+    <!-- Generic -->
+    <string name="dialog_cancel">취소</string>
+    <string name="dialog_close">닫기</string>
+    <string name="dialog_confirm">확인</string>
+
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Natrium에 오신 것을 환영합니다. 계속하려면, 새 지갑을 만들거나 기존 지갑을 불러오세요.</string>
+    <string name="intro_welcome_new_wallet">새 지갑</string>
+    <string name="intro_welcome_have_wallet">기존 지갑</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">아래는 지갑의 시드(seed)입니다. 시드를 백업 하세요! 일반텍스트나 스크린샷으로 저장하면 안 됩니다.</string>
+    <string name="intro_new_wallet_seed_copied">시드가 클립보드에 복사되었습니다. 2분 동안 지속됩니다.</string>
+    <string name="intro_new_wallet_seed_header">시드 코드</string>
+    <string name="intro_new_wallet_seed_backup_header">시드를 백업하세요</string>
+    <string name="intro_new_wallet_backup">지갑의 시드를 확실히 백업하셨습니까?</string>
+    <string name="intro_new_wallet_backup_yes">네</string>
+    <string name="intro_new_wallet_backup_no">아니요</string>
+    <string name="intro_new_wallet_warning_header">거짓말 하지 마세요.</string>
+    <string name="intro_new_wallet_warning">제대로 백업하지 않으면 다 잃게 될 겁니다.</string>
+    <string name="intro_new_wallet_not_lying">거짓말 마세요!</string>
+    <string name="intro_new_wallet_okay">좋아요 :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">시드를 가져 옵니다</string>
+    <string name="intro_seed_info">아래에 시드를 입력하세요</string>
+    <string name="intro_seed_invalid">시드가 부적절합니다</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">4자리 비밀번호를 만드세요</string>
+    <string name="pin_confirm_title">비밀번호를 확인 하세요</string>
+    <string name="pin_enter_title">비밀번호를 입력 하세요</string>
+    <string name="pin_confirm_error">비밀번호가 일치하지 않습니다</string>
+    <string name="pin_error">잘못된 비밀번호가 입력되었습니다.</string>
+    <string name="fingerprint_text">지문을 센서에 대십시오</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">보내기</string>
+    <string name="home_receive_cta">받기</string>
+    <string name="error_message">오류 발생. 다시 하세요.</string>
+    <string name="transaction_header">거래</string>
+    <string name="history_sent">전송 완료</string>
+    <string name="history_received">수신 완료</string>
+    <string name="transaction_details">세부 정보보기</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Natrium에 오신 것을 환영합니다. NANO를 받으시면 거래가 다음과 같이 표시됩니다.</string>
+    <string name="example_card_little">조금</string>
+    <string name="example_card_lot">많은</string>
+    <string name="example_card_to">임의의 수령인에게</string>
+    <string name="example_card_from">임의의 발송자로부터</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">설정</string>
+    <string name="settings_local_currency">통화 변경</string>
+    <string name="settings_change_language">언어</string>
+    <string name="settings_default_language_string">전화 언어</string>
+    <string name="settings_backup_seed">시드 백업</string>
+    <string name="settings_change_rep">대리인 변경</string>
+    <string name="settings_share">Natrium 공유 </string>
+    <string name="settings_logout">로그 아웃</string>
+    <string name="settings_logout_alert_title">경고</string>
+    <string name="settings_logout_alert_message">로그 아웃하면 시드와 모든 Natrium 관련 데이터가 삭제됩니다. 귀하의 시드가 백업되지 않은 경우 귀하의 자금을 다시  복구 할 수 없습니다.</string>
+    <string name="settings_logout_alert_confirm_cta">시드 삭제 및 로그 아웃</string>
+    <string name="settings_logout_alert_cancel_cta">취소</string>
+    <string name="settings_logout_warning_title">확실합니까?</string>
+    <string name="settings_logout_warning_message">시드를 백업했다면, 걱정하지 않으셔도 됩니다.</string>
+    <string name="settings_logout_warning_confirm">네</string>
+    <string name="settings_logout_warning_cancel">취소</string>
+    <string name="settings_manage_header">설정</string>
+    <string name="settings_preferences_header">환경 설정</string>
+    <string name="settings_disable_fingerprint">인증 방법</string>
+    <string name="settings_fingerprint_method">지문</string>
+    <string name="settings_pin_method">비밀번호</string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">대리인 변경</string>
+    <string name="change_representative_header_short">변경</string>
+    <string name="change_representative_info_header">대리인이란 무엇입니까?</string>
+    <string name="change_representative_info">대리인은 네트워크 합의를 투표하는 계정입니다. 투표권은 잔액에 의해서 가중치가 부여됩니다. 당신이 신뢰하는 대리인 투표권을 늘리기 위해 잔액을 위임할 수 있습니다. 하지만 대리인은 당신의 자금에 대한 지출력이 없습니다. 되도록 소요시간이 적고 신뢰할 수 있는 대리인을 선택해야 합니다.</string>
+    <string name="change_representative_dialog_close">닫기</string>
+    <string name="change_representative_change">바꾸기</string>
+    <string name="change_representative_cancel">취소</string>
+    <string name="change_representative_invalid">대리인 주소가 잘못됐습니다</string>
+    <string name="change_representative_current_header">현재 대리인</string>
+    <string name="change_representative_hint">새로운 대리인을 입력하세요</string>
+    <string name="change_representative_success">대리인이 성공적으로 변경되었습니다</string>
+    <string name="change_representative_error">대리인를 변경하지 못했습니다. 나중에 다시 시도</string>
+    <string name="change_representative_fingerprint">지문을 확인하고 대리인 변경하십시오</string>
+    <string name="change_representative_pin">대리인을 변경하려면 비밀번호를 입력하십시오</string>
+    <!-- Share -->
+    <string name="share_title">공유 방법...</string>
+    <string name="share_extra">Natrium을 확인하세요! Nano의 공식 Android 지갑!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">시드 지갑을 백업</string>
+    <string name="settings_fingerprint_title">지문을 확인하여 시드 지갑를 백업하세요</string>
+    <string name="settings_pin_title">시드 지갑 를 보시려면 비밀번호을 입력하세요</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">공유</string>
+    <string name="receive_copy_cta">주소 복사</string>
+    <string name="receive_copied">주소가 복사되었습니다 </string>
+    <string name="receive_share_title">공유 방법...</string>
+    <string name="receive_card_title">Nano</string>
+    <string name="receive_qrcode_description">QR 코드</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">보낸 사람 :</string>
+    <string name="send_address_hint">주소를 입력하세요</string>
+    <string name="send_amount_hint">금액을 입력하세요</string>
+    <string name="send_max">최대</string>
+    <string name="send_send_cta">전송</string>
+    <string name="send_sent">전송됨</string>
+    <string name="send_scan_qr">QR 코드를 스캔하세요</string>
+    <string name="send_sending">전송중</string>
+    <string name="send_to">받는 사람:</string>
+    <string name="sent_to">받는 사람:</string>
+    <string name="send_alert_dialog_ok">승인</string>
+    <string name="send_alert_dialog_title">입력이 잘못되었습니다</string>
+    <string name="send_invalid_address">목적지 주소가 잘못되었습니다</string>
+    <string name="send_insufficient_balance">잔액이 부족합니다</string>
+    <string name="send_enter_address">주소를 입력하세요</string>
+    <string name="send_enter_amount">금액을 입력하세요</string>
+    <string name="send_amount_error">입력한 금액이 잘못되었습니다</string>
+    <string name="send_generic_error">문제가 발생했습니다. 나중에 다시 시도하시오.</string>
+    <string name="send_no_frontier">계정를 찾을 수 없습니다 (계정이 존재 하지 않을 수 있습니다).</string>
+    <string name="send_fingerprint_description">Nano 발송을 위해 지문인식을 하세요</string>
+    <string name="send_pin_description">%s Nano를 발송하시겠습니까?</string>
+
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">연락처 추가</string>
+    <string name="contact_added">% s 님이 연락처에 추가되었습니다.</string>
+    <string name="contact_invalid_name">잘못된 연락처 입력</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">연락처 추가:</string>
+    <string name="contact_add_button">연락처 추가</string>
+    <string name="contact_name_hint">이름 입력 @@</string>
+    <string name="contact_name_missing">연락처 이름 선택</string>
+    <string name="contact_name_exists">이미 존재하는 연락처</string>
+    <string name="contact_address_hint">주소를 입력하세요</string>
+    <string name="contact_address_exists">연락처에 이미 존재하는 주소입니다.</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">연락처</string>
+    <string name="contact_settings_item">연락처</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">연락처:</string>
+    <string name="contact_remove_header">삭제</string>
+    <string name="contact_remove_btn">연락처 삭제</string>
+    <string name="contact_remove_sure">% s을 (를) 삭제 하시겠습니까?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">% s 님이 연락처에서 삭제되었습니다!</string>
+    <string name="contact_export_none">내보낼 연락처가 존재하지 않습니다.</string>
+    <string name="contact_export_error">연락처를 내보내지 못했습니다.</string>
+    <string name="contact_import_error">연락처를 가져오지 못했습니다.</string>
+    <string name="contact_import_success">%d개의 연락처를 성공적으로 가져왔습니다.</string>
+    <string name="contact_import_none">가져올 연락처를 찾을 수 없습니다.</string>
+    <string name="contact_import_warning_header">경고</string>
+    <string name="contact_import_permission_error">Natrium이 저장장치를 읽을 수 있도록 허용해 주십시오.</string>
+    <string name="contact_export_permission_error">Natrium이 저장장치를 쓸 수 있도록 허용해 주십시오.</string>
+    <string name="contact_export_success">연락처가 %s에 저장되었습니다</string>
+
+    <!-- Push Notifications -->
+    <string name="notifications_settings">알림</string>
+    <string name="generic_on">켜기</string>
+    <string name="generic_off">끄기</string>
+    <string name="notification_title">% s개의 NANO을 받았습니다</string>
+    <string name="notification_body">이 거래를 보려면 Natrium을 여십시오.</string>
+    <string name="notificaiton_header_suplement">열려면 누르십시오.</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Nano QR 코드 주소를 스캔하하세요</string>
+</resources>

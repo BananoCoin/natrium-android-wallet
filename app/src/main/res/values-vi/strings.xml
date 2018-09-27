@@ -39,8 +39,8 @@
     <string name="example_card_intro">Chào mừng tới Natrium. Khi bạn nhận được NANO, giao dịch sẽ được hiển thị như sau:</string>
     <string name="example_card_little">Một vài</string>
     <string name="example_card_lot">Rất nhiều</string>
-    <string name="example_card_to">Tới một con Khỉ</string>
-    <string name="example_card_from">Từ một con Khỉ</string>
+    <string name="example_card_to">Đến một ai đó</string>
+    <string name="example_card_from">Từ một ai đó</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Cài đặt</string>

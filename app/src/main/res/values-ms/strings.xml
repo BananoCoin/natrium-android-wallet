@@ -39,8 +39,8 @@
     <string name="example_card_intro">Selamat datang ke Natrium. Sekali anda menerima NANO, transaksi akan terlihat seperti ini:</string>
     <string name="example_card_little">Sedikit</string>
     <string name="example_card_lot">Banyak</string>
-    <string name="example_card_to">kepada monyet rambang</string>
-    <string name="example_card_from">dari monyet rambang</string>
+    <string name="example_card_to">kepada seseorang</string>
+    <string name="example_card_from">dari seseorang</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Tetapan</string>

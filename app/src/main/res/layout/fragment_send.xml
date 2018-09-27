@@ -9,7 +9,7 @@
 
         <variable
             name="wallet"
-            type="com.banano.natriumwallet.model.KaliumWallet" />
+            type="co.banano.natriumwallet.model.KaliumWallet" />
 
         <variable
             name="showAmount"
@@ -18,7 +18,7 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.natriumwallet.ui.send.SendDialogFragment.ClickHandlers" />
+            type="co.banano.natriumwallet.ui.send.SendDialogFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -115,15 +115,28 @@
                 android:textSize="@dimen/text_size_normal"
                 tools:text="1.23" />
 
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/send_currency_chance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/nunitosans_semibold"
+                android:onClick="@{handlers::onClickCurrencyChange}"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_currency_change" />
+
             <Button
                 android:id="@+id/send_amount_max"
                 android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/nunitosans_semibold"
                 android:onClick="@{handlers::onClickMax}"

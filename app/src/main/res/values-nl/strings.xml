@@ -39,8 +39,8 @@
     <string name="example_card_intro">Welkom bij Natrium. Zo zien je NANO transacties eruit:</string>
     <string name="example_card_little">Een paar</string>
     <string name="example_card_lot">Heel veel</string>
-    <string name="example_card_to">naar die ene aap</string>
-    <string name="example_card_from">van die andere aap</string>
+    <string name="example_card_to">naar iemand</string>
+    <string name="example_card_from">van iemand</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Instellingen</string>
@@ -141,8 +141,8 @@
     <string name="notifications_settings">Notificaties</string>
     <string name="generic_on">Aan</string>
     <string name="generic_off">Uit</string>
-    <string name="notification_title">%s NANO onvtangen</string>
-    <string name="notification_body">Open Natrium om deze transactie te openen.</string>
+    <string name="notification_title">%s NANO ontvangen</string>
+    <string name="notification_body">Open Natrium om de transactie te zien.</string>
     <string name="notificaiton_header_suplement">Tik om te openen</string>
 
     <!-- Scan Screen -->

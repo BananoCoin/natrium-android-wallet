@@ -39,8 +39,8 @@
     <string name="example_card_intro">Üdvözöllek a Natriumban! Így fogod látni a tranzakcióid, amikor kapsz NANO-t.</string>
     <string name="example_card_little">Egy kevés</string>
     <string name="example_card_lot">Rengeteg</string>
-    <string name="example_card_to">Egy random majomnak</string>
-    <string name="example_card_from">Egy random majomtól</string>
+    <string name="example_card_to">valakinek</string>
+    <string name="example_card_from">valakitől</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Beállítások</string>

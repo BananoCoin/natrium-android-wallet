@@ -8,11 +8,11 @@ android {
         enabled = true
     }
     defaultConfig {
-        applicationId "com.banano.natriumwallet"
+        applicationId "co.banano.natriumwallet"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 2
-        versionName "0.9.0"
+        versionCode 7
+        versionName "0.9.3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -47,22 +47,22 @@ android {
 
 dependencies {
     final AWESOME_QRCODE_VERSION = '1.0.6'
-    final EPOXY_VERSION = '2.12.0'
     final FCM_VER = '16.0.3'
-    final FCM_MSG_VER = '17.3.1'
+    final FCM_MSG_VER = '17.3.2'
     final CONSTRAINT_LAYOUT_VERSION = '1.1.3'
     final DAGGER_VERSION = '2.17'
     final ESPRESSO_VERSION = '3.0.1'
     final FINGERPRINT_VERSION = '3.2.1'
     final GSON_FIRE_VERSION = '1.8.2'
-    final GSON_VERSION = '2.8.2'
+    final GSON_VERSION = '2.8.5'
+    final JAVA_WS_VERSION = '1.3.9'
     final J_UNIT_VERSION = '4.12'
-    final LOTTIE_VERSION = '2.6.0-beta19'
+    final LOTTIE_VERSION = '2.7.0'
     final PINLOCKVIEW_VERSION = '2.1.0'
     final RX_ANDROID = '2.0.2'
     final RXBUS_VERSION = '2.0.0'
-    final RX_JAVA_2 = '2.1.8'
-    final SUPPORT_LIBRARY_VERSION = '28.0.0-rc02'
+    final RX_JAVA_2 = '2.2.2'
+    final SUPPORT_LIBRARY_VERSION = '28.0.0'
     final TEST_RUNNER_VERSION = '1.0.1'
     final TIMBER_VERSION = '4.7.0'
     final VAULT_VERSION = '1.4.2'
@@ -82,11 +82,6 @@ dependencies {
     implementation "com.google.dagger:dagger:$DAGGER_VERSION"
     annotationProcessor "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
 
-    // Epoxy
-    implementation "com.airbnb.android:epoxy:$EPOXY_VERSION"
-    implementation "com.airbnb.android:epoxy-databinding:$EPOXY_VERSION"
-    annotationProcessor "com.airbnb.android:epoxy-processor:$EPOXY_VERSION"
-
     // Firebase
     implementation "com.google.firebase:firebase-core:$FCM_VER"
     implementation "com.google.firebase:firebase-messaging:$FCM_MSG_VER"
@@ -101,6 +96,7 @@ dependencies {
 
     // WebSocket
     implementation "com.squareup.okhttp3:okhttp:$OKHTTP_VERSION"
+    implementation "org.java-websocket:Java-WebSocket:$JAVA_WS_VERSION"
 
     // JSON Serialization
     implementation "com.google.code.gson:gson:$GSON_VERSION"

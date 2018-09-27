@@ -16,6 +16,7 @@
     <color name="gray_dark_40">#642A3A4D</color>
     <color name="gray">#1E2C3D</color>
     <color name="gray_transition">#001E2C3D</color>
+    <color name="navigation_bar"></color>
     <color name="ltblue">#A3CDFF</color>
     <color name="ltblue_70">#B3A3CDFF</color>
     <color name="ltblue_dark_transparent">#93A3CDFF</color>

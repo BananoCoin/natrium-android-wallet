@@ -38,8 +38,8 @@
     <string name="example_card_intro">Bienvenue sur Natrium. Lorsque vous recevrez des NANO, les transactions apparaîtront içi.</string>
     <string name="example_card_little">Un peu de</string>
     <string name="example_card_lot">Beaucoup de</string>
-    <string name="example_card_to">à un monKey aléatoire</string>
-    <string name="example_card_from">d\'un monKey aléatoire</string>
+    <string name="example_card_to">à quelqu\'un</string>
+    <string name="example_card_from">de quelqu\'un</string>
     <!-- Settings Screen -->
     <string name="settings_title">Réglages</string>
     <string name="settings_local_currency">Changer de devise</string>

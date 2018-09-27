@@ -6,7 +6,7 @@
         <!-- Click Listeners -->
         <variable
             name="handlers"
-            type="com.banano.natriumwallet.ui.pin.CreatePinDialogFragment.ClickHandlers" />
+            type="co.banano.natriumwallet.ui.pin.CreatePinDialogFragment.ClickHandlers" />
     </data>
 
     <android.support.constraint.ConstraintLayout

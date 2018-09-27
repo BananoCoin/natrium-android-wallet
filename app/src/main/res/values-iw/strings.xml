@@ -39,8 +39,8 @@
     <string name="example_card_intro">ברוך הבא לקאליום. ברגע שתקבל באנאנו, הטרנסקציות יופיעו כך:</string>
     <string name="example_card_little">קצת</string>
     <string name="example_card_lot">הרבה</string>
-    <string name="example_card_to">לקוף רנדומלי</string>
-    <string name="example_card_from">מקוף רנדומלי</string>
+    <string name="example_card_to">למישהו</string>
+    <string name="example_card_from">ממישהו</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">הגדרות</string>
