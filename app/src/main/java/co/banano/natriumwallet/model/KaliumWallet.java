@@ -136,6 +136,11 @@ public class KaliumWallet {
         return localCurrencyPrice != null && accountBalance != null ? formatLocalCurrency(NumberUtil.getRawAsUsableAmount(accountBalance.toString()).multiply(localCurrencyPrice, MathContext.DECIMAL64)) : "0.0";
     }
 
+    public String getAccountBalanceLocalCurrencyNoSymbol() {
+        String symbol =  NumberFormat.getCurrencyInstance(getLocalCurrency().getLocale()).getCurrency().getSymbol();
+        return getAccountBalanceLocalCurrency().replace(symbol, "");
+    }
+
     public String getAccountBalanceBtc() {
         return btcPrice != null && accountBalance != null ? formatBtc(NumberUtil.getRawAsUsableAmount(accountBalance.toString()).multiply(btcPrice, MathContext.DECIMAL64)) : "0.0";
     }
@@ -323,7 +328,8 @@ public class KaliumWallet {
      * @return Local currency amount
      */
     public String getLocalCurrencyAmount() {
-        return sendLocalCurrencyAmount;
+        String symbol =  NumberFormat.getCurrencyInstance(getLocalCurrency().getLocale()).getCurrency().getSymbol();
+        return sendLocalCurrencyAmount.replace(symbol, "");
     }
 
     /**

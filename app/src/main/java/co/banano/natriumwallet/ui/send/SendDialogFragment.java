@@ -55,6 +55,7 @@ import javax.inject.Inject;
 import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmQuery;
+import timber.log.Timber;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
@@ -126,6 +127,10 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         // Set balance hint
         binding.sendBalance.setText(getString(R.string.send_balance, wallet.getAccountBalanceBanano()));
+
+        // Reset send amount
+        wallet.setSendNanoAmount("");
+        wallet.setLocalCurrencyAmount("");
 
         // Restrict height
         Window window = getDialog().getWindow();
@@ -284,21 +289,18 @@ public class SendDialogFragment extends BaseDialogFragment {
                     wallet.setSendNanoAmount(charSequence.toString().trim());
                     binding.setWallet(wallet);
                 } else if (charSequence.length() > 0) {
-                    binding.sendAmount.removeTextChangedListener(this);
                     String original = charSequence.toString();
                     String symbol = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol();
-
-                    if (!original.startsWith(symbol) && !original.endsWith(symbol)) {
+                    if (!original.startsWith(symbol)) {
+                        binding.sendAmount.removeTextChangedListener(this);
                         binding.sendAmount.setText(symbol + original);
                         binding.sendAmount.setSelection((symbol + original).length());
+                        binding.sendAmount.addTextChangedListener(this);
                     }
 
-                    try {
-                        NumberFormat nf = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale());
-                        wallet.setLocalCurrencyAmount(Double.toString(nf.parse(original.replace(symbol, "")).doubleValue()));
-                    } catch (ParseException pe) { }
+                    original = original.replace(symbol, "");
+                    wallet.setLocalCurrencyAmount(original);
 
-                    binding.sendAmount.addTextChangedListener(this);
                 }
                 hideAmountError();
             }
@@ -451,16 +453,6 @@ public class SendDialogFragment extends BaseDialogFragment {
         } else if (sendAmount.compareTo(wallet.getAccountBalanceBananoRaw().toBigInteger()) > 0) {
             showAmountError(R.string.send_insufficient_balance);
             return false;
-        } else if (useLocalCurrency) {
-            try {
-                String symbol = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol();
-                String amount = binding.sendAmount.getText().toString();
-                NumberFormat nf = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale());
-                wallet.setLocalCurrencyAmount(Double.toString(nf.parse(amount.replace(symbol, "")).doubleValue()));
-            } catch (ParseException nfe) {
-                showAmountError(R.string.send_amount_error);
-                return false;
-            }
         }
 
         // check that we have a frontier block
@@ -554,12 +546,12 @@ public class SendDialogFragment extends BaseDialogFragment {
             binding.sendAmount.setText(wallet.getSendNanoAmountFormatted());
             lastNanoAmount = wallet.getSendNanoAmount();
             binding.sendBalance.setText(getString(R.string.send_balance, wallet.getAccountBalanceBanano()));
+            binding.sendAmount.setFilters(new InputFilter[]{new DigitsInputFilter(Integer.MAX_VALUE, 6, Integer.MAX_VALUE)});
         } else {
-            // Switch to local currency
+            // Switch to local currency);
             if (lastNanoAmount != null && lastLocalCurrencyAmount != null && wallet.getSendNanoAmount().equals(lastNanoAmount)) {
-                String symbol = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol();
                 lastNanoAmount = wallet.getSendNanoAmount();
-                wallet.setLocalCurrencyAmount(lastLocalCurrencyAmount.replace(symbol, ""));
+                wallet.setLocalCurrencyAmount(lastLocalCurrencyAmount);
             } else {
                 lastNanoAmount = wallet.getSendNanoAmount();
             }
@@ -567,6 +559,7 @@ public class SendDialogFragment extends BaseDialogFragment {
             binding.sendAmount.setText(wallet.getLocalCurrencyAmount());
             lastLocalCurrencyAmount = wallet.getLocalCurrencyAmount();
             binding.sendBalance.setText(String.format("(%s)", wallet.getAccountBalanceLocalCurrency()));
+            binding.sendAmount.setFilters(new InputFilter[]{new DigitsInputFilter(Integer.MAX_VALUE, 2, Integer.MAX_VALUE)});
         }
         binding.sendAmount.setSelection(binding.sendAmount.getText().length());
     }
@@ -602,7 +595,7 @@ public class SendDialogFragment extends BaseDialogFragment {
                 amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
                 binding.sendAmount.setText(amount);
             } else {
-                binding.sendAmount.setText(wallet.getAccountBalanceLocalCurrency());
+                binding.sendAmount.setText(wallet.getAccountBalanceLocalCurrencyNoSymbol());
             }
         }
 

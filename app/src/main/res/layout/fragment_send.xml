@@ -116,7 +116,7 @@
                 tools:text="1.23" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/send_currency_chance"
+                android:id="@+id/send_currency_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
