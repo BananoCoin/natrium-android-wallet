@@ -46,6 +46,7 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.math.BigInteger;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Locale;
 
@@ -293,9 +294,9 @@ public class SendDialogFragment extends BaseDialogFragment {
                     }
 
                     try {
-                        double amount = Double.parseDouble(original.replace(symbol, ""));
-                        wallet.setLocalCurrencyAmount(Double.toString(amount));
-                    } catch (NumberFormatException nfe) { }
+                        NumberFormat nf = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale());
+                        wallet.setLocalCurrencyAmount(Double.toString(nf.parse(original.replace(symbol, "")).doubleValue()));
+                    } catch (ParseException pe) { }
 
                     binding.sendAmount.addTextChangedListener(this);
                 }
@@ -454,9 +455,9 @@ public class SendDialogFragment extends BaseDialogFragment {
             try {
                 String symbol = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale()).getCurrency().getSymbol();
                 String amount = binding.sendAmount.getText().toString();
-                double amountParsed = Double.parseDouble(amount.replace(symbol, ""));
-                wallet.setLocalCurrencyAmount(Double.toString(amountParsed));
-            } catch (NumberFormatException nfe) {
+                NumberFormat nf = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale());
+                wallet.setLocalCurrencyAmount(Double.toString(nf.parse(amount.replace(symbol, "")).doubleValue()));
+            } catch (ParseException nfe) {
                 showAmountError(R.string.send_amount_error);
                 return false;
             }
