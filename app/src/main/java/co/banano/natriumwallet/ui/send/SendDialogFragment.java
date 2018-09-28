@@ -302,6 +302,13 @@ public class SendDialogFragment extends BaseDialogFragment {
                         binding.sendAmount.setText(symbol + original);
                         binding.sendAmount.setSelection((symbol + original).length());
                         binding.sendAmount.addTextChangedListener(this);
+                    } else if (original.trim().equals(symbol)) {
+                        binding.sendAmount.removeTextChangedListener(this);
+                        binding.sendAmount.setText("");
+                        original = "";
+                        Typeface tf = Typeface.createFromAsset(getContext().getAssets(), "font/nunitosans_extralight.ttf");
+                        binding.sendAmount.setTypeface(tf);
+                        binding.sendAmount.addTextChangedListener(this);
                     }
 
                     original = original.replace(symbol, "");

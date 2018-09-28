@@ -48,6 +48,8 @@ public class IntroWelcomeFragment extends BaseFragment {
                 inflater, R.layout.fragment_intro_welcome, container, false);
         view = binding.getRoot();
 
+        binding.welcomeAnimation.setScale(1.1f);
+
         // bind data to view
         binding.setHandlers(new ClickHandlers());
 

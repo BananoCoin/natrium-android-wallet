@@ -12,6 +12,7 @@ import co.banano.natriumwallet.model.PreconfiguredRepresentatives;
 import co.banano.natriumwallet.model.PriceConversion;
 import com.github.ajalt.reprint.core.Reprint;
 
+import java.util.Currency;
 import java.util.Locale;
 
 /**
@@ -69,12 +70,22 @@ public class SharedPreferencesUtil {
         editor.apply();
     }
 
+    private AvailableCurrency getDefaultCurrency() {
+        String symbol = Currency.getInstance(getDefaultLocale()).getSymbol();
+        for (AvailableCurrency value: AvailableCurrency.values()) {
+            if (symbol.equals(value.getCurrencySymbol())) {
+                return value;
+            }
+        }
+        return AvailableCurrency.USD;
+    }
+
     public AvailableCurrency getLocalCurrency() {
-        return AvailableCurrency.valueOf(get(LOCAL_CURRENCY, AvailableCurrency.USD.toString()));
+        return AvailableCurrency.valueOf(get(LOCAL_CURRENCY, getDefaultCurrency().toString()));
     }
 
     public void setLocalCurrency(AvailableCurrency localCurrency) {
-        set(LOCAL_CURRENCY, localCurrency.toString());
+       set(LOCAL_CURRENCY, localCurrency.toString());
     }
 
     public Locale getDefaultLocale() {
