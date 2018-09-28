@@ -547,11 +547,11 @@ public class SendDialogFragment extends BaseDialogFragment {
         // this way you can tap button and tap back and not end up with X.9993451 NANO
         if (useLocalCurrency) {
             // Switch back to NANO
-            if (lastLocalCurrencyAmount != null && lastNanoAmount != null && wallet.getLocalCurrencyAmount().equals(lastLocalCurrencyAmount)) {
-                lastLocalCurrencyAmount = wallet.getLocalCurrencyAmount();
+            if (lastLocalCurrencyAmount != null && lastNanoAmount != null && wallet.getLocalCurrencyAmountNoSymbol().equals(lastLocalCurrencyAmount)) {
+                lastLocalCurrencyAmount = wallet.getLocalCurrencyAmountNoSymbol();
                 wallet.setSendNanoAmount(lastNanoAmount);
             } else {
-                lastLocalCurrencyAmount = wallet.getLocalCurrencyAmount();
+                lastLocalCurrencyAmount = wallet.getLocalCurrencyAmountNoSymbol();
             }
             useLocalCurrency = false;
             binding.sendAmount.setText(wallet.getSendNanoAmountFormatted());
@@ -567,8 +567,8 @@ public class SendDialogFragment extends BaseDialogFragment {
                 lastNanoAmount = wallet.getSendNanoAmount();
             }
             useLocalCurrency = true;
-            binding.sendAmount.setText(wallet.getLocalCurrencyAmount());
-            lastLocalCurrencyAmount = wallet.getLocalCurrencyAmount();
+            binding.sendAmount.setText(wallet.getLocalCurrencyAmountNoSymbol());
+            lastLocalCurrencyAmount = wallet.getLocalCurrencyAmountNoSymbol();
             binding.sendBalance.setText(String.format("(%s)", wallet.getAccountBalanceLocalCurrency()));
             binding.sendAmount.setFilters(new InputFilter[]{new DigitsInputFilter(Integer.MAX_VALUE, 2, Integer.MAX_VALUE)});
         }

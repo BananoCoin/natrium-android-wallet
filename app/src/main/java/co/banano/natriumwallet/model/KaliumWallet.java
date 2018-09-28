@@ -328,6 +328,10 @@ public class KaliumWallet {
      * @return Local currency amount
      */
     public String getLocalCurrencyAmount() {
+        return sendLocalCurrencyAmount;
+    }
+
+    public String getLocalCurrencyAmountNoSymbol() {
         String symbol =  NumberFormat.getCurrencyInstance(getLocalCurrency().getLocale()).getCurrency().getSymbol();
         return sendLocalCurrencyAmount.replace(symbol, "");
     }
