@@ -173,7 +173,7 @@ public enum AvailableCurrency {
     public Locale getLocale() {
         switch (iso4217Code) {
             case "AUD":
-                return new Locale("en", "US");
+                return new Locale("en", "AU");
             case "BRL":
                 return new Locale("en", "BR");
             case "CAD":

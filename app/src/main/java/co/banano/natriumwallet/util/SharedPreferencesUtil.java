@@ -71,9 +71,9 @@ public class SharedPreferencesUtil {
     }
 
     private AvailableCurrency getDefaultCurrency() {
-        String symbol = Currency.getInstance(getDefaultLocale()).getSymbol();
+        String symbol = Currency.getInstance(getDefaultLocale()).getCurrencyCode();
         for (AvailableCurrency value: AvailableCurrency.values()) {
-            if (symbol.equals(value.getCurrencySymbol())) {
+            if (symbol.equals(value.toString())) {
                 return value;
             }
         }

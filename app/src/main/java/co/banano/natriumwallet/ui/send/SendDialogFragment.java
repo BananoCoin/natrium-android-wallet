@@ -15,6 +15,7 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,8 @@ import co.banano.natriumwallet.util.SharedPreferencesUtil;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.List;
@@ -318,6 +321,7 @@ public class SendDialogFragment extends BaseDialogFragment {
                 hideAmountError();
             }
         });
+        binding.sendAmount.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
 
         // Hide keyboard in amount field when return is pushed
         binding.sendAddress.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -554,6 +558,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         // this way you can tap button and tap back and not end up with X.9993451 NANO
         if (useLocalCurrency) {
             // Switch back to NANO
+            binding.sendAmount.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
             if (lastLocalCurrencyAmount != null && lastNanoAmount != null && wallet.getLocalCurrencyAmountNoSymbol().equals(lastLocalCurrencyAmount)) {
                 lastLocalCurrencyAmount = wallet.getLocalCurrencyAmountNoSymbol();
                 wallet.setSendNanoAmount(lastNanoAmount);
@@ -567,6 +572,13 @@ public class SendDialogFragment extends BaseDialogFragment {
             binding.sendAmount.setFilters(new InputFilter[]{new DigitsInputFilter(Integer.MAX_VALUE, 6, Integer.MAX_VALUE)});
         } else {
             // Switch to local currency);
+            NumberFormat nf = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale());
+            String allowedChars = "0123456789.";
+            if (nf instanceof DecimalFormat) {
+                DecimalFormatSymbols sym = ((DecimalFormat)nf).getDecimalFormatSymbols();
+                allowedChars = String.format("0123456789%s", sym.getDecimalSeparator());
+            }
+            binding.sendAmount.setKeyListener(DigitsKeyListener.getInstance(allowedChars));
             if (lastNanoAmount != null && lastLocalCurrencyAmount != null && wallet.getSendNanoAmount().equals(lastNanoAmount)) {
                 lastNanoAmount = wallet.getSendNanoAmount();
                 wallet.setLocalCurrencyAmount(lastLocalCurrencyAmount);
