@@ -77,6 +77,8 @@
     <string name="change_representative_hint">Neuer Representative</string>
     <string name="change_representative_success">Representative erfolgreich geändert</string>
     <string name="change_representative_error">Änderung des Representatives fehlgeschlagen. Bitte versuche es später erneut.</string>
+    <string name="change_representative_fingerprint">Fingerabdruck bestätigen, um Repesentative zu wechseln</string>
+    <string name="change_representative_pin">PIN eingeben, um Repesentative zu wechseln</string>
     <!-- Share -->
     <string name="share_title">Teilen über...</string>
     <string name="share_extra">Probier mal Natrium, Nanos offizielles Android-Wallet!</string>

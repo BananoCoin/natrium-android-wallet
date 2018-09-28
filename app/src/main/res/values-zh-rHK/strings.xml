@@ -77,6 +77,8 @@
     <string name="change_representative_hint">輸入新指定代表</string>
     <string name="change_representative_success">指定代表成功改變</string>
     <string name="change_representative_error">無法更改指定代表。稍後再試。</string>
+    <string name="change_representative_fingerprint">確認指紋，變更代理人。</string>
+    <string name="change_representative_pin">輸入識別碼以變更代理人。</string>
     <!-- Share -->
     <string name="share_title">通過...分享</string>
     <string name="share_extra">看看Natrium！ Nano的官方Android錢包！</string>
