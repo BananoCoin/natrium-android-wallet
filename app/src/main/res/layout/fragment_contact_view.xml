@@ -28,6 +28,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/contact_search"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/bg_image_button"
+            android:onClick="@{handlers::onClickSearch}"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_search" />
+
+        <android.support.v7.widget.AppCompatImageView
             android:id="@+id/contact_delete"
             android:layout_width="40dp"
             android:layout_height="51dp"

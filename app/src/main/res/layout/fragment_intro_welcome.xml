@@ -12,35 +12,33 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_dark"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp">
+        android:background="@color/gray_dark">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:id="@+id/intro_welcome_logo"
-            android:layout_width="130dp"
-            android:layout_height="80dp"
-            android:contentDescription="@string/app_name"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/welcome_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/welcome_animation"
             app:layout_constraintBottom_toTopOf="@+id/intro_welcome_title"
-            app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:srcCompat="@drawable/ic_logo" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
         <TextView
             android:id="@+id/intro_welcome_title"
             style="@style/TextStyleParagraph"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:gravity="left"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:gravity="center"
             android:text="@string/intro_welcome_title"
-            app:layout_constraintBottom_toTopOf="@+id/intro_welcome_button_new_wallet"
-            app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintTop_toBottomOf="@+id/intro_welcome_logo"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintBottom_toTopOf="@+id/intro_welcome_guideline_horiz"
+            app:layout_constraintLeft_toLeftOf="@+id/welcome_animation"
+            app:layout_constraintRight_toRightOf="@+id/welcome_animation"
+            app:layout_constraintTop_toBottomOf="@+id/intro_welcome_guideline_horiz"/>
 
         <Button
             android:id="@+id/intro_welcome_button_new_wallet"
@@ -48,13 +46,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:gravity="center"
             android:onClick="@{handlers::onClickNewWallet}"
             android:paddingStart="20dp"
             android:text="@string/intro_welcome_new_wallet"
             app:layout_constraintBottom_toTopOf="@+id/intro_welcome_button_have_wallet"
-            app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert" />
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/intro_welcome_button_have_wallet"
@@ -62,21 +62,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:gravity="center"
             android:onClick="@{handlers::onClickHaveWallet}"
             android:paddingStart="20dp"
             android:text="@string/intro_welcome_have_wallet"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/intro_welcome_guideline_vert"
-            app:layout_constraintStart_toStartOf="@+id/intro_welcome_guideline_vert" />
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
         <android.support.constraint.Guideline
-            android:id="@+id/intro_welcome_guideline_vert"
+            android:id="@+id/intro_welcome_guideline_horiz"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
-
     </android.support.constraint.ConstraintLayout>
 </layout>

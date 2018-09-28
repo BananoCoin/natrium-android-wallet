@@ -11,8 +11,8 @@ android {
         applicationId "co.banano.natriumwallet"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 7
-        versionName "0.9.3"
+        versionCode 8
+        versionName "0.9.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {

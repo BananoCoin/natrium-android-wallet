@@ -59,6 +59,11 @@
     <string name="settings_logout_warning_message">Contanto que você tenha copiado a sua seed, você não tem com o que se preocupar.</string>
     <string name="settings_logout_warning_confirm">Sim</string>
     <string name="settings_logout_warning_cancel">Cancelar</string>
+    <string name="settings_manage_header">Gerenciar</string>
+    <string name="settings_preferences_header">Preferências</string>
+    <string name="settings_disable_fingerprint">Método de Autenticação</string>
+    <string name="settings_fingerprint_method">Impressão Digital</string>
+    <string name="settings_pin_method">PIN</string>
     <!-- Change Rep -->
     <string name="change_representative_header">Mudar\nRepresentante</string>
     <string name="change_representative_header_short">Mudar</string>

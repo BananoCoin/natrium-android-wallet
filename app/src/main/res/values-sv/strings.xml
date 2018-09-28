@@ -77,6 +77,8 @@
     <string name="change_representative_hint">Ange ny representant</string>
     <string name="change_representative_success">Representanten är nu ändrad</string>
     <string name="change_representative_error">Det gick ej att ändra representant. Försök igen senare.</string>
+    <string name="change_representative_fingerprint">Bekräfta fingeravtryck för att byta representant</string>
+    <string name="change_representative_pin">Ange PIN för att byta representant</string>
     <!-- Share -->
     <string name="share_title">Dela via...</string>
     <string name="share_extra">Kolla in Natrium! Nanos officiella Androidplånbok!</string>

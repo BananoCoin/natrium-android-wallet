@@ -33,6 +33,7 @@ import co.banano.natriumwallet.ui.send.SendDialogFragment;
 
 import javax.inject.Inject;
 
+import co.banano.natriumwallet.ui.webview.WebViewDialogFragment;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -207,6 +208,16 @@ public class ContactViewDialogFragment extends BaseDialogFragment {
 
                 ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
                 dismiss();
+            }
+        }
+
+        public void onClickSearch(View v) {
+            if (getActivity() instanceof WindowControl) {
+                // show webview dialog
+                WebViewDialogFragment dialog = WebViewDialogFragment.newInstance(getString(R.string.account_explore_url, binding.contactAddress.getText()), "");
+                dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
+                        WebViewDialogFragment.TAG);
+                ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
             }
         }
     }

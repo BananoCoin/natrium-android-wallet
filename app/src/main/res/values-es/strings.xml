@@ -106,9 +106,9 @@
     <string name="send_sending">Enviando</string>
     <string name="send_to">A:</string>
     <string name="sent_to">Enviar a:</string>
-    <string name="send_confirm">Confirmar</string>
-    <string name="send_cancel">Cancelar</string>
-    <string name="send_close">Cerrar</string>
+    <string name="dialog_confirm">Confirmar</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="dialog_close">Cerrar</string>
     <string name="send_alert_dialog_ok">Entendido</string>
     <string name="send_alert_dialog_title">Entrada no válida</string>
     <string name="send_invalid_address">Billetera de destino incorrecta</string>

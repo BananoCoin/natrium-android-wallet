@@ -113,6 +113,8 @@
     <string name="send_alert_dialog_title">Masukkan Tidak Valid</string>
     <string name="send_invalid_address">Alamat Tujuan Tidak Valid</string>
     <string name="send_insufficient_balance">Saldo Tidak mencukupi</string>
+    <string name="send_enter_address">Masukkan alamat</string>
+    <string name="send_enter_amount">Masukkan jumlah</string>
     <string name="send_amount_error">Jumlah yang dimasukkan tidak valid</string>
     <string name="send_generic_error">Terjadi kesalahan. Coba lagi nanti.</string>
     <string name="send_no_frontier">Tidak dapat menemukan batas akun (akun mungkin tidak terbuka).</string>

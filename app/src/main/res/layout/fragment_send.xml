@@ -116,7 +116,7 @@
                 tools:text="1.23" />
 
             <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/send_currency_chance"
+                android:id="@+id/send_currency_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -218,14 +218,28 @@
                 android:layout_width="@dimen/send_paste_button"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
                 android:background="@android:color/transparent"
                 android:fontFamily="@font/nunitosans_extralight"
                 android:onClick="@{handlers::onClickPaste}"
                 app:srcCompat="@drawable/ic_paste" />
+
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/send_address_contact"
+                android:layout_width="@dimen/send_paste_button"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="7dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/nunitosans_extralight"
+                android:onClick="@{handlers::onClickContactTrigger}"
+                app:srcCompat="@drawable/ic_contact_trigger" />
 
         </RelativeLayout>
 

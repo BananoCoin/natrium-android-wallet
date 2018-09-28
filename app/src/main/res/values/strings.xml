@@ -43,6 +43,7 @@
     <string name="home_send_cta">Send</string>
     <string name="home_receive_cta">Receive</string>
     <string name="home_explore_url" translatable="false">https://nanocrawler.cc/explorer/block/%s</string>
+    <string name="account_explore_url" translatable="false">https://nanocrawler.cc/explorer/account/%s</string>
     <string name="error_message">There was a problem connecting. Please try again.</string>
     <string name="transaction_header">Transactions</string>
     <string name="history_sent">Sent</string>
