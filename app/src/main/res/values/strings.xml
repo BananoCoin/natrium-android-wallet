@@ -9,8 +9,6 @@
     <string name="dialog_confirm">Confirm</string>
 
     <string name="privacy_policy_url" translatable="false">https://bananocoin.github.io/kalium/privacy.html</string>
-    <!-- API -->
-    <string name="monkey_api_url" translatable="false">https://bananomonkeys.herokuapp.com/image?address=%s</string>
     <!-- Intro Welcome Screen -->
     <string name="intro_welcome_title">Welcome to Natrium. To proceed, you may create a new wallet or import an existing one.</string>
     <string name="intro_welcome_new_wallet">New Wallet</string>
