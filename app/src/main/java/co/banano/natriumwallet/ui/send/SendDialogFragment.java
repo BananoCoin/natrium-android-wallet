@@ -15,6 +15,7 @@ import android.text.InputFilter;
 import android.text.InputType;
 import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.method.DigitsKeyListener;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,8 +47,9 @@ import co.banano.natriumwallet.util.SharedPreferencesUtil;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.List;
 import java.util.Locale;
 
@@ -56,7 +58,6 @@ import javax.inject.Inject;
 import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmQuery;
-import timber.log.Timber;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
@@ -205,7 +206,6 @@ public class SendDialogFragment extends BaseDialogFragment {
                         binding.sendAddress.clearFocus();
                         return;
                     }
-                    binding.contactRecyclerview.setVisibility(View.VISIBLE);
                     binding.sendAddress.setGravity(Gravity.START);
                     binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext_bottom_round));
                     updateContactSearch();
@@ -318,6 +318,7 @@ public class SendDialogFragment extends BaseDialogFragment {
                 hideAmountError();
             }
         });
+        binding.sendAmount.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
 
         // Hide keyboard in amount field when return is pushed
         binding.sendAddress.setImeOptions(EditorInfo.IME_ACTION_DONE);
@@ -399,6 +400,8 @@ public class SendDialogFragment extends BaseDialogFragment {
         mAdapter.updateList(contacts);
         // Colorize name if a valid contact
         if (contacts.size() > 0) {
+            binding.contactRecyclerview.setVisibility(View.VISIBLE);
+            binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext_bottom_round));
             String name = binding.sendAddress.getText().toString().trim();
             boolean foundMatch = false;
             for (Contact c : contacts) {
@@ -412,6 +415,8 @@ public class SendDialogFragment extends BaseDialogFragment {
                 binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
             }
         } else {
+            binding.contactRecyclerview.setVisibility(View.GONE);
+            binding.sendAddress.setBackground(getResources().getDrawable(R.drawable.bg_edittext));
             binding.sendAddress.setTextColor(getResources().getColor(R.color.white_60));
         }
     }
@@ -554,6 +559,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         // this way you can tap button and tap back and not end up with X.9993451 NANO
         if (useLocalCurrency) {
             // Switch back to NANO
+            binding.sendAmount.setKeyListener(DigitsKeyListener.getInstance("0123456789."));
             if (lastLocalCurrencyAmount != null && lastNanoAmount != null && wallet.getLocalCurrencyAmountNoSymbol().equals(lastLocalCurrencyAmount)) {
                 lastLocalCurrencyAmount = wallet.getLocalCurrencyAmountNoSymbol();
                 wallet.setSendNanoAmount(lastNanoAmount);
@@ -567,6 +573,13 @@ public class SendDialogFragment extends BaseDialogFragment {
             binding.sendAmount.setFilters(new InputFilter[]{new DigitsInputFilter(Integer.MAX_VALUE, 6, Integer.MAX_VALUE)});
         } else {
             // Switch to local currency);
+            NumberFormat nf = NumberFormat.getCurrencyInstance(wallet.getLocalCurrency().getLocale());
+            String allowedChars = "0123456789.";
+            if (nf instanceof DecimalFormat) {
+                DecimalFormatSymbols sym = ((DecimalFormat)nf).getDecimalFormatSymbols();
+                allowedChars = String.format("0123456789%s", sym.getDecimalSeparator());
+            }
+            binding.sendAmount.setKeyListener(DigitsKeyListener.getInstance(allowedChars));
             if (lastNanoAmount != null && lastLocalCurrencyAmount != null && wallet.getSendNanoAmount().equals(lastNanoAmount)) {
                 lastNanoAmount = wallet.getSendNanoAmount();
                 wallet.setLocalCurrencyAmount(lastLocalCurrencyAmount);

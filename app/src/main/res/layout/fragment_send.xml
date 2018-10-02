@@ -98,7 +98,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:background="@drawable/bg_edittext"
-                android:digits="0123456789."
                 android:fontFamily="@font/nunitosans_extralight"
                 android:gravity="center_horizontal"
                 android:hint="@string/send_amount_hint"

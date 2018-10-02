@@ -1,0 +1,169 @@
+<resources>
+    <!-- Generic -->
+    <string name="dialog_cancel">Ακύρωση</string>
+    <string name="dialog_close">Κλείσιμο</string>
+    <string name="dialog_confirm">Επιβεβαίωση</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Καλωσήρθατε στο Natrium. Για να συνεχίσετε, μπορείτε να δημιουργήσετε ένα νέο πορτοφόλι ή να εισάγετε ένα υπάρχον.</string>
+    <string name="intro_welcome_new_wallet">Νέο Πορτοφόλι</string>
+    <string name="intro_welcome_have_wallet">Εισαγωγή Πορτοφολιού</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Παρακάτω είναι το seed του πορτοφολιού σας. Είναι σημαντικό να δημιουργήσετε αντίγραφα ασφαλείας του seed σας και να μην τα αποθηκεύσετε ποτέ ως απλό κείμενο ή ως στιγμιότυπο οθόνης.</string>
+    <string name="intro_new_wallet_seed_copied">Το seed αντιγράφηκε στο πρόχειρο.\n Είναι δυνατή η επικόλλησή του για 2 λεπτά.</string>
+    <string name="intro_new_wallet_seed_header">Seed</string>
+    <string name="intro_new_wallet_seed_backup_header">Αντίγραφο ασφαλείας του seed σας</string>
+    <string name="intro_new_wallet_backup">Είστε βέβαιος/η ότι έχετε δημιουργήσει αντίγραφο ασφαλείας του seed του πορτοφολιού σας?</string>
+    <string name="intro_new_wallet_backup_yes">Ναι</string>
+    <string name="intro_new_wallet_backup_no">Όχι</string>
+    <string name="intro_new_wallet_warning_header">Παρακαλούμε μην πείτε ψέματα.</string>
+    <string name="intro_new_wallet_warning">Πιστεύετε ότι δεν θα σας συμβεί, αλλά θα το χάσετε αν δεν δημιουργήσετε αντίγραφα ασφαλείας.</string>
+    <string name="intro_new_wallet_not_lying">Δεν λέω ψέματα!</string>
+    <string name="intro_new_wallet_okay">Εντάξει :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Εισαγωγή seed</string>
+    <string name="intro_seed_info">Παρακαλούμε εισάγετε το seed σας παρακάτω.</string>
+    <string name="intro_seed_invalid">Το seed δεν είναι Έγκυρο</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Δημιουργήστε ένα pin 4 ψηφίων</string>
+    <string name="pin_confirm_title">Επιβεβαιώστε το pin σας</string>
+    <string name="pin_enter_title">Εισάγετε το pin σας</string>
+    <string name="pin_confirm_error">Τα pin που εισάγατε δεν είναι ίδια.</string>
+    <string name="pin_error">Έχει εισαχθεί μη έγκυρο pin</string>
+    <string name="fingerprint_text">Αγγίξτε τον αισθητήρα δαχτυλικών αποτυπωμάτων</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Αποστολή</string>
+    <string name="home_receive_cta">Λήψη</string>
+    <string name="error_message">Παρουσιάστηκε πρόβλημα σύνδεσης. Παρακαλούμε προσπαθήστε ξανά.</string>
+    <string name="transaction_header">Συναλλαγές</string>
+    <string name="history_sent">Στάλθηκαν</string>
+    <string name="history_received">Λήφθηκαν</string>
+    <string name="transaction_details">Δείτε Λεπτομέρειες</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Καλωσήρθατε στο Natrium. Μόλις λάβετε NANO, οι συναλλαγές θα εμφανιστούν ως εξής:</string>
+    <string name="example_card_little">Λίγα</string>
+    <string name="example_card_lot">Πολλά</string>
+    <string name="example_card_to">προς κάποιον/α</string>
+    <string name="example_card_from">από κάποιον/α</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_local_currency">Αλλαγή Νομίσματος</string>
+    <string name="settings_change_language">Γλώσσα</string>
+    <string name="settings_default_language_string">Προεπιλογή Συστήματος</string>
+    <string name="settings_backup_seed">Αντίγραφο Ασφαλείας του Seed</string>
+    <string name="settings_change_rep">Αλλαγή Εκπροσώπου</string>
+    <string name="settings_share">Κοινοποιήστε το Natrium</string>
+    <string name="settings_logout">Αποσυνδέση</string>
+    <string name="settings_logout_alert_title">ΠΡΟΣΟΧΗ</string>
+    <string name="settings_logout_alert_message">Η αποσύνδεση θα διαγράψει το seed σας και όλα τα δεδομένα σχετικά με το Natrium από αυτή τη συσκευή. Εάν δεν έχετε δημιουργήσει αντίγραφο ασφαλείας του seed σας, δεν θα έχετε ποτέ ξανά πρόσβαση στα χρήματά σας.</string>
+    <string name="settings_logout_alert_confirm_cta">Διαγραφή του seed και αποσύνδεση</string>
+    <string name="settings_logout_alert_cancel_cta">Ακύρωση</string>
+    <string name="settings_logout_warning_title">Είσαστε σίγουρος/η?</string>
+    <string name="settings_logout_warning_message">Εφόσον έχετε δημιουργήσει αντίγραφο ασφαλείας του seed σας, δεν έχετε τίποτα να ανησυχείτε.</string>
+    <string name="settings_logout_warning_confirm">Ναι</string>
+    <string name="settings_logout_warning_cancel">Ακύρωση</string>
+    <string name="settings_manage_header">Διαχείριση</string>
+    <string name="settings_preferences_header">Προτιμήσεις</string>
+    <string name="settings_disable_fingerprint">Μέθοδος Ταυτοποίησης</string>
+    <string name="settings_fingerprint_method">Δακτυλικό Αποτύπωμα</string>
+    <string name="settings_pin_method">PIN</string>
+    <string name="settings_privacy_policy"><u>Πολιτική Απορρήτου</u></string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Αλλαγή\nΕκπροσώπου</string>
+    <string name="change_representative_header_short">Αλλαγή</string>
+    <string name="change_representative_info_header">Τι είναι ένας εκπρόσωπος?</string>
+    <string name="change_representative_info">Εκπρόσωπος είναι ένας λογαριασμός που ψηφίζει για τη συναίνεση του δικτύου. Η ισχύς της ψήφου του εκπροσώπου καθορίζεται από το πλήθος των Nano που χρήστες έχουν επιλέξει να εκπροσωπούνται από αυτόν. Μπορείτε να θέσετε τα NANO σας να ενισχύουν την ψήφο ενός εκπροσώπου που εμπιστεύεστε. Ο εκπρόσωπός σας δεν έχει τη δυνατότητα να ξοδέψει τα χρήματά σας. Θα πρέπει να επιλέξετε έναν εκπρόσωπο που είναι σπάνια offline και είναι αξιόπιστος.</string>
+    <string name="change_representative_dialog_close">Κλείσιμο</string>
+    <string name="change_representative_change">Αλλαγή</string>
+    <string name="change_representative_cancel">Ακύρωση</string>
+    <string name="change_representative_invalid">Μη Έγκυρη Διεύθυνση Εκπροσώπου</string>
+    <string name="change_representative_current_header">Τώρα εκπροσωπείται από</string>
+    <string name="change_representative_hint">Εισάγετε Νέο Εκπρόσωπο</string>
+    <string name="change_representative_success">Ο Εκπρόσωπος Άλλαξε Επιτυχώς</string>
+    <string name="change_representative_error">Η αλλαγή εκπροσώπου απέτυχε. Προσπαθήστε ξανά αργότερα.</string>
+    <string name="change_representative_fingerprint">Επιβεβαιώστε με δαχτυλικό αποτύπωμα την αλλαγή εκπροσώπου</string>
+    <string name="change_representative_pin">Πληκτρολογήστε το pin σας για να αλλάξετε εκπρόσωπο</string>
+    <!-- Share -->
+    <string name="share_title">Κοινοποιήστε μέσω...</string>
+    <string name="share_extra">Δοκιμάστε το Natrium! Το καλύτερο πορτοφόλι για NANO σε κινητά τηλέφωνα!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Αντίγραφο Ασφαλείας του Seed</string>
+    <string name="settings_fingerprint_title">Επιβεβαιώστε με δαχτυλικό αποτύπωμα την προβολή του seed σας.</string>
+    <string name="settings_pin_title">Εισάγετε το pin για να εμφανιστεί το seed σας.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Κοινοποίηση</string>
+    <string name="receive_copy_cta">Αντιγραφή Διεύθυνσης</string>
+    <string name="receive_copied">Η Διεύθυνση Αντιγράφηκε</string>
+    <string name="receive_share_title">Κοινοποιήστε μέσω…</string>
+    <string name="receive_card_title">Nano</string>
+    <string name="receive_qrcode_description">QR Κωδικός</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Αποστολή Από:</string>
+    <string name="send_address_hint">Εισάγετε Διεύθυνση</string>
+    <string name="send_amount_hint">Εισάγετε Ποσό</string>
+    <string name="send_max">Όλο</string>
+    <string name="send_send_cta">Αποστολή</string>
+    <string name="send_balance" translatable="false">(%s NANO)</string>
+    <string name="send_sent">Στάλθηκαν</string>
+    <string name="send_scan_qr">Σάρωση QR Κωδικού</string>
+    <string name="send_sending">Στέλνονται</string>
+    <string name="send_to">Προς:</string>
+    <string name="sent_to">Στάλθηκαν Προς:</string>
+    <string name="send_alert_dialog_ok">Εντάξει</string>
+    <string name="send_alert_dialog_title">Μη Έγκυρη Εισαγωγή</string>
+    <string name="send_invalid_address">Η διεύθυνση που πληκτρολογήσατε δεν ήταν έγκυρη</string>
+    <string name="send_insufficient_balance">Ανεπαρκές Υπόλοιπο</string>
+    <string name="send_enter_address">Παρακαλούμε εισάγετε μια διεύθυνση</string>
+    <string name="send_enter_amount">Παρακαλούμε εισάγετε ένα ποσό</string>
+    <string name="send_amount_error">Το ποσό που πληκτρολογήσατε δεν ήταν έγκυρο</string>
+    <string name="send_generic_error">Παρουσιάστηκε σφάλμα. Δοκιμάστε ξανά αργότερα.</string>
+    <string name="send_no_frontier">Δεν ήταν δυνατή η εύρεση του λογαριασμού (ο λογαριασμός ίσως να μην είναι ανοιχτός)</string>
+    <string name="send_fingerprint_description">Επιβεβαιώστε με δαχτυλικό αποτύπωμα την αποστολή %s Nano</string>
+    <string name="send_pin_description">Να σταλθούν %s Nano?</string>
+
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Προσθήκη Επαφής</string>
+    <string name="contact_added">Ο/Η %s προσθέθηκε στις επαφές!</string>
+    <string name="contact_invalid_name">Μη Έγκυρο Όνομα Επαφής</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Προσθήκη Επαφής:</string>
+    <string name="contact_add_button">Προσθήκη Επαφής</string>
+    <string name="contact_name_hint">Γράψτε ένα Όνομα @</string>
+    <string name="contact_name_missing">Επιλέξτε ένα Όνομα για Αυτή την Επαφή</string>
+    <string name="contact_name_exists">Η Επαφή Υπάρχει Ήδη</string>
+    <string name="contact_address_hint">Γράψτε μία Διεύθυνση</string>
+    <string name="contact_address_exists">Μια Επαφή έχει Ήδη αυτή τη Διεύθυνση</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Επαφές</string>
+    <string name="contact_settings_item">Επαφές</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Επαφή:</string>
+    <string name="contact_remove_header">Διαγραφή:</string>
+    <string name="contact_remove_btn">Διαγραφή Επαφής</string>
+    <string name="contact_remove_sure">Είσαστε σίγουρος/η ότι θέλετε να διαγράψετε τον/την %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">Ο/Η %s διαγράφηκε από τις επαφές!</string>
+    <string name="contact_export_none">Δεν υπάρχουν επαφές για εξαγωγή</string>
+    <string name="contact_export_error">Η εξαγωγή των επαφών απέτυχε</string>
+    <string name="contact_import_error">Η εισαγωγή των επαφών απέτυχε</string>
+    <string name="contact_import_success">Εισάχθηκαν επιτυχώς %d επαφές</string>
+    <string name="contact_import_none">Δεν βρέθηκαν επαφές για εισαγωγή</string>
+    <string name="contact_import_warning_header">Προσοχή</string>
+    <string name="contact_import_permission_error">Παρακαλούμε επιτρέψτε στο Natrium να διαβάσει από τον αποθηκευτικό χώρο της συσκευής.</string>
+    <string name="contact_export_permission_error">Παρακαλούμε επιτρέψτε στο Natrium να γράψει στον αποθηκευτικό χώρο της συσκευής.</string>
+    <string name="contact_export_success">Οι επαφές αποθηκεύτηκαν στο %s</string>
+
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Ειδοποιήσεις</string>
+    <string name="generic_on">Ενεργοποιημένες</string>
+    <string name="generic_off">Απενεργοποιημένες</string>
+    <string name="notification_title">Λήφθηκαν %s NANO</string>
+    <string name="notification_body">Ανοίξτε το Natrium για να δείτε αυτή τη συναλλαγή.</string>
+    <string name="notificaiton_header_suplement">Πατήστε για να ανοίξετε</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Σαρώστε τον QR κωδικό \nμιας NANO διεύθυνσης</string>
+</resources>

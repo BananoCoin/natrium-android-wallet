@@ -11,6 +11,7 @@ public enum AvailableLanguage {
     DUTCH("DUTCH"),
     FRENCH("FRENCH"),
     GERMAN("GERMAN"),
+    GREEK("GREEK"),
     HINDI("HINDI"),
     HEBREW("HEBREW"),
     HUNGARIAN("HUNGARIAN"),
@@ -48,6 +49,8 @@ public enum AvailableLanguage {
                 return "de";
             case "SPANISH":
                 return "es";
+            case "GREEK":
+                return "el";
             case "HUNGARIAN":
                 return "hu";
             case "HINDI":
@@ -95,6 +98,8 @@ public enum AvailableLanguage {
                 return "Deutsch (de)";
             case "SPANISH":
                 return "Español (es)";
+            case "GREEK":
+                return "ελληνικά (el)";
             case "HUNGARIAN":
                 return "Magyar (hu)";
             case "HINDI":
