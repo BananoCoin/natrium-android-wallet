@@ -312,6 +312,11 @@ public class SendDialogFragment extends BaseDialogFragment {
                     }
 
                     original = original.replace(symbol, "");
+                    if (original.equals(wallet.getAccountBalanceLocalCurrencyNoSymbol())) {
+                        String amount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
+                        amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
+                        wallet.setSendNanoAmount(amount);
+                    }
                     wallet.setLocalCurrencyAmount(original);
 
                 }
