@@ -106,7 +106,7 @@
     <string name="receive_copied">Address Copied</string>
     <string name="receive_share_title">Share via…</string>
     <string name="receive_card_label_one" translatable="false">$NANO</string>
-    <string name="receive_card_label_two" translatable="false">NANO.ORG</string>
+    <string name="receive_card_label_two" translatable="false">NATRIUM.IO</string>
     <string name="receive_card_title">Nano</string>
     <string name="receive_qrcode_description">QR Code</string>
 
