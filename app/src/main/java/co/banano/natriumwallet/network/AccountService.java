@@ -354,11 +354,15 @@ public class AccountService {
             }
             nextBlock.setPrevious(hash);
             if (nextBlock.getInternal_block_type() == BlockTypes.SEND) {
-                nextBlock.setBalance(
-                        new BigInteger(blockInfo.getBalance())
-                                .subtract(new BigInteger(nextBlock.getSendAmount()))
-                                .toString()
-                );
+                if (nextBlock.getSendAmount().equals("0")) {
+                    nextBlock.setBalance("0");
+                } else {
+                    nextBlock.setBalance(
+                            new BigInteger(blockInfo.getBalance())
+                                    .subtract(new BigInteger(nextBlock.getSendAmount()))
+                                    .toString()
+                    );
+                }
             } else {
                 nextBlock.setBalance(
                         new BigInteger(blockInfo.getBalance())
