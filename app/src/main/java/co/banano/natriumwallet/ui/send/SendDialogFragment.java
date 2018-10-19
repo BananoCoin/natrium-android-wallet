@@ -664,6 +664,7 @@ public class SendDialogFragment extends BaseDialogFragment {
             if (clipboard != null && clipboard.hasPrimaryClip() && clipboard.getPrimaryClipDescription().hasMimeType(MIMETYPE_TEXT_PLAIN)) {
                 Address address = new Address(clipboard.getPrimaryClip().getItemAt(0).getText().toString());
                 binding.sendAddress.setText(address.getAddress());
+                binding.sendAddress.requestFocus();
                 binding.sendAddress.clearFocus();
             }
         }
