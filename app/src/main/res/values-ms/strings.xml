@@ -157,8 +157,8 @@
     <string name="notifications_settings">Notifikasi</string>
     <string name="generic_on">On</string>
     <string name="generic_off">Off</string>
-    <string name="notification_title">%s BANANO diterimakan</string>
-    <string name="notification_body">Buka Kalium bagi melihat transaksi ini.</string>
+    <string name="notification_title">%s NANO diterimakan</string>
+    <string name="notification_body">Buka Natrium bagi melihat transaksi ini.</string>
     <string name="notificaiton_header_suplement">Ketuk untuk buka</string>
 
     <!-- Scan Screen -->
