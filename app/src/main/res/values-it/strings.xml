@@ -1,0 +1,179 @@
+<resources>
+    <string name="app_name" translatable="false">Natrium</string>
+
+    <string name="version_display" translatable="false">Natrium v%1$s</string>
+
+    <!-- Generic -->
+    <string name="dialog_cancel">Annulla</string>
+    <string name="dialog_close">Chiudi</string>
+    <string name="dialog_confirm">Conferma</string>
+
+    <string name="privacy_policy_url" translatable="false">https://bananocoin.github.io/kalium/privacy.html</string>
+    <!-- Intro Welcome Screen -->
+    <string name="intro_welcome_title">Benvenuto in Natrium. Per continuare, puoi creare un nuovo portafoglio o importarne uno esistente.</string>
+    <string name="intro_welcome_new_wallet">Nuovo</string>
+    <string name="intro_welcome_have_wallet">Importa</string>
+    <!-- Intro New Wallet Screens -->
+    <string name="intro_new_wallet_seed">Qui sotto c\'è il seme del tuo portafoglio. È fondamentale che tu faccia un backup del seme evitando di conservarlo in chiaro o con uno screenshot.</string>
+    <string name="intro_new_wallet_seed_copied">Seme copiato negli appunti.\n Potrai incollarlo per 2 minuti.</string>
+    <string name="intro_new_wallet_seed_header">Seme</string>
+    <string name="intro_new_wallet_seed_backup_header">Salva il seme</string>
+    <string name="intro_new_wallet_backup">Sei sicuro di aver fatto un backup del tuo seme?</string>
+    <string name="intro_new_wallet_backup_yes">Si</string>
+    <string name="intro_new_wallet_backup_no">No</string>
+    <string name="intro_new_wallet_warning_header">Per favore, non mentire.</string>
+    <string name="intro_new_wallet_warning">Pensi che non succederà, ma lo perderai se non ne salverai una copia.</string>
+    <string name="intro_new_wallet_not_lying">Non sto scherzando!</string>
+    <string name="intro_new_wallet_okay">Okay :(</string>
+    <!-- Intro Import Wallet Screen -->
+    <string name="intro_seed_header">Importa seme</string>
+    <string name="intro_seed_info">Inserisci il seme qui in basso.</string>
+    <string name="intro_seed_invalid">Seme non valido</string>
+    <!-- Pin Screen -->
+    <string name="pin_create_title">Crea un pin a 4 cifre</string>
+    <string name="pin_confirm_title">Conferma il pin</string>
+    <string name="pin_enter_title">Inserisci pin</string>
+    <string name="pin_confirm_error">I pin non combaciano</string>
+    <string name="pin_error">Pin errato</string>
+    <string name="fingerprint_text">Sensore touch</string>
+
+    <!-- Home Screen -->
+    <string name="home_send_cta">Invia</string>
+    <string name="home_receive_cta">Ricevi</string>
+    <string name="home_explore_url" translatable="false">https://nanocrawler.cc/explorer/block/%s</string>
+    <string name="account_explore_url" translatable="false">https://nanocrawler.cc/explorer/account/%s</string>
+    <string name="error_message">Si è verificato un problema di connessione. Prova di nuovo.</string>
+    <string name="transaction_header">Transazioni</string>
+    <string name="history_sent">Inviati</string>
+    <string name="history_received">Ricevuti</string>
+    <string name="transaction_details">Dettagli</string>
+    <!-- Shown when there are no transactions -->
+    <string name="example_card_intro">Benvenuto in Natrium. Una volta ricevuti dei NANO, le transazioni compariranno in questo modo:</string>
+    <string name="example_card_little">Un po\' di</string>
+    <string name="example_card_lot">Un sacco di</string>
+    <string name="example_card_to">a qualcuno</string>
+    <string name="example_card_from">da qualcuno</string>
+
+    <!-- Settings Screen -->
+    <string name="settings_title">Impostazioni</string>
+    <string name="settings_local_currency">Cambia Valuta</string>
+    <string name="settings_change_language">Lingua</string>
+    <string name="settings_default_language_string">Predefinito</string>
+    <string name="settings_backup_seed">Salva Seme</string>
+    <string name="settings_change_rep">Cambia Rappresentante</string>
+    <string name="settings_share">Condividi Natrium</string>
+    <string name="settings_logout">Logout</string>
+    <string name="settings_logout_alert_title">ATTENZIONE</string>
+    <string name="settings_logout_alert_message">Facendo il logout il tuo seme e tutti i dati relativi a Natrium verranno rimossi dal dispositivo. Se non hai salvato il tuo seme, non sarai più in grado di accedere ai tuoi fondi.</string>
+    <string name="settings_logout_alert_confirm_cta">Elimina seme e fai il logout</string>
+    <string name="settings_logout_alert_cancel_cta">Annulla</string>
+    <string name="settings_logout_warning_title">Sei sicuro?</string>
+    <string name="settings_logout_warning_message">Finché avrai un backup del seme non avrai nulla di cui preoccuparti.</string>
+    <string name="settings_logout_warning_confirm">Si</string>
+    <string name="settings_logout_warning_cancel">Annulla</string>
+    <string name="settings_manage_header">Gestisci</string>
+    <string name="settings_preferences_header">Preferenze</string>
+    <string name="settings_disable_fingerprint">Metodo di Autenticazione</string>
+    <string name="settings_fingerprint_method">Impronta Digitale</string>
+    <string name="settings_pin_method">PIN</string>
+    <string name="settings_privacy_policy"><u>Informativa sulla Privacy</u></string>
+    <!-- Change Rep -->
+    <string name="change_representative_header">Cambia\nRappresentante</string>
+    <string name="change_representative_header_short">Cambia</string>
+    <string name="change_representative_info_header">Cos\'è un Rappresentante?</string>
+    <string name="change_representative_info">Un rappresentante è un account che vota per il consenso della rete. Il potere di voto è determinato dal saldo, potresti delegare il tuo saldo per aumentare il peso del voto di un rappresentante di cui ti fidi. Il tuo rappresentante non ha il potere di spendere i tuoi fondi. Dovresti scegliere un rappresentante che abbia un basso tempo di inattività e che sia affidabile.</string>
+    <string name="change_representative_dialog_close">Chiudi</string>
+    <string name="change_representative_change">Cambia</string>
+    <string name="change_representative_cancel">Annulla</string>
+    <string name="change_representative_invalid">Indirizzo Rappresentante Invalido</string>
+    <string name="change_representative_current_header">Attualmente Rappresentato Da</string>
+    <string name="change_representative_hint">Inserisci Nuovo Rappresentante</string>
+    <string name="change_representative_success">Rappresentante Cambiato con Successo</string>
+    <string name="change_representative_error">Errore nel cambio di rappresentante. Riprova più tardi.</string>
+    <string name="change_representative_fingerprint">Conferma impronta per cambiare rappresentante</string>
+    <string name="change_representative_pin">Inserisci pin per cambiare rappresentante</string>
+    <!-- Share -->
+    <string name="share_title">Condividi via...</string>
+    <string name="share_extra">Dai un\'occhiata a Natrium! Il miglior portafoglio per NANO!</string>
+    <!-- Backup Seed -->
+    <string name="settings_show_seed">Salva Seme Portafoglio</string>
+    <string name="settings_fingerprint_title">Conferma l\'impronta per salvare il seme.</string>
+    <string name="settings_pin_title">Inserisci il pin per vedere il seme.</string>
+
+    <!-- Receive Screen -->
+    <string name="receive_share_cta">Condividi</string>
+    <string name="receive_copy_cta">Copia Indirizzo</string>
+    <string name="receive_copied">Copiato</string>
+    <string name="receive_share_title">Condividi via…</string>
+    <string name="receive_card_label_one" translatable="false">$NANO</string>
+    <string name="receive_card_label_two" translatable="false">NATRIUM.IO</string>
+    <string name="receive_card_title">Nano</string>
+    <string name="receive_qrcode_description">Codice QR</string>
+
+    <!-- Send Screens -->
+    <string name="send_title">Invia Da:</string>
+    <string name="send_address_hint">Inserisci Indirizzo</string>
+    <string name="send_amount_hint">Inserisci Importo</string>
+    <string name="send_max">Max</string>
+    <string name="send_send_cta">Invia</string>
+    <string name="send_balance" translatable="false">(%s NANO)</string>
+    <string name="send_sent">Inviato</string>
+    <string name="send_scan_qr">Codice QR</string>
+    <string name="send_sending">Inviando</string>
+    <string name="send_to">A:</string>
+    <string name="sent_to">Inviato A:</string>
+    <string name="send_alert_dialog_ok">OK</string>
+    <string name="send_alert_dialog_title">Input Invalido</string>
+    <string name="send_invalid_address">Indirizzo Invalido</string>
+    <string name="send_insufficient_balance">Saldo Insufficiente</string>
+    <string name="send_enter_address">Inserisci un indirizzo</string>
+    <string name="send_enter_amount">Inserisci un importo</string>
+    <string name="send_amount_error">Importo invalido</string>
+    <string name="send_generic_error">Si è verificato un errore. Riprova più tardi.</string>
+    <string name="send_no_frontier">Non trovo il frontier dell\'account (l\'account potrebbe non essere aperto)</string>
+    <string name="send_fingerprint_description">Usa l\'impronta per inviare %s Nano</string>
+    <string name="send_pin_description">Inviare %s Nano?</string>
+
+    <!-- Address Book/Contacts -->
+    <string name="contact_add">Aggiungi</string>
+    <string name="contact_added">%s è stato aggiunto ai contatti!</string>
+    <string name="contact_invalid_name">Nome Contatto Invalido</string>
+    <!-- Add Contact Dialog -->
+    <string name="contact_add_header">Aggiungi\nContatto:</string>
+    <string name="contact_add_button">Aggiungi</string>
+    <string name="contact_name_hint">Inserisci un Nome @</string>
+    <string name="contact_name_missing">Scegli un Nome per questo Contatto</string>
+    <string name="contact_name_exists">Contatto Già Esistente</string>
+    <string name="contact_address_hint">Inserisci un Indirizzo</string>
+    <string name="contact_address_exists">Un Contatto ha già questo Indirizzo</string>
+    <!-- Contacts Settings -->
+    <string name="contact_header">Contatti</string>
+    <string name="contact_settings_item">Contatti</string>
+    <!-- Contact Detail -->
+    <string name="contact_view_header">Contatto:</string>
+    <string name="contact_remove_header">Rimuovi:</string>
+    <string name="contact_remove_btn">Rimuovi Contatto</string>
+    <string name="contact_remove_sure">Sei sicuro di voler rimuovere %s?</string>
+    <!-- Export/Import -->
+    <string name="contact_removed">%s è stato rimosso dai contatti!</string>
+    <string name="contact_export_none">Non ci sono contatti da esportare</string>
+    <string name="contact_export_error">Errore nell\'esportazione contatti</string>
+    <string name="contact_import_error">Errore nell\'importazione contatti</string>
+    <string name="contact_import_success">%d contatti importati con successo</string>
+    <string name="contact_import_none">Nessun contatto da importare trovato</string>
+    <string name="contact_import_warning_header">Avviso</string>
+    <string name="contact_import_permission_error">Concedi a Natrium i permessi di lettura su questo dispositivo.</string>
+    <string name="contact_export_permission_error">Concedi a Natrium i permessi di scrittura su questo dispositivo.</string>
+    <string name="contact_export_success">Contatti salvati su %s</string>
+
+    <!-- Push Notifications -->
+    <string name="notifications_settings">Notifiche</string>
+    <string name="generic_on">On</string>
+    <string name="generic_off">Off</string>
+    <string name="notification_title">Ricevuti %s NANO</string>
+    <string name="notification_body">Apri Natrium per vedere la transazione.</string>
+    <string name="notificaiton_header_suplement">Tocca per aprire</string>
+
+    <!-- Scan Screen -->
+    <string name="scan_send_instruction_label">Scansiona un \ncodice QR Nano</string>
+</resources>

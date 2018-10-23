@@ -568,6 +568,8 @@ public class SendDialogFragment extends BaseDialogFragment {
                     // set to scanned value
                     if (address.getAddress() != null) {
                         binding.sendAddress.setText(address.getAddress());
+                        binding.sendAddress.requestFocus();
+                        binding.sendAddress.clearFocus();
                     }
 
                     if (address.getAmount() != null) {

@@ -148,8 +148,8 @@
     <string name="contact_import_success">%d contactpersonen succesvol geïmporteerd</string>
     <string name="contact_import_none">Geen contactpersonen gevonden om te importeren</string>
     <string name="contact_import_warning_header">Waarschuwing</string>
-    <string name="contact_import_permission_error">Geef Kalium leestoegang tot apparaat opslag.</string>
-    <string name="contact_export_permission_error">Geef Kalium schrijftoegang tot apparaat opslag.</string>
+    <string name="contact_import_permission_error">Geef Natrium leestoegang tot apparaat opslag.</string>
+    <string name="contact_export_permission_error">Geef Natrium schrijftoegang tot apparaat opslag.</string>
     <string name="contact_export_success">Contactpersonen opgeslagen in %s</string>
     <!-- Push Notifications -->
     <string name="notifications_settings">Notificaties</string>

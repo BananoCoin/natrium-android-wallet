@@ -17,6 +17,7 @@ public enum AvailableLanguage {
     HUNGARIAN("HUNGARIAN"),
     INDONESIAN("INDONESIAN"),
     KOREAN("KOREAN"),
+    ITALIAN("ITALIAN"),
     MALAY("MALAY"),
     PORTUGUESE("PORTUGUESE"),
     ROMANIAN("ROMANIAN"),
@@ -61,6 +62,8 @@ public enum AvailableLanguage {
                 return "in";
             case "KOREAN":
                 return "ko";
+            case "ITALIAN":
+                return "it";
             case "DUTCH":
                 return "nl";
             case "PORTUGUESE":
@@ -110,6 +113,8 @@ public enum AvailableLanguage {
                 return "bahasa Indonesia (in)";
             case "KOREAN":
                 return "한국어 (ko)";
+            case "ITALIAN":
+                return "Italiano (it)";
             case "DUTCH":
                 return "Nederlands (nl)";
             case "PORTUGUESE":

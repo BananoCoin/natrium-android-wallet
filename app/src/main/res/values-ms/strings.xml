@@ -40,7 +40,7 @@
     <string name="example_card_little">Sedikit</string>
     <string name="example_card_lot">Banyak</string>
     <string name="example_card_to">kepada seseorang</string>
-    <string name="example_card_from">dari seseorang</string>
+    <string name="example_card_from">daripada seseorang</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Tetapan</string>
@@ -122,24 +122,24 @@
     <string name="send_pin_description">Hantar %s Nano?</string>
 
     <!-- Address Book/Contacts -->
-    <string name="contact_add">Tambah Kontak</string>
-    <string name="contact_added">%s ditambahkan ke kontak!</string>
-    <string name="contact_invalid_name">Kontak Tidak Valid</string>
+    <string name="contact_add">Tambah Kenalan</string>
+    <string name="contact_added">%s telah ditambah sebagai kenalan!</string>
+    <string name="contact_invalid_name">Nama Kenalan tidak sah</string>
     <!-- Add Contact Dialog -->
-    <string name="contact_add_header">Tambah Kontak:</string>
-    <string name="contact_add_button">Tambah Kontak</string>
+    <string name="contact_add_header">Tambah Kenalan:</string>
+    <string name="contact_add_button">Tambah Kenalan</string>
     <string name="contact_name_hint">Masukkan Nama @</string>
-    <string name="contact_name_missing">Pilih Nama Untuk Kontak</string>
-    <string name="contact_name_exists">Kontak Sudah Ada</string>
-    <string name="contact_address_hint">Masukkan Alamat</string>
-    <string name="contact_address_exists">Kontak sudah ada</string>
+    <string name="contact_name_missing">Pilih nama untuk kenalan ini</string>
+    <string name="contact_name_exists">Kenalan telah wujud</string>
+    <string name="contact_address_hint">Masukkan alamat</string>
+    <string name="contact_address_exists">Kenalan dengan alamat ini telah wujud</string>
     <!-- Contacts Settings -->
-    <string name="contact_header">Kontak</string>
-    <string name="contact_settings_item">Kontak</string>
+    <string name="contact_header">Kenalan</string>
+    <string name="contact_settings_item">Kenalan</string>
     <!-- Contact Detail -->
-    <string name="contact_view_header">Kontak:</string>
-    <string name="contact_remove_header">Hapus:</string>
-    <string name="contact_remove_btn">Hapus Kontak</string>
+    <string name="contact_view_header">Kenalan:</string>
+    <string name="contact_remove_header">Padam:</string>
+    <string name="contact_remove_btn">Padam Kenalan</string>
     <string name="contact_remove_sure">Anda yakib akan menghapus %s?</string>
     <!-- Export/Import -->
     <string name="contact_removed">%s kontak berhasil dihapus!</string>
@@ -155,11 +155,11 @@
 
     <!-- Push Notifications -->
     <string name="notifications_settings">Notifikasi</string>
-    <string name="generic_on">Hidup</string>
-    <string name="generic_off">Mati</string>
-    <string name="notification_title">Menerima %s NANO</string>
-    <string name="notification_body">Buka Natrium untuk melihat transaksi.</string>
-    <string name="notificaiton_header_suplement">Tekan untuk membuka</string>
+    <string name="generic_on">On</string>
+    <string name="generic_off">Off</string>
+    <string name="notification_title">%s BANANO diterimakan</string>
+    <string name="notification_body">Buka Kalium bagi melihat transaksi ini.</string>
+    <string name="notificaiton_header_suplement">Ketuk untuk buka</string>
 
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Imbaskan Kod QR\n Alamat Nano anda</string>
