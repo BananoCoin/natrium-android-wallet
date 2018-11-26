@@ -11,8 +11,8 @@ android {
         applicationId "co.banano.natriumwallet"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 12
-        versionName "0.9.8"
+        versionCode 13
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             cmake {
@@ -46,11 +46,11 @@ android {
 }
 
 dependencies {
-    final AWESOME_QRCODE_VERSION = '1.0.6'
-    final FCM_VER = '16.0.4'
+    final AWESOME_QRCODE_VERSION = '1.2.0'
+    final FCM_VER = '16.0.5'
     final FCM_MSG_VER = '17.3.4'
     final CONSTRAINT_LAYOUT_VERSION = '1.1.3'
-    final DAGGER_VERSION = '2.17'
+    final DAGGER_VERSION = '2.19'
     final ESPRESSO_VERSION = '3.0.1'
     final FINGERPRINT_VERSION = '3.2.1'
     final GSON_FIRE_VERSION = '1.8.2'

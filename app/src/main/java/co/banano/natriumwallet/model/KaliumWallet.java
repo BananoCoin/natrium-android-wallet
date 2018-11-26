@@ -4,7 +4,6 @@ import android.content.Context;
 
 import co.banano.natriumwallet.KaliumUtil;
 import co.banano.natriumwallet.bus.RxBus;
-import co.banano.natriumwallet.bus.SendInvalidAmount;
 import co.banano.natriumwallet.bus.WalletClear;
 import co.banano.natriumwallet.bus.WalletHistoryUpdate;
 import co.banano.natriumwallet.bus.WalletPriceUpdate;
@@ -124,6 +123,10 @@ public class KaliumWallet {
         return NumberUtil.getRawAsUsableString(accountBalance.toString());
     }
 
+    public String getAccountBalanceBananoNoComma() {
+        return NumberUtil.getRawAsUsableString(accountBalance.toString()).replace(",", "");
+    }
+
     public BigDecimal getAccountBalanceBananoRaw() {
         return accountBalance;
     }
@@ -211,7 +214,6 @@ public class KaliumWallet {
         } else {
             this.sendLocalCurrencyAmount = "";
         }
-        validateSendAmount();
     }
 
     /**
@@ -240,7 +242,6 @@ public class KaliumWallet {
         } else {
             this.sendNanoAmount = "";
         }
-        validateSendAmount();
     }
 
     /**
@@ -400,21 +401,6 @@ public class KaliumWallet {
                 amount = df.format(new BigDecimal(sanitizeNoCommas(amount)));
             }
             return amount;
-        }
-    }
-
-    /**
-     * Validate that the requested send amount is not greater than the account balance
-     */
-
-    private void validateSendAmount() {
-        try {
-            if (new BigDecimal(sanitizeNoCommas(sendNanoAmount))
-                    .compareTo(new BigDecimal(sanitizeNoCommas(NumberUtil.getRawAsLongerUsableString(accountBalance.toString())))) > 0) {
-                RxBus.get().post(new SendInvalidAmount());
-            }
-        } catch (NumberFormatException e) {
-            ExceptionHandler.handle(e);
         }
     }
 

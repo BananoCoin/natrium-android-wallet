@@ -32,7 +32,7 @@ public class NumberUtil {
      * @return String 1
      */
     public static String getRawAsUsableString(String raw) {
-        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.getDefault());
+        NumberFormat numberFormat = NumberFormat.getNumberInstance(Locale.US);
         numberFormat.setMaximumFractionDigits(6);
         return numberFormat.format(getRawAsUsableAmount(raw));
     }

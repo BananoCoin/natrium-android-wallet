@@ -46,6 +46,7 @@ import co.banano.natriumwallet.util.NumberUtil;
 import co.banano.natriumwallet.util.SharedPreferencesUtil;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -296,9 +297,8 @@ public class SendDialogFragment extends BaseDialogFragment {
                 if (!useLocalCurrency) {
                     wallet.setSendNanoAmount(charSequence.toString().trim());
                     binding.setWallet(wallet);
-                    String amount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
-                    amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
-                    if (amount.equals(charSequence.toString().trim())) {
+                    if (new BigDecimal(charSequence.toString().trim())
+                            .compareTo(new BigDecimal(wallet.getAccountBalanceBananoNoComma())) == 0) {
                         maxSend = true;
                     } else {
                         maxSend = false;
@@ -490,7 +490,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         } else if (sendAmount.compareTo(new BigInteger("0")) <= -1 || sendAmount.compareTo(new BigInteger("0")) == 0) {
             showAmountError(R.string.send_amount_error);
             return false;
-        } else if (sendAmount.compareTo(wallet.getAccountBalanceBananoRaw().toBigInteger()) > 0) {
+        } else if (new BigDecimal(wallet.getSendNanoAmount()).compareTo(new BigDecimal(wallet.getAccountBalanceBananoNoComma())) > 0) {
             showAmountError(R.string.send_insufficient_balance);
             return false;
         }
@@ -520,8 +520,7 @@ public class SendDialogFragment extends BaseDialogFragment {
         // show complete dialog
         String sendAmount;
         if (maxSend) {
-            sendAmount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
-            sendAmount = sendAmount.indexOf(".") < 0 ? sendAmount : sendAmount.replaceAll("0*$", "").replaceAll("\\.$", "");
+            sendAmount = wallet.getAccountBalanceBananoNoComma();
         } else {
             sendAmount = wallet.getSendNanoAmount();
         }
@@ -552,10 +551,6 @@ public class SendDialogFragment extends BaseDialogFragment {
                 dismiss();
             } else if (resultCode == SEND_FAILED) {
                 UIUtil.showToast(getString(R.string.send_generic_error), getContext());
-            } else if (resultCode == SEND_FAILED_AMOUNT) {
-                wallet.setSendNanoAmount(wallet.getUsableAccountBalanceBanano().toString());
-                binding.setWallet(wallet);
-                showAmountError(R.string.send_amount_error);
             }
         } else if (requestCode == SCAN_RESULT) {
             // Make sure the request was successful
@@ -652,9 +647,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         public void onClickMax(View view) {
             if (!useLocalCurrency) {
-                String amount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
-                amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
-                binding.sendAmount.setText(amount);
+                binding.sendAmount.setText(wallet.getAccountBalanceBananoNoComma();
             } else {
                 binding.sendAmount.setText(wallet.getAccountBalanceLocalCurrencyNoSymbol());
             }

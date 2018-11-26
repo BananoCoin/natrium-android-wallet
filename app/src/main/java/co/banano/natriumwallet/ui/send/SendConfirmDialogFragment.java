@@ -25,7 +25,6 @@ import co.banano.natriumwallet.R;
 import co.banano.natriumwallet.bus.CreatePin;
 import co.banano.natriumwallet.bus.PinComplete;
 import co.banano.natriumwallet.bus.RxBus;
-import co.banano.natriumwallet.bus.SendInvalidAmount;
 import co.banano.natriumwallet.bus.SocketError;
 import co.banano.natriumwallet.databinding.FragmentSendConfirmBinding;
 import co.banano.natriumwallet.model.Address;
@@ -114,8 +113,7 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
             amount = String.format(Locale.ENGLISH, "%.6f", sendAmountF);
         } else {
             maxSend = true;
-            amount = String.format(Locale.ENGLISH, "%.6f", wallet.getUsableAccountBalanceBanano().floatValue());
-            amount = amount.indexOf(".") < 0 ? amount : amount.replaceAll("0*$", "").replaceAll("\\.$", "");
+            amount = wallet.getAccountBalanceBananoNoComma();
         }
         boolean useLocalCurrency = getArguments().getBoolean("useLocalCurrency", false);
 
@@ -239,20 +237,6 @@ public class SendConfirmDialogFragment extends BaseDialogFragment {
         }
 
         accountService.requestSend(wallet.getFrontierBlock(), address, sendAmount);
-    }
-
-    /**
-     * Event that occurs if an amount entered is invalid
-     *
-     * @param sendInvalidAmount Send Invalid Amount event
-     */
-    @Subscribe
-    public void receiveInvalidAmount(SendInvalidAmount sendInvalidAmount) {
-        hideLoadingOverlay();
-        if (mTargetFragment != null) {
-            mTargetFragment.onActivityResult(getTargetRequestCode(), SEND_FAILED_AMOUNT, mActivity.getIntent());
-        }
-        dismiss();
     }
 
     /**
