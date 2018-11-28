@@ -6,9 +6,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.libsodium.jni.NaCl;
-import org.libsodium.jni.Sodium;
-
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -23,23 +20,6 @@ public class SignatureTest {
 
     @Before
     public void setUp() throws Exception {
-    }
-
-    @Test
-    public void derivePublicFromPrivate() throws Exception {
-        // random key pair
-        Sodium sodium = NaCl.sodium();
-        byte[] pk = new byte[Sodium.crypto_sign_publickeybytes()];
-        byte[] sk = new byte[Sodium.crypto_sign_secretkeybytes()];
-        Sodium.crypto_sign_ed25519_keypair(pk, sk);
-
-        assertEquals(KaliumUtil.bytesToHex(pk), KaliumUtil.privateToPublic(KaliumUtil.bytesToHex(sk)));
-
-        // random key pair
-        String priv = "49FF617E9074857402411B346D92174572EB5DE02CC9469C22E9681D8565E6D5";
-        String pub = "6C32F3E6ED921D2D98A3573B665FE7F8A35D510186AA9F1B365D283BBAA93DFB";
-
-        assertEquals(pub, KaliumUtil.privateToPublic(priv));
     }
 
     @Test

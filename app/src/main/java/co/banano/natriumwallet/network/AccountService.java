@@ -283,10 +283,10 @@ public class AccountService {
 
         if (block.getType().equals(BlockTypes.STATE.toString())) {
             String calculatedHash = KaliumUtil.computeStateHash(
-                    KaliumUtil.addressToPublic(block.getAccount()),
+                    block.getAccount(),
                     block.getPrevious(),
-                    KaliumUtil.addressToPublic(block.getRepresentative()),
-                    NumberUtil.getRawAsHex(block.getBalance()),
+                    block.getRepresentative(),
+                    block.getBalance(),
                     block.getLink());
             if (!blockInfo.getBalance().equals(block.getBalance())) {
                 ExceptionHandler.handle(new Exception("balance in state block doesn't match balance in block info"));

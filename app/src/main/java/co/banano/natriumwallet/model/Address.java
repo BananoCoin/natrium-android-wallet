@@ -2,10 +2,8 @@ package co.banano.natriumwallet.model;
 
 import android.net.Uri;
 
-import co.banano.natriumwallet.KaliumUtil;
-
-import org.libsodium.jni.NaCl;
-import org.libsodium.jni.Sodium;
+import com.rotilho.jnano.commons.NanoAccounts;
+import com.rotilho.jnano.commons.NanoBaseAccountType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -45,43 +43,7 @@ public class Address implements Serializable {
     }
 
     public boolean isValidAddress() {
-        String[] parts = value.split("_");
-        if (parts.length != 2) {
-            return false;
-        }
-        if (!parts[0].equals("xrb") && !parts[0].equals("nano")) {
-            return false;
-        }
-        if (parts[1].length() != 60) {
-            return false;
-        }
-        checkCharacters:
-        for (int i = 0; i < parts[1].length(); i++) {
-            char letter = parts[1].toLowerCase().charAt(i);
-            for (int j = 0; j < KaliumUtil.addressCodeCharArray.length; j++) {
-                if (KaliumUtil.addressCodeCharArray[j] == letter) {
-                    continue checkCharacters;
-                }
-            }
-            return false;
-        }
-        byte[] shortBytes = KaliumUtil.hexToBytes(KaliumUtil.decodeAddressCharacters(parts[1]));
-        byte[] bytes = new byte[37];
-        // Restore leading null bytes
-        System.arraycopy(shortBytes, 0, bytes, bytes.length - shortBytes.length, shortBytes.length);
-        byte[] checksum = new byte[5];
-        byte[] state = new byte[Sodium.crypto_generichash_statebytes()];
-        byte[] key = new byte[Sodium.crypto_generichash_keybytes()];
-        NaCl.sodium();
-        Sodium.crypto_generichash_blake2b_init(state, key, 0, 5);
-        Sodium.crypto_generichash_blake2b_update(state, bytes, 32);
-        Sodium.crypto_generichash_blake2b_final(state, checksum, checksum.length);
-        for (int i = 0; i < checksum.length; i++) {
-            if (checksum[i] != bytes[bytes.length - 1 - i]) {
-                return false;
-            }
-        }
-        return true;
+        return NanoAccounts.isValid(NanoBaseAccountType.NANO, value);
     }
 
     private String parseAddress(String addressString) {

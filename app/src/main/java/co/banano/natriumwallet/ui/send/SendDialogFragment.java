@@ -647,7 +647,7 @@ public class SendDialogFragment extends BaseDialogFragment {
 
         public void onClickMax(View view) {
             if (!useLocalCurrency) {
-                binding.sendAmount.setText(wallet.getAccountBalanceBananoNoComma();
+                binding.sendAmount.setText(wallet.getAccountBalanceBananoNoComma());
             } else {
                 binding.sendAmount.setText(wallet.getAccountBalanceLocalCurrencyNoSymbol());
             }

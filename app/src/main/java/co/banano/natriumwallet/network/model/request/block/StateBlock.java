@@ -66,10 +66,10 @@ public class StateBlock extends Block {
 
     private void sign() {
         String hash = KaliumUtil.computeStateHash(
-                publicKey,
+                account,
                 previous,
-                KaliumUtil.addressToPublic(representative),
-                NumberUtil.getRawAsHex(this.balance),
+                representative,
+                this.balance,
                 link);
         this.signature = KaliumUtil.sign(privateKey, hash);
     }
