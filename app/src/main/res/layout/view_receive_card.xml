@@ -64,7 +64,8 @@
 
         <TextView
             android:id="@+id/card_address"
-            android:layout_width="480px"
+            android:layout_width="510px"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:fontFamily="@font/overpass_mono_light"
             android:lineSpacingExtra="1px"
@@ -75,7 +76,7 @@
             app:layout_constraintStart_toStartOf="@+id/card_logo"
             app:layout_constraintTop_toBottomOf="@+id/card_logo"
             tools:ignore="SpUsage"
-            tools:text="ban_3ugkt5gexef4ffotr839bwfrfux6pp1g7k8cbtk8ocnq99yc3pfdn11cr1ft" />
+            tools:text="bano_3ugkt5gexef4ffotr839bwfrfux6pp1g7k8cbtk8ocnq99yc3pfdn11cr1ft" />
 
         <TextView
             android:id="@+id/card_label_one"

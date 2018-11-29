@@ -46,7 +46,7 @@ android {
 }
 
 dependencies {
-    final AWESOME_QRCODE_VERSION = '1.2.0'
+    final AWESOME_QRCODE_VERSION = '1.0.6'
     final FCM_VER = '16.0.5'
     final FCM_MSG_VER = '17.3.4'
     final CONSTRAINT_LAYOUT_VERSION = '1.1.3'

@@ -64,6 +64,7 @@
                         android:layout_above="@id/amount_banano_title"
                         android:layout_centerInParent="true"
                         android:layout_marginBottom="-3dp"
+                        android:visibility="gone"
                         android:text="@{wallet.accountBalanceLocalCurrency}"
                         tools:text="18.000001" />
 
@@ -102,6 +103,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginEnd="5dp"
                         android:layout_toStartOf="@id/amount_banano_title"
+                        android:visibility="gone"
                         android:paddingBottom="13dp"
                         app:srcCompat="@drawable/ic_currency_nano" />
 
@@ -115,8 +117,16 @@
                         android:focusable="true"
                         android:onClick="@{handlers::onClickPrice}"
                         android:paddingBottom="3dp"
+                        android:visibility="gone"
                         android:text="@{wallet.accountBalanceBanano}"
                         tools:text="18,024.12" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/banano_placeholder"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerInParent="true"
+                        app:srcCompat="@drawable/ic_currency_nano" />
                 </RelativeLayout>
 
                 <TextView

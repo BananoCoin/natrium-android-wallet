@@ -6,6 +6,7 @@ package co.banano.natriumwallet;
 
 import com.rotilho.jnano.commons.NanoAccounts;
 import com.rotilho.jnano.commons.NanoAmount;
+import com.rotilho.jnano.commons.NanoBaseAccountType;
 import com.rotilho.jnano.commons.NanoBlocks;
 import com.rotilho.jnano.commons.NanoHelper;
 import com.rotilho.jnano.commons.NanoKeys;
@@ -130,7 +131,7 @@ public class KaliumUtil {
      * @return ban address
      */
     public static String publicToAddress(String publicKey) {
-        return NanoAccounts.createAccount(NanoHelper.toByteArray(publicKey));
+        return NanoAccounts.createAccount(NanoBaseAccountType.NANO, NanoHelper.toByteArray(publicKey));
 
     }
 

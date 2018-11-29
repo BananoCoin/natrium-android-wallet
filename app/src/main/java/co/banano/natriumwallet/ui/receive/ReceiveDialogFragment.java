@@ -31,8 +31,8 @@ import co.banano.natriumwallet.ui.common.ActivityWithComponent;
 import co.banano.natriumwallet.ui.common.BaseDialogFragment;
 import co.banano.natriumwallet.ui.common.SwipeDismissTouchListener;
 import co.banano.natriumwallet.ui.common.UIUtil;
-import com.github.sumimakito.awesomeqr.AwesomeQrRenderer;
-import com.github.sumimakito.awesomeqr.option.RenderOption;
+
+import com.github.sumimakito.awesomeqr.AwesomeQRCode;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,7 +40,6 @@ import java.io.FileOutputStream;
 import javax.inject.Inject;
 
 import io.realm.Realm;
-import kotlin.Unit;
 
 /**
  * Receive main screen
@@ -161,28 +160,25 @@ public class ReceiveDialogFragment extends BaseDialogFragment {
         binding.receiveOuter.setBackground(qrBackground);
 
         // generate QR code
-        com.github.sumimakito.awesomeqr.option.color.Color color = new com.github.sumimakito.awesomeqr.option.color.Color();
-        color.setLight(0xffffffff);
-        color.setBackground(0xffffffff);
-        color.setDark(0xFF000000);
-        color.setAuto(false);
-        RenderOption renderOption = new RenderOption();
-        renderOption.setSize((int) UIUtil.convertDpToPixel(QRCODE_SIZE, getContext()));
-        renderOption.setClearBorder(true);
-        renderOption.setBorderWidth(0);
-        renderOption.setPatternScale(1.0f);
-        renderOption.setColor(color);
-
-        AwesomeQrRenderer.renderAsync(renderOption, renderResult -> {
-            getActivity().runOnUiThread(() -> {
-                binding.receiveBarcode.setImageBitmap(renderResult.getBitmap());
-                binding.receiveCard.cardBarcodeImg.setImageBitmap(renderResult.getBitmap());
-            });
-            return Unit.INSTANCE;
-        }, exception -> {
-            exception.printStackTrace();
-            return Unit.INSTANCE;
-        });
+        new AwesomeQRCode.Renderer()
+                .contents(address.getAddress())
+                .size((int) UIUtil.convertDpToPixel(QRCODE_SIZE, getContext()))
+                .whiteMargin(false)
+                .margin(0)
+                .dotScale(1.0f)
+                .renderAsync(new AwesomeQRCode.Callback() {
+                    @Override
+                    public void onRendered(AwesomeQRCode.Renderer renderer, final Bitmap bitmap) {
+                        getActivity().runOnUiThread(() -> {
+                            binding.receiveBarcode.setImageBitmap(bitmap);
+                            binding.receiveCard.cardBarcodeImg.setImageBitmap(bitmap);
+                        });
+                    }
+                    @Override
+                    public void onError(AwesomeQRCode.Renderer renderer, Exception e) {
+                        e.printStackTrace();
+                    }
+                });
 
         // Set runnable to reset address copied text
         mHandler = new Handler();

@@ -173,8 +173,6 @@ public class HomeFragment extends BaseFragment {
             updateAccountHistory();
         }
 
-        updateAmounts();
-
         Credentials credentials = realm.where(Credentials.class).findFirst();
 
         // Hack for easier settings access https://stackoverflow.com/questions/17942223/drawerlayout-modify-sensitivity
@@ -200,17 +198,6 @@ public class HomeFragment extends BaseFragment {
         } catch (Exception e) {
             // we unexpectedly failed - e.g. if internal implementation of
             // either ViewDragHelper or DrawerLayout changed
-        }
-
-        // Set default price
-        switch (sharedPreferencesUtil.getPriceConversion()) {
-            case BTC:
-                binding.btcPrice.setVisibility(View.VISIBLE);
-                break;
-            default:
-                binding.btcPrice.setVisibility(View.GONE);
-                binding.amountLocalCurrencyTitle.setVisibility(View.GONE);
-                break;
         }
 
         // Change status bar color when drawer open
@@ -383,6 +370,21 @@ public class HomeFragment extends BaseFragment {
                 // if balance > 0, enable send button
                 binding.homeSendButton.setEnabled(true);
                 binding.homeSendButton.setBackground(getResources().getDrawable(R.drawable.bg_solid_button));
+                // Hide placeholder
+                binding.bananoPlaceholder.setVisibility(View.GONE);
+                binding.amountBananoSymbol.setVisibility(View.VISIBLE);
+                binding.amountBananoTitle.setVisibility(View.VISIBLE);
+                // Set default price
+                switch (sharedPreferencesUtil.getPriceConversion()) {
+                    case BTC:
+                        binding.btcPrice.setVisibility(View.VISIBLE);
+                        binding.amountLocalCurrencyTitle.setVisibility(View.VISIBLE);
+                        break;
+                    default:
+                        binding.btcPrice.setVisibility(View.GONE);
+                        binding.amountLocalCurrencyTitle.setVisibility(View.GONE);
+                        break;
+                }
                 // Tweak sizing based on how big amount is
                 String balBanano = wallet.getAccountBalanceBanano();
                 binding.amountBananoTitle.setText(balBanano);

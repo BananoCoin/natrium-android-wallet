@@ -59,6 +59,7 @@ import javax.inject.Inject;
 import io.realm.Case;
 import io.realm.Realm;
 import io.realm.RealmQuery;
+import timber.log.Timber;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ClipDescription.MIMETYPE_TEXT_PLAIN;
@@ -297,11 +298,15 @@ public class SendDialogFragment extends BaseDialogFragment {
                 if (!useLocalCurrency) {
                     wallet.setSendNanoAmount(charSequence.toString().trim());
                     binding.setWallet(wallet);
-                    if (new BigDecimal(charSequence.toString().trim())
-                            .compareTo(new BigDecimal(wallet.getAccountBalanceBananoNoComma())) == 0) {
-                        maxSend = true;
-                    } else {
-                        maxSend = false;
+                    try {
+                        if (new BigDecimal(charSequence.toString().trim())
+                                .compareTo(new BigDecimal(wallet.getAccountBalanceBananoNoComma())) == 0) {
+                            maxSend = true;
+                        } else {
+                            maxSend = false;
+                        }
+                    } catch (NumberFormatException nfe) {
+                        Timber.e(nfe);
                     }
                 } else if (charSequence.length() > 0) {
                     String original = charSequence.toString();

@@ -102,6 +102,7 @@
                 android:gravity="center_horizontal"
                 android:hint="@string/send_amount_hint"
                 android:inputType="numberDecimal"
+                android:digits="0123456789.,"
                 android:paddingBottom="10dp"
                 android:paddingEnd="10dp"
                 android:paddingLeft="10dp"
