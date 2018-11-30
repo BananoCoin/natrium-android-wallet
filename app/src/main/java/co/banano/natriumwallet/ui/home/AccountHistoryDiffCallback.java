@@ -1,7 +1,7 @@
 package co.banano.natriumwallet.ui.home;
 
-import android.support.annotation.Nullable;
-import android.support.v7.util.DiffUtil;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DiffUtil;
 
 import co.banano.natriumwallet.network.model.response.AccountHistoryResponseItem;
 

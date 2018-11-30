@@ -9,12 +9,12 @@
             type="co.banano.natriumwallet.ui.pin.PinDialogFragment.ClickHandlers" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray_dark">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/pin_close"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -85,12 +85,12 @@
             app:layout_constraintStart_toStartOf="@+id/pin_guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/pin_indicator_dots" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/pin_guideline_vert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

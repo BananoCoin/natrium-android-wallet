@@ -14,14 +14,14 @@
             type="String" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/gray_dark"
         android:paddingLeft="30dp"
         android:paddingRight="30dp">
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/intro_back"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -96,7 +96,7 @@
             app:layout_constraintStart_toStartOf="@+id/intro_new_wallet_guideline_vert"
             app:layout_constraintTop_toBottomOf="@+id/intro_new_wallet_seed" />
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/intro_new_wallet_next"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -107,12 +107,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@drawable/ic_forward_icon" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/intro_new_wallet_guideline_vert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

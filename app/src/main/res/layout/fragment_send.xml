@@ -21,7 +21,7 @@
             type="co.banano.natriumwallet.ui.send.SendDialogFragment.ClickHandlers" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/send_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,7 +30,7 @@
         android:focusableInTouchMode="true">
 
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/send_close"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -115,7 +115,7 @@
                 android:textSize="@dimen/text_size_normal"
                 tools:text="1.23" />
 
-            <android.support.v7.widget.AppCompatImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/send_currency_change"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             app:layout_constraintTop_toBottomOf="@+id/send_amount_container"
             tools:text="Invalid Address" />
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/contact_recyclerview"
             android:layout_width="@dimen/input_width"
             android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
                 tools:fontFamily="@font/overpass_mono_light"
                 tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
 
-            <android.support.v7.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/send_address_paste"
                 android:layout_width="@dimen/send_paste_button"
                 android:layout_height="wrap_content"
@@ -225,7 +225,7 @@
                 android:onClick="@{handlers::onClickPaste}"
                 app:srcCompat="@drawable/ic_paste" />
 
-            <android.support.v7.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/send_address_contact"
                 android:layout_width="@dimen/send_paste_button"
                 android:layout_height="wrap_content"
@@ -289,12 +289,12 @@
             app:layout_constraintStart_toStartOf="@+id/send_guideling_vert"
             tools:ignore="UnusedAttribute" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/send_guideling_vert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

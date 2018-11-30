@@ -10,7 +10,7 @@
             type="co.banano.natriumwallet.ui.receive.ReceiveDialogFragment.ClickHandlers" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_modal">
@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/receive_close"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -80,7 +80,7 @@
                         android:contentDescription="@string/receive_qrcode_description" />
                 </FrameLayout>
 
-                <android.support.v7.widget.AppCompatImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/qr_mark"
                     android:layout_width="68dp"
                     android:layout_height="68dp"
@@ -141,12 +141,12 @@
 
         </RelativeLayout>
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/receive_guideline_vert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

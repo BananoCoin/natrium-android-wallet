@@ -10,7 +10,7 @@
             type="co.banano.natriumwallet.ui.contact.AddContactDialogFragment.ClickHandlers" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/add_contact_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +29,7 @@
             app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/contact_add_qr"
             android:layout_width="40dp"
             android:layout_height="50dp"
@@ -120,7 +120,7 @@
                 tools:fontFamily="@font/overpass_mono_light"
                 tools:text="ban_3gntuoguehi9d1mnhnar6ojx7jseeerwj5hesb4b4jga7oybbdbqyzap7ijg" />
 
-            <android.support.v7.widget.AppCompatImageButton
+            <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/contact_address_paste"
                 android:layout_width="@dimen/send_paste_button"
                 android:layout_height="wrap_content"
@@ -202,12 +202,12 @@
             app:layout_constraintStart_toStartOf="@+id/add_contact_guideline_vert"
             tools:ignore="UnusedAttribute" />
 
-        <android.support.constraint.Guideline
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/add_contact_guideline_vert"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.5" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

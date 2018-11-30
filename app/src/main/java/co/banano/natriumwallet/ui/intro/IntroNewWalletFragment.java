@@ -1,7 +1,7 @@
 package co.banano.natriumwallet.ui.intro;
 
 import android.content.Context;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.KeyEvent;

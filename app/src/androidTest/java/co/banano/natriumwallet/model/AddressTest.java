@@ -1,6 +1,6 @@
 package co.banano.natriumwallet.model;
 
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 
 import co.banano.natriumwallet.di.activity.TestActivityComponent;
 import co.banano.natriumwallet.util.SharedPreferencesUtil;

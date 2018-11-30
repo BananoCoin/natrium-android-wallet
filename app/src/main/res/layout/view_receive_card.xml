@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/card_layout"
         android:layout_width="1174px"
         android:layout_height="609px"
@@ -104,5 +104,5 @@
             app:layout_constraintEnd_toEndOf="@+id/card_address"
             tools:ignore="SpUsage" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

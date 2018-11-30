@@ -18,7 +18,7 @@
             type="co.banano.natriumwallet.model.AvailableCurrency" />
     </data>
 
-    <android.support.v4.widget.DrawerLayout
+    <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -29,7 +29,7 @@
             android:fitsSystemWindows="true"
             android:orientation="vertical">
 
-            <android.support.constraint.ConstraintLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/gray">
@@ -42,7 +42,7 @@
                     android:background="@drawable/bg_home_top_card"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/settings_button"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
@@ -96,7 +96,7 @@
                             tools:text="18.000001" />
                     </LinearLayout>
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/amount_banano_symbol"
                         android:layout_width="23dp"
                         android:layout_height="23dp"
@@ -121,7 +121,7 @@
                         android:text="@{wallet.accountBalanceBanano}"
                         tools:text="18,024.12" />
 
-                    <android.support.v7.widget.AppCompatImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/banano_placeholder"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
@@ -142,7 +142,7 @@
                     app:layout_constraintBottom_toTopOf="@id/home_swiperefresh"
                     app:layout_constraintTop_toBottomOf="@id/home_top_card" />
 
-                <android.support.v4.widget.NestedScrollView
+                <androidx.core.widget.NestedScrollView
                     android:id="@+id/example_cards"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -170,9 +170,9 @@
                             layout="@layout/welcome_account_item_receive" />
                     </LinearLayout>
 
-                </android.support.v4.widget.NestedScrollView>
+                </androidx.core.widget.NestedScrollView>
 
-                <android.support.v4.widget.SwipeRefreshLayout
+                <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
                     android:id="@+id/home_swiperefresh"
                     android:layout_width="match_parent"
@@ -182,13 +182,13 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="@dimen/tx_history_top_margin">
 
-                    <android.support.v7.widget.RecyclerView
+                    <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/home_recyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:requiresFadingEdge="vertical"
                         android:theme="@style/AppThemeYellow" />
-                </android.support.v4.widget.SwipeRefreshLayout>
+                </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
                 <LinearLayout
@@ -264,14 +264,14 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
-                <android.support.constraint.Guideline
+                <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/home_guideline_vert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_constraintGuide_percent="0.5" />
 
-            </android.support.constraint.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -287,5 +287,5 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-    </android.support.v4.widget.DrawerLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

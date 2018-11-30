@@ -1,6 +1,6 @@
 package co.banano.natriumwallet;
 
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 
 import com.rotilho.jnano.commons.NanoHelper;
 

@@ -2,7 +2,7 @@ package co.banano.natriumwallet.ui.common;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.content.ContextCompat;
+import androidx.core.content.ContextCompat;
 import android.text.Layout;
 import android.text.Spannable;
 import android.text.SpannableString;

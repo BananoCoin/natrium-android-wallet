@@ -1,7 +1,7 @@
 package co.banano.natriumwallet.ui.contact;
 
-import android.support.annotation.Nullable;
-import android.support.v7.util.DiffUtil;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.DiffUtil;
 
 import co.banano.natriumwallet.model.Contact;
 

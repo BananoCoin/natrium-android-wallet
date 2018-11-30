@@ -14,8 +14,8 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
 import android.service.notification.StatusBarNotification;
-import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.NotificationManagerCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import co.banano.natriumwallet.broadcastreceiver.CancelNotificationReceiver;
 import co.banano.natriumwallet.model.AvailableLanguage;
