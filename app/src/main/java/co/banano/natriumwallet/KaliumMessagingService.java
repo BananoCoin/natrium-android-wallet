@@ -51,7 +51,7 @@ public class KaliumMessagingService extends FirebaseMessagingService {
             getBaseContext().getResources().updateConfiguration(config,
                     getBaseContext().getResources().getDisplayMetrics());
         }
-        if (remoteMessage.getData() != null && !MainActivity.appInForeground && sharedPreferencesUtil.getNotificationSetting() != NotificationOption.OFF) {
+        if (remoteMessage.getData() != null && sharedPreferencesUtil.isBackgrounded() && sharedPreferencesUtil.getNotificationSetting() != NotificationOption.OFF) {
             if (Build.VERSION.SDK_INT >=  Build.VERSION_CODES.M) {
                 sendNotification(remoteMessage);
             } else {

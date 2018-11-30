@@ -10,10 +10,11 @@ import com.rotilho.jnano.commons.NanoBaseAccountType;
 import com.rotilho.jnano.commons.NanoBlocks;
 import com.rotilho.jnano.commons.NanoHelper;
 import com.rotilho.jnano.commons.NanoKeys;
-import com.rotilho.jnano.commons.NanoSeeds;
 import com.rotilho.jnano.commons.NanoSignatures;
 
-import java.math.BigInteger;
+import java.security.SecureRandom;
+
+import co.banano.natriumwallet.util.SecureRandomUtil;
 
 public class KaliumUtil {
     public final static String addressCodeArray = "13456789abcdefghijkmnopqrstuwxyz";
@@ -26,7 +27,15 @@ public class KaliumUtil {
      * @return Wallet Seed
      */
     public static String generateSeed() {
-        return NanoHelper.toHex(NanoSeeds.generateSeed());
+        int numchars = 64;
+        SecureRandom random = SecureRandomUtil.secureRandom();
+        byte[] randomBytes = new byte[numchars / 2];
+        random.nextBytes(randomBytes);
+        StringBuilder sb = new StringBuilder(numchars);
+        for (byte b : randomBytes) {
+            sb.append(String.format("%02X", b));
+        }
+        return sb.toString();
     }
 
     /**

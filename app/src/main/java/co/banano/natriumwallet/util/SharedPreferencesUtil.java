@@ -31,6 +31,7 @@ public class SharedPreferencesUtil {
     private static final String DEFAULT_CONTACT_ADDED = "default_contact_added";
     private static final String FCM_TOKEN = "fcm_token";
     private static final String PUSH_NOTIFICATIONS = "push_notifications";
+    private static final String APP_BACKGROUNDED = "app_backgrounded";
 
     private final SharedPreferences mPrefs;
 
@@ -179,5 +180,13 @@ public class SharedPreferencesUtil {
 
     public void setDefaultContactAdded() {
         set(DEFAULT_CONTACT_ADDED, true);
+    }
+
+    public boolean isBackgrounded() {
+        return get(APP_BACKGROUNDED, true);
+    }
+
+    public void setAppBackgrounded(boolean isBackgrounded) {
+        set(APP_BACKGROUNDED, isBackgrounded);
     }
 }

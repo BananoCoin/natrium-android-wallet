@@ -50,8 +50,6 @@ import timber.log.Timber;
 public class MainActivity extends AppCompatActivity implements WindowControl, ActivityWithComponent {
     protected ActivityComponent mActivityComponent;
 
-    public static boolean appInForeground = false;
-
     @Inject
     Realm realm;
     @Inject
@@ -65,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        appInForeground = true;
 
         clearNotificationPrefCache();
 
@@ -110,6 +107,9 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             sharedPreferencesUtil.setDefaultContactAdded();
         }
 
+        // Set app in foreground
+        sharedPreferencesUtil.setAppBackgrounded(false);
+
         initUi();
     }
 
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     @Override
     protected void onPause() {
         super.onPause();
-        appInForeground = false;
+        sharedPreferencesUtil.setAppBackgrounded(true);
         // stop websocket on pause
         if (accountService != null) {
             accountService.close();
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     @Override
     protected void onResume() {
         super.onResume();
-        appInForeground = true;
+        sharedPreferencesUtil.setAppBackgrounded(false);
         clearNotificationPrefCache();
         // start websocket on resume
         if (accountService != null && realm != null && !realm.isClosed() && realm.where(Credentials.class).findFirst() != null) {
@@ -144,6 +144,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        sharedPreferencesUtil.setAppBackgrounded(true);
 
         // unregister from bus
         RxBus.get().unregister(this);
