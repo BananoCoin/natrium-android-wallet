@@ -362,6 +362,9 @@ public class KaliumWallet {
      * Convert local currency to properly formatted string for the currency
      */
     private String currencyFormat(BigDecimal amount) {
+        if (sharedPreferencesUtil.getLocalCurrency() == AvailableCurrency.VES) {
+            amount = new BigDecimal(amount.toBigInteger().toString());
+        }
         return NumberFormat.getCurrencyInstance(getLocalCurrency().getLocale()).format(amount);
     }
 

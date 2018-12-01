@@ -52,8 +52,8 @@
     <string name="example_card_intro">Welkom bij Natrium. Zodra je NANO ontvangt zullen jouw transacties op deze manier verschijnen:</string>
     <string name="example_card_little">Een paar</string>
     <string name="example_card_lot">Heel veel</string>
-    <string name="example_card_to">naar die ene aap</string>
-    <string name="example_card_from">van die andere aap</string>
+    <string name="example_card_to">naar iemand</string>
+    <string name="example_card_from">van iemand</string>
 
     <!-- Settings Screen -->
     <string name="settings_title">Instellingen</string>

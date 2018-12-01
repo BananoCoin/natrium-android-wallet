@@ -13,7 +13,7 @@ public enum AvailableCurrency {
     USD("USD"), AUD("AUD"), BRL("BRL"), CAD("CAD"), CHF("CHF"), CLP("CLP"), CNY("CNY"), CZK("CZK"), DKK("DKK"),
     EUR("EUR"), GBP("GBP"), HKD("HKD"), HUF("HUF"), IDR("IDR"), ILS("ILS"), INR("INR"), JPY("JPY"),
     KRW("KRW"), MXN("MXN"), MYR("MYR"), NOK("NOK"), NZD("NZD"), PHP("PHP"), PKR("PKR"), PLN("PLN"),
-    RUB("RUB"), SEK("SEK"), SGD("SGD"), THB("THB"), TRY("TRY"), TWD("TWD"), ZAR("ZAR");
+    RUB("RUB"), SEK("SEK"), SGD("SGD"), THB("THB"), TRY("TRY"), TWD("TWD"), VES("VES"), ZAR("ZAR");
 
     private String iso4217Code = "";
 
@@ -92,6 +92,8 @@ public enum AvailableCurrency {
                 return "Turkish Lira";
             case "TWD":
                 return "Taiwan New Dollar";
+            case "VES":
+                return "Venezuelan Bolivar";
             case "ZAR":
                 return "South African Rand";
             case "USD":
@@ -162,6 +164,8 @@ public enum AvailableCurrency {
                 return "₺";
             case "TWD":
                 return "NT$";
+            case "VES":
+                return "VES";
             case "ZAR":
                 return "R$";
             case "USD":
@@ -232,6 +236,8 @@ public enum AvailableCurrency {
                 return new Locale("tr", "TR");
             case "TWD":
                 return new Locale("en", "TW");
+            case "VES":
+                return new Locale("es", "VE");
             case "ZAR":
                 return new Locale("pt", "BR");
             case "USD":
