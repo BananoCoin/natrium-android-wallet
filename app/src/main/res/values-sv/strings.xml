@@ -161,6 +161,30 @@
     <string name="notification_body">Öppna Natrium för att visa transaktion.</string>
     <string name="notificaiton_header_suplement">Tryck för att öppna</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Ladda från pappersplånbok</string>
+    <string name="transfer_error">Ett fel uppstod vid överföringen. Försök igen senare.</string>
+    <string name="paper_wallet">Pappersplånbok</string>
+    <string name="kalium_wallet">Natrium-plånbok</string>
+    <string name="transfer_manual_entry">Ange manuellt</string>
+    <string name="mnemonic_phrase">Minnesfras</string>
+    <string name="raw_seed">Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Överför\nmedel:</string>
+    <string name="transfer_intro">Den här processen kommer att överföra medel från en pappersplånbok till din Natrium-plånbok.\n\nTryck på \"%s\" knappen för att starta.</string>
+    <string name="transfer_qr_scan_hint">Skanna en Nano \nseed eller en privat nyckel</string>
+    <string name="transfer_qr_scan_error">Denna QR-kod innehåller ingen giltig seed.</string>
+    <string name="transfer_no_funds_toast">Denna seed innehåller inga NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">En plånbok med ett saldo om %s NANO har upptäckts.</string>
+    <string name="transfer_confirm_info_second">Tryck på bekräfta för att överföra medel.</string>
+    <string name="transfer_confirm_info_third">Överföringen kan ta upp till flera sekunder att genomföras.</string>
+    <string name="transfer_loading_text">Överför</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO har överförts till din Natrium-plånbok.</string>
+    <string name="transfer_close_text">Tryck någonstans för att stänga fönstret.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Skanna en Nano\nadress QR-kod</string>
 </resources>

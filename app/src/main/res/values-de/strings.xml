@@ -161,6 +161,30 @@
     <string name="notification_body">Öffne Natrium, um diese Transaktion zu sehen.</string>
     <string name="notificaiton_header_suplement">Zum Öffnen tippen</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Von Paper Wallet importieren</string>
+    <string name="transfer_error">Während des Transfers ist ein Fehler aufgetreten. Bitte versuche es später erneut.</string>
+    <string name="paper_wallet">Paper Wallet</string>
+    <string name="kalium_wallet">Natrium Wallet</string>
+    <string name="transfer_manual_entry">Manueller Eintrag</string>
+    <string name="mnemonic_phrase">Wortfolge</string>
+    <string name="raw_seed">Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Guthaben\ntransferieren:</string>
+    <string name="transfer_intro">Dieser Vorgang wird das Guthaben vom Paper Wallet an dein Natrium Wallet transferieren.\n\nTippe zum Starten auf \"%s\" .</string>
+    <string name="transfer_qr_scan_hint">Scanne einen Nano \nSeed oder Private Key</string>
+    <string name="transfer_qr_scan_error">Dieser QR Code enthält keinen gültigen Seed.</string>
+    <string name="transfer_no_funds_toast">Dieser Seed enthält keine NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Ein Wallet mit einem Guthaben von %s NANO wurde gefunden.</string>
+    <string name="transfer_confirm_info_second">Tippe, um den Transfer zu bestätigen.</string>
+    <string name="transfer_confirm_info_third">Der Vorgang kann einige Sekunden dauern.</string>
+    <string name="transfer_loading_text">Transfer läuft</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO wurden erfolgreich an dein Kalium Wallet gesendet.</string>
+    <string name="transfer_close_text">Tippe, um das Fenster zu schließen.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scanne einen\nNano-Address-QR-Code</string>
 </resources>

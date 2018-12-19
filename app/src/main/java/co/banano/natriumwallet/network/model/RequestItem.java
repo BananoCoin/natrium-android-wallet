@@ -12,6 +12,7 @@ public class RequestItem<T> {
     private boolean isProcessing = false;
     private long expireTime;
     private T request;
+    private boolean fromTransfer = false;
 
     public RequestItem(T request) {
         this.request = request;
@@ -20,6 +21,7 @@ public class RequestItem<T> {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MILLISECOND, AccountService.TIMEOUT_MILLISECONDS);
         this.expireTime = calendar.getTime().getTime();
+        this.fromTransfer = false;
     }
 
     public T getRequest() {
@@ -44,5 +46,13 @@ public class RequestItem<T> {
 
     public void setExpireTime(long expireTime) {
         this.expireTime = expireTime;
+    }
+
+    public boolean isFromTransfer() {
+        return fromTransfer;
+    }
+
+    public void setFromTransfer(boolean fromTransfer) {
+        this.fromTransfer = fromTransfer;
     }
 }

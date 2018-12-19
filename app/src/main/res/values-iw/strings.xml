@@ -162,6 +162,30 @@
     <string name="notification_body">פתח את קאליום בשביל לצפות בטרנסקציה.</string>
     <string name="notificaiton_header_suplement">לחץ בשביל לפתוח</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">טען מארנק נייר</string>
+    <string name="transfer_error">חלה תקלה במהלך ההעברה. בבקשה נסה מאוחר יותר.</string>
+    <string name="paper_wallet">ארנק נייר</string>
+    <string name="kalium_wallet">ארנק נאטריום</string>
+    <string name="transfer_manual_entry">הכנסה ידנית</string>
+    <string name="mnemonic_phrase">פתגם זכרון</string>
+    <string name="raw_seed">סיד</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">העברת\nסכום:</string>
+    <string name="transfer_intro">התהליך יעביר את הסכום שברשותך מארנק הנייר לארנק נאטריום\n\nלחץ על כפתור ה "%s" בכדי להתחיל.</string>
+    <string name="transfer_qr_scan_hint">סרוק סיד של \nבאנאנו או ארנק נייר</string>
+    <string name="transfer_qr_scan_error">הברקוד אינו מכיל סיד תקין.</string>
+    <string name="transfer_no_funds_toast">אין שום נאנו בסיד המצורף.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">ארנק עם מאזן של %s נאנו אותר.</string>
+    <string name="transfer_confirm_info_second">לחץ על אשר בכדי להעביר את הסכום.</string>
+    <string name="transfer_confirm_info_third">יתכן שיקחו כמה שניות עד תחילת ההעברה.</string>
+    <string name="transfer_loading_text">מעביר</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s נאנו הועברו לארנק נאטריום.</string>
+    <string name="transfer_close_text">לחץ בכל מקום בכדי לסגור את החלון.</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">סרוק כתובת ברקוד \n של באנאנו</string>
 </resources>

@@ -161,6 +161,30 @@
     <string name="notification_body">Abra Natrium para ver esta transacción.</string>
     <string name="notificaiton_header_suplement">Pulse para abrir</string>
 
+    <!-- Tansfer Funds -->
+    <!-- Options -->
+    <string name="settings_transfer">Cargar Billetera de Papel</string>
+    <string name="transfer_error">Ha ocurrido un error durante la transferencia. Por favor, inténtelo de nuevo más tarde.</string>
+    <string name="paper_wallet">Billetera de Papel</string>
+    <string name="kalium_wallet">Natrium</string>
+    <string name="transfer_manual_entry">Introducir datos</string>
+    <string name="mnemonic_phrase">Frase mnemónica</string>
+    <string name="raw_seed">Semilla</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Transferir\nFondos:</string>
+    <string name="transfer_intro">Este proceso transferirá los fondos de una billetera de papel a su billetera en Natrium.\n\nPulse el \"%s\" botón para empezar.</string>
+    <string name="transfer_qr_scan_hint">Escanear una semilla \nde NANO o clave privada</string>
+    <string name="transfer_qr_scan_error">Este código QR no contiene una semilla válida.</string>
+    <string name="transfer_no_funds_toast">Esta semilla no contiene ningún NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Se ha detectado una billetera con un balance de %s NANO.</string>
+    <string name="transfer_confirm_info_second">Pulse confirmar para transferir los fondos.</string>
+    <string name="transfer_confirm_info_third">La transferencia puede tardar varios segundos en completarse.</string>
+    <string name="transfer_loading_text">Transfiriendo</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO se han transferido con éxito a su billetera en Natrium.</string>
+    <string name="transfer_close_text">Pulse en cualquier lugar para cerrar esta ventana.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Escanear un código QR\naddress de una billetera de Nano.</string>
 </resources>

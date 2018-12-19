@@ -174,6 +174,30 @@
     <string name="notification_body">Apri Natrium per vedere la transazione.</string>
     <string name="notificaiton_header_suplement">Tocca per aprire</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Carica Portafoglio Cartaceo</string>
+    <string name="transfer_error">Si è verificato un errore durante il trasferimento. Riprova più tardi.</string>
+    <string name="paper_wallet">Portafoglio Cartaceo</string>
+    <string name="kalium_wallet">Portafoglio Natrium</string>
+    <string name="transfer_manual_entry">Inserisci Manualmente</string>
+    <string name="mnemonic_phrase">Frase Mnemonica</string>
+    <string name="raw_seed">Seme</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Trasferisci\nFondi:</string>
+    <string name="transfer_intro">Questo processo trasferirà i fondi da un portafoglio cartaceo al tuo portafoglio Natrium.\n\nPremi il pulsante \"%s\" per iniziare.</string>
+    <string name="transfer_qr_scan_hint">Scansiona un seme \no una chiave privata</string>
+    <string name="transfer_qr_scan_error">Questo codice QR non contiene un seme valido.</string>
+    <string name="transfer_no_funds_toast">Questo seme non contiene alcun NANO al suo interno.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Rilevato un portafoglio con un saldo di %s NANO.</string>
+    <string name="transfer_confirm_info_second">Premi conferma per trasferire i fondi.</string>
+    <string name="transfer_confirm_info_third">Il trasferimento potrebbe richiedere parecchi secondi.</string>
+    <string name="transfer_loading_text">Trasferimento</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO trasferiti con successo sul tuo portafoglio Natrium.</string>
+    <string name="transfer_close_text">Premi dove vuoi per chiudere la finestra.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scansiona un \ncodice QR Nano</string>
 </resources>

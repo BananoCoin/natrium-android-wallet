@@ -105,7 +105,8 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
         // Set app in foreground
         sharedPreferencesUtil.setAppBackgrounded(false);
 
-        initUi();
+        // Send URI data to fragment
+        initUi(getIntent().getData() == null ? null : getIntent().getData().toString());
     }
 
     private void clearNotificationPrefCache() {
@@ -166,7 +167,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
         return super.onOptionsItemSelected(item);
     }
 
-    private void initUi() {
+    private void initUi(String uri) {
         // set main content view
         setContentView(R.layout.activity_main);
 
@@ -185,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements WindowControl, Ac
             mFragmentUtility.clearStack();
             if (sharedPreferencesUtil.getConfirmedSeedBackedUp()) {
                 // go to home screen
-                mFragmentUtility.replace(HomeFragment.newInstance());
+                mFragmentUtility.replace(HomeFragment.newInstance(uri));
             } else {
                 // go to intro new wallet
                 mFragmentUtility.replace(IntroNewWalletFragment.newInstance(true));

@@ -40,7 +40,7 @@ public class KaliumUtilTest {
     public void seedToPrivate() throws Exception {
         long lStartTime = System.nanoTime();
 
-        String privateKey = KaliumUtil.seedToPrivate(seed);
+        String privateKey = KaliumUtil.seedToPrivate(seed, 0);
 
         long lEndTime = System.nanoTime();
         long output = lEndTime - lStartTime;

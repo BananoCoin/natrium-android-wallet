@@ -8,6 +8,8 @@ import co.banano.natriumwallet.BuildConfig;
 import co.banano.natriumwallet.KaliumUtil;
 import co.banano.natriumwallet.bus.RxBus;
 import co.banano.natriumwallet.bus.SocketError;
+import co.banano.natriumwallet.bus.TransferHistoryResponse;
+import co.banano.natriumwallet.bus.TransferProcessResponse;
 import co.banano.natriumwallet.model.Address;
 import co.banano.natriumwallet.model.Credentials;
 import co.banano.natriumwallet.model.KaliumWallet;
@@ -16,6 +18,7 @@ import co.banano.natriumwallet.network.model.BaseResponse;
 import co.banano.natriumwallet.network.model.BlockTypes;
 import co.banano.natriumwallet.network.model.RequestItem;
 import co.banano.natriumwallet.network.model.request.AccountHistoryRequest;
+import co.banano.natriumwallet.network.model.request.AccountsBalancesRequest;
 import co.banano.natriumwallet.network.model.request.GetBlocksInfoRequest;
 import co.banano.natriumwallet.network.model.request.PendingTransactionsRequest;
 import co.banano.natriumwallet.network.model.request.ProcessRequest;
@@ -26,10 +29,13 @@ import co.banano.natriumwallet.network.model.request.block.OpenBlock;
 import co.banano.natriumwallet.network.model.request.block.ReceiveBlock;
 import co.banano.natriumwallet.network.model.request.block.SendBlock;
 import co.banano.natriumwallet.network.model.request.block.StateBlock;
+import co.banano.natriumwallet.network.model.response.AccountHistoryResponse;
+import co.banano.natriumwallet.network.model.response.AccountsBalancesResponse;
 import co.banano.natriumwallet.network.model.response.BlockInfoItem;
 import co.banano.natriumwallet.network.model.response.BlockItem;
 import co.banano.natriumwallet.network.model.response.BlocksInfoResponse;
 import co.banano.natriumwallet.network.model.response.CurrentPriceResponse;
+import co.banano.natriumwallet.network.model.response.PendingTransactionResponse;
 import co.banano.natriumwallet.network.model.response.PendingTransactionResponseItem;
 import co.banano.natriumwallet.network.model.response.ProcessResponse;
 import co.banano.natriumwallet.network.model.response.SubscribeResponse;
@@ -84,6 +90,8 @@ public class AccountService {
     private LinkedList<RequestItem> requestQueue = new LinkedList<>();
     private String private_key;
     private Address address;
+    private boolean isConnecting = false;
+    private boolean locked = false; // Stop auto-block processing if locked
 
     // Map previous hash to the block request
     private HashMap<String, StateBlock> previousPendingMap = new HashMap<>();
@@ -122,6 +130,8 @@ public class AccountService {
         if (websocket != null && websocket.isOpen()) {
             processQueue();
             return;
+        } else if (isConnecting) {
+            return;
         }
         // create websocket
         URI wssUri;
@@ -136,6 +146,7 @@ public class AccountService {
         websocket = new WebSocketClient(wssUri, httpHeaders) {
             @Override
             public void onOpen(ServerHandshake handshakedata) {
+                isConnecting = false;
                 Timber.d("OPENED");
                 requestUpdate();
             }
@@ -148,6 +159,7 @@ public class AccountService {
 
             @Override
             public void onClose(int code, String reason, boolean remote) {
+                isConnecting = false;
                 switch (code) {
                     case 1000: // CLOSE_NORMAL
                         Timber.d("CLOSED");
@@ -172,6 +184,7 @@ public class AccountService {
         };
         websocket.setConnectionLostTimeout(5);
         websocket.connect();
+        isConnecting = true;
     }
 
     /**
@@ -208,6 +221,15 @@ public class AccountService {
         } else if (event != null &&
                 event instanceof BlocksInfoResponse) {
             handleBlocksInfoResponse((BlocksInfoResponse) event);
+        } else if (event != null &&
+                event instanceof AccountsBalancesResponse) {
+            handleAccountsBalancesResponse((AccountsBalancesResponse) event);
+        } else if (event != null &&
+                event instanceof AccountHistoryResponse) {
+            handleAccountHistoryResponse((AccountHistoryResponse) event);
+        } else if (event != null &&
+                event instanceof PendingTransactionResponse) {
+            handlePendingResponse((PendingTransactionResponse) event);
         } else {
             // update block count on subscribe request
             if (event instanceof SubscribeResponse) {
@@ -252,7 +274,7 @@ public class AccountService {
      */
     private void handleTransactionResponse(PendingTransactionResponseItem item) {
         Timber.d(item.toString());
-        if (!queueContainsRequestWithHash(item.getHash())) {
+        if (!queueContainsRequestWithHash(item.getHash()) && !locked) {
             // set balance to just the amount,
             // it will be added to total later when we verify the hash of the last transaction
             // BigInteger balance = wallet.getAccountBalanceBananoRaw().toBigInteger().add(new BigInteger(item.getAmount()));
@@ -346,7 +368,7 @@ public class AccountService {
             return;
         }
 
-        requestQueue.poll();
+        RequestItem lastRequest = requestQueue.poll();
         StateBlock nextBlock = previousPendingMap.get(hash);
         if (nextBlock != null) {
             if (block.getRepresentative() != null) {
@@ -372,13 +394,49 @@ public class AccountService {
             }
             previousPendingMap.remove(hash);
             ProcessRequest prq = new ProcessRequest(gson.toJson(nextBlock), true);
+            RequestItem<ProcessRequest> requestItem = new RequestItem<>(prq);
+            if (lastRequest.isFromTransfer()) {
+                requestItem.setFromTransfer(true);
+            }
             pendingResponseBlockMap.put(nextBlock.getPrevious(), nextBlock);
-            requestQueue.add(new RequestItem<>(prq));
+            requestQueue.add(requestItem);
         }
 
         processQueue();
     }
 
+    /**
+     * When balances come back we need to emit the data for each account/balance/pending
+     *
+     * @param balancesResponse AccountsBalancesResponse Response
+     */
+    private void handleAccountsBalancesResponse(AccountsBalancesResponse balancesResponse) {
+        post(balancesResponse);
+        requestQueue.poll();
+        processQueue();
+    }
+
+    /**
+     * Handle account history response, to see if it's for our account or a different one
+     *
+     * @param accountHistoryResponse AccountHistoryResponse Response
+     */
+    private void handleAccountHistoryResponse(AccountHistoryResponse accountHistoryResponse) {
+        // See what resulted in this response
+        RequestItem requestItem = requestQueue.peek();
+        if (requestItem.getRequest() instanceof AccountHistoryRequest) {
+            AccountHistoryRequest origRequest = (AccountHistoryRequest)requestItem.getRequest();
+            if (requestItem.isFromTransfer()) {
+                post(new TransferHistoryResponse(accountHistoryResponse, origRequest.getAccount()));
+            } else {
+                post(accountHistoryResponse);
+            }
+        } else {
+            post(accountHistoryResponse);
+        }
+        requestQueue.poll();
+        processQueue();
+    }
 
     /**
      * Here is where we handle any work response that comes back
@@ -414,7 +472,7 @@ public class AccountService {
     }
 
     /**
-     * When an OPEN, SEND, or RECEIVE block comes back successfully with a hash
+     * When a STATE block comes back successfully with a hash
      *
      * @param processResponse Process Response
      */
@@ -430,37 +488,27 @@ public class AccountService {
                     if (blockRequest != null) {
                         StateBlock previous = pendingResponseBlockMap.get(blockRequest.getPrevious());
                         if (previous != null) {
+                            pendingResponseBlockMap.remove(blockRequest.getPrevious());
                             requestItem.setRequest(previous);
                         }
                     }
                 }
-                if (requestItem.getRequest() instanceof Block) {
-                    if (requestItem.getRequest() instanceof OpenBlock ||
-                            (requestItem.getRequest() instanceof StateBlock &&
-                                    ((StateBlock) requestItem.getRequest()).getInternal_block_type().equals(BlockTypes.OPEN))) {
+                if (requestItem.getRequest() instanceof StateBlock && !requestItem.isFromTransfer()) {
+                    StateBlock requestBlock = (StateBlock) requestItem.getRequest();
+                    if (requestBlock.getInternal_block_type().equals(BlockTypes.OPEN)) {
                         updateFrontier(processResponse.getHash());
                         updateBlockCount(1);
-                    } else if (requestItem.getRequest() instanceof ReceiveBlock ||
-                            (requestItem.getRequest() instanceof StateBlock &&
-                                    ((StateBlock) requestItem.getRequest()).getInternal_block_type().equals(BlockTypes.RECEIVE))) {
+                    } else {
                         updateFrontier(processResponse.getHash());
                         updateBlockCount(wallet.getBlockCount() + 1);
-                    } else if (requestItem.getRequest() instanceof SendBlock ||
-                            (requestItem.getRequest() instanceof StateBlock &&
-                                    ((StateBlock) requestItem.getRequest()).getInternal_block_type().equals(BlockTypes.SEND))) {
-                        updateBlockCount(wallet.getBlockCount() + 1);
                         post(processResponse);
-                    } else if (requestItem.getRequest() instanceof StateBlock &&
-                            ((StateBlock) requestItem.getRequest()).getInternal_block_type().equals(BlockTypes.CHANGE)) {
-                        updateBlockCount(wallet.getBlockCount() + 1);
-                        post(processResponse);
-                    } else {
-                        // something is out of sync if this wasn't a block - should never happen
-                        ExceptionHandler.handle(new Exception("Queue Error: something is out of sync if this wasn't a block"));
                     }
 
                     requestSubscribe();
                     requestAccountHistory();
+                } else if (requestItem.getRequest() instanceof StateBlock && requestItem.isFromTransfer()) {
+                    StateBlock requestBlock = (StateBlock) requestItem.getRequest();
+                    post(new TransferProcessResponse(requestBlock.getAccount(), processResponse.getHash(), requestBlock.getBalance()));
                 } else {
                     // something is out of sync if this wasn't a block - should never happen
                     ExceptionHandler.handle(new Exception("Queue Error: something is out of sync if this wasn't a block"));
@@ -520,17 +568,47 @@ public class AccountService {
     }
 
     /**
+     * Handle pending response
+     */
+    private void handlePendingResponse(PendingTransactionResponse pendingTransactionResponse) {
+        RequestItem requestItem = requestQueue.peek();
+        if (requestItem.isFromTransfer()) {
+            PendingTransactionsRequest pendingTransactionsRequest = (PendingTransactionsRequest)requestItem.getRequest();
+            pendingTransactionResponse.setAccount(pendingTransactionsRequest.getAccount());
+            post(pendingTransactionResponse);
+        } else {
+            for (Map.Entry<String, PendingTransactionResponseItem> itemEntry : pendingTransactionResponse.getBlocks().entrySet()) {
+                PendingTransactionResponseItem pendingTransactionResponseItem = itemEntry.getValue();
+                pendingTransactionResponseItem.setHash(itemEntry.getKey());
+                handleTransactionResponse(pendingTransactionResponseItem);
+            }
+        }
+        requestQueue.poll();
+        processQueue();
+    }
+
+    public void setLock() {
+        locked = true;
+    }
+
+    public void unsetLock() {
+        locked = false;
+    }
+
+    /**
      * Process the next item in the queue if item is not currently processing
      */
     private void processQueue() {
         if (requestQueue != null && requestQueue.size() > 0) {
-            if (wsDisconnected()) {
-                requestQueue.clear();
-                return;
-            }
             RequestItem requestItem = requestQueue.peek();
             if (requestItem != null && !requestItem.isProcessing()) {
                 // process item
+                if (wsDisconnected()) {
+                    if (!isConnecting) {
+                        initWebSocket();
+                    }
+                    return;
+                }
                 requestItem.setProcessing(true);
 
                 Timber.d("SEND: %s", gson.toJson(requestItem.getRequest()));
@@ -559,7 +637,7 @@ public class AccountService {
      * Request subscribe
      */
     public void requestSubscribe() {
-        if (address != null && address.getAddress() != null) {
+        if (address != null && address.getAddress() != null && !wsDisconnected()) {
             requestQueue.add(new RequestItem<>(new SubscribeRequest(address.getAddress(), getLocalCurrency(), wallet.getUuid(), sharedPreferencesUtil.getFcmToken())));
             processQueue();
         }
@@ -576,6 +654,16 @@ public class AccountService {
     }
 
     /**
+     * Request pending blocks for specific account
+     */
+    public void requestPending(String account) {
+        RequestItem<PendingTransactionsRequest> requestItem = new RequestItem<>(new PendingTransactionsRequest(account, true, 10));
+        requestItem.setFromTransfer(true);
+        requestQueue.add(requestItem);
+        processQueue();
+    }
+
+    /**
      * Request AccountHistory
      */
     private void requestAccountHistory() {
@@ -583,6 +671,31 @@ public class AccountService {
             requestQueue.add(new RequestItem<>(new AccountHistoryRequest(address.getAddress(), wallet.getBlockCount() != null ? wallet.getBlockCount() : 10)));
             processQueue();
         }
+    }
+
+    /**
+     * Request AccountHistory for a different account (Transfer)
+     */
+    public void requestAccountHistory(String account) {
+        RequestItem<AccountHistoryRequest> requestItem = new RequestItem<>(new AccountHistoryRequest(account, 1));
+        requestItem.setFromTransfer(true);
+        requestQueue.add(requestItem);
+        processQueue();
+    }
+
+    /**
+     * Request AccountsBalances
+     *
+     * @param accounts List of accounts to include in the request
+     * @return true if parameters were valid and request was made
+     */
+    public boolean requestAccountsBalances(List<String> accounts) {
+        if (accounts == null || accounts.isEmpty()) {
+            return false;
+        }
+        requestQueue.add(new RequestItem<>(new AccountsBalancesRequest(accounts)));
+        processQueue();
+        return true;
     }
 
     /**
@@ -614,6 +727,30 @@ public class AccountService {
         processQueue();
     }
 
+    public void requestOpen(String previous, String source, BigInteger balance, String privKey) {
+        // If user has set a custom representative, use it
+        String representative = sharedPreferencesUtil.hasCustomRepresentative() ? sharedPreferencesUtil.getCustomRepresentative() : PreconfiguredRepresentatives.getRepresentative();
+
+        // Create open block
+        StateBlock openBlock = new StateBlock(
+                BlockTypes.OPEN,
+                privKey,
+                previous,
+                representative,
+                balance.toString(),
+                source
+        );
+        pendingResponseBlockMap.put(previous, openBlock);
+
+        // Create process request
+        ProcessRequest prq = new ProcessRequest(gson.toJson(openBlock), true);
+        RequestItem<ProcessRequest> requestItem = new RequestItem<>(prq);
+        requestItem.setFromTransfer(true);
+        requestQueue.add(requestItem);
+
+        processQueue();
+    }
+
     /**
      * Make a receive block request (state)
      *
@@ -621,7 +758,7 @@ public class AccountService {
      * @param source   Destination
      * @param balance  Remaining balance after a send
      */
-    private void requestReceive(String previous, String source, BigInteger balance) {
+    public void requestReceive(String previous, String source, BigInteger balance) {
         StateBlock receiveBlock = new StateBlock(
                 BlockTypes.RECEIVE,
                 private_key,
@@ -634,6 +771,28 @@ public class AccountService {
 
         // Request block info for previous
         requestQueue.add(new RequestItem<>(new GetBlocksInfoRequest(new String[]{previous})));
+
+        processQueue();
+    }
+
+    public void requestReceive(String previous, String source, BigInteger balance, String privKey) {
+        String representative = sharedPreferencesUtil.hasCustomRepresentative() ? sharedPreferencesUtil.getCustomRepresentative() : PreconfiguredRepresentatives.getRepresentative();
+
+        StateBlock receiveBlock = new StateBlock(
+                BlockTypes.RECEIVE,
+                privKey,
+                previous,
+                representative,
+                balance.toString(),
+                source
+        );
+        previousPendingMap.put(previous, receiveBlock);
+
+        // Request block info for previous
+        GetBlocksInfoRequest gbiq = new GetBlocksInfoRequest(new String[]{previous});
+        RequestItem<GetBlocksInfoRequest> requestItem = new RequestItem<>(gbiq);
+        requestItem.setFromTransfer(true);
+        requestQueue.add(requestItem);
 
         processQueue();
     }
@@ -659,6 +818,28 @@ public class AccountService {
 
         // Request block info for previous
         requestQueue.add(new RequestItem<>(new GetBlocksInfoRequest(new String[]{previous})));
+
+        processQueue();
+    }
+
+    public void requestSend(String previous, Address destination, BigInteger amount, String privKey) {
+        String representative = sharedPreferencesUtil.hasCustomRepresentative() ? sharedPreferencesUtil.getCustomRepresentative() : PreconfiguredRepresentatives.getRepresentative();
+
+        StateBlock sendBlock = new StateBlock(
+                BlockTypes.SEND,
+                privKey,
+                previous,
+                representative,
+                amount.toString(),
+                destination.getAddress()
+        );
+        previousPendingMap.put(previous, sendBlock);
+
+        // Request block info for previous
+        GetBlocksInfoRequest gbiq = new GetBlocksInfoRequest(new String[]{previous});
+        RequestItem<GetBlocksInfoRequest> requestItem = new RequestItem<>(gbiq);
+        requestItem.setFromTransfer(true);
+        requestQueue.add(requestItem);
 
         processQueue();
     }
@@ -859,7 +1040,7 @@ public class AccountService {
     }
 
     private void checkState() {
-        if (wsDisconnected()) {
+        if (wsDisconnected() && !isConnecting) {
             initWebSocket();
         }
     }
@@ -868,6 +1049,10 @@ public class AccountService {
         checkState();
         if (websocket.isOpen()) {
             websocket.send(message);
+        } else {
+            for (RequestItem item: requestQueue) {
+                item.setProcessing(false);
+            }
         }
     }
 }

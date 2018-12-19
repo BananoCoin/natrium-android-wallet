@@ -1,7 +1,8 @@
 package co.banano.natriumwallet.network.model.response;
 
-import co.banano.natriumwallet.util.NumberUtil;
 import com.google.gson.annotations.SerializedName;
+
+import co.banano.natriumwallet.util.NumberUtil;
 
 /**
  * Account History Item

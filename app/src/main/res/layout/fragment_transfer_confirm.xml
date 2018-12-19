@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- Click Listeners -->
+        <variable
+            name="handlers"
+            type="co.banano.natriumwallet.ui.transfer.TransferConfirmDialogFragment.ClickHandlers" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_modal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/transfer_close"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_image_button"
+            android:onClick="@{handlers::onClickClose}"
+            android:padding="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close" />
+
+        <TextView
+            android:id="@+id/transfer_confirm_header"
+            style="@style/TextStyleHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/transfer_header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/transfer_confirm_one"
+            style="@style/TextStyleParagraphBold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:layout_marginTop="50dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textColor="@color/ltblue"
+            android:textSize="@dimen/address_text_size"
+            app:layout_constraintEnd_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/transfer_confirm_header"
+            tools:text="@string/transfer_confirm_info_first" />
+
+        <TextView
+            android:id="@+id/transfer_confirm_two"
+            style="@style/TextStyleParagraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="start"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textSize="@dimen/address_text_size"
+            android:textColor="@color/white_90"
+            android:text="@string/transfer_confirm_info_second"
+            app:layout_constraintEnd_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/transfer_confirm_one" />
+
+
+        <TextView
+            android:id="@+id/transfer_confirm_three"
+            style="@style/TextStyleParagraph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white_90"
+            android:gravity="start"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:textSize="@dimen/address_text_size"
+            android:text="@string/transfer_confirm_info_third"
+            app:layout_constraintEnd_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintTop_toBottomOf="@+id/transfer_confirm_two"/>
+
+        <Button
+            android:id="@+id/transfer_confirm"
+            style="@style/PrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:gravity="center_horizontal"
+            android:onClick="@{handlers::onClickConfirm}"
+            android:text="@string/dialog_confirm"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toTopOf="@+id/transfer_cancel"
+            app:layout_constraintEnd_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/transfer_confirm_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <Button
+            android:id="@+id/transfer_cancel"
+            style="@style/OutlineButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginStart="45dp"
+            android:gravity="center_horizontal"
+            android:onClick="@{handlers::onClickClose}"
+            android:text="@string/dialog_cancel"
+            android:textAllCaps="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/transfer_confirm_guideline_vert"
+            app:layout_constraintStart_toStartOf="@+id/transfer_confirm_guideline_vert"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/transfer_confirm_guideline_vert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/progress_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="@drawable/bg_rounded_black_transparent_darker"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="65dp"
+                android:paddingLeft="65dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/transfer_animation"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/transfer_load_text"
+                app:layout_constraintVertical_chainStyle="packed"/>
+
+            <TextView
+                android:id="@+id/transfer_load_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="140dp"
+                android:textAllCaps="true"
+                android:fontFamily="@font/nunitosans_bold"
+                android:textSize="32sp"
+                android:textColor="@color/ltblue"
+                android:text="@string/transfer_loading_text"
+                app:layout_constraintTop_toBottomOf="@+id/animation_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/threedot_animation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/threedot_animation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/threedot_animation"
+                app:layout_constraintBottom_toBottomOf="@+id/transfer_load_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/transfer_load_text"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

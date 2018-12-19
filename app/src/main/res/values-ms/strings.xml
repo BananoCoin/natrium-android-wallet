@@ -161,6 +161,30 @@
     <string name="notification_body">Buka Natrium bagi melihat transaksi ini.</string>
     <string name="notificaiton_header_suplement">Ketuk untuk buka</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Muat dari Dompet Kertas</string>
+    <string name="transfer_error">Sesuatu kesilapan telah terjadi dalam process pemindahan. Sila cuba lagi.</string>
+    <string name="paper_wallet">Dompet Kertas</string>
+    <string name="kalium_wallet">Dompet Natrium</string>
+    <string name="transfer_manual_entry">Entri Manual</string>
+    <string name="mnemonic_phrase">Frasa Mnemonik</string>
+    <string name="raw_seed">Benih Mentah</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Pindahkan\nDana:</string>
+    <string name="transfer_intro">Proses ini akan memindahkan dana dari dompet kertas ke Dompet Natrium.\n\nKetuk butang \"%s\" untuk bermula.</string>
+    <string name="transfer_qr_scan_hint">Imbaskan Benih \nNano atau kunci peribadi</string>
+    <string name="transfer_qr_scan_error">Kod QR ini tidak mengandungi benih sah.</string>
+    <string name="transfer_no_funds_toast">Benih ini tidak mengandungi NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Dompet dengan baki sebanyak %s NANO dikesan.</string>
+    <string name="transfer_confirm_info_second">Ketuk sebagai konfirmasi untuk memindahkan dana.</string>
+    <string name="transfer_confirm_info_third">Pemindahan memerlukan beberapa detik.</string>
+    <string name="transfer_loading_text">Memindah</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO berjaya dipindah ke Dompet Natrium Anda.</string>
+    <string name="transfer_close_text">Tekan mana-mana sahaja untuk tutupkan tingkap.</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Imbaskan Kod QR\n Alamat Nano anda</string>
 </resources>

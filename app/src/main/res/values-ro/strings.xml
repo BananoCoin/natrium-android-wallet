@@ -145,4 +145,28 @@
     <string name="notification_title">Ai primit %s NANO</string>
     <string name="notification_body">Deschide Natrium pentru a vizualiza tranzacția.</string>
     <string name="notificaiton_header_suplement">Apasă pentru deschidere</string>
+
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Încarcă din Paper Wallet</string>
+    <string name="transfer_error"> A avut loc o eroare în timpul transferului. Vă rugăm să încercați din nou mai târziu.</string>
+    <string name="paper_wallet">Paper Wallet</string>
+    <string name="kalium_wallet">Portofel Natrium</string>
+    <string name="transfer_manual_entry">Introducere manuală</string>
+    <string name="mnemonic_phrase">Frază de memorat</string>
+    <string name="raw_seed">Seed simplu</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Transferă\nFonduri:</string>
+    <string name="transfer_intro">Acest proces va transfera fondurile dintr-un Paper Wallet către contul dvs. Natrium.\n\nAtingeți butonul \"%s\" pentru a începe.</string>
+    <string name="transfer_qr_scan_hint">Scanați un seed pentru Nano\n sau un private key</string>
+    <string name="transfer_qr_scan_error">Acest cod QR nu conține un seed valid.</string>
+    <string name="transfer_no_funds_toast">Acest seed nu conține NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Un portofel cu un sold de %s NANO a fost detectat.</string>
+    <string name="transfer_confirm_info_second">Apăsați pentru a confirma transferul.</string>
+    <string name="transfer_confirm_info_third">Transferul poate dura câteva secunde.</string>
+    <string name="transfer_loading_text">Se transferă...</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO au fost transferate cu succes în portofelul dvs. Natrium.</string>
+    <string name="transfer_close_text">Apăsați oriunde pentru a închide această fereastră.</string>
 </resources>

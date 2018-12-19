@@ -157,6 +157,30 @@
     <string name="notification_body">Ouvrir Natrium pour voir cette transaction.</string>
     <string name="notificaiton_header_suplement">Appuyez pour ouvrir</string>
 
+    <!-- Transfert de fonds -->
+    <!-- Options -->
+    <string name="settings_transfer">Charger depuis le portefeuille papier</string>
+    <string name="transfer_error">Une erreur s’est produite durant le transfert. Veuillez réessayer plus tard.</string>
+    <string name="paper_wallet">Portefeuille Papier</string>
+    <string name="kalium_wallet">Portefeuille Natrium</string>
+    <string name="transfer_manual_entry">Saisie manuelle</string>
+    <string name="mnemonic_phrase">Phrase mnemonique</string>
+    <string name="raw_seed">Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Transférer:</string>
+    <string name="transfer_intro">Ce procédé transférera d’un portefeuille papier vers votre portefeuille Natrium.\n\nAppuyer sur le bouton \"%s\" pour commencer.</string>
+    <string name="transfer_qr_scan_hint">Scanner un seed Nano\nou une clé privée</string>
+    <string name="transfer_qr_scan_error">Ce code QR ne contient pas de seed valide.</string>
+    <string name="transfer_no_funds_toast">Ce seed ne contient pas de NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Un portefeuille avec un solde de %s NANO a été détecté.</string>
+    <string name="transfer_confirm_info_second">Appuyer pour confirmer le transfert de fonds.</string>
+    <string name="transfer_confirm_info_third">Le transfert pourrait prendre quelques secondes.</string>
+    <string name="transfer_loading_text">Transfert</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO ont été transférés avec succès vers votre portefeuille Natrium.</string>
+    <string name="transfer_close_text">Appuyer n’importe où afin de fermer ce volet.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scanner le code QR d’une adresse Nano</string>
 </resources>

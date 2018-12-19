@@ -385,6 +385,47 @@
                     app:layout_constraintTop_toBottomOf="@+id/settings_seed_container" />
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ic_transfer_funds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="5dp"
+                    android:paddingStart="30dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/settings_transfer_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settings_transfer_container"
+                    app:srcCompat="@drawable/ic_transfer" />
+
+                <LinearLayout
+                    android:id="@+id/settings_transfer_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/settings_item_height"
+                    android:background="@drawable/bg_settings_item"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{handlers::onClickTransfer}"
+                    android:orientation="vertical"
+                    android:paddingStart="70dp"
+                    app:layout_constraintStart_toEndOf="@+id/ic_transfer_funds"
+                    app:layout_constraintTop_toBottomOf="@+id/settings_seed_bottom">
+
+                    <TextView
+                        android:id="@+id/settings_transfer_funds"
+                        style="@style/TextStyleNormalPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="@string/settings_transfer"
+                        android:textColor="@color/white_90" />
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/settings_transfer_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/white_10"
+                    app:layout_constraintTop_toBottomOf="@+id/settings_transfer_container" />
+
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ic_change_representative"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -406,7 +447,7 @@
                     android:orientation="vertical"
                     android:paddingStart="70dp"
                     app:layout_constraintStart_toEndOf="@+id/ic_change_representative"
-                    app:layout_constraintTop_toBottomOf="@+id/settings_seed_bottom">
+                    app:layout_constraintTop_toBottomOf="@+id/settings_transfer_bottom">
 
                     <TextView
                         android:id="@+id/settings_change_rep"

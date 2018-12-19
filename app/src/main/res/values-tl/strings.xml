@@ -161,6 +161,30 @@
     <string name="notification_body">Buksan ang Natrium para tingnan ito.</string>
     <string name="notificaiton_header_suplement">Tapikin para mabuksan</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Ilipat galing sa Paper Wallet</string>
+    <string name="transfer_error">Nagkaroon ng error sa paglipat. Pakiulit mamaya.</string>
+    <string name="paper_wallet">Paper Wallet</string>
+    <string name="kalium_wallet">Natrium Wallet</string>
+    <string name="transfer_manual_entry">Manual na ipasok</string>
+    <string name="mnemonic_phrase">Mnemonic Phrase</string>
+    <string name="raw_seed">Raw Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Transfer\nFunds:</string>
+    <string name="transfer_intro">Ang prosesong ito ay ang paglipat ng pondo galing sa paper wallet.\n\nI-tap ang \"%s\" button para umpisahan.</string>
+    <string name="transfer_qr_scan_hint">Mag-scan ng Nano \nseed o private key</string>
+    <string name="transfer_qr_scan_error">Ang QR code na ito ay hindi valid na seed.</string>
+    <string name="transfer_no_funds_toast">Ang seed na ito ay walang NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Ang wallet na may balanse na %s NANO ay na-detect.</string>
+    <string name="transfer_confirm_info_second">I-tap ang confirm para ilipat ang pondo.</string>
+    <string name="transfer_confirm_info_third">Ang paglipat ay maaring tumagal ng ilang segundo.</string>
+    <string name="transfer_loading_text">Nililipat na</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO ay nalipat na sa iyong Natrium Wallet.</string>
+    <string name="transfer_close_text">I-tap kahit saan para isara itong window.</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">I-scan ang Nano \naddress QR code</string>
 </resources>

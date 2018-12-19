@@ -161,6 +161,30 @@
     <string name="notification_body">Mở Natrium để xem giao dịch này.</string>
     <string name="notificaiton_header_suplement">Chạm vào để mở</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Tải lên từ ví giấy</string>
+    <string name="transfer_error">Một lỗi đã xảy ra trong quá trình chuyển đổi. hãy thử lại sau.</string>
+    <string name="paper_wallet">Ví giấy</string>
+    <string name="kalium_wallet">Ví Natrium</string>
+    <string name="transfer_manual_entry">Nhập thủ công</string>
+    <string name="mnemonic_phrase">Cụm từ ghi nhớ</string>
+    <string name="raw_seed">Hạt giống</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Chuyển đổi\nFunds:</string>
+    <string name="transfer_intro">Quá trình này sẽ chuyển đổi từ quỹ ví giấy sang ví Natrium của bạn.\n\nNhấn vào \"%s\"  Nút để bắt đầu.</string>
+    <string name="transfer_qr_scan_hint">Quét một Nano \nseed hoặc private key</string>
+    <string name="transfer_qr_scan_error">Mã QR này không chứa hạt giống hợp lệ.</string>
+    <string name="transfer_no_funds_toast">Hạt giống này không chứa bất kỳ NANO bên trong.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Một ví có số dư là %s NANO đã được tìm thấy.</string>
+    <string name="transfer_confirm_info_second">Nhấn để xác nhận chuyển quỹ.</string>
+    <string name="transfer_confirm_info_third">Chuyển đổi có thể mất vài giây để hoàn thành.</string>
+    <string name="transfer_loading_text">Chuyển</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO đã được chuyển thành công vào ví Natrium của bạn.</string>
+    <string name="transfer_close_text">Nhấn vào bất kỳ đâu để đóng cửa sổ.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Quét 1 Nano \nđịa chỉ mã QR</string>
 </resources>

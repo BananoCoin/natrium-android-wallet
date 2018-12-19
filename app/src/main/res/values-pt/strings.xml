@@ -160,6 +160,31 @@
     <string name="notification_title">Recebido %s NANO</string>
     <string name="notification_body">Abra a Natrium para ver esta transação.</string>
     <string name="notificaiton_header_suplement">Toque para abrir</string>
+
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Carregar de uma Carteira de Papel</string>
+    <string name="transfer_error">Ocorreu um erro durante a transferência. Por favor, tente novamente mais tarde.</string>
+    <string name="paper_wallet">Carteira de Papel</string>
+    <string name="kalium_wallet">Carteira Natrium</string>
+    <string name="transfer_manual_entry">Entrada Manual</string>
+    <string name="mnemonic_phrase">Frase Mnemônica</string>
+    <string name="raw_seed">Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Transferir\nFundos:</string>
+    <string name="transfer_intro">Este processo transferirá os fundos de uma carteira de papel para sua carteira Natrium.\n\nToque no botão \"%s\" para começar.</string>
+    <string name="transfer_qr_scan_hint">Escaneie uma Nano \nseed ou private key</string>
+    <string name="transfer_qr_scan_error">Este código QR não contém uma seed válida.</string>
+    <string name="transfer_no_funds_toast">Não há nenhuma Banano nesta seed.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Uma carteira com saldo de %s NANO foi detectada.</string>
+    <string name="transfer_confirm_info_second">Toque em confirmar para transferir os fundos.</string>
+    <string name="transfer_confirm_info_third">A transferência pode levar vários segundos para concluir.</string>
+    <string name="transfer_loading_text">Transferindo</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO transferido com sucesso para sua carteira Natrium.</string>
+    <string name="transfer_close_text">Toque em qualquer lugar para fechar a janela.</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Escaneie o código QR \nde um endereço Nano</string>
 </resources>

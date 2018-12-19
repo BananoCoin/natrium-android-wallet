@@ -41,6 +41,7 @@ import co.banano.natriumwallet.ui.common.FragmentUtility;
 import co.banano.natriumwallet.ui.common.UIUtil;
 import co.banano.natriumwallet.ui.common.WindowControl;
 import co.banano.natriumwallet.ui.contact.ContactOverviewFragment;
+import co.banano.natriumwallet.ui.transfer.TransferIntroDialogFragment;
 import co.banano.natriumwallet.ui.webview.WebViewDialogFragment;
 import co.banano.natriumwallet.util.LocaleUtil;
 import co.banano.natriumwallet.util.SharedPreferencesUtil;
@@ -398,6 +399,12 @@ public class SettingsFragment extends BaseFragment {
         getFragmentManager().executePendingTransactions();
     }
 
+    private void showTransferDialog() {
+        TransferIntroDialogFragment dialog = TransferIntroDialogFragment.newInstance();
+        dialog.show(getFragmentManager(), TransferIntroDialogFragment.TAG);
+        getFragmentManager().executePendingTransactions();
+    }
+
     private void showFingerprintDialog(View view) {
         int style = android.os.Build.VERSION.SDK_INT >= 21 ? R.style.AlertDialogCustom : android.R.style.Theme_Holo_Dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), style);
@@ -444,6 +451,12 @@ public class SettingsFragment extends BaseFragment {
         public void onClickChange(View view) {
             if (getActivity() instanceof WindowControl) {
                 showChangeRepDialog();
+            }
+        }
+
+        public void onClickTransfer(View view) {
+            if (getActivity() instanceof WindowControl) {
+                showTransferDialog();
             }
         }
 

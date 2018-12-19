@@ -181,6 +181,30 @@
     <string name="notification_body">Open Natrium om de transactie te zien.</string>
     <string name="notificaiton_header_suplement">Tik om te openen</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Van papieren portemonnee importeren</string>
+    <string name="transfer_error">Tijdens het overzetten is een fout opgetreden. Probeer het later nog eens.</string>
+    <string name="paper_wallet">Papieren portemonnee</string>
+    <string name="kalium_wallet">Natrium portemonnee</string>
+    <string name="transfer_manual_entry">Handmatige invoer</string>
+    <string name="mnemonic_phrase">Woordvolgorde</string>
+    <string name="raw_seed">Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Bedragen overzetten:</string>
+    <string name="transfer_intro">Met dit proces worden de bedragen van een papieren portemonnee overgezet naar uw Natrium-portemonnee.\n\nTik op de "%s" knop om te starten.</string>
+    <string name="transfer_qr_scan_hint">Scan een Nano \nseed of private key</string>
+    <string name="transfer_qr_scan_error">Deze QR-code bevat geen geldige seed.</string>
+    <string name="transfer_no_funds_toast">Deze seed bevat geen NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Een portemonnee met een balans van %s NANO is gedetecteerd.</string>
+    <string name="transfer_confirm_info_second">Tik op bevestigen om het bedrag over te zetten.</string>
+    <string name="transfer_confirm_info_third">Het overzetten kan enkele seconden duren om te voltooien.</string>
+    <string name="transfer_loading_text">Overzetten</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO succesvol overgezet naar uw Natrium-portemonnee.</string>
+    <string name="transfer_close_text">Tik ergens om het venster te sluiten.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Scan een Nano\nadres QR code</string>
 </resources>

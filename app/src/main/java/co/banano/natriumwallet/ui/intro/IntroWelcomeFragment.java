@@ -2,6 +2,7 @@ package co.banano.natriumwallet.ui.intro;
 
 import androidx.databinding.DataBindingUtil;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.content.res.AppCompatResources;
 import android.view.LayoutInflater;
@@ -60,6 +61,11 @@ public class IntroWelcomeFragment extends BaseFragment {
         Drawable startImportDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.ic_import_wallet);
         binding.introWelcomeButtonHaveWallet.setCompoundDrawablesRelativeWithIntrinsicBounds(startImportDrawable, null, null, null);
         binding.introWelcomeButtonHaveWallet.setCompoundDrawablePadding((int) (UIUtil.convertDpToPixel(34, getContext()) * -1));
+
+        // Lottie hardware acceleration
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            binding.welcomeAnimation.useHardwareAcceleration(true);
+        }
 
         return view;
     }

@@ -160,6 +160,31 @@
     <string name="notification_title">Получено %s NANO</string>
     <string name="notification_body">Откройте Natrium для просмотра.</string>
     <string name="notificaiton_header_suplement">Нажмите чтобы открыть</string>
+
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Перевод с Paper кошелька</string>
+    <string name="transfer_error">Во время передачи произошла ошибка.Пожалуйста, попробуйте позже.</string>
+    <string name="paper_wallet">Paper кошелёк</string>
+    <string name="kalium_wallet">Natrium кошелёк</string>
+    <string name="transfer_manual_entry">Ручной ввод</string>
+    <string name="mnemonic_phrase">Мнемоническая фраза</string>
+    <string name="raw_seed">Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Перевод\nСредств:</string>
+    <string name="transfer_intro">Этот процесс переведёт средства с бумажного кошелька на ваш Natrium кошелёк.\n\nНажмите кнопку"%s"чтобы начать.</string>
+    <string name="transfer_qr_scan_hint">Сканировать Nano \nseed или закрытый ключ</string>
+    <string name="transfer_qr_scan_error">Этот QR-код не содержит действительного seed</string>
+    <string name="transfer_no_funds_toast">В этом seed нет NANO.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Обнаружен кошелёк с балансом %s NANO.</string>
+    <string name="transfer_confirm_info_second">Нажмите чтобы перевести средства.</string>
+    <string name="transfer_confirm_info_third">Перевод может занять несколько секунд.</string>
+    <string name="transfer_loading_text">Перевод</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO успешно переведен на Natrium кошелёк.</string>
+    <string name="transfer_close_text">Нажмите в любом месте, чтобы закрыть окно.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Сканировать  QR-код Nano/адрес.</string>
 </resources>

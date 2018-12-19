@@ -161,6 +161,30 @@
     <string name="notification_body">Buka Natrium untuk melihat transaksi.</string>
     <string name="notificaiton_header_suplement">Tekan untuk membuka</string>
 
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Muat dari Dompet Kertas</string>
+    <string name="transfer_error">Terjadi kesalahan selama transfer. Silakan coba lagi nanti.</string>
+    <string name="paper_wallet">Dompet Kertas</string>
+    <string name="kalium_wallet">Dompet Natrium</string>
+    <string name="transfer_manual_entry">Entri Manual</string>
+    <string name="mnemonic_phrase">Frase Mnemonic</string>
+    <string name="raw_seed">Benih Mentah</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Transfer\nDana:</string>
+    <string name="transfer_intro">Proses ini akan mentransfer dana dari dompet kertas ke dompet Natrium Anda.\n\nKetuk \"%s\" tombol untuk memulai.</string>
+    <string name="transfer_qr_scan_hint">Pindai Benih\n atau kunci pribadi</string>
+    <string name="transfer_qr_scan_error">Kode QR ini tidak mengandung benih yg valid.</string>
+    <string name="transfer_no_funds_toast">Tidak ada NANO di dalam benih ini.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">Dompet dengan saldo %s NANO telah terdeteksi.</string>
+    <string name="transfer_confirm_info_second">Ketuk konfirmasi untuk mentransfer dana.</string>
+    <string name="transfer_confirm_info_third">Transfer membutuhkan beberapa detik.</string>
+    <string name="transfer_loading_text">Mentransfer</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO berhasil ditransfer ke Dompet Natrium Anda.</string>
+    <string name="transfer_close_text">Ketuk di mana saja untuk melanjutkan.</string>
+    
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Pindai QR code\n alamat Nano</string>
 </resources>

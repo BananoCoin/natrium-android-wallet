@@ -215,6 +215,13 @@
         <item name="android:fontFamily">@font/nunitosans_light</item>
     </style>
 
+    <style name="TextStyleParagraphBold">
+        <item name="android:textSize">@dimen/text_size_paragraph</item>
+        <item name="android:textColor">@color/ltblue</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:fontFamily">@font/nunitosans_bold</item>
+    </style>
+
     <style name="TextStyleModalTitle">
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/nunitosans_semibold</item>

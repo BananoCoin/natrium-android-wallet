@@ -161,6 +161,31 @@
     <string name="notification_title">%s NANO Alındı</string>
     <string name="notification_body">Bu transferi görmek için Natrium’u aç.</string>
     <string name="notificaiton_header_suplement">Açmak için dokun</string>
+
+    <!-- Transfer Funds -->
+    <!-- Settings Menu -->
+    <string name="settings_transfer">Bakiye Transferi</string>
+    <string name="transfer_error">Aktarma esnasında bir problem oluştu. Lütfen daha sonra tekrar dene.</string>
+    <string name="paper_wallet">Kağıt Cüzdan</string>
+    <string name="kalium_wallet">Natrium Cüzdanı</string>
+    <string name="transfer_manual_entry">Manuel Giriş</string>
+    <string name="mnemonic_phrase">Memonik Cümle</string>
+    <string name="raw_seed">Seed</string>
+    <!-- Initial Screen -->
+    <string name="transfer_header">Bakiye\nTransferi:</string>
+    <string name="transfer_intro">Bu işlem bir kağıt cüzdanda bulunan bakiyeyi senin Natrium cüzdanına aktaracak.\n\nBaşlamak için \"%s\" butonuna bas.</string>
+    <string name="transfer_qr_scan_hint">Bir Nano seedi \nveya private key\'i tara</string>
+    <string name="transfer_qr_scan_error">Bu QR kodu geçerli bir seed içermiyor.</string>
+    <string name="transfer_no_funds_toast">Bu seedin içinde hiç NANO yok.</string>
+    <!-- Confirm Screen -->
+    <string name="transfer_confirm_info_first">%s NANO bakiyeye sahip bir cüzdan tespit edildi.</string>
+    <string name="transfer_confirm_info_second">Transfer işlemini başlatmak için onayla butonuna bas.</string>
+    <string name="transfer_confirm_info_third">Bu işlem birkaç saniye sürebilir.</string>
+    <string name="transfer_loading_text">Aktarılıyor</string>
+    <!-- Complete Screen -->
+    <string name="transfer_complete_text">%s NANO başarıyla Natrium cüzdanına aktarıldı.</string>
+    <string name="transfer_close_text">Pencereyi kapatmak için herhangi bir yere dokun.</string>
+
     <!-- Scan Screen -->
     <string name="scan_send_instruction_label">Nano Adresi\'nin \n QR Kodu\'nu tarayın</string>
 </resources>

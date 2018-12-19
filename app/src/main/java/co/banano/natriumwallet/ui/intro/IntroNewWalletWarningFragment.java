@@ -109,7 +109,7 @@ public class IntroNewWalletWarningFragment extends BaseFragment {
         // go to home screen
         if (getActivity() instanceof WindowControl) {
             ((WindowControl) getActivity()).getFragmentUtility().replace(
-                    HomeFragment.newInstance(),
+                    HomeFragment.newInstance(null),
                     FragmentUtility.Animation.ENTER_LEFT_EXIT_RIGHT,
                     FragmentUtility.Animation.ENTER_RIGHT_EXIT_LEFT,
                     HomeFragment.TAG

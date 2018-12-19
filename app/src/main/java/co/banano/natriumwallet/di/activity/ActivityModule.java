@@ -9,10 +9,12 @@ import co.banano.natriumwallet.network.model.BaseResponse;
 import co.banano.natriumwallet.network.model.BlockTypes;
 import co.banano.natriumwallet.network.model.response.AccountCheckResponse;
 import co.banano.natriumwallet.network.model.response.AccountHistoryResponse;
+import co.banano.natriumwallet.network.model.response.AccountsBalancesResponse;
 import co.banano.natriumwallet.network.model.response.BlockResponse;
 import co.banano.natriumwallet.network.model.response.BlocksInfoResponse;
 import co.banano.natriumwallet.network.model.response.CurrentPriceResponse;
 import co.banano.natriumwallet.network.model.response.ErrorResponse;
+import co.banano.natriumwallet.network.model.response.PendingTransactionResponse;
 import co.banano.natriumwallet.network.model.response.ProcessResponse;
 import co.banano.natriumwallet.network.model.response.SubscribeResponse;
 import co.banano.natriumwallet.network.model.response.TransactionResponse;
@@ -112,6 +114,20 @@ public class ActivityModule {
                                     if (blocks.get(key).getAsJsonObject().has("block_account")) {
                                         // get blocks info response
                                         src.getAsJsonObject().addProperty("messageType", Actions.GET_BLOCKS_INFO.toString());
+                                    } else if (blocks.get(key).getAsJsonObject().has("source")) {
+                                        src.getAsJsonObject().addProperty("messageType", Actions.PENDING.toString());
+                                    }
+                                }
+                            }
+                        } else if (src.getAsJsonObject().get("balances") != null) {
+                            JsonElement balancesElement = src.getAsJsonObject().get("balances");
+                            if (balancesElement.isJsonObject()) {
+                                JsonObject balances = balancesElement.getAsJsonObject();
+                                String key = balances.keySet().iterator().next();
+                                if (key != null) {
+                                    if (balances.get(key).getAsJsonObject().has("pending")) {
+                                        // accounts_balances response
+                                        src.getAsJsonObject().addProperty("messageType", Actions.BALANCES.toString());
                                     }
                                 }
                             }
@@ -141,6 +157,10 @@ public class ActivityModule {
                             return ProcessResponse.class;
                         } else if (kind.equals(Actions.GET_BLOCKS_INFO.toString())) {
                             return BlocksInfoResponse.class;
+                        } else if (kind.equals(Actions.BALANCES.toString())) {
+                            return AccountsBalancesResponse.class;
+                        } else if (kind.equals(Actions.PENDING.toString())) {
+                            return PendingTransactionResponse.class;
                         } else if (kind.equals("block")) {
                             return TransactionResponse.class;
                         } else if (kind.equals("contents")) {

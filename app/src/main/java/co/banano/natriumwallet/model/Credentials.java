@@ -52,7 +52,7 @@ public class Credentials extends RealmObject {
 
         this.seedIsSecure = true;
         this.seed = seed;
-        this.privateKey = KaliumUtil.seedToPrivate(seed);
+        this.privateKey = KaliumUtil.seedToPrivate(seed, 0);
     }
 
     public String getPrivateKey() {

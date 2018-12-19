@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import co.banano.natriumwallet.KaliumUtil;
 import co.banano.natriumwallet.R;
 import co.banano.natriumwallet.model.Address;
 import com.google.zxing.Result;
@@ -18,10 +19,12 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class ScanActivity extends BaseScannerActivity implements ZXingScannerView.ResultHandler {
     public static final String QR_CODE_RESULT = "QRCodeResult";
     public static final String EXTRA_TITLE = "ScanActivityTitle";
+    public static final String EXTRA_SEED_MODE = "ScanSeedMode";
     private ZXingScannerView mScannerView;
     private Runnable mRunnable;
     private Handler mHandler;
     private TextView mInstructionsText;
+    private boolean seedMode;
 
     @Override
     public void onCreate(Bundle state) {
@@ -47,6 +50,9 @@ public class ScanActivity extends BaseScannerActivity implements ZXingScannerVie
                 mInstructionsText.setText(title);
             }
         }
+
+        // get if seed mode
+        seedMode = getIntent().getBooleanExtra(EXTRA_SEED_MODE, false);
 
         mHandler = new Handler();
         mRunnable = () -> {
@@ -79,22 +85,44 @@ public class ScanActivity extends BaseScannerActivity implements ZXingScannerVie
 
     @Override
     public void handleResult(Result rawResult) {
-        String address = Address.findAddress(rawResult.getText());
-        if (address != null && !address.isEmpty()) {
-            Bundle conData = new Bundle();
-            conData.putString(QR_CODE_RESULT, rawResult.getText());
-            Intent intent = new Intent();
-            intent.putExtras(conData);
-            setResult(RESULT_OK, intent);
-            finish();
+        if (!seedMode) {
+            String address = Address.findAddress(rawResult.getText());
+            if (address != null && !address.isEmpty()) {
+                Bundle conData = new Bundle();
+                conData.putString(QR_CODE_RESULT, rawResult.getText());
+                Intent intent = new Intent();
+                intent.putExtras(conData);
+                setResult(RESULT_OK, intent);
+                finish();
+            } else {
+                mScannerView.resumeCameraPreview(this);
+                mScannerView.setAutoFocus(true);
+                if (mInstructionsText != null) {
+                    mInstructionsText.setText(getString(R.string.send_invalid_address));
+                    if (mHandler != null) {
+                        mHandler.removeCallbacks(mRunnable);
+                        mHandler.postDelayed(mRunnable, 800);
+                    }
+                }
+            }
         } else {
-            mScannerView.resumeCameraPreview(this);
-            mScannerView.setAutoFocus(true);
-            if (mInstructionsText != null) {
-                mInstructionsText.setText(getString(R.string.send_invalid_address));
-                if (mHandler != null) {
-                    mHandler.removeCallbacks(mRunnable);
-                    mHandler.postDelayed(mRunnable, 800);
+            String textResult = rawResult.getText();
+            if (KaliumUtil.isValidSeed(textResult)) {
+                Bundle conData = new Bundle();
+                conData.putString(QR_CODE_RESULT, textResult);
+                Intent intent = new Intent();
+                intent.putExtras(conData);
+                setResult(RESULT_OK, intent);
+                finish();
+            } else {
+                mScannerView.resumeCameraPreview(this);
+                mScannerView.setAutoFocus(true);
+                if (mInstructionsText != null) {
+                    mInstructionsText.setText(getString(R.string.transfer_qr_scan_error));
+                    if (mHandler != null) {
+                        mHandler.removeCallbacks(mRunnable);
+                        mHandler.postDelayed(mRunnable, 800);
+                    }
                 }
             }
         }

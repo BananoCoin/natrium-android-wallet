@@ -25,6 +25,9 @@ import co.banano.natriumwallet.ui.settings.ChangeRepDialogFragment;
 import co.banano.natriumwallet.ui.settings.SettingsFragment;
 import com.google.gson.Gson;
 
+import co.banano.natriumwallet.ui.transfer.TransferCompleteDialogFragment;
+import co.banano.natriumwallet.ui.transfer.TransferConfirmDialogFragment;
+import co.banano.natriumwallet.ui.transfer.TransferIntroDialogFragment;
 import dagger.Component;
 
 @Component(modules = {ActivityModule.class}, dependencies = {ApplicationComponent.class})
@@ -82,4 +85,10 @@ public interface ActivityComponent {
     void inject(SettingsFragment settingsDialogFragment);
 
     void inject(TranDetailsFragment tranDetailsFragment);
+
+    void inject(TransferIntroDialogFragment transferIntroDialogFragment);
+
+    void inject(TransferConfirmDialogFragment transferConfirmDialogFragment);
+
+    void inject(TransferCompleteDialogFragment transferCompleteDialogFragment);
 }

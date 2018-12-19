@@ -3,6 +3,8 @@ package co.banano.natriumwallet.ui.home;
 import androidx.databinding.BindingMethod;
 import androidx.databinding.BindingMethods;
 import androidx.databinding.DataBindingUtil;
+
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import androidx.annotation.NonNull;
@@ -30,6 +32,7 @@ import co.banano.natriumwallet.bus.WalletHistoryUpdate;
 import co.banano.natriumwallet.bus.WalletPriceUpdate;
 import co.banano.natriumwallet.bus.WalletSubscribeUpdate;
 import co.banano.natriumwallet.databinding.FragmentHomeBinding;
+import co.banano.natriumwallet.model.Address;
 import co.banano.natriumwallet.model.Contact;
 import co.banano.natriumwallet.model.Credentials;
 import co.banano.natriumwallet.model.KaliumWallet;
@@ -86,14 +89,18 @@ public class HomeFragment extends BaseFragment {
     private Runnable mRunnable;
     private HashMap<String, String> mContactCache = new HashMap<>();
     private AccountHistoryAdapter mAdapter;
+    private String mIntroUri;
 
     /**
      * Create new instance of the fragment (handy pattern if any data needs to be passed to it)
      *
      * @return HomeFragment
      */
-    public static HomeFragment newInstance() {
+    public static HomeFragment newInstance(String uri) {
         Bundle args = new Bundle();
+        if (uri != null) {
+            args.putString("URI_STR", uri);
+        }
         HomeFragment fragment = new HomeFragment();
         fragment.setArguments(args);
         return fragment;
@@ -239,6 +246,14 @@ public class HomeFragment extends BaseFragment {
         FragmentTransaction ft = ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().beginTransaction();
         ft.replace(R.id.settings_frag_container, SettingsFragment.newInstance()).commit();
 
+        // Lottie hardware acceleration
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            binding.loadingAnimation.useHardwareAcceleration(true);
+        }
+
+        // Set URI if we have one
+        mIntroUri = getArguments().getString("URI_STR", null);
+
         return view;
     }
 
@@ -322,6 +337,20 @@ public class HomeFragment extends BaseFragment {
             binding.introText.exampleIntroText.setText(UIUtil.colorizeNano(binding.introText.exampleIntroText.getText().toString(), getContext()));
             binding.loadingAnimation.setVisibility(View.GONE);
             binding.exampleCards.setVisibility(View.VISIBLE);
+        } else if (mIntroUri != null) {
+            // Open send screen with URI data if it's here.
+            Address address = new Address(mIntroUri);
+            if (address.isValidAddress()) {
+                if (getActivity() instanceof WindowControl) {
+                    // show send dialog
+                    SendDialogFragment dialog = SendDialogFragment.newInstance(address.getAddress(), address.getAmount());
+                    dialog.show(((WindowControl) getActivity()).getFragmentUtility().getFragmentManager(),
+                            SendDialogFragment.TAG);
+
+                    ((WindowControl) getActivity()).getFragmentUtility().getFragmentManager().executePendingTransactions();
+                }
+            }
+            mIntroUri = null;
         }
     }
 
@@ -365,11 +394,15 @@ public class HomeFragment extends BaseFragment {
     private void updateAmounts() {
         if (wallet != null) {
             binding.setWallet(wallet);
-            if (wallet.getAccountBalanceBananoRaw() != null &&
-                    wallet.getAccountBalanceBananoRaw().compareTo(new BigDecimal(0)) == 1) {
+            if (wallet.getAccountBalanceBananoRaw() != null) {
                 // if balance > 0, enable send button
-                binding.homeSendButton.setEnabled(true);
-                binding.homeSendButton.setBackground(getResources().getDrawable(R.drawable.bg_solid_button));
+                if (wallet.getAccountBalanceBananoRaw().compareTo(new BigDecimal(0)) == 1) {
+                    binding.homeSendButton.setEnabled(true);
+                    binding.homeSendButton.setBackground(getResources().getDrawable(R.drawable.bg_solid_button));
+                } else {
+                    binding.homeSendButton.setEnabled(false);
+                    binding.homeSendButton.setBackground(getResources().getDrawable(R.drawable.bg_solid_button_disabled));
+                }
                 // Hide placeholder
                 binding.bananoPlaceholder.setVisibility(View.GONE);
                 binding.amountBananoSymbol.setVisibility(View.VISIBLE);

@@ -10,6 +10,7 @@
     <color name="black_40">#64000000</color>
     <color name="black_60">#96000000</color>
     <color name="black_70">#B3000000</color>
+    <color name="black_85">#D9000000</color>
     <color name="gray_element">#1E2C3D</color>
     <color name="gray_dark">#2A3A4D</color>
     <color name="gray_dark_60">#962A3A4D</color>
@@ -21,8 +22,8 @@
     <color name="ltblue_70">#B3A3CDFF</color>
     <color name="ltblue_dark_transparent">#93A3CDFF</color>
     <color name="burnt_yellow">#A3CDFF</color>
-    <color name="green_light">#C2FFC5</color>
-    <color name="green_light_transparent">#93C2FFC5</color>
+    <color name="green_light">#59FF9E</color>
+    <color name="green_light_transparent">#9359FF9E</color>
     <color name="green_dark">#4D754F</color>
     <color name="error">#E6FF5C5C</color>
 
