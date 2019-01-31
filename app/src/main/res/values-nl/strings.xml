@@ -32,8 +32,7 @@
 
     <!-- Pin Screen -->
     <string name="pin_create_title">Creëer een 4-cijferige pincode</string>
-    <string name="pin_confirm_title">Bevestig pincode
-</string>
+    <string name="pin_confirm_title">Bevestig pincode</string>
     <string name="pin_enter_title">Voer pincode in</string>
     <string name="pin_confirm_error">Pincodes komen niet overeen</string>
     <string name="pin_error">Ongeldige pincode ingevoerd</string>
@@ -138,40 +137,40 @@
     <string name="send_pin_description">Verstuur %s Nano?</string>
 
     <!-- Address Book/Contacts -->
-    <string name="contact_add">Contactpersoon toevoegen</string>
-    <string name="contact_added">%s is toegevoegd aan contactpersonen!</string>
-    <string name="contact_invalid_name">Ongeldige contactpersoon naam</string>
+    <string name="contact_add">Contact toevoegen</string>
+    <string name="contact_added">%s is toegevoegd aan contact!</string>
+    <string name="contact_invalid_name">Ongeldige contact naam</string>
 
     <!-- Add Contact Dialog -->
-    <string name="contact_add_header">Contactpersoon toevoegen:</string>
-    <string name="contact_add_button">Contactpersoon toevoegen</string>
+    <string name="contact_add_header">Contact toevoegen:</string>
+    <string name="contact_add_button">Contact toevoegen</string>
     <string name="contact_name_hint">Voer naam in @</string>
-    <string name="contact_name_missing">Geef dit contactpersoon een naam</string>
-    <string name="contact_name_exists">Contactpersoon bestaat al</string>
+    <string name="contact_name_missing">Geef dit contact een naam</string>
+    <string name="contact_name_exists">Contact bestaat al</string>
     <string name="contact_address_hint">Voeg adres toe</string>
-    <string name="contact_address_exists">Er bestaat al een contactpersoon met dit adres</string>
+    <string name="contact_address_exists">Er bestaat al een contact met dit adres</string>
 
     <!-- Contacts Settings -->
-    <string name="contact_header">Contactpersonen</string>
-    <string name="contact_settings_item">Contactpersonen</string>
+    <string name="contact_header">Contacten</string>
+    <string name="contact_settings_item">Contacten</string>
 
     <!-- Contact Detail -->
-    <string name="contact_view_header">Contactpersoon:</string>
+    <string name="contact_view_header">Contact:</string>
     <string name="contact_remove_header">Verwijder:</string>
-    <string name="contact_remove_btn">Verwijder contactpersoon</string>
-    <string name="contact_remove_sure">Weet je zeker dat je het contactpersoon %s wil verwijderen?</string>
+    <string name="contact_remove_btn">Verwijder contact</string>
+    <string name="contact_remove_sure">Weet je zeker dat je het contact %s wil verwijderen?</string>
 
     <!-- Export/Import -->
-    <string name="contact_removed">%s is verwijderd uit contactpersonen!</string>
-    <string name="contact_export_none">Er zijn geen contactpersonen aanwezig om te verwijderen</string>
-    <string name="contact_export_error">Contactpersonen exporteren mislukt</string>
-    <string name="contact_import_error">Contactpersonen importeren mislukt</string>
-    <string name="contact_import_success">%d contactpersonen succesvol geïmporteerd</string>
-    <string name="contact_import_none">Geen contactpersonen gevonden om te importeren</string>
+    <string name="contact_removed">%s is verwijderd uit contacten!</string>
+    <string name="contact_export_none">Er zijn geen contacten aanwezig om te verwijderen</string>
+    <string name="contact_export_error">Contacten exporteren mislukt</string>
+    <string name="contact_import_error">Contactpen importeren mislukt</string>
+    <string name="contact_import_success">%d contacten succesvol geïmporteerd</string>
+    <string name="contact_import_none">Geen contacten gevonden om te importeren</string>
     <string name="contact_import_warning_header">Waarschuwing</string>
     <string name="contact_import_permission_error">Geef Natrium leestoegang tot apparaat opslag.</string>
     <string name="contact_export_permission_error">Geef Natrium schrijftoegang tot apparaat opslag.</string>
-    <string name="contact_export_success">Contactpersonen opgeslagen in %s</string>
+    <string name="contact_export_success">Contacten opgeslagen in %s</string>
 
     <!-- Push Notifications -->
     <string name="notifications_settings">Notificaties</string>
@@ -183,26 +182,26 @@
 
     <!-- Transfer Funds -->
     <!-- Settings Menu -->
-    <string name="settings_transfer">Van papieren portemonnee importeren</string>
+    <string name="settings_transfer">Van papieren wallet importeren</string>
     <string name="transfer_error">Tijdens het overzetten is een fout opgetreden. Probeer het later nog eens.</string>
-    <string name="paper_wallet">Papieren portemonnee</string>
-    <string name="kalium_wallet">Natrium portemonnee</string>
+    <string name="paper_wallet">Papieren wallet</string>
+    <string name="kalium_wallet">Natrium wallet</string>
     <string name="transfer_manual_entry">Handmatige invoer</string>
     <string name="mnemonic_phrase">Woordvolgorde</string>
     <string name="raw_seed">Seed</string>
     <!-- Initial Screen -->
     <string name="transfer_header">Bedragen overzetten:</string>
-    <string name="transfer_intro">Met dit proces worden de bedragen van een papieren portemonnee overgezet naar uw Natrium-portemonnee.\n\nTik op de "%s" knop om te starten.</string>
+    <string name="transfer_intro">Met dit proces worden de bedragen van een papieren wallet overgezet naar uw Natrium-wallet.\n\nTik op de "%s" knop om te starten.</string>
     <string name="transfer_qr_scan_hint">Scan een Nano \nseed of private key</string>
     <string name="transfer_qr_scan_error">Deze QR-code bevat geen geldige seed.</string>
     <string name="transfer_no_funds_toast">Deze seed bevat geen NANO.</string>
     <!-- Confirm Screen -->
-    <string name="transfer_confirm_info_first">Een portemonnee met een balans van %s NANO is gedetecteerd.</string>
+    <string name="transfer_confirm_info_first">Een wallet met een balans van %s NANO is gedetecteerd.</string>
     <string name="transfer_confirm_info_second">Tik op bevestigen om het bedrag over te zetten.</string>
     <string name="transfer_confirm_info_third">Het overzetten kan enkele seconden duren om te voltooien.</string>
     <string name="transfer_loading_text">Overzetten</string>
     <!-- Complete Screen -->
-    <string name="transfer_complete_text">%s NANO succesvol overgezet naar uw Natrium-portemonnee.</string>
+    <string name="transfer_complete_text">%s NANO succesvol overgezet naar uw Natrium-wallet.</string>
     <string name="transfer_close_text">Tik ergens om het venster te sluiten.</string>
     
     <!-- Scan Screen -->
