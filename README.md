@@ -1,3 +1,14 @@
+# ~~~ NOTICE - THIS REPOSITORY IS DEPRECATED ~~~
+
+This project may still be useful to many people and is remaining for reference purposes.
+
+However, this project is being phased out as it has been replaced by a new version rewritten with Flutter.
+
+The new verson can be found [HERE](https://github.com/AvengeMedia/natrium_wallet_flutter)
+
+# ~~~ NOTICE - THIS REPOSITORY IS DEPRECATED ~~~
+
+
 # Natrium Android Wallet
 
 ## What is Natrium?
